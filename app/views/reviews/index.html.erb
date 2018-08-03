@@ -1,2 +1,19 @@
-<h1>Reviews#index</h1>
-<p>Find me in app/views/reviews/index.html.erb</p>
+<h1>レビュー一覧</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr>
+
+<% @review.each do |review| %>
+  <tr>
+    <td><%= review.title %></td>
+    <td><%= review.content %></td>
+    <td><%= link_to '詳細を確認する', review_path(review.id) %></td>
+    <td><%= link_to "編集する", edit_review_path(review.id) %></td>
+    <td><%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'レビュー作成', new_review_path %>

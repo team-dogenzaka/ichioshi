@@ -6,10 +6,14 @@ class ReviewsController < ApplicationController
   end
   
   def new
-    if params[:back]
-      @review = Review.new(review_params)
+    if user_signed_in?    
+      if params[:back]
+        @review = Review.new(review_params)
+      else
+        @review = Review.new
+      end
     else
-      @review = Review.new
+      redirect_to users_path, notice: "ログインしてね！"
     end
   end
 

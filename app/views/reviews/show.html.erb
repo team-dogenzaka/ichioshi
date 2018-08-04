@@ -1,4 +1,6 @@
 <h1>ブログ詳細画面</h1>
+<p>投稿者: <%= link_to @post_user.name, user_path(id: @post_user.id) %>
+
 <p>タイトル: <%= @review.title %></p>
 <p>内容: <%= @review.content %></p>
 

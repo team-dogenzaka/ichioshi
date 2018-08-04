@@ -31,6 +31,7 @@ class ReviewsController < ApplicationController
   
   def show
     @favorite = current_user.favorites.find_by(review_id: @review.id)
+    @post_user = @review.user
   end
 
   def edit

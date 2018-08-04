@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+
   def index
     @review = Review.all
   end
@@ -14,6 +15,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
     if @review.save
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
       redirect_to reviews_path, notice: "レビューを作成しました！"
@@ -49,7 +51,7 @@ class ReviewsController < ApplicationController
   
   private
   def review_params
-    params.require(:review).permit(:title, :content)
+    params.require(:review).permit(:title, :content, :user_id)
   end
 
   def set_review

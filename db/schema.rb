@@ -10,14 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_08_03_140829) do
-=======
-ActiveRecord::Schema.define(version: 2018_08_03_123553) do
->>>>>>> 022756f38dccc7370d80a15a319730ea72c33e35
+ActiveRecord::Schema.define(version: 2018_08_03_160512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.string "title"

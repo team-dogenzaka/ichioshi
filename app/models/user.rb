@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :icon, IconUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :reviews
@@ -16,6 +17,7 @@ class User < ApplicationRecord
               provider: auth.provider,
               email:    auth.info.email,
               name:     auth.info.name,
+              icon:     auth.info.image,
               password: Devise.friendly_token[0, 20]
             )
           end

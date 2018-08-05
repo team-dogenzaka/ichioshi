@@ -1,10 +1,15 @@
-<p><%= link_to @post_user.name, user_path(id: @post_user.id) %>
+<p><%= link_to @post_user.name, user_path(id: @post_user.id) %></p>
+<p><%= image_tag(@post_user.icon.url, :size =>'100x100') %></p>
 <p>投稿日時: <%= @review.created_at.strftime("%Y年%m月%d日") %></p>
 <p><h1><%= @review.title %></h1></p>
 <p><%= @review.content %></p>
 <p id="notice"><%= notice %></p>
 <p>
-   <%= image_tag(@review.image.url) %>
+<% unless @review.image.blank? %>
+  <%= image_tag(@review.image.url) %>   
+<% else %>
+  <%= image_tag '/no_img.png' %>
+<% end %>
 </p>
 <% unless @review.user_id == current_user.id %>
   <% if @favorite.present? %>

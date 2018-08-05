@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,16 +11,21 @@
 
 
   </section>
-<div class="cp_cssslider">
-<div class="cp_slidewrapper">
-<div class="cp_slide_item"><img src="assets/tano.jpg"></div>
-<div class="cp_slide_item"><img src="assets/tano.jpg"></div>
-<div class="cp_slide_item"><img src="assets/tano.jpg"></div>
-<div class="cp_slide_item"><img src="assets/tano.jpg"></div>
-<div class="cp_slide_item"><img src="assets/tano.jpg"></div>
-</div>
-</div>
-  
+<h1>レビュアー一覧</h1>
+
+<ul class="users">
+    <% @users.each do |user| %>
+        <li>
+            <%= link_to user.name, user %>
+        </li>
+    <% end %>
+</ul>
+
+<h1>レビュ一覧</h1>
+<% @review.each do |review| %>
+<td><%= link_to review.title , review_path(review.id) %></td>
+<td><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></td>
+<% end %>
   <section class="about">
     <h1>図書館アプリ</h1>
   </section>
@@ -47,11 +51,7 @@
     </div>
   </section>
   <footer>
-        <ul>
-<li>id:admin@example.com</li>
-<li>pass:password</li>
-</ul>
-
   </footer>
 </body>
 </html>
+

@@ -4,7 +4,11 @@
 <p><%= @review.content %></p>
 <p id="notice"><%= notice %></p>
 <p>
-   <%= image_tag(@review.image.url) %>
+<% unless @review.image.blank? %>
+  <%= image_tag(@review.image.url) %>   
+<% else %>
+  <%= image_tag '/no_img.png' %>
+<% end %>
 </p>
 <% unless @review.user_id == current_user.id %>
   <% if @favorite.present? %>

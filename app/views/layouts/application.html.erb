@@ -11,11 +11,12 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
+      <%= link_to "TOP", "/" %>
     <% if user_signed_in? %>
       <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+      <%= link_to 'レビュー作成', new_review_path %>
     <% end %>
-
+      <%= link_to 'レビュー一覧', reviews_path %>
     <%= yield %>
   </body>
 </html>

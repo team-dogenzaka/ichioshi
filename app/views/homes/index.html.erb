@@ -1,10 +1,17 @@
-<% @review.each do |review| %>
-<td><%= link_to review.title , review_path(review.id) %></td>
-<td><%= link_to image_tag(review.image.url), review_path(review.id) %></td>
-<% end %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Achieve</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+</head><body>
 
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
+  <section class="main-header">
+
+
+  </section>
+<h1>レビュアー一覧</h1>
 
 <ul class="users">
     <% @users.each do |user| %>
@@ -13,3 +20,38 @@
         </li>
     <% end %>
 </ul>
+
+<h1>レビュ一覧</h1>
+<% @review.each do |review| %>
+<td><%= link_to review.title , review_path(review.id) %></td>
+<td><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></td>
+<% end %>
+  <section class="about">
+    <h1>図書館アプリ</h1>
+  </section>
+  <section class="function">
+    <h1>使い方</h1>
+    <div class="function-images">
+      <div class="function-image">
+        
+        <p>1.登録する</br>アプリの利用には会員登録が必要です。</p>
+      </div>
+      <div class="function-image">
+        
+        <p>2.本を探す</br>借りたい本があるかどうか検索してください。</p>
+      </div>
+      <div class="function-image">
+        
+        <p>３.予約する</br>借りたい本が見つかったら予約してください。</p>
+      </div>
+      <div class="function-image">
+        
+        <p>4.リクエストする</br>借りたい本がない場合、リクエストを送信してください。</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+  </footer>
+</body>
+</html>
+

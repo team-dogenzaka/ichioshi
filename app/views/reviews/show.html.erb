@@ -1,9 +1,11 @@
-<h1>ブログ詳細画面</h1>
-<p>投稿者: <%= link_to @post_user.name, user_path(id: @post_user.id) %>
-<p>投稿日時: <%= @review.created_at.strftime("%Y年%m月%d日 %H時%M分") %></p>
-<p>タイトル: <%= @review.title %></p>
-<p>内容: <%= @review.content %></p>
-
+<p><%= link_to @post_user.name, user_path(id: @post_user.id) %>
+<p>投稿日時: <%= @review.created_at.strftime("%Y年%m月%d日") %></p>
+<p><h1><%= @review.title %></h1></p>
+<p><%= @review.content %></p>
+<p id="notice"><%= notice %></p>
+<p>
+   <%= image_tag(@review.image.url) %>
+</p>
 <% unless @review.user_id == current_user.id %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
@@ -11,13 +13,6 @@
     <%= link_to 'お気に入りする', favorites_path(review_id: @review.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Image:</strong>
-   <%= image_tag(@review.image.url) %>
-</p>
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>

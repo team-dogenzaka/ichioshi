@@ -13,6 +13,8 @@
     <%= link_to 'お気に入りする', favorites_path(review_id: @review.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-
+<% hoge = "https://localhost:3000/reviews/1" %>
+<a href="https://www.facebook.com/share.php?url=<%= request.url %>" target="_blank"><img src ="/assets/icon/facebook-icon2.png"></a>
+<a href="https://twitter.com/share?url=<%= request.url %>" rel="nofollow" target="_blank"><img src ="/assets/icon/twitter-icon2.png"></a>
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>

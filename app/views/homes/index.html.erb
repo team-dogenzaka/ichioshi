@@ -13,19 +13,24 @@
   </section>
 <h1>レビュアー一覧</h1>
 
-<ul class="users">
+<div class="function-images">
+ <div class="function-image">
     <% @users.each do |user| %>
-        <li>
-            <%= link_to user.name, user %>
-        </li>
+      <td><%= link_to user.name, user %></td>
     <% end %>
-</ul>
+ </div>
+</div>
 
 <h1>レビュ一覧</h1>
+<div class="function-images">
+ <div class="function-image">
 <% @review.each do |review| %>
 <td><%= link_to review.title , review_path(review.id) %></td>
 <td><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></td>
 <% end %>
+ </div>
+</div>
+
   <section class="about">
     <h1>図書館アプリ</h1>
   </section>

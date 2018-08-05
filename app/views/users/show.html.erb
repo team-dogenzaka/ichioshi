@@ -4,7 +4,12 @@
 <ul class="users">
   <li><%= @user.name %></li>
   <li><%= @user.email %></li>
-  <%= image_tag(@user.icon.url) %>
+  
+  <% unless @user.icon.blank? %>
+    <%= image_tag(@user.icon.url) %>   
+  <% else %>
+     <%= image_tag '/no_img.png' %>
+  <% end %>
 </ul>
 
 <%= link_to 'ユーザーを削除する', users_destroy_path(id: current_user.id), method: :delete %>

@@ -16,7 +16,14 @@
 <div class="function-images">
  <div class="function-image">
     <% @users.each do |user| %>
-      <td><%= link_to user.name, user %></td>
+      <li>
+        <%= link_to user.name, user %>
+        <% unless user.icon.blank? %>
+          <td><%= link_to image_tag(user.icon.url, :size =>'100x100'), users_path(user.id) %></td>   
+        <% else %>
+          <td><%= link_to image_tag('/no_img.png', :size =>'100x100'), users_path(user.id) %></td>
+        <% end %>
+      </li>
     <% end %>
  </div>
 </div>
@@ -26,7 +33,11 @@
  <div class="function-image">
 <% @review.each do |review| %>
 <td><%= link_to review.title , review_path(review.id) %></td>
-<td><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></td>
+ <% unless review.image.blank? %>
+    <td><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></td>   
+  <% else %>
+     <td><%= link_to image_tag('/no_img.png', :size =>'100x100'), review_path(review.id) %></td>
+  <% end %>
 <% end %>
  </div>
 </div>

@@ -6,8 +6,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
-  
+
 <header class="header">
 <nav class="menu">
     <ul>
@@ -19,7 +21,7 @@
         <li><%= link_to 'レビュー作成', new_review_path %></li>
       <% end %>
     </ul>
-</nav>      
+</nav>
 </header>
     <%= yield %>
 

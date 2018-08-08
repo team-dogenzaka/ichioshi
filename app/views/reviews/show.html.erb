@@ -6,7 +6,7 @@
 <p id="notice"><%= notice %></p>
 <p>
 <% unless @review.image.blank? %>
-  <%= image_tag(@review.image.url) %>   
+  <%= image_tag(@review.image.url) %>
 <% else %>
   <%= image_tag '/no_img.png' %>
 <% end %>
@@ -18,9 +18,13 @@
     <%= link_to 'お気に入りする', favorites_path(review_id: @review.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-<a href="https://www.facebook.com/share.php?url=<%= request.url %>" target="_blank"><img src ="/assets/icon/facebook-icon2.png"></a>
-<a href="https://twitter.com/share?url=<%= request.url %>" rel="nofollow" target="_blank"><img src ="/assets/icon/twitter-icon2.png"></a>
-<a href="http://line.me/R/msg/text/?<%= request.url %>">LINE</a>
-<a href="//b.hatena.ne.jp/add?mode=confirm&url=<%= request.url %>" target="_blank" rel="nofollow"><img src ="/assets/icon/hatena-icon2.png"></a>
+
+<ul class="shareList">
+  <li class="shareList__item"><a class="shareList__link icon-twitter" href="https://twitter.com/share?url=<%= request.url %>" target="_blank" title="Twitter"></a></li>
+  <li class="shareList__item"><a class="shareList__link icon-facebook" href="https://www.facebook.com/share.php?url=<%= request.url %>" target="_blank" title="Facebook"></a></li>
+  <li class="shareList__item"><a class="shareList__link icon-hatebu" href="//b.hatena.ne.jp/add?mode=confirm&url=<%= request.url %>" target="_blank" title="はてなブックマーク"></a></li>
+  <li class="shareList__item"><a class="shareList__link icon-line" href="http://line.me/R/msg/text/?<%= request.url %>" target="_blank" title="LINE"></a></li>
+</ul>
+
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>

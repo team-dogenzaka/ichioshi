@@ -10,5 +10,6 @@
     <td><%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
   </tr>
 <% end %>
+<%= paginate @review %>
 </table>
 <%= link_to 'レビュー作成', new_review_path %>

@@ -17,4 +17,13 @@
   <% end %>
 </ul>
 
+    <% @user.reviews.each do |review| %>
+      <li>
+        <td><%= review.title %></td>
+        <td><%= link_to '詳細を確認する', review_path(review.id) %></td>
+        <td><%= link_to "編集する", edit_review_path(review.id) %></td>
+        <td><%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+      </li>
+    <% end %>
+
 <%= link_to 'ユーザーを削除する', users_destroy_path(id: current_user.id), method: :delete %>

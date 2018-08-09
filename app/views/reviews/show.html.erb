@@ -1,4 +1,5 @@
 <p><%= link_to @post_user.name, user_path(id: @post_user.id) %></p>
+
 <p>
   <% if (@post_user.provider == "facebook") %>
     <% @post_user.icon = @post_user.icon.insert(4,"s") %>

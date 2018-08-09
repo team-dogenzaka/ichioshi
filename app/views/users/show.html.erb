@@ -9,8 +9,7 @@
   <% if (@user.provider == "facebook") %>
     <% @user.icon = @user.icon.insert(4,"s") %>
     <%= image_tag @user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100" %>
-  <% end %>
-  <% unless @user.avator.blank? %>
+  <% elsif @user.avator %>
     <%= image_tag(@user.avator.url, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100") %>   
   <% else %>
     <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100") %>

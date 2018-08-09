@@ -19,7 +19,8 @@
       <li>
         <%= link_to user.name, user %>
         <% if user.provider == "facebook" %>
-          <td><%= link_to image_tag(user.icon.url, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>   
+          <% user.icon = user.icon.insert(4,"s") %>
+          <td><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>   
         <% elsif user.avator %>
           <td><%= link_to image_tag(user.avator.url, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>   
         <% else %>

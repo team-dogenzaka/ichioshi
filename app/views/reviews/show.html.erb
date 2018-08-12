@@ -1,5 +1,6 @@
 <p><%= link_to @post_user.name, user_path(id: @post_user.id) %></p>
 <p><%= image_tag(@post_user.icon, :size =>'30x30') %></p>
+
 <p>
   <% if (@post_user.provider == "facebook") %>
     <% @post_user.icon = @post_user.icon.insert(4,"s") %>
@@ -14,6 +15,8 @@
 <p><h1><%= @review.title %></h1></p>
 <p><%= @review.content %></p>
 <%= image_tag(@review.image.url, :size =>'100x100') if @review.image.url %>
+<%== @review.content %>
+
 
 <% unless @review.user_id == current_user.id %>
   <% if @favorite.present? %>

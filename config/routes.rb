@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   get 'users/index'
   get 'users/show'
   delete 'users/delete/:id', to: 'users#destroy', as: 'users/destroy'

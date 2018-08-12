@@ -39,6 +39,7 @@ gem 'kaminari', '~> 0.17.0'
 gem 'gretel'
 gem 'ckeditor'
 gem 'jquery-turbolinks'
+gem 'font-awesome-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -44,7 +44,7 @@
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>
-
+<%= link_to 'ブログを削除する', review_path(@review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
                   </div>
                 </div>
                 <div class="comments">

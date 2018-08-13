@@ -5,6 +5,7 @@
               <div class="col-sm-8">
                 <div class="row multi-columns-row post-columns">
 <% @review.each do |review| %>
+<<<<<<< HEAD
                   <div class="col-md-6 col-lg-6">
                     <div class="post">
                       <div class="post-thumbnail"><a href="#"><img src="assets/images/post-1.jpg" alt="Blog-post Thumbnail"/></a></div>
@@ -83,3 +84,17 @@
             </div>
           </div>
         </section>
+=======
+  <tr>
+    <td><%= review.title %></td>
+    <td><%= link_to '詳細を確認する', review_path(review.id) %></td>
+    <td><%= link_to "編集する", edit_review_path(review.id) %></td>
+    <td><%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+  </tr>
+<% end %>
+<%= paginate @review %>
+</table>
+<div data-turbolinks="false">
+  <%= link_to 'レビュー作成', new_review_path %>
+</div>
+>>>>>>> 303a0d0482c5f36a95a63fcc3fdc179d12f80266

@@ -38,8 +38,10 @@ gem 'mini_magick'
 gem 'kaminari', '~> 0.17.0'
 gem 'gretel'
 gem 'ckeditor'
-gem 'jquery-turbolinks'
+<<<<<<< HEAD
 gem 'font-awesome-rails'
+=======
+>>>>>>> 303a0d0482c5f36a95a63fcc3fdc179d12f80266
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

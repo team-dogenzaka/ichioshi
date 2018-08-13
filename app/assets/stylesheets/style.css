@@ -307,7 +307,7 @@ a,
 .parallax-bg {
   background-attachment: fixed;
   background-size: cover;
-  background-image: url("/images/44c4d738128c48d954f4f9647f57a06c_m.jpg");
+  background-image: url("/showcase_bg.jpg");
 }
 
 /* Vertical margin, padding */
@@ -2187,16 +2187,7 @@ Google map
 .post-thumbnail,
 .post-images-slider,
 .post-video {
-
-  display: inline-block;
-  background-color: #ccc;
-  background-position: center center;
-  background-repeat: no-repeat;
-  margin: 5px;
-  width: 50px;
-  height: 50px;
-  border: 1px solid #ccc;
-  background-size: cover;  
+  margin: 0 0 20px;
 }
 
 .post-quote {

@@ -1,15 +1,13 @@
+<h1>レビュー一覧</h1>
       <section class="module">
           <div class="container">
             <div class="row">
               <div class="col-sm-8">
                 <div class="row multi-columns-row post-columns">
-<% @review.each do |review| %>
-<<<<<<< HEAD
+                  <% @review.each do |review| %>
                   <div class="col-md-6 col-lg-6">
                     <div class="post">
-                      <div class="post-thumbnail">
-                        <%= image_tag(review.image.url) if review.image.url %>
-                      </div>
+                      <div class="post-thumbnail"><a href="#"><img src="assets/images/post-1.jpg" alt="Blog-post Thumbnail"/></a></div>
                       <div class="post-header font-alt">
                         <h2 class="post-title"><%= review.title %></h2>
                         <div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
@@ -21,10 +19,10 @@
                       <div class="post-more"><%= link_to '詳細を確認する', review_path(review.id) %></div>
                     </div>
                   </div>
-<% end %>                  
+                  <% end %>
                 </div>
                 <div class="pagination font-alt"><%= paginate @review %></div>
-              </div>
+                </div>
               <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
                 <div class="widget">
                   <form role="form">
@@ -85,17 +83,3 @@
             </div>
           </div>
         </section>
-=======
-  <tr>
-    <td><%= review.title %></td>
-    <td><%= link_to '詳細を確認する', review_path(review.id) %></td>
-    <td><%= link_to "編集する", edit_review_path(review.id) %></td>
-    <td><%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
-  </tr>
-<% end %>
-<%= paginate @review %>
-</table>
-<div data-turbolinks="false">
-  <%= link_to 'レビュー作成', new_review_path %>
-</div>
->>>>>>> 303a0d0482c5f36a95a63fcc3fdc179d12f80266

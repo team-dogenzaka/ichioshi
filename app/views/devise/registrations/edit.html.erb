@@ -16,7 +16,7 @@
   <div class="field">
     <% if (@user.provider == "facebook") %>
       <%= f.label :icon %><br />
-      <%= image_tag(@user.icon.url, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100') if @user.icon.url %>
+      <%= image_tag(@user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100') if @user.icon %>
       <%= f.file_field :icon, id: :user_icon %>
     <% else %>
       <% unless @user.avator.blank? %>

@@ -8,6 +8,32 @@
         </div>
       </section>
 
+<h1>レビュ一覧</h1>
+<div class="function-images">
+ <div class="function-image">
+ </div>
+</div>
+
+       <section class="module">
+          <div class="container">
+            <div class="row multi-columns-row">
+              <% @review.each do |review| %>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="features-item">
+                   <% unless review.image.blank? %>
+    <div class="features-icon"><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></div>
+  <% else %>
+    <div class="features-icon"><%= link_to image_tag('/no_img.png', :size =>'100x100'), review_path(review.id) %></div>
+  <% end %>
+
+                  <h3 class="features-title font-alt"><%= link_to review.title , review_path(review.id) %></h3>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </section>
+
 <h1>レビュアー一覧</h1>
 
 <div class="function-images">
@@ -25,20 +51,6 @@
         <% end %>
       </li>
     <% end %>
- </div>
-</div>
-
-<h1>レビュ一覧</h1>
-<div class="function-images">
- <div class="function-image">
-<% @review.each do |review| %>
-<td><%= link_to review.title , review_path(review.id) %></td>
- <% unless review.image.blank? %>
-    <td><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></td>   
-  <% else %>
-     <td><%= link_to image_tag('/no_img.png', :size =>'100x100'), review_path(review.id) %></td>
-  <% end %>
-<% end %>
  </div>
 </div>
 

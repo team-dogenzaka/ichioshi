@@ -26,6 +26,7 @@
                   <li><%= link_to 'レビュー一覧', reviews_path %></li>
                   <li><%= link_to "ユーザー作成", new_user_registration_path %></li>
                 <% if user_signed_in? %>
+                  <li><%= link_to "マイページ", user_path(current_user.id) %></li>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
                   <li><%= link_to 'レビュー作成', new_review_path, data: { turbolinks: false } %></li>
                 <% end %>

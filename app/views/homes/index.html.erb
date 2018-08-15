@@ -8,7 +8,7 @@
         </div>
       </section>
 
-<h1>レビュ一覧</h1>
+<h1>レビュー一覧</h1>
 <div class="function-images">
  <div class="function-image">
  </div>
@@ -43,9 +43,9 @@
         <%= link_to user.name, user %>
         <% if user.provider == "facebook" %>
           <% user.icon = user.icon.insert(4,"s") %>
-          <td><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>   
+          <td><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>
         <% elsif user.avator %>
-          <td><%= link_to image_tag(user.avator.url, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>   
+          <td><%= link_to image_tag(user.avator.url, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>
         <% else %>
           <td><%= link_to image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>
         <% end %>
@@ -113,7 +113,7 @@
             </div>
           </div>
         </div>
-        
+
         <footer class="footer bg-dark">
           <div class="container">
             <div class="row">

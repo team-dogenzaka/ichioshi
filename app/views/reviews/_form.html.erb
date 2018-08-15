@@ -29,8 +29,12 @@
   <%= form.file_field :image, id: :review_image %>
 </div>
 
+<div class="field">
+  <%= form.label :draft %>
+  <%= form.text_field :draft %>
+</div>
+
 
   <%= form.submit %>
 
 <% end %>
-

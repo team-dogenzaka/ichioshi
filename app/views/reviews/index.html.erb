@@ -1,10 +1,10 @@
-      <%# git更新用 %>
+<h1>レビュー一覧</h1>
       <section class="module">
           <div class="container">
             <div class="row">
               <div class="col-sm-8">
                 <div class="row multi-columns-row post-columns">
-<% @review.each do |review| %>
+                  <% @review.each do |review| %>
                   <div class="col-md-6 col-lg-6">
                     <div class="post">
                       <div class="post-thumbnail">
@@ -21,10 +21,10 @@
                       <div class="post-more"><%= link_to '詳細を確認する', review_path(review.id) %></div>
                     </div>
                   </div>
-<% end %>                  
+                  <% end %>
                 </div>
                 <div class="pagination font-alt"><%= paginate @review %></div>
-              </div>
+                </div>
               <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
                 <div class="widget">
                   <form role="form">

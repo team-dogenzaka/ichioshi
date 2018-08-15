@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :reviews
   has_many :favorites, dependent: :destroy
+  has_many :favorite_reviews, through: :favorites, source: :review
   validates :name, presence: true, length: { maximum: 50 }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable

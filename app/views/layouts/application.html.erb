@@ -22,14 +22,17 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">メニュー</a>
                 <ul class="dropdown-menu">
+                <% if user_signed_in? %>
+                  <li><%= link_to "TOP", "/" %></li>
+                  <li><%= link_to 'レビュー一覧', reviews_path %></li>
+                  <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                  <li><%= link_to 'レビュー作成', new_review_path, data: { turbolinks: false } %></li>
+                <% else %>
                   <li><%= link_to "TOP", "/" %></li>
                   <li><%= link_to 'レビュー一覧', reviews_path %></li>
                   <li><%= link_to "ログイン", new_user_session_path %></li>
                   <li><%= link_to "ユーザー作成", new_user_registration_path %></li>
-                <% if user_signed_in? %>
-                  <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-                  <li><%= link_to 'レビュー作成', new_review_path, data: { turbolinks: false } %></li>
                 <% end %>
                 </ul>
               </li>

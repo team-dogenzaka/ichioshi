@@ -25,7 +25,7 @@
                     </div>
                   </div>
                   <div class="post-entry">
-                    <%= @review.content %>
+                    <%== @review.content %>
                     <%= image_tag(@review.image.url, :size =>'100x100') if @review.image.url %>
                     <ul class="shareList">
   <li class="shareList__item"><a class="shareList__link icon-twitter" href="https://twitter.com/share?url=<%= request.url %>" target="_blank" title="Twitter"></a></li>

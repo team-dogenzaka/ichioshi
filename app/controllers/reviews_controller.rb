@@ -1,12 +1,12 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-  PER = 2
+  PER = 6
   def index
-    @review = Review.page(params[:page]).per(PER)
+    @review = Review.where(draft: true).page(params[:page]).per(PER)
   end
-  
+
   def new
-    if user_signed_in?    
+    if user_signed_in?
       if params[:back]
         @review = Review.new(review_params)
       else
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def show
     @favorite = current_user.favorites.find_by(review_id: @review.id)
     @post_user = @review.user
@@ -55,10 +55,10 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
     render :new if @review.invalid?
   end
-  
+
   private
   def review_params
-    params.require(:review).permit(:title, :content, :user_id, :name, :image, :image_cache)
+    params.require(:review).permit(:title, :content, :user_id, :name, :image, :image_cache, :draft)
   end
 
   def set_review

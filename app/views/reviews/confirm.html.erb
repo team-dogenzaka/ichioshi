@@ -12,7 +12,7 @@
     <p>本文:<%= @review.user_id %></p>
   <!-- 確認画面でアップロードした画像を表示させるための記述 -->
   <% unless @review.image.blank? %>
-    <%= image_tag(@review.image.url) %>   
+    <%= image_tag(@review.image.to_s) %>   
   <% else %>
      <%= image_tag '/no_img.png' %>
   <% end %>

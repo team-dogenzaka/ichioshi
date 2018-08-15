@@ -40,7 +40,7 @@ gem 'gretel'
 gem 'ckeditor'
 gem 'font-awesome-rails'
 gem 'rails_12factor'
-
+gem 'fog'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

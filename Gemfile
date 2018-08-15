@@ -41,6 +41,7 @@ gem 'ckeditor'
 gem 'font-awesome-rails'
 gem 'rails_12factor'
 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

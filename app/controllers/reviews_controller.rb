@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-  PER = 6 #ページネーションの数を指定
+  PER = 2
   def index
     @review = Review.page(params[:page]).per(PER)
   end

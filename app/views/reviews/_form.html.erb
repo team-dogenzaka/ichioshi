@@ -21,19 +21,18 @@
     <%= form.cktext_area :content, :class => "ckeditor" %>
   </div>
 
-<div class="field">
-  <%= form.label :image %>
-  <!-- 確認画面から新規作成画面に戻った時に、 -->
-  <!-- アップロードした画像を表示させるための記述 -->
-  <%= image_tag(@review.image.url) if @review.image.url %>
-  <%= form.file_field :image, id: :review_image %>
-</div>
+  <div class="field">
+    <%= form.label :image %>
+    <!-- 確認画面から新規作成画面に戻った時に、 -->
+    <!-- アップロードした画像を表示させるための記述 -->
+    <%= image_tag(@review.image.url) if @review.image.url %>
+    <%= form.file_field :image, id: :review_image %>
+  </div>
 
-<div class="field">
-  <%= form.label :draft %>
-  <%= form.select :draft, [["公開", "true"], ["下書き", "false"]] %>
-</div>
-
+  <div class="field">
+    <%= form.label :draft %>
+    <%= form.check_box 'draft', {}, false, true %>
+  </div>
 
   <%= form.submit %>
 

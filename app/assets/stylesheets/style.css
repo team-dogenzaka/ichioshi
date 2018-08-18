@@ -307,7 +307,7 @@ a,
 .parallax-bg {
   background-attachment: fixed;
   background-size: cover;
-  background-image: url("/showcase_bg.jpg");
+  background-image: url("/images/showcase_bg.jpg");
 }
 
 /* Vertical margin, padding */

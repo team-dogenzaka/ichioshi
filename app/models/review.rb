@@ -4,4 +4,13 @@ class Review < ApplicationRecord
     belongs_to :user, optional: true
     has_many :favorites, dependent: :destroy
     has_many :favorite_users, through: :favorites, source: :user
+    
+  # 与えられたユーザーがフォローしているユーザー達のマイクロポストを返す。
+  def self.from_users_following_by(user)
+    following_user_ids = "SELECT following_id FROM relationships
+                         WHERE following_id = :user_id"
+    where("user_id IN (#{following_user_ids}) OR user_id = :user_id",
+          user_id: user.id)
+  end
+
 end

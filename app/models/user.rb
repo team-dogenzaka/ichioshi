@@ -27,6 +27,12 @@ class User < ApplicationRecord
     following_relationships.find_by(following_id: other_user.id).destroy
   end
 
+  def feed
+    # このコードは準備段階です。
+    # 完全な実装は第11章「ユーザーをフォローする」を参照してください。
+    Review.from_users_following_by(self)
+  end
+
          def self.find_for_facebook_oauth(auth)
           user = User.where(uid: auth.uid, provider: auth.provider).first
 

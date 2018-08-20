@@ -32,6 +32,9 @@ class ReviewsController < ApplicationController
   def show
     @favorite = current_user.favorites.find_by(review_id: @review.id)
     @post_user = @review.user
+    @review = Review.find(params[:id])
+    @comment = Comment.new #①
+    @comments = @review.comments #②
   end
 
   def edit
@@ -55,6 +58,7 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
     render :new if @review.invalid?
   end
+
 
   private
   def review_params

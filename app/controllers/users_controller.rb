@@ -14,9 +14,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @review = Review.find(params[:id])
-    @post_user = @review.user
-    
+    @review  = current_user.reviews.build
+    @feed_items = current_user.feed      
   end
 
   def edit

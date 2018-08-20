@@ -30,7 +30,10 @@ class User < ApplicationRecord
   def feed
     # このコードは準備段階です。
     # 完全な実装は第11章「ユーザーをフォローする」を参照してください。
-    Review.from_users_following_by(self)
+    following_ids = "SELECT following_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Review.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
   end
 
          def self.find_for_facebook_oauth(auth)

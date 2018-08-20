@@ -20,6 +20,9 @@
           </div>
           <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+               <h5><%= current_user.name %></h5>
+                <% end %>               
               <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">メニュー</a>
                 <ul class="dropdown-menu">
                 <% if user_signed_in? %>

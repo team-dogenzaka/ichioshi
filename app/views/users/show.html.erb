@@ -22,12 +22,6 @@
 <%= link_to 'ユーザーを編集する', edit_user_registration_path  %>
 <%= link_to 'ユーザーを削除する', users_destroy_path(id: current_user.id), method: :delete %>
 
-<% if @feed_items.any? %>
-  <ol class="reviews">
-    <%= render @feed_items %>
-  </ol>
-<% end %>
-
 　　　<%= render 'follow_form' %>
 　　　<%= render 'stats' %>
 
@@ -58,6 +52,7 @@
                   <% end %>                  
                 </div>  
               </div>
+              
               <div class="row">
               <div class="col-sm-8">
                 <div class="row multi-columns-row post-columns">
@@ -84,6 +79,10 @@
                   <% end %>                  
                 </div>  
               </div>
+              
+
+              
+              
               <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
                 <div class="widget">
                   <form role="form">

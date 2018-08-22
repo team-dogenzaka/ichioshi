@@ -18,7 +18,7 @@
           <div class="container">
             <div class="row multi-columns-row">
               <% @review.each do |review| %>
-              <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="features-item">
                    <% unless review.image.blank? %>
     <div class="features-icon"><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></div>

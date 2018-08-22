@@ -11,9 +11,6 @@ class User < ApplicationRecord
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
   
-  has_many :reviews, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  
   validates :name, presence: true, length: { maximum: 50 }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
@@ -31,10 +28,9 @@ class User < ApplicationRecord
   end
 
   def feed
-    following_ids = "SELECT following_id FROM relationships
-                     WHERE follower_id = :user_id"
-    Review.where("user_id IN (#{following_ids})
-                     ", user_id: id)
+    # このコードは準備段階です。
+    # 完全な実装は第11章「ユーザーをフォローする」を参照してください。
+    Review.from_users_following_by(self)
   end
 
          def self.find_for_facebook_oauth(auth)

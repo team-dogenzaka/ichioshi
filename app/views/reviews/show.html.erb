@@ -45,18 +45,6 @@
 <%= link_to 'Edit', edit_review_path(@review), data: { turbolinks: false } %> |
 <%= link_to 'Back', reviews_path %>
 
-  <div>
-    <h4>コメント</h4>
-    <div id="comments_area"><!-- #① -->
-      <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-      <%= render partial: 'comments/index', locals: { comments: @comments } %>
-    </div>  
-    <% if user_signed_in? %>
-      <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-      <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
-    <% end %>
-  </div>
-
                   </div>
                 </div>
                 <div class="comments">

@@ -4,8 +4,6 @@ class Review < ApplicationRecord
     belongs_to :user, optional: true
     has_many :favorites, dependent: :destroy
     has_many :favorite_users, through: :favorites, source: :user
-    belongs_to :user
-    has_many :comments, dependent: :destroy
     
   # 与えられたユーザーがフォローしているユーザー達のマイクロポストを返す。
   def self.from_users_following_by(user)

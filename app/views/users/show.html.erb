@@ -1,9 +1,6 @@
 
       <section class="module">
           <div class="container">
-            <div class="row">
-              <div class="col-sm-8">
-<div class="row multi-columns-row post-columns">  
 <% breadcrumb :user, @user %>
 <% provide(:title, @user.name) %>
 <h1>My page</h1>
@@ -25,11 +22,14 @@
 <%= link_to 'ユーザーを編集する', edit_user_registration_path  %>
 <%= link_to 'ユーザーを削除する', users_destroy_path(id: current_user.id), method: :delete %>
 
+
+
 　　　<%= render 'follow_form' %>
 　　　<%= render 'stats' %>
 
-　　　
-<h2>投稿一覧</h2>
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="row multi-columns-row post-columns">
                   <% @user.reviews.each do |review| %>
                   <div class="col-md-6 col-lg-6">
                     <div class="post">
@@ -38,8 +38,7 @@
                       </div>
                       <div class="post-header font-alt">
                         <h2 class="post-title"><%= review.title %></h2>
-                        <div class="post-meta">
-                          By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
+                        <div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
                         </div>
                       </div>
                       <div class="post-entry">
@@ -52,9 +51,13 @@
                       </div>
                     </div>
                   </div>
-                  <% end %>
-                  
-                  <h2>お気に入り一覧</h2>
+                  <% end %>                  
+                </div>  
+              </div>
+              <div class="row">
+              <div class="col-sm-8">
+                <div class="row multi-columns-row post-columns">
+                <h2>お気に入り一覧</h2>
                   <% @user.favorite_reviews.each do |review| %>
                   <div class="col-md-6 col-lg-6">
                     <div class="post">
@@ -74,21 +77,9 @@
                       </div>
                     </div>
                   </div>
-                  <% end %>            
-                  
-                  
-<% if @user.id == current_user.id %>
-                <h2>自分がフォローしている人の投稿一覧</h2>
-                  <% if @feed_items.any? %>
-                    <ol class="reviews">
-                      <%= render @feed_items %>
-                    </ol>
-                  <% end %>
-              <% else %>
-              <% end %>
-              </div>  
-                </div> 
-
+                  <% end %>                  
+                </div>  
+              </div>
               <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
                 <div class="widget">
                   <form role="form">

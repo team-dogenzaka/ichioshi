@@ -15,21 +15,3 @@
 
 </table>
 <% end %>
-
-
-
-<% if @user.id == current_user.id %>
-              <div class="row">
-              <div class="col-sm-8">
-                <div class="row multi-columns-row post-columns">
-                <h2>自分がフォローしている人の投稿一覧</h2>
-                  <% if @feed_items.any? %>
-                    <ol class="reviews">
-                      <%= render @feed_items %>
-                    </ol>
-                  <% end %>
-                </div>  
-              </div>
-              </div>
-              <% else %>
-              <% end %>

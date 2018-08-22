@@ -1,53 +1,58 @@
-<section class="bg-dark-30 showcase-page-header module parallax-bg" data-background="assets/images/44c4d738128c48d954f4f9647f57a06c_m.jpg">
-  <div class="titan-caption">
-    <div class="caption-content">
-      <div class="font-alt mb-30 titan-title-size-1">人からのおすすめで価値あるものを見つける</div>
-      <div class="font-alt mb-40 titan-title-size-4">timtam</div>
-      <a class="section-scroll btn btn-border-w btn-round" href="#demos">See Reviews</a>
-    </div>
-  </div>
-</section>
-
-
-<section class="module-medium" id="demos">
-  <div class="container">
-    <div class="row multi-columns-row">
-      <% @review.each do |review| %>
-        <div class="col-md-3 col-sm-12 col-xs-12">
-         <div class="features-item">
-           <% unless review.image.blank? %>
-            <div class="features-icon"><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></div>
-           <% else %>
-            <div class="features-icon"><%= link_to image_tag('/no_img.png', :size =>'100x100'), review_path(review.id) %></div>
-           <% end %>
-           <h3 class="features-title font-alt"><%= link_to review.title , review_path(review.id) %></h3>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.
+      <section class="bg-dark-30 showcase-page-header module parallax-bg" data-background="assets/images/showcase_bg.jpg">
+        <div class="titan-caption">
+          <div class="caption-content">
+            <div class="font-alt mb-30 titan-title-size-1">人からのおすすめで価値あるものを見つける</div>
+            <div class="font-alt mb-40 titan-title-size-4">timtam</div>
+            <a class="section-scroll btn btn-border-w btn-round" href="#demos">See Demos</a>
+          </div>
         </div>
-       </div>
-     <% end %>
-    </div>
-  </div>
-</section>
+      </section>
 
-<section class="module-medium" id="demos">
-  <div class="container">
-    <div class="row multi-columns-row">
-      <% @users.each do |user| %>
-        <div class="col-md-3 col-sm-12 col-xs-12">
-         <div class="features-item">
-           <% if user.provider == "facebook" %>
-             <div class="features-icon"><% user.icon = user.icon.insert(4,"s") %><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></div>
-            <% elsif user.avator %>
-             <div class="features-icon"><%= link_to image_tag(user.avator.url, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></div>
-            <% else %>
-             <div class="features-icon"><%= link_to image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></div>
-           <% end %>
-           <h3 class="features-title font-alt"><%= link_to user.name, user %></h3>
-        </div>
-       </div>
-     <% end %>
-    </div>
-  </div>
-</section>
+<h1>レビュー一覧</h1>
+<div class="function-images">
+ <div class="function-image">
+ </div>
+</div>
+
+       <section class="module">
+          <div class="container">
+            <div class="row multi-columns-row">
+              <% @review.each do |review| %>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="features-item">
+                   <% unless review.image.blank? %>
+    <div class="features-icon"><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></div>
+  <% else %>
+    <div class="features-icon"><%= link_to image_tag('/no_img.png', :size =>'100x100'), review_path(review.id) %></div>
+  <% end %>
+
+                  <h3 class="features-title font-alt"><%= link_to review.title , review_path(review.id) %></h3>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </section>
+
+<h1>レビュアー一覧</h1>
+
+<div class="function-images">
+ <div class="function-image">
+    <% @users.each do |user| %>
+      <li>
+        <%= link_to user.name, user %>
+        <% if user.provider == "facebook" %>
+          <% user.icon = user.icon.insert(4,"s") %>
+          <td><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>
+        <% elsif user.avator %>
+          <td><%= link_to image_tag(user.avator.url, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>
+        <% else %>
+          <td><%= link_to image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), users_path(user.id) %></td>
+        <% end %>
+      </li>
+    <% end %>
+ </div>
+</div>
 
         <div class="module-small bg-dark">
           <div class="container">
@@ -140,3 +145,5 @@
         </footer>
         </div>
       <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+</body>
+</html>

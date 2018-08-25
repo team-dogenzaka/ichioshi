@@ -16,9 +16,9 @@
         <div class="col-md-3 col-sm-12 col-xs-12">
          <div class="features-item">
            <% unless review.image.blank? %>
-            <div class="features-icon"><%= link_to image_tag(review.image.url, :size =>'100x100'), review_path(review.id) %></div>
+            <div class="features-icon"><%= link_to image_tag(review.image.url, :class =>'fit-img'), review_path(review.id) %></div>
            <% else %>
-            <div class="features-icon"><%= link_to image_tag('/no_img.png', :size =>'100x100'), review_path(review.id) %></div>
+            <div class="features-icon"><%= link_to image_tag('/no_img.png', :class =>'fit-img'), review_path(review.id) %></div>
            <% end %>
            <h3 class="features-title font-alt"><%= link_to review.title , review_path(review.id) %></h3>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.
         </div>

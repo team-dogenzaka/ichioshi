@@ -23,7 +23,7 @@
                   </div>
                   <div class="post-entry">
                     <%== @review.content %>
-                    <%= image_tag(@review.image.to_s, :size =>'100x100') if @review.image.to_s %>
+                    <!--サムネイル用画像のためコメントアウト <%= image_tag(@review.image.to_s, :size =>'100x100') if @review.image.to_s %> -->
                     <ul class="shareList">
   <li class="shareList__item"><a class="shareList__link icon-twitter" href="https://twitter.com/share?url=<%= request.url %>" target="_blank" title="Twitter"></a></li>
   <li class="shareList__item"><a class="shareList__link icon-facebook" href="https://www.facebook.com/share.php?url=<%= request.url %>" target="_blank" title="Facebook"></a></li>

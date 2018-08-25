@@ -17,9 +17,9 @@
   <!--一旦コメントアウト <p>本文:<%= form.cktext_area :content, :class => "ckeditor" %></p> -->
   <!-- 確認画面でアップロードした画像を表示させるための記述 -->
   <% unless @review.image.blank? %>
-    サムネイル用画像<%= image_tag(@review.image.to_s) %>
+    <div class="post-thumbnail">サムネイル用画像<%= image_tag(@review.image.to_s) %></div>
   <% else %>
-     サムネイル用画像<%= image_tag '/no_img.png'%>
+     <div class="post-thumbnail">サムネイル用画像<%= image_tag '/no_img.png'%></div>
   <% end %>
   <li><%= form.submit  "登録する", class: "btn btn-round btn-d"  %></li>
 <% end %>

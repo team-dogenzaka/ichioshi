@@ -1,6 +1,3 @@
-
-
-
         <section class="module-small">
           <div class="container">
             <div class="row">
@@ -50,7 +47,7 @@
     <div id="comments_area"><!-- #① -->
       <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
       <%= render partial: 'comments/index', locals: { comments: @comments } %>
-    </div>  
+    </div>
     <% if user_signed_in? %>
       <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
       <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
@@ -95,6 +92,7 @@
                     </div>
                   </div>
                 </div>
+                
                 <div class="comment-form">
                   <h4 class="comment-form-title font-alt">Add your comment</h4>
                   <form method="post">
@@ -113,6 +111,7 @@
                   </form>
                 </div>
               </div>
+              
               <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
                 <div class="widget">
                   <form role="form">

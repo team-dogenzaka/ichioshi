@@ -1,9 +1,18 @@
+<div class="comments">
+  <h4 class="comment-title font-alt">There are 3 comments</h4>
+  <div class="comment clearfix">
 <% comments.each do |comment| %>
   <% unless comment.id.nil? %>
-    <p><%= link_to "#{comment.user.name}さん", user_path(comment.user.id) %></p>
-    <p>コメント：<%= comment.content %></p>
+<div class="comment-avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/ryanbattles/128.jpg" alt="avatar"/></div>
+    <div class="comment-content clearfix">
+    <div class="comment-author font-alt"><%= link_to "#{comment.user.name}さん", user_path(comment.user.id) %></div>
+    <div class="comment-body">コメント：<%= comment.content %></div>
+    <div class="comment-meta font-alt">Today, 14:55 - <a href="#">Reply</a></div>
     <% if comment.user == current_user %>
       <p><%= link_to 'コメントを削除する', review_comment_path(comment.review_id, comment.id), method: :delete, remote: true %></p>
     <% end %>
+    </div>
   <% end %>
 <% end %>
+ </div>
+</div>

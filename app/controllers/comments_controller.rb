@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
       render :index #④
     end
   end
-
   def destroy
     @comment = Comment.find(params[:id]) #⑤
     if @comment.destroy

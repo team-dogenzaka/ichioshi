@@ -40,8 +40,11 @@
         </div>
       </nav>
 
-      <!-- パンくずリスト -->
-      <%= breadcrumbs pretext: "", separator: " &rsaquo; " %>
+     <!-- パンくずリスト（コメントアウト）
+     <%= breadcrumbs pretext: "", separator: " &rsaquo; " %>-->
+     <%= notice %>
+     <%= alert %>
+     <%= yield %>
 
       <%= notice %>
       <%= alert %>

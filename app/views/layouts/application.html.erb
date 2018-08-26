@@ -11,6 +11,7 @@
   </head>
 
   <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
 
       <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
@@ -35,16 +36,18 @@
                 <% end %>
                 </ul>
               </li>
+
             </ul>
           </div>
         </div>
       </nav>
 
-      <!-- パンくずリスト -->
-      <%= breadcrumbs pretext: "", separator: " &rsaquo; " %>
+<!-- パンくずリスト -->
+<%= breadcrumbs pretext: "", separator: " &rsaquo; " %>
 
-      <%= notice %>
-      <%= alert %>
-      <%= yield %>
+  <body>
+    <%= notice %>
+    <%= alert %>
+<%= yield %>
   </body>
 </html>

@@ -14,25 +14,31 @@
                   <div class="post-entry">
                     <%== @review.content %>
                     <!--サムネイル用画像のためコメントアウト <%= image_tag(@review.image.to_s, :size =>'100x100') if @review.image.to_s %> -->
-                    <ul class="shareList">
+
+<% unless @review.user_id == current_user.id %>
+  <% if @favorite.present? %>
+  <p><button class="btn btn-d btn-circle" type="submit">
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete,:style=>"color:white;"%>
+  </button></p>
+  <% else %>
+  <p><button class="btn btn-d btn-circle" type="submit"><i class="fa fa-heart"></i>
+    <%= link_to 'お気に入り登録する', favorites_path(review_id: @review.id), method: :post,:style=>"color:white;" %>
+</button></p>
+  <% end %>
+<% end %>
+
+
+<ul class="shareList">
   <li class="shareList__item"><a class="shareList__link icon-twitter" href="https://twitter.com/share?url=<%= request.url %>" target="_blank" title="Twitter"></a></li>
   <li class="shareList__item"><a class="shareList__link icon-facebook" href="https://www.facebook.com/share.php?url=<%= request.url %>" target="_blank" title="Facebook"></a></li>
   <li class="shareList__item"><a class="shareList__link icon-hatebu" href="//b.hatena.ne.jp/add?mode=confirm&url=<%= request.url %>" target="_blank" title="はてなブックマーク"></a></li>
   <li class="shareList__item"><a class="shareList__link icon-line" href="http://line.me/R/msg/text/?<%= request.url %>" target="_blank" title="LINE"></a></li>
 </ul>
-
-<% unless @review.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(review_id: @review.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
-
+<% if user_signed_in? %><% unless @review.user_id == current_user.id %>
 <%= link_to 'Edit', edit_review_path(@review), data: { turbolinks: false } %> |
 <%= link_to 'Back', reviews_path %>
-
-  <h4 class="comment-title font-alt">プロフィール</h4>
+<% end %><% end %>
+  <p><h4 class="comment-title font-alt">レビュアー</h4></p>
 <% if (@post_user.provider == "facebook") %>
                         <% @post_user.icon = @post_user.icon.insert(4,"s") %>
                         <%= image_tag @post_user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50" %>

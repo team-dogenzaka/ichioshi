@@ -8,12 +8,12 @@
 <ul class="users">
   <li><%= @user.name %></li>
   <li><%= @user.email %></li>
-
+  
   <% if (@user.provider == "facebook") %>
     <% @user.icon = @user.icon.insert(4,"s") %>
     <%= image_tag @user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100" %>
   <% elsif @user.avator %>
-    <%= image_tag(@user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100") %>
+    <%= image_tag(@user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100") %>   
   <% else %>
     <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100") %>
   <% end %>
@@ -46,13 +46,13 @@
                       </div>
                       <div class="post-more">
                         <%= link_to '詳細を確認する', review_path(review.id) %>
-                        <%= link_to "編集する", edit_review_path(review.id), data: { turbolinks: false } %>
+                        <%= link_to "編集する", edit_review_path(review.id) %>
                         <%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
                       </div>
                     </div>
                   </div>
-                  <% end %>
-                </div>
+                  <% end %>                  
+                </div>  
               </div>
               <div class="row">
               <div class="col-sm-8">
@@ -77,8 +77,8 @@
                       </div>
                     </div>
                   </div>
-                  <% end %>
-                </div>
+                  <% end %>                  
+                </div>  
               </div>
               <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
                 <div class="widget">

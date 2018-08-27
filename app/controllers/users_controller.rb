@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @review  = current_user.reviews.build
+    @feed_items = current_user.feed 
   end
 
   def edit
@@ -31,17 +33,16 @@ class UsersController < ApplicationController
   end
   
   def following
-      @user  = User.find(params[:id])
-      @users = @user.followings
-      @review = Review.find(1)
-      render 'show_follow'
+    @user  = User.find(params[:id])
+    @users = @user.followings
+    @review  = current_user.reviews.build
+    @feed_items = current_user.feed      
+    render 'show_follow'
   end
 
   def followers
     @user  = User.find(params[:id])
-    @users = @user.followers.find
-    
-    @review = Review.find(1)
+    @users = @user.followers
     render 'show_follower'
   end
   

@@ -22,7 +22,7 @@
               <% end %>
             </ul>
             アパレルブランド「A BATHING APE®」のグラフィックデザインを経て2011年独立。表現の場を選ばないメディアクリエイターとしてのキャリアをスタート。ファッション誌GRINDでの連載をはじめメディア各方面にてグッドデザインアイテム、最新のガジェットを紹介。著書に『I LOVE FND ボクがコレを選ぶ理由』。
-            <% if current_user %>
+            <% if current_user && @user.id == current_user.id %>
               <%= link_to 'ユーザーを編集する', edit_user_registration_path  %>
               <%= link_to 'ユーザーを削除する', users_destroy_path(id: current_user.id), method: :delete %>
             <% end %>
@@ -42,28 +42,28 @@
             <div class="tab-content">
               <div id="tab1" class="tab-pane active">
                 <% @user.reviews.each do |review| %>
-                <div class="col-md-6 col-lg-6">
-                  <div class="post">
-                    <div class="post-thumbnail">
-                      <%= image_tag(review.image.url, :class => "fit-img") if review.image.url %>
-                    </div>
-                    <div class="post-header font-alt">
-                      <h2 class="post-title"><%= review.title %></h2>
-                      <div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
+                  <div class="col-md-6 col-lg-6">
+                    <div class="post">
+                      <div class="post-thumbnail">
+                        <%= image_tag(review.image.url, :class => "fit-img") if review.image.url %>
+                      </div>
+                      <div class="post-header font-alt">
+                        <h2 class="post-title"><%= review.title %></h2>
+                        <div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
+                        </div>
+                      </div>
+                      <div class="post-entry">
+                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                      </div>
+                      <div class="post-more">
+                        <%= link_to '詳細を確認する', review_path(review.id) %>
+                        <% if @user.id == current_user.id %>  
+                          <%= link_to "編集する", edit_review_path(review.id) %>
+                          <%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+                        <% end %>
                       </div>
                     </div>
-                    <div class="post-entry">
-                      <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-                    </div>
-                    <div class="post-more">
-                      <%= link_to '詳細を確認する', review_path(review.id) %>
-                      <% if current_user %>  
-                        <%= link_to "編集する", edit_review_path(review.id) %>
-                        <%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
-                      <% end %>
-                    </div>
                   </div>
-                </div>
                 <% end %>
               </div>
               <div id="tab2" class="tab-pane">
@@ -88,13 +88,11 @@
                 </div>
                 <% end %>            
               </div> 
-              <% if current_user %>
-                <% if @user.id == current_user.id %>
-                  <% if @feed_items.any? %>
-                    <div id="tab3" class="tab-pane">      
-                      <%= render @feed_items %>
-                    </div>  
-                  <% end %>
+              <% if current_user && @user.id == current_user.id %>
+                <% if @feed_items.any? %>
+                  <div id="tab3" class="tab-pane">      
+                    <%= render @feed_items %>
+                  </div>  
                 <% end %>
               <% end %>
             </div> 

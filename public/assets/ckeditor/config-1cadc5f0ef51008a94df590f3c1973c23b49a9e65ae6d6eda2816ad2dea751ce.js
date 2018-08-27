@@ -41,13 +41,23 @@ CKEDITOR.editorConfig = function( config )
 
   // Toolbar groups configuration.
   config.toolbar = [
+    { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source'] },
     // { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
     // { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
-    ['Bold',  'Underline', 'Strike'],
-    [ 'NumberedList', 'BulletedList', 'Blockquote', 'Link', 'Image'],
+    [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],
+    [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ],
+    [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ],
     '/',
+    ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ],
+    [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ],
+    [ 'Link', 'Unlink', 'Anchor' ],
+    '/',
+    [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ],
     [ 'Styles', 'Format', 'Font', 'FontSize' ],
-    [ 'TextColor']
+    [ 'TextColor', 'BGColor' ],
+    [ 'Maximize', 'ShowBlocks' ],
+    [ '-' ],
+    [ 'About' ]
     ];
 
 

@@ -3,14 +3,12 @@
     <div id="error_explanation">
       <h2><%= @review.errors.count %>件のエラーがあります。</h2>
       <ul>
-
-      <% @review.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
   <div class="blog_title centering_item">
     <%= form.label :title %>
     <br>
@@ -32,6 +30,4 @@
     <%= form.check_box 'draft', {}, false, true %>
   </div>
   <%= form.submit( "Create Review", :class => "center-block submit-button") %>
-
-
 <% end %>

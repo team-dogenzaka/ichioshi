@@ -1,7 +1,7 @@
 <div class="comments">
   <h4 class="comment-title font-alt">There are 3 comments</h4>
   <div class="comment clearfix">
-    <% @comments.each do |comment| %>
+    <% comments.each do |comment| %>
       <% unless comment.id.nil? %>
         <div class="comment-avatar">
           <% if (comment.user.provider == "facebook") %>
@@ -17,7 +17,7 @@
           <div class="comment-author font-alt"><%= link_to "#{comment.user.name}さん", user_path(comment.user.id) %></div>
           <div class="comment-body">コメント：<%= comment.content %></div>
           <div class="comment-meta font-alt">Today, 14:55 - <a href="#">Reply</a></div>
-          <% if comment.user == current_user %>
+          <% if comment.user_id == current_user.id %>
             <p><%= link_to 'コメントを削除する', review_comment_path(comment.review_id, comment.id), method: :delete, remote: true %></p>
           <% end %>
         </div>

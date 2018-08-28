@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @review = Review.find(params[:id])
     if current_user
      @favorite = current_user.favorites.find_by(review_id: @review.id)
     end
@@ -62,7 +63,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:title, :content, :user_id, :name, :image, :image_cache, :draft, :comment_content)
+    params.require(:review).permit(:title, :content, :user_id, :name, :image, :image_cache, :draft, :comment_content, review_id)
   end
 
   def set_review

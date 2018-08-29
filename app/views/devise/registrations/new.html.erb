@@ -18,6 +18,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :profile %>
+    <%= f.text_field :profile %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>

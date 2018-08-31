@@ -14,7 +14,6 @@
 </table>
 <% end %>
 
-<td>  <%= @review.title %> </td>
 <% @users.reviews.each do |review| %>
-<%= review.title %>
+  <td><%= review.title %></td>
 <% end %>

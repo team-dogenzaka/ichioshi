@@ -37,6 +37,7 @@ class ReviewsController < ApplicationController
     @post_user = @review.user
     @comment = Comment.new #①
     @comments = @review.comments #②
+    @comments_number = @comments.count
   end
 
   def edit

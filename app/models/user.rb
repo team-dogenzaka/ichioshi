@@ -36,20 +36,22 @@ class User < ApplicationRecord
                      ", user_id: id)
   end
 
-         def self.find_for_facebook_oauth(auth)
-          user = User.where(uid: auth.uid, provider: auth.provider).first
+  def self.find_for_facebook_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+  end
 
-          unless user
-            user = User.create(
-              uid:      auth.uid,
-              provider: auth.provider,
-              email:    auth.info.email,
-              name:     auth.info.name,
-              icon:     auth.info.image,
-              password: Devise.friendly_token[0, 20]
-            )
-          end
-
-          return user
-         end
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+      if data = session["devise.facebook_data"]
+        user.provider = data["provider"] if user.provider.blank?
+        user.uid = data["uid"] if user.uid.blank?
+        user.name = data["info"]["name"] if user.name.blank?
+        user.icon = data["info"]["image"] if user.icon.blank? 
+        user.password = Devise.friendly_token[0,20] if user.password.blank?
+      end
+    end
+  end
 end

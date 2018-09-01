@@ -1,6 +1,9 @@
         <section class="module-small">
           <div class="container">
             <div class="row">
+              <div class="col-sm-8">
+                <div class="post">
+                  <div class="post-header font-alt">
 <h3>以下の内容で、送信する。</h3>
 
 <ul>
@@ -11,7 +14,7 @@
   <%= form.hidden_field :user_id %>
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :draft %>
-
+                  <div class="post-entry">
   <p>タイトル:<%= @review.title %></p>
   <p>本文:<%== @review.content %></p>
   <!--一旦コメントアウト <p>本文:<%= form.cktext_area :content, :class => "ckeditor" %></p> -->
@@ -21,6 +24,7 @@
   <% else %>
      サムネイル用画像<%= image_tag '/no_img.png'%>
   <% end %>
+  </div>
   <li><%= form.submit  "登録する", class: "btn btn-round btn-d"  %></li>
 <% end %>
 
@@ -30,10 +34,12 @@
   <%= form.hidden_field :user_id %>
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :draft %>
-
   <li><%= form.submit  "もどる", name: 'back', class: "btn btn-round btn-d"  %></li>
 <% end %>
          </ul>
             </div>
+           </div>
           </div>
-        </section>
+        </div>
+      </div>
+</section>

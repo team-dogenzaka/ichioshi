@@ -2,7 +2,7 @@ class User < ApplicationRecord
   mount_uploader :avator, IconUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_reviews, through: :favorites, source: :review
   

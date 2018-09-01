@@ -10,7 +10,7 @@
                 <div class="widget">
                   <h5 class="widget-title font-alt">Recent Posts</h5>
                   <ul class="icon-list">
-                    <% @user.reviews.last(5).each do |review| %>
+                    <% @post_user.reviews.last(5).each do |review| %>
                     <li><%= link_to review.title, review_path(review.id) %></li>
                     <% end %>
                   </ul>
@@ -18,7 +18,7 @@
                 <div class="widget">
                   <h5 class="widget-title font-alt">Popular Posts</h5>
                   <ul class="icon-list">
-                    <% @user.reviews.last(5).each do |review| %>
+                    <% @post_user.reviews.last(5).each do |review| %>
                     <li><%= link_to review.title, review_path(review.id) %></li>
                     <% end %>
                   </ul>

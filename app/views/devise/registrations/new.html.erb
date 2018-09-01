@@ -5,12 +5,12 @@
         <h2 class="page-header">SIGN UP</h2>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
-          <%= f.hidden_field :name, value: @user.name %>
+
+          <%= f.hidden_field :name %>
           
-          <%= binding.pry %>
           <div class="field">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", value: @user.email, :class => "form-control" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control" %>
           </div>
 
           <div class="field">

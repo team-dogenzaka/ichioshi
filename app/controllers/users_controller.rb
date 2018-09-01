@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:destroy]
+  before_action :ensure_correct_user, only: [:destroy]
+
   def index
     @users = User.all
   end
@@ -27,10 +30,6 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path, notice: "ユーザー削除したよ！"
   end
-
-  def user_params
-    params.require(:user).permit( :name, :icon )
-  end
   
   def following
     @user  = User.find(params[:id])
@@ -45,5 +44,17 @@ class UsersController < ApplicationController
     @users = @user.followers
     render 'show_follower'
   end
-  
+
+  private
+  def user_params
+    params.require(:user).permit( :name, :icon )
+  end
+
+  def ensure_correct_user
+    @user = User.find_by(id:params[:id])
+    if @user.id != current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to("/")
+    end
+  end  
 end

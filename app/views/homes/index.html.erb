@@ -4,6 +4,9 @@
       <div class="font-alt mb-30 titan-title-size-1">人からのおすすめで価値あるものを見つける</div>
       <div class="font-alt mb-40 titan-title-size-4">timtam</div>
       <a class="section-scroll btn btn-border-w btn-round" href="#demos">See Reviews</a>
+      <% unless user_signed_in? %>
+        <%= link_to "Facebookで登録", user_facebook_omniauth_authorize_path, class: "login-button facebook" ,method: :post %>
+      <% end %>
     </div>
   </div>
 </section>

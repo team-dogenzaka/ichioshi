@@ -44,3 +44,7 @@
   <%= link_to '詳細', user_path(user) %>
 <%= user.profile  %>
 <% end %>
+
+<% @users.reviews.each do |review| %>
+  <td><%= review.title %></td>
+<% end %>

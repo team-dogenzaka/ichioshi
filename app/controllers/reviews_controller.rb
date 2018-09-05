@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
   PER = 6
   def index
     @review = Review.where(draft: true).page(params[:page]).per(PER)
+    @hashtags = Hashtag.all
   end
 
   def new
@@ -20,9 +21,26 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
+    str = @review.content                              # [追加箇所]                                             #
+    @hashtags = str.scan(/[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/).map(&:strip)                         # 最終行がシャープで始まっていればハッシュタブということにする
+    @hashtags.each do |hashtag|
+      hashtag.delete('#＃')
+      exitTag = Hashtag.find_by(hashname: hashtag) # 既に存在しているハッシュタグか確認
+      if exitTag == nil                            #
+        @hashTag = Hashtag.new                      # 存在しなければハッシュタグを新規作成        
+        @hashTag.hashname = hashtag.delete('#＃')                 #
+        @review.hashtags << @hashTag              # ハッシュタグとツイートの関連付け
+        @hashTag.save                               #
+      else                                         #
+        @review.hashtags << exitTag                  # ハッシュタグとツイートの関連付け
+      end
+    end
+    binding.pry                                          #
     if @review.save
+      if !session[:hashtag]   
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
       redirect_to reviews_path, notice: "レビューを作成しました！"
+      end
     else
       # 入力フォームを再描画します。
       render 'new'
@@ -70,5 +88,4 @@ class ReviewsController < ApplicationController
   def set_review
     @review = Review.find(params[:id])
   end
-
 end

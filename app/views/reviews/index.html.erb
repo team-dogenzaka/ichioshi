@@ -23,7 +23,23 @@
           </div>
           <% end %>
         </div>
-        <div class="pagination font-alt"><%= paginate @review %></div>
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>ハッシュタグ</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr>
+          </tr>
+          <% @hashtags.each do |hashtag| %>
+            <tr>
+              <td>#<%= link_to hashtag.hashname, review_path(hashtag) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="pagination font-alt"><%= paginate @review %></div>
+      </div>
 </div></center>
 </section>

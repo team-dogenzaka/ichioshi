@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     if params[:q] != nil
       params[:q]['title_cont_any'] = params[:q]['title_cont_any'].split(/[\p{blank}\s]+/)
       params[:q]['content_cont_any'] = params[:q]['content_cont_any'].split(/[\p{blank}\s]+/)
+      params[:q]['user_name_cont_any'] = params[:q]['user_name_cont_any'].split(/[\p{blank}\s]+/)
       @search = Review.ransack(params[:q])
       @review = @search.result.where(draft: true).page(params[:page]).per(PER)
     else

@@ -34,7 +34,7 @@
           </tr>
           <% @hashtags.each do |hashtag| %>
             <tr>
-              <td>#<%= link_to hashtag.hashname, review_path(hashtag) %></td>
+              <td>#<%= link_to hashtag.hashname, review_path(hashtag.hashname) %></td>
             </tr>
           <% end %>
         </tbody>

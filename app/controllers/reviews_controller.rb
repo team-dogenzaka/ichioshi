@@ -24,8 +24,7 @@ class ReviewsController < ApplicationController
     str = @review.content                              # [追加箇所]                                             #
     @hashtags = str.scan(/[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/).map(&:strip)                         # 最終行がシャープで始まっていればハッシュタブということにする
     @hashtags.each do |hashtag|
-      hashtag.delete('#＃')
-      exitTag = Hashtag.find_by(hashname: hashtag) # 既に存在しているハッシュタグか確認
+      exitTag = Hashtag.find_by(hashname: hashtag.delete('#＃')) # 既に存在しているハッシュタグか確認
       if exitTag == nil                            #
         @hashTag = Hashtag.new                      # 存在しなければハッシュタグを新規作成        
         @hashTag.hashname = hashtag.delete('#＃')                 #
@@ -35,7 +34,6 @@ class ReviewsController < ApplicationController
         @review.hashtags << exitTag                  # ハッシュタグとツイートの関連付け
       end
     end
-    binding.pry                                          #
     if @review.save
       if !session[:hashtag]   
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
@@ -56,6 +54,17 @@ class ReviewsController < ApplicationController
     @comment = Comment.new #①
     @comments = @review.comments #②
     @comments_number = @comments.count
+    @hashTag = Hashtag.find_by(hashname: params[:id])                # [追加箇所]
+    if @hashTag == nil || @hashTag.reviews.empty?                # 「:id」でハッシュタグを検索
+      session[:hashtag] = nil                                 # 存在しなければindexへリダイレクト
+      return                                                  #
+    else                                                      #
+      session[:hashtag] = params[:id]                         # ハッシュタグが存在すれば
+      @reviews = @hashTag.reviews.order("created_at DESC") # そのハッシュタグのツイートを全て取得
+      @review = Review.new                                      #
+      @hashtags = Hashtag.all                                 #
+    end
+    binding.pry
   end
 
   def edit

@@ -12,6 +12,33 @@
 </section>
 
 
+
+
+<section class="module-medium" id="demos">
+  <div class="container">
+    <center><h1>Reviewers</h1></center>
+    <div class="row multi-columns-row">
+      <% @users.each do |user| %>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+         <div class="features-item waku">
+           <% if user.provider == "facebook" %>
+             <div class="features-icon"><% user.icon = user.icon.insert(4,"s") %><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), user %></div>
+            <% elsif user.avator %>
+             <div class="features-icon"><%= link_to image_tag(user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), user %></div>
+            <% else %>
+             <div class="features-icon"><%= link_to image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), user %></div>
+           <% end %>
+           <h3 class="features-title font-alt hidari">モンブランに全てを捧げるモンブラン王</h3>
+           <div class="hidari"><%= link_to user.name, user %></div>
+           <div class="hidari btn-warning btn-round">この人のココがすごい！</div>
+           <div class="hidari">360個のモンブランを食べ尽くした通。モンブランのカウント単位は「MB」</div>
+        </div>
+       </div>
+     <% end %>
+    </div>
+  </div>
+</section>
+
 <section class="module-medium" id="demos">
   <div class="container">
     <center><h1>Reviews</h1></center>
@@ -32,27 +59,6 @@
   </div>
 </section>
 
-<section class="module-medium" id="demos">
-  <div class="container">
-    <center><h1>Reviewers</h1></center>
-    <div class="row multi-columns-row">
-      <% @users.each do |user| %>
-        <div class="col-md-3 col-sm-12 col-xs-12">
-         <div class="features-item">
-           <% if user.provider == "facebook" %>
-             <div class="features-icon"><% user.icon = user.icon.insert(4,"s") %><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), user %></div>
-            <% elsif user.avator %>
-             <div class="features-icon"><%= link_to image_tag(user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), user %></div>
-            <% else %>
-             <div class="features-icon"><%= link_to image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), user %></div>
-           <% end %>
-           <h3 class="features-title font-alt"><%= link_to user.name, user %></h3>
-        </div>
-       </div>
-     <% end %>
-    </div>
-  </div>
-</section>
 
         <div class="module-small bg-dark">
           <div class="container">

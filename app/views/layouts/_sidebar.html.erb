@@ -8,7 +8,7 @@
                   </form>
                 </div>
                 <div class="widget">
-                  <h5 class="widget-title font-alt">Recent Posts</h5>
+                  <h5 class="widget-title font-alt">#プレゼントの人気のレビュー</h5>
                   <ul class="icon-list">
                     <% @post_user.reviews.last(5).each do |review| %>
                     <li><%= link_to review.title, review_path(review.id) %></li>
@@ -16,7 +16,7 @@
                   </ul>
                 </div>
                 <div class="widget">
-                  <h5 class="widget-title font-alt">Popular Posts</h5>
+                  <h5 class="widget-title font-alt">Takuya Mishimaの人気のレビュー</h5>
                   <ul class="icon-list">
                     <% @post_user.reviews.last(5).each do |review| %>
                     <li><%= link_to review.title, review_path(review.id) %></li>

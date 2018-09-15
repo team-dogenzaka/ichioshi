@@ -2,7 +2,7 @@
   <div class="titan-caption">
     <div class="caption-content">
       <div class="font-alt mb-30 titan-title-size-1">人からのおすすめで価値あるものを見つける</div>
-      <div class="font-alt mb-40 titan-title-size-4">timtam</div>
+      <div class="font-alt mb-40 titan-title-size-4">ICHIOSHI</div>
       <a class="section-scroll btn btn-border-w btn-round" href="#demos">See Reviews</a>
       <% unless user_signed_in? %>
         <%= link_to "Facebookで登録", user_facebook_omniauth_authorize_path, class: "login-button facebook" ,method: :post %>
@@ -16,32 +16,115 @@
 
 <section class="module-medium" id="demos">
   <div class="container">
+    <center><h1>#プレゼントのTOPレビュアー</h1></center>
+    <div class="row multi-columns-row">
+      
+      <% @users.each do |user| %>
+      <div class="col-md-3 col-sm-12 col-xs-12">  
+      <div class="waku">
+          <div class="row">
+         
+           
+           <div class="col-sm-4">
+           <% if user.provider == "facebook" %>
+             <div class="features-icon"><% user.icon = user.icon.insert(4,"s") %><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
+            <% elsif user.avator %>
+             <div class="features-icon"><%= link_to image_tag(user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
+            <% else %>
+             <div class="features-icon"><%= link_to image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
+           <% end %>
+           </div>
+           
+           <div class="col-sm-8">
+           <h3 class="features-title font-alt hidari">モンブランに全てを捧げるモンブラン王</h3>
+           </div>
+           
+           <div class="col-sm-12">
+           <div class="hidari"><%= link_to user.name, user %></div>
+           </div>
+           <div class="col-sm-12">
+           <div class="hidari ribbon">この人のココがすごい！</div>
+           </div>
+           <div class="col-sm-12">
+           <div class="hidari dashed">360個のモンブランを食べ尽くした通。モンブランのカウント単位は「MB」</div>
+           </div>
+           <div class="col-sm-12">
+           新着のイチオシ
+           </div>
+           <div class="col-sm-12">
+           <img src="/images/3480159.jpg" alt="海の写真" title="空と海">
+           </div>
+           <div class="col-sm-12">
+           <div class="hidari gold">イチオシをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>
+           </div>
+      </div> 
+        </div>
+    </div>
+  
+     <% end %>
+  </div>  
+    </div>
+
+</section>
+<section class="module-medium" id="demos">
+  <div class="container">
     <center><h1>Reviewers</h1></center>
     <div class="row multi-columns-row">
+      
       <% @users.each do |user| %>
-        <div class="col-md-3 col-sm-12 col-xs-12">
-         <div class="features-item waku">
+      <div class="col-md-3 col-sm-12 col-xs-12">  
+      <div class="waku">
+          <div class="row">
+         
+           
+           <div class="col-sm-4">
            <% if user.provider == "facebook" %>
-             <div class="features-icon"><% user.icon = user.icon.insert(4,"s") %><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), user %></div>
+             <div class="features-icon"><% user.icon = user.icon.insert(4,"s") %><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
             <% elsif user.avator %>
-             <div class="features-icon"><%= link_to image_tag(user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), user %></div>
+             <div class="features-icon"><%= link_to image_tag(user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
             <% else %>
-             <div class="features-icon"><%= link_to image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100'), user %></div>
+             <div class="features-icon"><%= link_to image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
            <% end %>
+           </div>
+           
+           <div class="col-sm-8">
            <h3 class="features-title font-alt hidari">モンブランに全てを捧げるモンブラン王</h3>
+           </div>
+           
+           <div class="col-sm-12">
            <div class="hidari"><%= link_to user.name, user %></div>
-           <div class="hidari btn-warning btn-round">この人のココがすごい！</div>
-           <div class="hidari">360個のモンブランを食べ尽くした通。モンブランのカウント単位は「MB」</div>
+           </div>
+           <div class="col-sm-12">
+           <div class="hidari ribbon">この人のココがすごい！</div>
+           </div>
+           <div class="col-sm-12">
+           <div class="hidari dashed">360個のモンブランを食べ尽くした通。モンブランのカウント単位は「MB」</div>
+           </div>
+           <div class="col-sm-12">
+           新着のイチオシ
+           </div>
+           <div class="col-sm-12">
+           <img src="/images/3480159.jpg" alt="海の写真" title="空と海">
+           </div>
+           <div class="col-sm-12">
+           <div class="hidari gold">イチオシをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>
+           </div>
+      </div> 
         </div>
-       </div>
-     <% end %>
     </div>
-  </div>
+  
+     <% end %>
+  </div>  
+    </div>
+
 </section>
+
+
+
 
 <section class="module-medium" id="demos">
   <div class="container">
-    <center><h1>Reviews</h1></center>
+    <center><h1>フォローしている人の新着レビュー</h1></center>
     <div class="row multi-columns-row">
       <% @review.each do |review| %>
         <div class="col-md-3 col-sm-12 col-xs-12">

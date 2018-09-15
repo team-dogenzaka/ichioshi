@@ -72,7 +72,15 @@
  -->
 
 
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script>
+$(function(){
+	$('.readmore').click(function(){
+		$(this).hide();
+		$(this).parent('.main').removeClass('onhidden');
+	});
+});
+</script>
 
 <ul class="nav nav-tabs">
   <li class="nav-item active">
@@ -87,12 +95,67 @@
 </ul>
 <div class="tab-content">
   <div id="tab1" class="tab-pane active">
+    <div class="waku">
+      <input type="checkbox" name="riyu" value="1" checked="checked">すべて
+      <input type="checkbox" name="riyu" value="2">#サプライズ
+      <input type="checkbox" name="riyu" value="3">#デート
+      <input type="checkbox" name="riyu" value="4">	#apple
+      <input type="checkbox" name="riyu" value="5">	#iphone
+      <input type="checkbox" name="riyu" value="6">	#mac
+      <input type="checkbox" name="riyu" value="7">	#スマホ
+      <input type="checkbox" name="riyu" value="8">	#周辺機器
+      <input type="checkbox" name="riyu" value="9">	#イヤフォン
+      <input type="checkbox" name="riyu" value="10">	#便利
+      <input type="checkbox" name="riyu" value="11">	#おしゃれ
+      <input type="checkbox" name="riyu" value="12">	#プレゼント
+      <input type="checkbox" name="riyu" value="13">	#カメラ
+      <input type="checkbox" name="riyu" value="14">	#日用品
+      <input type="checkbox" name="riyu" value="15">	#工具
+      <input type="checkbox" name="riyu" value="16">	#本
+      <input type="checkbox" name="riyu" value="17">	#lifehack
+      <input type="checkbox" name="riyu" value="18">	#音楽
+      <input type="checkbox" name="riyu" value="19">	#文房具
+      <input type="checkbox" name="riyu" value="20">	#漫画
+      <input type="checkbox" name="riyu" value="21">	#ビジネス
+      <input type="checkbox" name="riyu" value="22">	#筋トレ
+      <input type="checkbox" name="riyu" value="23">	#スポーツ
+      <input type="checkbox" name="riyu" value="24">	#健康
+      <input type="checkbox" name="riyu" value="25">	#ランニング
+      <input type="checkbox" name="riyu" value="26">	#スピーカー
+      <input type="checkbox" name="riyu" value="27">	#美容
+      <input type="checkbox" name="riyu" value="28">	#キッチン
+      <input type="checkbox" name="riyu" value="29">	#家具
+      <input type="checkbox" name="riyu" value="30">	#キャンプ
+      <input type="checkbox" name="riyu" value="31">	#アウトドア
+      <input type="checkbox" name="riyu" value="32">	#春
+      <input type="checkbox" name="riyu" value="33">	#夏
+      <input type="checkbox" name="riyu" value="34">	#秋
+      <input type="checkbox" name="riyu" value="35">	#冬
+      <input type="checkbox" name="riyu" value="36">	#海
+      <input type="checkbox" name="riyu" value="37">	#山
+      <input type="checkbox" name="riyu" value="38">	#旅行
+      <input type="checkbox" name="riyu" value="39">	#ガジェット
+      <input type="checkbox" name="riyu" value="40">	#防災
+      <input type="checkbox" name="riyu" value="41">	#食べ物
+      <input type="checkbox" name="riyu" value="42">	#ワイヤレス
+      <input type="checkbox" name="riyu" value="43">	#まとめる
+      <input type="checkbox" name="riyu" value="44">	#インテリア
+      <input type="checkbox" name="riyu" value="45">	#サプリ
+      <input type="checkbox" name="riyu" value="46">	#ウェアラブル
+      <input type="checkbox" name="riyu" value="47">	#アクセサリ
+      <input type="checkbox" name="riyu" value="48">	#生活家電
+      <input type="checkbox" name="riyu" value="49">	#掃除
+      <input type="checkbox" name="riyu" value="50">	#収納
+      <input type="checkbox" name="riyu" value="51">	#雑貨
+    </div>
+    
+
+    
+    
                   <% @user.reviews.each do |review| %>
-                  <div class="col-md-6 col-lg-6">
+                  
                     <div class="post">
-                      <div class="post-thumbnail">
-                        <%= image_tag(review.image.url, :class => "fit-img") if review.image.url %>
-                      </div>
+
                       <div class="post-header font-alt">
                         <h2 class="post-title"><%= review.title %></h2>
                         <div class="post-meta">
@@ -100,7 +163,13 @@
                         </div>
                       </div>
                       <div class="post-entry">
-                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                    
+                        <div class="main onhidden">
+<%== review.content %>
+<div class="readmore">
+		<span>続きを読む</span>
+	</div>
+</div>
                       </div>
                       <div class="post-more">
                         <%= link_to '詳細を確認する', review_path(review.id) %>
@@ -108,7 +177,7 @@
                         <%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
                       </div>
                     </div>
-                  </div>
+                  
                   <% end %>
                    </div>
 

@@ -14,6 +14,8 @@
                   <div class="post-entry">
                     <%== @review.content %>
                     <!--サムネイル用画像のためコメントアウト <%= image_tag(@review.image.to_s, :size =>'100x100') if @review.image.to_s %> -->
+<div class="row">
+  <div class="col-sm-4">
 <% if user_signed_in? %>
 <% unless @review.user_id == current_user.id %>
   <% if @favorite.present? %>
@@ -28,12 +30,14 @@
 <% else %>
 <% end %>
 <% end %>
+</div>
 
+<div class="col-sm-4">
   <p><button class="btn btn-d btn-circle" type="submit"><i class="fa fa-heart"></i>
     <%= link_to 'いいね！', favorites_path(review_id: @review.id), method: :post,:style=>"color:white;" %>
 </button></p>
-
-
+</div>
+</div>
 <% if user_signed_in? %><% unless @review.user_id == current_user.id %>
 <%= link_to 'Edit', edit_review_path(@review), data: { turbolinks: false } %> |
 <%= link_to 'Back', reviews_path %>

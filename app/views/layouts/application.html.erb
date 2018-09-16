@@ -30,6 +30,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="assets/images/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    
     <!--  
     Stylesheets
     =============================================
@@ -58,6 +59,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="css/icon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
   </head>
   <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
     <main>
@@ -81,9 +83,9 @@
                           <% current_user.icon = current_user.icon.insert(4,"s") %>
                           <%= link_to image_tag(current_user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>
                         <% elsif current_user.avator %>
-                          <%= image_tag(current_user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25") %>   
+                          <%= link_to image_tag(current_user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>   
                         <% else %>
-                          <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25") %>
+                          <%= link_to image_tag('images/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>
                         <% end %></li>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
                 <% else %>

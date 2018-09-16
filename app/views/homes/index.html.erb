@@ -15,11 +15,11 @@
 
 <section class="" id="demos">
   <div class="container">
-    <center><h1>#プレゼントのTOPレビュアー</h1></center>
+    <h1>#プレゼントのTOPレビュアー</h1>
     <div class="row multi-columns-row">
       
       <% @users.each do |user| %>
-      <div class="col-md-4 col-sm-12 col-xs-12">  
+      <div class="col-md-3 col-sm-12 col-xs-12">  
       <div class="waku">
           <div class="row">
          
@@ -30,7 +30,7 @@
             <% elsif user.avator %>
              <div class="features-icon"><%= link_to image_tag(user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
             <% else %>
-             <div class="features-icon"><%= link_to image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
+             <div class="features-icon"><%= link_to image_tag('imagse/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
            <% end %>
            </div>
            
@@ -39,10 +39,11 @@
            </div>
            
            <div class="col-sm-12">
-           <div class="hidari"><%= link_to user.name, user %></div>
+           <div class=""><%= link_to user.name, user %></div>
            </div>
+           
            <div class="col-sm-12">
-           <div class="hidari dashed topjiko">自称「日本一ラーメンを食べた男」。ラーメンデータバンク取締役会長を務める。「日本ラーメン秘史」など執筆。ラーメンだけでなく鮨にも精通している。</div>
+           <div class="dashed">自称「日本一ラーメンを食べた男」。ラーメンデータバンク取締役会長を務める。「日本ラーメン秘史」など執筆。ラーメンだけでなく鮨にも精通している。</div>
            </div>
            <div class="col-sm-12">
            新着レビュー
@@ -51,7 +52,7 @@
            <img src="/images/3480159.jpg" alt="海の写真" title="空と海">
            </div>
            <div class="col-sm-12">
-           <div class="hidari gold">レビューをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>
+           <div class="gold">レビューをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>
            </div>
       </div> 
         </div>

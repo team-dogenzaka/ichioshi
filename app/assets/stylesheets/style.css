@@ -307,7 +307,7 @@ a,
 .parallax-bg {
   background-attachment: fixed;
   background-size: cover;
-  background-image: url("https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/44c4d738128c48d954f4f9647f57a06c_m.jpg");
+  background-image: url("https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/ichioshi+(1).png");
 }
 
 /* Vertical margin, padding */
@@ -1567,7 +1567,6 @@ Google map
     background-repeat: no-repeat;
     margin: 5px;
     width: 100px;
-    height: 100px;
     border: 0px solid #ccc;
     background-size: cover;
 

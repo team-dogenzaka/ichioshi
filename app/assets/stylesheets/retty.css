@@ -1,5 +1,6 @@
 .waku {
-    border: 1px solid #3333;
+    border: solid 1px #e7e7e7;
+    margin-bottom: 10px;
 }
 
 .hidari {
@@ -54,7 +55,7 @@
 }
 
 .gold{
-    background-color: goldenrod;
+    background-color: #a79a73;
     padding: 10px;
     color: white;
 }
@@ -101,4 +102,8 @@
 .navicon{
   position: relative;
   padding:-15px
+}
+
+.topjiko{
+  margin-left: 10px
 }

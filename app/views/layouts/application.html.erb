@@ -60,6 +60,34 @@
     <link rel="stylesheet" href="css/icon.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
+      
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+  <script>
+ 	if(window.innerWidth < 750){
+ $(document).ready(function(){
+ $('.slider').bxSlider({	  
+ 	  
+		 slideWidth: 640,
+     autoDirection:'prev',
+     maxSlides: 4,
+     minSlides: 1,
+ })
+ });
+	} else{
+ $(document).ready(function(){
+ $('.slider').bxSlider({	  
+
+
+		 slideWidth: 640,
+     autoDirection:'prev',
+     maxSlides: 4,
+     minSlides: 4,
+ })
+ });
+}
+</script>
   </head>
   <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
     <main>

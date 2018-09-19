@@ -2,7 +2,7 @@
   <div class="titan-caption">
     <div class="caption-content">
       <div class="font-alt mb-30 titan-title-size-1">人からのおすすめで価値あるものを見つける</div>
-      <div class="font-alt mb-40 titan-title-size-4">ICHIOSHI</div>
+      <div class="font-alt mb-40 titan-title-size-4">IchiOshi</div>
       <% unless user_signed_in? %>
         <%= link_to image_tag('/images/facebook_login.png',:alt => "Karan Singh Sisodia", :size => '200'), user_facebook_omniauth_authorize_path, class: "login-button facebook" ,method: :post %>
       <% end %>
@@ -25,21 +25,21 @@
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="features-item">
                   <div class="features-icon"><span class="glyphicon glyphicon-thumbs-up"></span></div>
-                  <h3 class="features-title font-alt">Ideas and concepts</h3>
+                  <h3 class="features-title font-alt">いいモノは人が知っている</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="features-item">
                   <div class="features-icon"><span class="glyphicon glyphicon-check"></span></div>
-                  <h3 class="features-title font-alt">Optimised for speed</h3>
+                  <h3 class="features-title font-alt">人からのおすすめで新しい出会いを</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="features-item">
                   <div class="features-icon"><span class="glyphicon glyphicon-heart-empty"></span></div>
-                  <h3 class="features-title font-alt">Designs &amp; interfaces</h3>
+                  <h3 class="features-title font-alt">実名制だから価値がある</h3>
                   <p>Careful attention to detail and clean, well structured code ensures a smooth user experience for all your visitors.</p>
                 </div>
               </div>
@@ -47,6 +47,26 @@
             </div>
           </div>
         </section>
+        
+
+
+<% if current_user && @user.id == current_user.id %>
+<% if @feed_items.any? %>
+<section class="" id="demos">
+  <div class="container">
+    <h2 class="module-title font-alt">フォローしている人の新着レビュー</h2>
+    <div class="row multi-columns-row slider">
+      <%= render @feed_items %>
+      </div>  
+<% end %>
+  </div>  
+    </div>
+              <% else %>
+     <% end %>
+
+
+
+
 
 <section class="" id="demos">
   <div class="container">
@@ -152,27 +172,10 @@
 </section>
 
 
+                  
+                      
+                  
 
-
-<section class="" id="demos">
-  <div class="container">
-    <center><h1>フォローしている人の新着レビュー</h1></center>
-    <div class="row multi-columns-row">
-      <% @review.each do |review| %>
-        <div class="col-md-3 col-sm-12 col-xs-12">
-         <div class="features-item">
-           <% unless review.image.blank? %>
-            <div class="features-icon"><%= link_to image_tag(review.image.url, :class =>'fit-img'), review_path(review.id) %></div>
-           <% else %>
-            <div class="features-icon"><%= link_to image_tag('/no_img.png', :class =>'fit-img'), review_path(review.id) %></div>
-           <% end %>
-           <h3 class="features-title font-alt"><%= link_to review.title , review_path(review.id) %></h3>
-        </div>
-       </div>
-     <% end %>
-    </div>
-  </div>
-</section>
 
 
         <div class="module-small bg-dark">

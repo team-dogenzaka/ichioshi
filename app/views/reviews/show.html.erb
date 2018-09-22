@@ -38,6 +38,7 @@
   <p><button class="btn btn-d btn-circle" type="submit"><i class="fa fa-heart"></i>
     <%= link_to 'いいね！', favorites_path(review_id: @review.id), method: :post,:style=>"color:white;" %>
 </button></p>
+<%= number_with_delimiter(@page_views) %>
 </div>
 </div>
 <% if user_signed_in? %><% unless @review.user_id == current_user.id %>
@@ -64,8 +65,15 @@
 <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>
 <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>
 <li>お気に入り登録した人</li>
-<%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>
-<%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>
+<% @review.favorite_users.each do |favorite_user| %>
+<% if favorite_user.provider == "facebook" %>
+ <div class="features-icon"><% favorite_user.icon = favorite_user.icon.insert(4,"s") %><%= link_to image_tag(favorite_user.icon, :class => "img-circle", :alt => "", :size => '70x70'), favorite_user %></div>
+<% elsif favorite_user.avator %>
+ <div class="features-icon"><%= link_to image_tag(favorite_user.avator.to_s, :class => "img-circle", :alt => "", :size => '70x70'), favorite_user %></div>
+<% else %>
+ <div class="features-icon"><%= link_to image_tag('imagse/no_img.png', :class => "img-circle", :alt => "", :size => '70x70'), favorite_user %></div>
+<% end %>
+<% end %>
  </ul>
 </div>
   <div>

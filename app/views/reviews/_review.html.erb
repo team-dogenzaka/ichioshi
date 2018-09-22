@@ -1,41 +1,33 @@
-
-      <div class="col-md-3 col-sm-12 col-xs-12">  
-      <div class="waku">
-          <div class="row">
-            <div class="col-sm-12">
-      <center><%= link_to image_tag(review.image.url, :class => "fit-img"), review_path(review.id) if review.image.url %></center>
+<div class="col-md-3 col-sm-12 col-xs-12">
+  <div class="waku">
+    <div class="row">
+      <div class="col-sm-12">
+        <center><%= link_to image_tag(review.image.url, :class => "fit-img"), review_path(review.id) if review.image.url %></center>
       </div>
-    <div class="col-sm-4 col-xs-4">
-    
-              <% if (review.user.provider == "facebook") %>
-                        <% review.user.icon = review.user.icon.insert(4,"s") %>
-                        <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50" %>
-                      <% elsif review.user.avator %>
-                        <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>
-                      <% else %>
-                        <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>
-                      <% end %>
-                      
-                      </div>
+      <div class="col-sm-4 col-xs-4">
+        <% if (review.user.provider == "facebook") %>
+          <% review.user.icon = review.user.icon.insert(4,"s") %>
+          <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50" %>
+        <% elsif review.user.avator %>
+          <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>
+        <% else %>
+          <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>
+        <% end %>
+      </div>
       <div class="col-sm-8 col-xs-8">
         <div class="post-header font-alt">
-      <h2 class="post-title">
-
-        
-        <%= link_to review.title, review_path(review.id) %></h2>
+          <h2 class="post-title">
+            <%= link_to review.title, review_path(review.id) %></h2>
+        </div>
       </div>
-    </div>
       <div class="col-sm-12">
-      <div class="post-meta">By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %>投稿日時: <%= review.created_at.strftime("%Y年%m月%d日") %>
-
+        <div class="post-meta">By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %>投稿日時: <%= review.created_at.strftime("%Y年%m月%d日") %></div>
       </div>
+      <div class="col-sm-12">
+        <div class="post-entry">
+          <p>review</p>
+        </div>
       </div>
-
-    <div class="col-sm-12">
-    <div class="post-entry">
-      <p>review</p>
     </div>
-    </div>
-  </div>
   </div>
 </div>

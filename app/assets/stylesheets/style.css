@@ -10,7 +10,7 @@ html {
 body {
   background: #fff;
   font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
-  
+
   color: #666;
   -webkit-font-smoothing: antialiased;
 }
@@ -651,7 +651,6 @@ a,
 .btn {
   border-radius: 0;
   font-family: "Roboto Condensed", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 11px;
   padding: 8px 37px;
@@ -815,7 +814,6 @@ a,
 /* Forms common style */
 .form-control {
   font-family: "Roboto Condensed", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 11px;
   height: 33px;
@@ -891,7 +889,6 @@ blockquote {
 
 .font-alt {
   font-family: "Roboto Condensed", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 2px;
 }
 
@@ -1246,7 +1243,6 @@ General Styles - Owlcarousel
   border-radius: 0;
   z-index: 1000;
   font-family: "Roboto Condensed", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 11px;
   transition: background, padding 0.4s ease-in-out 0s;
@@ -1347,7 +1343,6 @@ General Styles - Owlcarousel
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
-	text-transform: uppercase;
 	letter-spacing: 2px;
 	font-size: 11px;
 }
@@ -1576,7 +1571,6 @@ Google map
 
 .features-title,
 .alt-features-title {
-  text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 400;
   font-size: 14px;
@@ -2254,7 +2248,6 @@ Google map
 .pagination a {
   border: 1px solid #eaeaea;
   display: inline-block;
-  text-transform: uppercase;
   text-align: center;
   color: #999;
   padding: 4px 12px;

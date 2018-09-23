@@ -152,8 +152,10 @@
                 </div>
                 <div class="post-more">
                   <%= link_to '詳細を確認する', review_path(review.id) %>
-                  <%= link_to "編集する", edit_review_path(review.id) %>
-                  <%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+                  <% if current_user && @user.id == current_user.id %>
+                    <%= link_to "編集する", edit_review_path(review.id) %>
+                    <%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+                  <% end %>
                 </div>
               </div>
             <% end %>

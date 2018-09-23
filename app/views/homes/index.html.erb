@@ -99,7 +99,8 @@
            </div>
            
            <div class="col-sm-12">
-           <div class="dashed">自称「日本一ラーメンを食べた男」。ラーメンデータバンク取締役会長を務める。「日本ラーメン秘史」など執筆。ラーメンだけでなく鮨にも精通している。</div>
+           <div class="dashed"><%= user.profile %></div>
+           
            </div>
            <div class="col-sm-12">
            新着レビュー
@@ -108,7 +109,7 @@
            <img src="/images/3480159.jpg" alt="海の写真" title="空と海">
            </div>
            <div class="col-sm-12">
-           <div class="gold">レビューをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>
+           <div class="gold"><%== link_to 'レビューをもっと見る>', user %></div>
            </div>
       </div> 
         </div>

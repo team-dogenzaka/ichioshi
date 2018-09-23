@@ -22,7 +22,7 @@
         <div><%= @user.profile  %></div>
         <% if current_user && @user.id == current_user.id %>
           <%= link_to 'ユーザーを編集する', edit_user_registration_path  %>
-          <%= link_to 'ユーザーを削除する', users_destroy_path(id: current_user.id), method: :delete %>
+          <%= link_to 'ユーザーを削除する', users_destroy_path(id: current_user.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
         <% end %>
       </div>
 

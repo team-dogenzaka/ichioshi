@@ -20,7 +20,7 @@
                   <% unless @review.image.blank? %>
                     サムネイル用画像<%= image_tag(@review.image.to_s) %>
                   <% else %>
-                    サムネイル用画像<%= image_tag '/no_img.png'%>
+                    サムネイル用画像<%= image_tag '/no_img.png' %>
                   <% end %>
                 </div>
                 <li><%= form.submit  "登録する", class: "btn btn-round btn-d"  %></li>

@@ -35,15 +35,14 @@ class ReviewsController < ApplicationController
      @favorite = current_user.favorites.find_by(review_id: @review.id)
     end
     @post_user = @review.user
-    @comment = Comment.new #①
-    @comments = @review.comments #②
+    @comment = Comment.new
+    @comments = @review.comments
     @comments_number = @comments.count
-    
-    
-     impressionist(@review, nil, :unique => [:session_hash])
+
+    impressionist(@review, nil, :unique => [:session_hash])
 
     @page_views = @review.impressionist_count
-    
+
   end
 
   def edit

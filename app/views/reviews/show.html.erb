@@ -23,13 +23,13 @@
                     <% if @favorite.present? %>
                       <p>
                         <button class="btn btn-d btn-circle" type="submit">
-                          <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete,:style=>"color:white;"%>
+                          <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, :style=>"color:white;"%>
                         </button>
                       </p>
                     <% else %>
                       <p>
                         <button class="btn btn-d btn-circle" type="submit"><i class="fa fa-heart"></i>
-                        <%= link_to 'お気に入り登録する', favorites_path(review_id: @review.id), method: :post,:style=>"color:white;" %>
+                        <%= link_to 'お気に入り登録する', favorites_path(review_id: @review.id), method: :post, :style=>"color:white;" %>
                         </button>
                       </p>
                     <% end %>

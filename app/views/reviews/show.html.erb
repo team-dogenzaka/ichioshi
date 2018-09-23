@@ -44,7 +44,7 @@
                     <%= link_to 'いいね！', favorites_path(review_id: @review.id), method: :post,:style=>"color:white;" %>
                   </button>
                 </p>
-                impressionist_count : <%= number_with_delimiter(@page_views) %>
+                訪問者数 : <%= number_with_delimiter(@page_views) %>
               </div>
             </div>
             <% if user_signed_in? %>

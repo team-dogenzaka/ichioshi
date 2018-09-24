@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   mount_uploader :avator, IconUploader
+  mount_uploader :coverimg, CoverimgUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :reviews, dependent: :destroy
@@ -49,7 +50,8 @@ class User < ApplicationRecord
         user.provider = data["provider"] if user.provider.blank?
         user.uid = data["uid"] if user.uid.blank?
         user.name = data["info"]["name"] if user.name.blank?
-        user.icon = data["info"]["image"] if user.icon.blank? 
+        user.icon = data["info"]["image"] if user.icon.blank?
+        user.coverimg = data["info"]["coverimg"] if user.coverimg.blank?
         user.password = Devise.friendly_token[0,20] if user.password.blank?
       end
     end

@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :user_check, only: [:edit, :update, :destroy]
   PER = 6
   def index
     @review = Review.where(draft: true).page(params[:page]).per(PER)
@@ -74,6 +75,12 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+  end
+
+  def user_check
+    unless Review.find(params[:id]).user_id == current_user.id
+      redirect_to review_path(Review.find(params[:id]).id)
+    end
   end
 
 end

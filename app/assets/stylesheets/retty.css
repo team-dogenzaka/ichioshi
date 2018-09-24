@@ -119,3 +119,7 @@
   margin-bottom: 40px;
   object-fit: cover;
 }
+
+.slider_adjust {
+    left: 15px;
+}

@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   mount_uploader :avator, IconUploader
+  mount_uploader :coverimg, CoverimgUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_reviews, through: :favorites, source: :review
   
@@ -49,9 +50,24 @@ class User < ApplicationRecord
         user.provider = data["provider"] if user.provider.blank?
         user.uid = data["uid"] if user.uid.blank?
         user.name = data["info"]["name"] if user.name.blank?
-        user.icon = data["info"]["image"] if user.icon.blank? 
+        user.icon = data["info"]["image"] if user.icon.blank?
+        user.coverimg = data["info"]["coverimg"] if user.coverimg.blank?
         user.password = Devise.friendly_token[0,20] if user.password.blank?
       end
     end
+  end
+
+  # 今のパスワードを入力しなくてもユーザー情報を変更できるようにするメソッド
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+ 
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+ 
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
   end
 end

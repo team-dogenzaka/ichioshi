@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :user_check, only: [:edit, :update, :destroy]
   PER = 6
   def index
     @review = Review.where(draft: true).page(params[:page]).per(PER)
@@ -35,8 +36,14 @@ class ReviewsController < ApplicationController
      @favorite = current_user.favorites.find_by(review_id: @review.id)
     end
     @post_user = @review.user
-    @comment = Comment.new #①
-    @comments = @review.comments #②
+    @comment = Comment.new
+    @comments = @review.comments
+    @comments_number = @comments.count
+
+    impressionist(@review, nil, :unique => [:session_hash])
+
+    @page_views = @review.impressionist_count
+
   end
 
   def edit
@@ -68,6 +75,12 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+  end
+
+  def user_check
+    unless Review.find(params[:id]).user_id == current_user.id
+      redirect_to review_path(Review.find(params[:id]).id)
+    end
   end
 
 end

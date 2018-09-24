@@ -17,25 +17,24 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @review  = current_user.reviews.build
-    @feed_items = current_user.feed 
+    if current_user != nil
+      @feed_items = current_user.feed
+    end
   end
 
   def edit
     @user = User.find(current_user.id)
   end
-  
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
     redirect_to users_path, notice: "ユーザー削除したよ！"
   end
-  
+
   def following
     @user  = User.find(params[:id])
     @users = @user.followings
-    @review  = current_user.reviews.build
-    @feed_items = current_user.feed      
     render 'show_follow'
   end
 
@@ -47,7 +46,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit( :name, :icon )
+    params.require(:user).permit( :name, :icon, :coverimg, :coverimg_cache )
   end
 
   def ensure_correct_user
@@ -56,5 +55,5 @@ class UsersController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to("/")
     end
-  end  
+  end
 end

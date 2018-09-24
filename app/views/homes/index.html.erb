@@ -48,7 +48,7 @@
             </div>
           </div>
         </section>
-        
+
 
 
 <% if current_user && @user.id == current_user.id %>
@@ -58,9 +58,9 @@
     <h2 class="module-title font-alt">フォローしている人の新着レビュー</h2>
     <div class="row multi-columns-row slider">
       <%= render @feed_items %>
-      </div>  
+      </div>
 <% end %>
-  </div>  
+  </div>
     </div>
               <% else %>
      <% end %>
@@ -73,13 +73,13 @@
   <div class="container">
     <h2 class="module-title font-alt">#プレゼントのTOPレビュアー</h2>
     <div class="row multi-columns-row slider ">
-      
+
       <% @users.each do |user| %>
-      <div class="col-md-3 col-sm-12 col-xs-12">  
+      <div class="col-md-3 col-sm-12 col-xs-12">
       <div class="waku">
           <div class="row">
-         
-           
+
+
            <div class="col-sm-4">
            <% if user.provider == "facebook" %>
              <div class="features-icon"><% user.icon = user.icon.insert(4,"s") %><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "", :size => '70x70'), user %></div>
@@ -89,15 +89,15 @@
              <div class="features-icon"><%= link_to image_tag('imagse/no_img.png', :class => "img-circle", :alt => "", :size => '70x70'), user %></div>
            <% end %>
            </div>
-           
+
            <div class="col-sm-8">
            <h3 class="features-title font-alt hidari">モンブランに全てを捧げるモンブラン王</h3>
            </div>
-           
+
            <div class="col-sm-12">
            <div class=""><%= link_to user.name, user %></div>
            </div>
-           
+
            <div class="col-sm-12">
            <div class="dashed">自称「日本一ラーメンを食べた男」。ラーメンデータバンク取締役会長を務める。「日本ラーメン秘史」など執筆。ラーメンだけでなく鮨にも精通している。</div>
            </div>
@@ -110,12 +110,12 @@
            <div class="col-sm-12">
            <div class="gold">レビューをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>
            </div>
-      </div> 
+      </div>
         </div>
     </div>
-  
+
      <% end %>
-  </div>  
+  </div>
     </div>
 
 </section>
@@ -123,27 +123,27 @@
   <div class="container">
     <center><h1>Reviewers</h1></center>
     <div class="row multi-columns-row">
-      
+
       <% @users.each do |user| %>
-      <div class="col-md-3 col-sm-12 col-xs-12">  
+      <div class="col-md-3 col-sm-12 col-xs-12">
       <div class="waku">
           <div class="row">
-         
-           
+
+
            <div class="col-sm-4">
            <% if user.provider == "facebook" %>
-             <div class="features-icon"><% user.icon = user.icon.insert(4,"s") %><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "", :size => '70x70'), user %></div>
+             <div class="features-icon"><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "", :size => '70x70'), user %></div>
             <% elsif user.avator %>
              <div class="features-icon"><%= link_to image_tag(user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
             <% else %>
              <div class="features-icon"><%= link_to image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '70x70'), user %></div>
            <% end %>
            </div>
-           
+
            <div class="col-sm-8">
            <h3 class="features-title font-alt hidari">モンブランに全てを捧げるモンブラン王</h3>
            </div>
-           
+
            <div class="col-sm-12">
            <div class="hidari"><%= link_to user.name, user %></div>
            </div>
@@ -162,20 +162,20 @@
            <div class="col-sm-12">
            <div class="hidari gold">レビューをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>
            </div>
-      </div> 
+      </div>
         </div>
     </div>
-  
+
      <% end %>
-  </div>  
+  </div>
     </div>
 
 </section>
 
 
-                  
-                      
-                  
+
+
+
 
 
 

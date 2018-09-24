@@ -52,7 +52,7 @@
       <section class="" id="demos">
         <div class="container">
           <h2 class="module-title font-alt">フォローしている人の新着レビュー</h2>
-          <div class="row multi-columns-row slider">
+          <div class="row multi-columns-row slider slider_adjust">
             <%= render @feed_items %>
           </div>
         </div>
@@ -107,7 +107,7 @@
 <section class="" id="demos">
   <div class="container">
     <center><h1>Reviewers</h1></center>
-    <div class="row multi-columns-row">
+    <div class="row multi-columns-row slider slider_adjust">
       <% @users.each do |user| %>
         <div class="col-md-3 col-sm-12 col-xs-12">
           <div class="waku">
@@ -134,10 +134,14 @@
                 <div class="hidari dashed">360個のモンブランを食べ尽くした通。モンブランのカウント単位は「MB」</div>
               </div>
               <div class="col-sm-12">
-                新着のイチオシ
+                新着レビュー
               </div>
               <div class="col-sm-12">
-                <img src="/images/3480159.jpg" alt="海の写真" title="空と海">
+<% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
+<% @new_reviews.each do |new_review| %>
+<%= link_to new_review.title,new_review %>
+<%= link_to image_tag(new_review.image.url, :class => "fit-img"),new_review if new_review.image.url %>
+<% end %>
               </div>
               <div class="col-sm-12">
                 <div class="hidari gold">レビューをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>

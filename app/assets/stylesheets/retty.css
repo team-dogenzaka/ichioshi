@@ -107,3 +107,8 @@
 .topjiko{
   margin-left: 10px
 }
+
+.bottom{
+  margin-bottom: 10px;
+  border-bottom: dashed 1px #d7d7d7;
+}

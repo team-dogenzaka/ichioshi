@@ -35,8 +35,6 @@ class UsersController < ApplicationController
   def following
     @user  = User.find(params[:id])
     @users = @user.followings
-    @review  = current_user.reviews.build
-    @feed_items = current_user.feed
     render 'show_follow'
   end
 

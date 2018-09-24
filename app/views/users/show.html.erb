@@ -138,7 +138,7 @@
                 <div class="post-header font-alt">
                   <h2 class="post-title"><%= review.title %></h2>
                   <div class="post-meta">
-                    By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
+                    By&nbsp;<a href="#"><%= review.user.name %></a>&nbsp;| <%= review.created_at.strftime('%d %B') %> | <%= review.comments.count %> Comments
                   </div>
                 </div>
 

@@ -1,7 +1,11 @@
 <section class="module-medium" id="demos">
   <div class="container">
     <section class="">
+      <% if @user.coverimg.blank? %>
+<%= image_tag('/no_img.png', :class => "mypagecover-img") %>
+<% else %>
 <%= image_tag(@user.coverimg.url, :class => "mypagecover-img") %>
+        <% end %>
       <div class="mypageicon">
         <% if (@user.provider == "facebook") %>
           <% @user.icon = @user.icon.insert(4,"s") %>

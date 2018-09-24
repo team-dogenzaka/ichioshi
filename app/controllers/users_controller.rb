@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit( :name, :icon )
+    params.require(:user).permit( :name, :icon, :coverimg, :coverimg_cache )
   end
 
   def ensure_correct_user

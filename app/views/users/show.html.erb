@@ -1,6 +1,7 @@
 <section class="module-medium" id="demos">
   <div class="container">
-    <section class="bg-dark-60 blog-page-header cover mypagecover" data-background="images/3480159.jpg">
+    <section class="">
+<%= image_tag(@user.coverimg.url, :class => "mypagecover-img") %>
       <div class="mypageicon">
         <% if (@user.provider == "facebook") %>
           <% @user.icon = @user.icon.insert(4,"s") %>

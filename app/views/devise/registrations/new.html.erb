@@ -18,6 +18,10 @@
               <%= image_tag @user.avator.url if @user.avator.url %>
             </div>
 
+  <div class="field">
+    <%= f.label :coverimg %>
+    <%= f.file_field :coverimg, id: :coverimg %>
+  </div>
 
           <div class="field">
             <%= f.label :email %><br />

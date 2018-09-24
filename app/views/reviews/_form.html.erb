@@ -3,9 +3,10 @@
     <div id="error_explanation">
       <h2><%= @review.errors.count %>件のエラーがあります。</h2>
       <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
+
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
@@ -33,6 +34,6 @@
     <%= form.check_box 'draft', {}, false, true %>
   </div>
 
-  <%= form.submit "レビューを投稿する", class: "btn btn-round btn-d" %>
+  <%= form.submit "レビューを投稿する", class: "btn btn-round btn-d"  %>
 
 <% end %>

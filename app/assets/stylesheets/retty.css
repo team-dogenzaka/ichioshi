@@ -123,3 +123,10 @@
 .slider_adjust {
     left: 15px;
 }
+
+.search-box_label {
+    font-weight: bold;
+}
+.is-hide {
+    display: none;
+}

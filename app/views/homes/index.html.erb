@@ -2,8 +2,8 @@
   <section class="bg-dark-30 showcase-page-header module parallax-bg" data-background="assets/images/ichioshi.png">
     <div class="titan-caption">
       <div class="caption-content">
-        <div class="font-alt mb-30 titan-title-size-1">人からのおすすめで価値あるものを見つける</div>
-        <div class="font-alt mb-40 titan-title-size-4">IchiOshi</div>
+        <div class="font-alt mb-30 titan-title-size-1">本当にいいモノを、人からのおすすめで見つける</div>
+        <div class="font-alt mb-40 titan-title-size-4">ICHIOSHI</div>
         <% unless user_signed_in? %>
           <%= link_to image_tag('/images/facebook_login.png',:alt => "Karan Singh Sisodia", :size => '200'), user_facebook_omniauth_authorize_path, class: "login-button facebook" ,method: :post %>
         <% end %>
@@ -66,6 +66,7 @@
     <h2 class="module-title font-alt">#プレゼントのTOPレビュアー</h2>
     <div class="row multi-columns-row slider slider_adjust ">
       <% @users.each do |user| %>
+      <% if user.profile == "hoge" %>
         <div class="col-md-3 col-sm-12 col-xs-12">
           <div class="waku">
             <div class="row">
@@ -99,6 +100,8 @@
             </div>
           </div>
         </div>
+        <% else %>
+      <% end %>
       <% end %>
     </div>
   </div>

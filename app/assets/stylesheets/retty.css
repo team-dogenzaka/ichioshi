@@ -1,6 +1,7 @@
 .waku {
     border: solid 1px #e7e7e7;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top: 20px;
 }
 
 .hidari {
@@ -25,14 +26,14 @@
    position: absolute;
    margin-top: -90px;
    margin-left: 30px;
-   
+
 }
 
 .follow_button {
    position: absolute;
    margin-top: 100px;
    margin-left: 150px;
-   
+
 }
 
 .ribbon{
@@ -129,4 +130,8 @@
 }
 .is-hide {
     display: none;
+}
+
+ul {
+  list-style-type: none;
 }

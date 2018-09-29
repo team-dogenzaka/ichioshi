@@ -91,7 +91,7 @@
                 <% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
                 <% @new_reviews.each do |new_review| %>
                   <%= link_to new_review.title,new_review %>
-                  <%= link_to image_tag(new_review.image.url, :class => "fit-img"),new_review if new_review.image.url %>
+                  <%= link_to image_tag(new_review.image.url, :class => "fit-imgtop"),new_review if new_review.image.url %>
                 <% end %>
               </div>
               <div class="col-sm-12">
@@ -141,7 +141,7 @@
                 <% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
                 <% @new_reviews.each do |new_review| %>
                   <%= link_to new_review.title,new_review %>
-                  <%= link_to image_tag(new_review.image.url, :class => "fit-img"),new_review if new_review.image.url %>
+                  <%= link_to image_tag(new_review.image.url, :class => "fit-imgtop"),new_review if new_review.image.url %>
                 <% end %>
               </div>
               <div class="col-sm-12">

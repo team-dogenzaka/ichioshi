@@ -671,6 +671,8 @@ a,
 
 .btn.btn-circle {
   border-radius: 30px;
+  margin-top: -200px;
+    position: absolute;
 }
 
 .btn.btn-w {

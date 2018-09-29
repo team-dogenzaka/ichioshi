@@ -66,7 +66,6 @@
     <h2 class="module-title font-alt">#プレゼントのTOPレビュアー</h2>
     <div class="row multi-columns-row slider slider_adjust ">
       <% @users.each do |user| %>
-      <% if user.profile == "hoge" %>
         <div class="col-md-3 col-sm-12 col-xs-12">
           <div class="waku">
             <div class="row">
@@ -80,28 +79,27 @@
                 <% end %>
               </div>
               <div class="col-sm-8">
-                <h3 class="features-title font-alt hidari">モンブランに全てを捧げるモンブラン王</h3>
+                <h2 class="features-title font-alt hidari"><%= link_to user.name, user %></h2>
               </div>
               <div class="col-sm-12">
-                <div class=""><%= link_to user.name, user %></div>
-              </div>
-              <div class="col-sm-12">
-                <div class="dashed">自称「日本一ラーメンを食べた男」。ラーメンデータバンク取締役会長を務める。「日本ラーメン秘史」など執筆。ラーメンだけでなく鮨にも精通している。</div>
+                <div class="dashed"><%= user.profile.truncate(50) if user.profile %></div>
               </div>
               <div class="col-sm-12">
                 新着レビュー
               </div>
               <div class="col-sm-12">
-                <img src="/images/3480159.jpg" alt="海の写真" title="空と海">
+<% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
+<% @new_reviews.each do |new_review| %>
+<%= link_to new_review.title,new_review %>
+<%= link_to image_tag(new_review.image.url, :class => "fit-img"),new_review if new_review.image.url %>
+<% end %>
               </div>
               <div class="col-sm-12">
-                <div class="gold">レビューをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>
+                <div class="hidari gold">レビューをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>
               </div>
             </div>
           </div>
         </div>
-        <% else %>
-      <% end %>
       <% end %>
     </div>
   </div>

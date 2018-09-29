@@ -142,3 +142,24 @@
 ul {
   list-style-type: none;
 }
+
+.review_card {
+  position: relative;
+  pointer-events : none;
+}
+
+.top_margin {
+ margin-bottom: 5px;
+}
+
+.topimage {
+ height: 150px;
+}
+
+.topprofile {
+ height: 70px;
+}
+
+.toptitle {
+ position: absolute;
+}

@@ -14,8 +14,8 @@
             <%= f.email_field :email, autocomplete: "email", :class => "form-control" %>
           </div>
           <div class="field">
+            <%= f.label "アイコン画像" %><br />
             <% if (@user.provider == "facebook") %>
-              <%= f.label "アイコン画像" %><br />
               <%= image_tag(@user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100') if @user.icon %>
               <%= f.file_field :icon, id: :user_icon %>
             <% else %>
@@ -24,7 +24,6 @@
               <% else %>
                 <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => '100x100') %>
               <% end %>
-              <%= f.label :avator %><br />
               <%= f.file_field :avator, id: :user_avator %>
             <% end %>
           </div>

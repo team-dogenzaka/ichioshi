@@ -1578,6 +1578,7 @@ Google map
   font-size: 14px;
   color: #111;
   margin: 16px 0 15px;
+  word-wrap: break-word;
 }
 
 .alt-features-item {

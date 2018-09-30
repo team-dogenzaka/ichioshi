@@ -69,7 +69,7 @@
         <div class="col-md-3 col-sm-12 col-xs-12">
           <div class="waku">
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-4 col-xs-4">
                 <% if user.provider == "facebook" %>
                   <div class="features-icon"><% user.icon = user.icon.insert(4,"s") %><%= link_to image_tag(user.icon, :class => "img-circle", :alt => "", :size => '70x70'), user %></div>
                 <% elsif user.avator %>
@@ -78,13 +78,13 @@
                   <div class="features-icon"><%= link_to image_tag('imagse/no_img.png', :class => "img-circle", :alt => "", :size => '70x70'), user %></div>
                 <% end %>
               </div>
-              <div class="col-sm-8">
+              <div class="col-sm-8 col-xs-8">
                 <h2 class="features-title font-alt hidari"><%= link_to user.name, user %></h2>
               </div>
-              <div class="col-sm-12 topprofile">
+              <div class="col-sm-12 col-xs-12 topprofile">
                 <%= user.profile.truncate(50) if user.profile %>
               </div>
-              <div class="col-sm-12 topimage">
+              <div class="col-sm-12 col-xs-12 topimage">
                 <div class="dashed"></div>
                 <% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
                 <% @new_reviews.each do |new_review| %>
@@ -92,7 +92,7 @@
                   <%= link_to image_tag(new_review.image.url, :class => "fit-imgtop"),new_review if new_review.image.url %>
                 <% end %>
               </div>
-              <div class="col-sm-12">
+              <div class="col-sm-12 col-xs-12">
                 <div class="hidari gold">レビューをもっと見る&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;></div>
               </div>
             </div>

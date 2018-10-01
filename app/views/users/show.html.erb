@@ -36,7 +36,7 @@
           <tbody>
             <tr>
               <td>レビュー数</td>
-              <td><%= @user.reviews.count %></td>
+              <td><%= @user.reviews.count %>件</td>
             </tr>
             <tr>
               <td>写真</td>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
               <td>レビューへの訪問者数</td>
-              <td><%= number_with_delimiter(@page_views) %></td>
+              <td><%= number_with_delimiter(@page_views) %>人</td>
             </tr>
             <tr>
               <td>レビューへのお気に入り数</td>
@@ -52,7 +52,15 @@
               <% @user.reviews.each do |review| %>
                 <% @count += review.favorites.count %>
               <% end %>
-              <td><%= @count %>のお気に入り！</td>
+              <td><%= @count %>件</td>
+            </tr>
+            <tr>
+              <td>レビューへのいいね！数</td>
+              <% @count = 0 %>
+              <% @user.reviews.each do |review| %>
+                <% @count += review.likes.count %>
+              <% end %>
+              <td><%= @count %>件</td>
             </tr>
           </tbody>
         </table>
@@ -81,8 +89,8 @@ var searchBox = '.search-box'; // 絞り込む項目を選択するエリア
 var listItem = '.list_item';   // 絞り込み対象のアイテム
 var hideClass = 'is-hide';     // 絞り込み対象外の場合に付与されるclass名
 
-        
-        
+
+
 
 $(function() {
     // 絞り込み項目を変更した時

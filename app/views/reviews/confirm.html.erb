@@ -22,6 +22,12 @@
                   <% else %>
                     サムネイル用画像<%= image_tag '/no_img.png' %>
                   <% end %>
+                  <div class="article-tags-field">
+                    <%= f.label "カテゴリ" %>
+                    <ul id="article-tags">
+                    </ul>
+                    <%= hidden_field_tag :category_hidden,@category_list %>
+                  </div>
                 </div>
                 <li><%= form.submit  "登録する", class: "btn btn-round btn-d"  %></li>
               <% end %>

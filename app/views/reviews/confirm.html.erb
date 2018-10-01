@@ -23,7 +23,7 @@
                     サムネイル用画像<%= image_tag '/no_img.png' %>
                   <% end %>
                   <div class="article-tags-field">
-                    <%= f.label "カテゴリ" %>
+                    <%= form.label "カテゴリ" %>
                     <ul id="article-tags">
                     </ul>
                     <%= hidden_field_tag :category_hidden,@category_list %>

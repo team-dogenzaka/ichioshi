@@ -44,11 +44,15 @@
             </tr>
             <tr>
               <td>レビューへの訪問者数</td>
-              <td>3,468人</td>
+              <td><%= number_with_delimiter(@page_views) %></td>
             </tr>
             <tr>
               <td>レビューへのお気に入り数</td>
-              <td>568いいね！</td>
+              <% @user.reviews.each do |review| %>
+                <% @count = 0 %>
+                <% @count += review.favorites.count %>
+              <% end %>
+              <td><%= @count %>のお気に入り！</td>
             </tr>
           </tbody>
         </table>

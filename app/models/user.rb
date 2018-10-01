@@ -20,6 +20,8 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  
+  is_impressionable
 
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)

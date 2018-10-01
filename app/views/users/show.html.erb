@@ -48,7 +48,11 @@
             </tr>
             <tr>
               <td>レビューへのお気に入り数</td>
-              <td>568いいね！</td>
+              <% @user.reviews.each do |review| %>
+                <% @count = 0 %>
+                <% @count += review.favorites.count %>
+              <% end %>
+              <td><%= @count %>のお気に入り！</td>
             </tr>
           </tbody>
         </table>

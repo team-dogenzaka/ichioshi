@@ -12,9 +12,13 @@
                 <%= form.hidden_field :user_id %>
                 <%= form.hidden_field :image_cache %>
                 <%= form.hidden_field :draft %>
+                <%= form.hidden_field :hashtag_ids %>
+                <%= form.hidden_field :skill_list %> 
+                <%= form.hidden_field :interest_list %>
                 <div class="post-entry">
                   <p>タイトル:<%= @review.title %></p>
                   <p>本文:<%== @review.content %></p>
+                  <p>タグ:<%== @review.tag_list %></p>
                   <!--一旦コメントアウト <p>本文:<%= form.cktext_area :content, :class => "ckeditor" %></p> -->
                   <!-- 確認画面でアップロードした画像を表示させるための記述 -->
                   <% unless @review.image.blank? %>
@@ -22,12 +26,7 @@
                   <% else %>
                     サムネイル用画像<%= image_tag '/no_img.png' %>
                   <% end %>
-                  <div class="article-tags-field">
-                    <%= form.label "カテゴリ" %>
-                    <ul id="article-tags">
-                    </ul>
-                    <%= hidden_field_tag :category_hidden,@category_list %>
-                  </div>
+
                 </div>
                 <li><%= form.submit  "登録する", class: "btn btn-round btn-d"  %></li>
               <% end %>
@@ -37,6 +36,10 @@
                 <%= form.hidden_field :user_id %>
                 <%= form.hidden_field :image_cache %>
                 <%= form.hidden_field :draft %>
+                <%= form.hidden_field :hashtag_ids %>
+                <%= form.hidden_field :hashtag_ids %>
+                <%= form.hidden_field :skill_list %> 
+                <%= form.hidden_field :interest_list %>
                 <li><%= form.submit  "もどる", name: 'back', class: "btn btn-round btn-d"  %></li>
               <% end %>
             </ul>

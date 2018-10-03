@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
 
+  resources :hashtags
+  resources :reviewtags
+
   resources :reviews do
     collection do
       post :confirm

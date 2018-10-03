@@ -37,6 +37,28 @@
                 <% end %>
               </div>
 
+<table>
+  <thead>
+    <tr>
+      
+      <th>スキル・特技</th>
+      <th>興味・関心</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+        <td><%= render 'reviews/tag_list', tag_list: @review.skill_list %></td>
+        <td><%= render 'reviews/tag_list', tag_list: @review.interest_list %></td>
+
+      </tr>
+    
+  </tbody>
+</table>
+
               <div class="col-sm-4">
                 <% if user_signed_in? %>
                   <% unless @review.user_id == current_user.id %>

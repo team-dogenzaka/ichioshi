@@ -1,0 +1,2 @@
+class ReviewtagsController < ApplicationController
+end

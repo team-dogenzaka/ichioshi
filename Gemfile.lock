@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/mbleigh/acts-as-taggable-on.git
+  revision: 69322267029b54fe42be9a05e248df9de289a65b
+  branch: master
+  specs:
+    acts-as-taggable-on (6.0.1)
+      activerecord (~> 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -293,6 +301,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on!
   better_errors
   binding_of_caller
   byebug

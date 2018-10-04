@@ -13,7 +13,7 @@
                 <%= form.hidden_field :image_cache %>
                 <%= form.hidden_field :draft %>
                 <%= form.hidden_field :hashtag_ids %>
-                <%= form.hidden_field :skill_list %> 
+                <%= form.hidden_field :skill_list %>
                 <%= form.hidden_field :interest_list %>
                 <div class="post-entry">
                   <p>タイトル:<%= @review.title %></p>
@@ -22,12 +22,12 @@
                   <!--一旦コメントアウト <p>本文:<%= form.cktext_area :content, :class => "ckeditor" %></p> -->
                   <!-- 確認画面でアップロードした画像を表示させるための記述 -->
                   <% unless @review.image.blank? %>
-                    サムネイル用画像<%= image_tag(@review.image.to_s) %>
+                    サムネイル用画像:<%= image_tag(@review.image.to_s, :size => '200x200') %>
                   <% else %>
-                    サムネイル用画像<%= image_tag '/no_img.png' %>
+                    サムネイル用画像:<%= image_tag '/no_img.png', :size => '200x200' %>
                   <% end %>
-
                 </div>
+              <br>
                 <li><%= form.submit  "登録する", class: "btn btn-round btn-d"  %></li>
               <% end %>
               <%= form_with(model: @review, url: new_review_path, local: true, method: 'get') do |form| %>
@@ -38,9 +38,9 @@
                 <%= form.hidden_field :draft %>
                 <%= form.hidden_field :hashtag_ids %>
                 <%= form.hidden_field :hashtag_ids %>
-                <%= form.hidden_field :skill_list %> 
+                <%= form.hidden_field :skill_list %>
                 <%= form.hidden_field :interest_list %>
-                <li><%= form.submit  "もどる", name: 'back', class: "btn btn-round btn-d"  %></li>
+                <li><%= form.submit  "もどる", name: 'back', class: "btn btn-round btn-d btn-space"  %></li>
               <% end %>
             </ul>
           </div>

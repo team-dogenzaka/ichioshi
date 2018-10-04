@@ -13,6 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.uid = session['devise.facebook_data']['info']['uid']
       @user.name = session['devise.facebook_data']['info']['name']
       @user.icon = session['devise.facebook_data']['info']['image'] 
+      @user.icon = session['devise.facebook_data']['info']['tag'] 
       render 'devise/registrations/new'
     end
   end

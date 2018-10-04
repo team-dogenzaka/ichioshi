@@ -18,6 +18,10 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+  
+  resources :items do
+    patch 'update_tags', on: :member
+  end
 
   resources :users do
     member do

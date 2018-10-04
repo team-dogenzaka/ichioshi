@@ -56,5 +56,15 @@
         <% end %>
       </div>
     </div>
+    <div clas="UserDeleteArea">
+      <hr>
+      <i class="fa fa-trash"></i>アカウント削除
+      <div class="UserDeleteAlartMessage">
+        一度アカウントを削除すると、二度と元に戻せません。十分ご注意ください。
+      </div>
+      <div class="UserDelete">
+        <%= link_to 'アカウントを削除する', users_destroy_path(id: current_user.id), method: :delete ,data: { confirm: '本当に退会しますか？' } %>
+      </div>
+    </div>
   </div>
 </section>

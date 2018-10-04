@@ -1,7 +1,7 @@
 .waku {
     border: solid 1px #e7e7e7;
     margin-top: 10px;
-    
+
 }
 
 .hidari {
@@ -162,4 +162,8 @@ ul {
 
 .toptitle {
  margin-left: 10px;
+}
+
+.btn-space {
+  margin-top: 10px;
 }

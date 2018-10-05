@@ -37,7 +37,7 @@
 
   <div class="field">
     <%= form.label :skill_list, "タグ:" %><br>
-    <%= text_field_tag 'review[skill_list]', @review.skill_list.join(','), :placeholder => "タグ1,タグ2,タグ3..." %>
+    <%= text_field_tag 'review[skill_list]', @review.skill_list.join(',') %>
   </div>
 
 <!--

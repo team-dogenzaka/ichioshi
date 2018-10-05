@@ -3,8 +3,7 @@ class ReviewsController < ApplicationController
   before_action :user_check, only: [:edit, :update, :destroy]
   PER = 6
   def index
-    @review = params[:tag].present? ? Review.tagged_with(params[:tag]).page(params[:page]).per(PER) : Review.all.page(params[:page]).per(PER)
-    @review = @review.includes(:tags)
+    @review = Review.where(draft: true).page(params[:page]).per(PER)
   end
 
   def new

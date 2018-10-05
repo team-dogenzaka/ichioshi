@@ -23,7 +23,10 @@
 
     <div class="row">
       <div class="col-sm-8">
-        <h3><%= @user.name %></h3>
+        <div class="UserNameContainar">
+          <h3><%= @user.name %></h3>
+          <%= render 'stats' %>
+        </div>
         <div><%= @user.profile  %></div>
         <% if current_user && @user.id == current_user.id %>
           <div class="UserEditLink">
@@ -137,11 +140,16 @@ function get_selected_input_items(name) {
 
 </script>
 
+<form>
 
-
-
-
-
+    <div class="search-box">
+        <span class="search-box_label">タイトル:</span>
+        <input type="checkbox" name="color" value="">ALL
+        <% @tag.each do |tag| %>
+        <input type="checkbox" name="color" value="<%= tag.name %>"><%= tag.name %>
+<% end %>
+    </div>
+</form>
         <ul class="nav nav-tabs">
           <li class="nav-item active">
             <a href="#tab1" class="nav-link" data-toggle="tab">投稿一覧</a>
@@ -165,7 +173,6 @@ function get_selected_input_items(name) {
 </form>
 <div class="top_margin"> </div>
             </div>
-            <div class="top_margin"> </div>
             <div class="list">
               <% @user.reviews.each do |review| %>
               <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
@@ -228,12 +235,6 @@ function get_selected_input_items(name) {
 
 
       <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
-        <div class="widget">
-          <h5 class="widget-title font-alt">つながり</h5>
-          <ul class="icon-list">
-            <%= render 'stats' %>
-          </ul>
-        </div>
         <div class="widget">
           <h5 class="widget-title font-alt">Recent Posts</h5>
           <ul class="icon-list">

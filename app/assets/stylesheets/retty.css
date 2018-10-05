@@ -169,6 +169,7 @@ ul {
 }
 
 .UserEditLink {
+    margin: 15px 0px;
 }
 
 .UserEditLink a {
@@ -196,6 +197,12 @@ ul {
     margin-top: .6em;
 }
 
+.UserNameContainar {
+    display: inline-flex;
+    align-items: baseline;
+    width: 100%;
+}
+
 .UserDelete {
     background-color: #e14b22;
     color: #fff;
@@ -207,4 +214,28 @@ ul {
     cursor: pointer;
     text-decoration: none;
     box-sizing: inherit;
+}
+
+.FollowCountContainar {
+    margin-left: 30px;
+}
+
+.FollowCount {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #222222;
+}
+
+.stats {
+    display: inline;
+}
+.stats:last-child {
+    padding-left:20px;
+}
+
+.stat {
+    font-size: 14px;
+    color: #787c7b;
+    line-height: 1.5;
 }

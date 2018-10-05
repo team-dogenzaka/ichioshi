@@ -1,17 +1,15 @@
-<ul>
- <% @user ||= current_user %>
-<div class="stats">
-  <a href="<%= following_user_path(@user) %>">
-    <strong id="following" class="stat">フォローしているユーザー数
-      <%= @user.followings.count %>
-    </strong>
-  </a>
+<div class="FollowCountContainar">
+  <% @user ||= current_user %>
+  <div class="stats">
+    <a href="<%= following_user_path(@user) %>">
+      <span class="FollowCount"><%= @user.followings.count %></span>
+      <span class="stat">フォロー</span>
+    </a>
+  </div>
+  <div class="stats">
+    <a href="<%= followers_user_path(@user) %>">
+      <span class="FollowCount"><%= @user.followers.count %></span>
+      <span class="stat">フォロワー</span>
+    </a>
+  </div>
 </div>
-<div class="stats">
-  <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers" class="stat">フォローされているユーザー数
-      <%= @user.followers.count %>
-    </strong>
-  </a>
-</div>
-</ul>

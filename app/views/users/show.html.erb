@@ -2,10 +2,10 @@
   <div class="container">
     <section class="">
       <% if @user.coverimg.blank? %>
-<%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/usercoverimg.jpg', :class => "mypagecover-img") %>
-<% else %>
-<%= image_tag(@user.coverimg.url, :class => "mypagecover-img") %>
-        <% end %>
+        <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/usercoverimg.jpg', :class => "mypagecover-img") %>
+      <% else %>
+        <%= image_tag(@user.coverimg.url, :class => "mypagecover-img") %>
+      <% end %>
       <div class="mypageicon">
         <% if (@user.provider == "facebook") %>
           <% @user.icon = @user.icon.insert(4,"s") %>

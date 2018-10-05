@@ -2,10 +2,10 @@
   <div class="container">
     <section class="">
       <% if @user.coverimg.blank? %>
-<%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/usercoverimg.jpg', :class => "mypagecover-img") %>
-<% else %>
-<%= image_tag(@user.coverimg.url, :class => "mypagecover-img") %>
-        <% end %>
+        <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/usercoverimg.jpg', :class => "mypagecover-img") %>
+      <% else %>
+        <%= image_tag(@user.coverimg.url, :class => "mypagecover-img") %>
+      <% end %>
       <div class="mypageicon">
         <% if (@user.provider == "facebook") %>
           <% @user.icon = @user.icon.insert(4,"s") %>
@@ -26,8 +26,9 @@
         <h3><%= @user.name %></h3>
         <div><%= @user.profile  %></div>
         <% if current_user && @user.id == current_user.id %>
-          <%= link_to 'ユーザーを編集する', edit_user_registration_path  %>
-          <%= link_to 'ユーザーを削除する', users_destroy_path(id: current_user.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+          <div class="UserEditLink">
+            <%= link_to(content_tag(:i, 'プロフィールを編集する', class: 'fa fa-cog'), edit_user_registration_path)  %>
+          </div>
         <% end %>
       </div>
 

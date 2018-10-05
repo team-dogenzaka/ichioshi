@@ -167,3 +167,15 @@ ul {
 .btn-space {
   margin-top: 10px;
 }
+
+.UserEditLink {
+}
+
+.UserEditLink a {
+    color: #999;
+    font-size: 13px;
+}
+
+.UserEditLink a:hover {
+    color: #2A577F;
+}

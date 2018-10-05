@@ -16,7 +16,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @tag =  ActsAsTaggableOn::Tag.all
     @user = User.find(params[:id])
+    impressionist(@user, nil, :unique => [:session_hash])
+    @page_views = @user.impressionist_count
     if current_user != nil
       @feed_items = current_user.feed
     end

@@ -12,28 +12,43 @@
   <% end %>
 
   <div class="blog_title">
-    <%= form.label :title %>
+    <%= form.label "タイトル:" %>
     <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
+    <%= form.label "コンテンツ:" %>
     <%= form.cktext_area :content, :class => "ckeditor" %>
   </div>
-
+  <br>
   <div class="field">
-    <%= form.label :サムネイル用画像 %>
+    <%= form.label "サムネイル用画像:" %>
     <!-- 確認画面から新規作成画面に戻った時に、 -->
     <!-- アップロードした画像を表示させるための記述 -->
-    <%= image_tag(@review.image.url) if @review.image.url %>
+    <%= image_tag(@review.image.url, :size => '200x200') if @review.image.url %>
     <%= form.file_field :image, id: :review_image %>
   </div>
-
+  <br>
   <div class="field">
     <%= form.label :下書き %>
     <%= form.check_box 'draft', {}, false, true %>
   </div>
 
+
+  <div class="field">
+    <%= form.label :skill_list, "タグ:" %><br>
+    <%= text_field_tag 'review[skill_list]', @review.skill_list.join(','), :placeholder => "タグ1,タグ2,タグ3..." %>
+  </div>
+
+<!--
+<div class="field">
+     <%= form.label :tags %><br>
+    <%= collection_check_boxes(:hashtag, :hashtag_ids, Hashtag.all, :id, :hashtag_name ) do |t|  %>
+      <% t.label { t.check_box + t.text } %>
+      <% end %>
+</div>
+-->
+  <br>
   <%= form.submit "レビューを投稿する", class: "btn btn-round btn-d"  %>
 
 <% end %>

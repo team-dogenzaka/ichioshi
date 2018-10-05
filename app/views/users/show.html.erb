@@ -2,10 +2,10 @@
   <div class="container">
     <section class="">
       <% if @user.coverimg.blank? %>
-<%= image_tag('/no_img.png', :class => "mypagecover-img") %>
-<% else %>
-<%= image_tag(@user.coverimg.url, :class => "mypagecover-img") %>
-        <% end %>
+        <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/usercoverimg.jpg', :class => "mypagecover-img") %>
+      <% else %>
+        <%= image_tag(@user.coverimg.url, :class => "mypagecover-img") %>
+      <% end %>
       <div class="mypageicon">
         <% if (@user.provider == "facebook") %>
           <% @user.icon = @user.icon.insert(4,"s") %>
@@ -26,8 +26,9 @@
         <h3><%= @user.name %></h3>
         <div><%= @user.profile  %></div>
         <% if current_user && @user.id == current_user.id %>
-          <%= link_to 'ユーザーを編集する', edit_user_registration_path  %>
-          <%= link_to 'ユーザーを削除する', users_destroy_path(id: current_user.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+          <div class="UserEditLink">
+            <%= link_to(content_tag(:i, 'プロフィールを編集する', class: 'fa fa-cog'), edit_user_registration_path)  %>
+          </div>
         <% end %>
       </div>
 
@@ -36,19 +37,27 @@
           <tbody>
             <tr>
               <td>レビュー数</td>
-              <td><%= @user.reviews.count %></td>
-            </tr>
-            <tr>
-              <td>写真</td>
-              <td>456枚</td>
+              <td><%= @user.reviews.count %>件</td>
             </tr>
             <tr>
               <td>レビューへの訪問者数</td>
-              <td>3,468人</td>
+              <td><%= number_with_delimiter(@page_views) %>人</td>
             </tr>
             <tr>
               <td>レビューへのお気に入り数</td>
-              <td>568いいね！</td>
+              <% @count = 0 %>
+              <% @user.reviews.each do |review| %>
+                <% @count += review.favorites.count %>
+              <% end %>
+              <td><%= @count %>件</td>
+            </tr>
+            <tr>
+              <td>レビューへのいいね！数</td>
+              <% @count = 0 %>
+              <% @user.reviews.each do |review| %>
+                <% @count += review.likes.count %>
+              <% end %>
+              <td><%= @count %>件</td>
             </tr>
           </tbody>
         </table>
@@ -71,15 +80,80 @@
           });
         </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var searchBox = '.search-box'; // 絞り込む項目を選択するエリア
+var listItem = '.list_item';   // 絞り込み対象のアイテム
+var hideClass = 'is-hide';     // 絞り込み対象外の場合に付与されるclass名
+
+
+
+
+$(function() {
+    // 絞り込み項目を変更した時
+    $(document).on('change', searchBox + ' input', function() {
+        search_filter();
+    });
+});
+
+/**
+ * リストの絞り込みを行う
+ */
+function search_filter() {
+    // 非表示状態を解除
+    $(listItem).removeClass(hideClass);
+    for (var i = 0; i < $(searchBox).length; i++) {
+        var name = $(searchBox).eq(i).find('input').attr('name');
+        // 選択されている項目を取得
+        var searchData = get_selected_input_items(name);
+        // 選択されている項目がない、またはALLを選択している場合は飛ばす
+        if(searchData.length === 0 || searchData[0] === '') {
+            continue;
+        }
+        // リスト内の各アイテムをチェック
+        for (var j = 0; j < $(listItem).length; j++) {
+            // アイテムに設定している項目を取得
+            var itemData = $(listItem).eq(j).data(name);
+            // 絞り込み対象かどうかを調べる
+            if(searchData.indexOf(itemData) === -1) {
+                $(listItem).eq(j).addClass(hideClass);
+            }
+        }
+    }
+}
+
+/**
+ * inputで選択されている値の一覧を取得する
+ * @param  {String} name 対象にするinputのname属性の値
+ * @return {Array}       選択されているinputのvalue属性の値
+ */
+function get_selected_input_items(name) {
+    var searchData = [];
+    $('[name=' + name + ']:checked').each(function() {
+        searchData.push($(this).val());
+    });
+    return searchData;
+}
+
+</script>
+
+<form>
+
+    <div class="search-box">
+        <span class="search-box_label">タイトル:</span>
+        <input type="checkbox" name="color" value="">ALL
+        <% @tag.each do |tag| %>
+        <input type="checkbox" name="color" value="<%= tag.name %>"><%= tag.name %>
+<% end %>
+    </div>
+</form>
+
         <ul class="nav nav-tabs">
           <li class="nav-item active">
             <a href="#tab1" class="nav-link" data-toggle="tab">投稿一覧</a>
           </li>
           <li class="nav-item">
             <a href="#tab2" class="nav-link" data-toggle="tab">お気に入り一覧</a>
-          </li>
-          <li class="nav-item">
-            <a href="#tab3" class="nav-link" data-toggle="tab">フォローしている人の投稿一覧</a>
           </li>
         </ul>
         <div class="tab-content">
@@ -137,61 +211,61 @@
               <input type="checkbox" name="riyu" value="50">	#収納
               <input type="checkbox" name="riyu" value="51">	#雑貨
             </div>
-
-            <% @user.reviews.each do |review| %>
-              <div class="post">
-                <div class="post-header font-alt">
-                  <h2 class="post-title"><%= review.title %></h2>
-                  <div class="post-meta">
-                    By&nbsp;<a href="#"><%= review.user.name %></a>&nbsp;| <%= review.created_at.strftime('%d %B') %> | <%= review.comments.count %> Comments
-                  </div>
-                </div>
-
-                <div class="post-entry">
-                  <div class="main onhidden">
-                    <%== review.content %>
-                    <div class="readmore">
-                      <span>続きを読む</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-more">
-                  <%= link_to '詳細を確認する', review_path(review.id) %>
-                  <% if current_user && @user.id == current_user.id %>
-                    <%= link_to "編集する", edit_review_path(review.id) %>
-                    <%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-
-          <div id="tab2" class="tab-pane">
-            <% @user.favorite_reviews.each do |review| %>
-              <div class="col-md-6 col-lg-6">
+            <div class="list">
+              <% @user.reviews.each do |review| %>
+              <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
                 <div class="post">
-                  <div class="post-thumbnail">
-                    <%= image_tag(review.image.url, :class => "fit-img") if review.image.url %>
-                  </div>
                   <div class="post-header font-alt">
                     <h2 class="post-title"><%= review.title %></h2>
-                    <div class="post-meta">By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments</div>
+                    <div class="post-meta">
+                      By&nbsp;<%= link_to @user.name, @user %>&nbsp;| <%= review.created_at.strftime('%Y-%m-%d') %>|<%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %> | <%= review.comments.count %> comments
+                    </div>
                   </div>
                   <div class="post-entry">
-                    <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                    <div class="main onhidden">
+                      <%== review.content %>
+                      <div class="readmore">
+                        <span>続きを読む</span>
+                      </div>
+                    </div>
                   </div>
                   <div class="post-more">
                     <%= link_to '詳細を確認する', review_path(review.id) %>
+                    <% if current_user && @user.id == current_user.id %>
+                      <%= link_to "編集する", edit_review_path(review.id) %>
+                      <%= link_to 'ブログを削除する', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+                    <% end %>
                   </div>
                 </div>
               </div>
-            <% end %>
-          </div>
-          <div id="tab3" class="tab-pane">
-            <% if current_user && @user.id == current_user.id %>
-              <% if @feed_items.any? %>
-                <%= render @feed_items %>
               <% end %>
+            </div>
+          </div>
+          <div id="tab2" class="tab-pane">
+            <% @user.favorite_reviews.each do |review| %>
+            <div class="post">
+              <div class="post-thumbnail">
+                <%= image_tag(review.image.url, :class => "fit-img") if review.image.url %>
+              </div>
+              <div class="post-header font-alt">
+                <h2 class="post-title"><%= review.title %></h2>
+                <div class="post-meta">
+                  <% post_user = User.find(review.user_id) %>
+                    By&nbsp;<%= link_to post_user.name, user_path(post_user.id) %>&nbsp;| <%= review.created_at.strftime('%Y-%m-%d') %> | <%= review.comments.count %> comments
+                </div>
+              </div>
+              <div class="post-entry">
+                <div class="main onhidden">
+                  <%== review.content %>
+                  <div class="readmore">
+                    <span>続きを読む</span>
+                  </div>
+                </div>
+              </div>
+              <div class="post-more">
+                <%= link_to '詳細を確認する', review_path(review.id) %>
+              </div>
+            </div>
             <% end %>
           </div>
         </div>

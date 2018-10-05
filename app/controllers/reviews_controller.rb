@@ -10,8 +10,10 @@ class ReviewsController < ApplicationController
     if user_signed_in?
       if params[:back]
         @review = Review.new(review_params)
+        @review.reviewtags.build
       else
         @review = Review.new
+        @review.reviewtags.build
       end
     else
       redirect_to users_path, notice: "ログインしてね！"
@@ -21,7 +23,9 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
+    
     if @review.save
+      
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
       redirect_to reviews_path, notice: "レビューを作成しました！"
     else
@@ -33,7 +37,8 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     if current_user
-     @favorite = current_user.favorites.find_by(review_id: @review.id)
+      @favorite = current_user.favorites.find_by(review_id: @review.id)
+      @like = current_user.likes.find_by(review_id: @review.id)
     end
     @post_user = @review.user
     @comment = Comment.new
@@ -65,13 +70,15 @@ class ReviewsController < ApplicationController
   def confirm
     @review = Review.new(review_params)
     @review.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
+    
     render :new if @review.invalid?
   end
 
   private
   def review_params
-    params.require(:review).permit(:title, :content, :user_id, :name, :image, :image_cache, :draft, :comment_content, :review_id)
+    params.require(:review).permit(:title, :content, :user_id, :name, :image, :image_cache, :draft, :comment_content, :review_id, :interest_list, :skill_list)
   end
+
 
   def set_review
     @review = Review.find(params[:id])

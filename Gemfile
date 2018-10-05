@@ -44,6 +44,7 @@ gem 'fog-aws'
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'impressionist'
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'master'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

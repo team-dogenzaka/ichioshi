@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
   mount Ckeditor::Engine => '/ckeditor'
   delete 'users/delete/:id', to: 'users#destroy', as: 'users/destroy'
   get '/', to: 'homes#index', as: 'root'
@@ -6,11 +8,19 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show], as: 'users'
   get '/reviews', to: 'reviews#index'
   resources :favorites, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
+
+  resources :hashtags
+  resources :reviewtags
 
   resources :reviews do
     collection do
       post :confirm
     end
+  end
+  
+  resources :items do
+    patch 'update_tags', on: :member
   end
 
   resources :users do

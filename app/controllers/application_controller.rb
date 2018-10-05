@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:avator])
     devise_parameter_sanitizer.permit(:account_update, keys: [:profile])
     devise_parameter_sanitizer.permit(:account_update, keys: [:coverimg])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:tag])
   end
   
 end

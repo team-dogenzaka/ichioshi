@@ -23,18 +23,25 @@
 
     <div class="row">
       <div class="col-sm-8">
-        <div class="UserNameContainar">
-          <h3><%= @user.name %></h3>
-          <%= render 'stats' %>
-        </div>
-        <div><%= @user.profile  %></div>
-        <% if current_user && @user.id == current_user.id %>
-          <div class="UserEditLink">
-            <%= link_to(content_tag(:i, 'プロフィールを編集する', class: 'fa fa-cog'), edit_user_registration_path)  %>
+        <div class="row">
+          <div class="col-sm-6">
+            <h3><%= @user.name %></h3>
           </div>
-        <% end %>
+          <div class="FollowCountContainar col-sm-5">
+            <%= render 'stats' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-11">
+            <%= @user.profile  %>
+            <% if current_user && @user.id == current_user.id %>
+              <div class="UserEditLink">
+                <%= link_to(content_tag(:i, 'プロフィールを編集する', class: 'fa fa-cog'), edit_user_registration_path)  %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
-
       <div class="col-sm-4">
         <table class="table">
           <tbody>
@@ -232,9 +239,8 @@ function get_selected_input_items(name) {
           </div>
         </div>
       </div>
-
-
-      <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
+      
+      <div class="hidden-xs col-sm-4 col-md-3 col-md-offset-1 sidebar">
         <div class="widget">
           <h5 class="widget-title font-alt">Recent Posts</h5>
           <ul class="icon-list">

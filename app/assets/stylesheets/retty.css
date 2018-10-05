@@ -181,6 +181,10 @@ ul {
     color: #2A577F;
 }
 
+.FollowCountContainar {
+    line-height: 6;
+}
+
 .UserDeleteHeader {
     display: block;
     font-size: 1.4rem;
@@ -197,12 +201,6 @@ ul {
     margin-top: .6em;
 }
 
-.UserNameContainar {
-    display: inline-flex;
-    align-items: baseline;
-    width: 100%;
-}
-
 .UserDelete {
     background-color: #e14b22;
     color: #fff;
@@ -216,9 +214,6 @@ ul {
     box-sizing: inherit;
 }
 
-.FollowCountContainar {
-    margin-left: 30px;
-}
 
 .FollowCount {
     font-size: 16px;

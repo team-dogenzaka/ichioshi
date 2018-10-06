@@ -16,15 +16,17 @@
                 <%= form.hidden_field :skill_list %>
                 <%= form.hidden_field :interest_list %>
                 <div class="post-entry">
-                  <p>タイトル:<%= @review.title %></p>
-                  <p>本文:<%== @review.content %></p>
-                  <p>タグ:<%== @review.tag_list %></p>
-                  <!--一旦コメントアウト <p>本文:<%= form.cktext_area :content, :class => "ckeditor" %></p> -->
-                  <!-- 確認画面でアップロードした画像を表示させるための記述 -->
-                  <% unless @review.image.blank? %>
-                    サムネイル用画像:<%= image_tag(@review.image.to_s, :size => '200x200') %>
-                  <% else %>
-                    サムネイル用画像:<%= image_tag '/no_img.png', :size => '200x200' %>
+                  <div class="post-header font-alt">
+                    <h1><%= @review.title %></h1>
+                    <div class="post-meta">
+                      <div class="post-entry">
+                        <%== @review.content %>
+                        <%== @review.tag_list %>
+                        <!--一旦コメントアウト <p>本文:<%= form.cktext_area :content, :class => "ckeditor" %></p> -->
+                        <!-- 確認画面でアップロードした画像を表示させるための記述 -->
+                        サムネイル用画像:<%= image_tag(@review.image.to_s, :size => '200x200') %>
+                      </div>
+                    </div>
                   <% end %>
                 </div>
               <br>

@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     if current_user != nil
       @feed_items = current_user.feed
     end
+    @users = User.all
   end
 
   def edit

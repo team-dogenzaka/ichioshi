@@ -44,7 +44,6 @@ CKEDITOR.editorConfig = function( config )
     // { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
     ['Bold',  'Underline', 'Strike'],
     [ 'NumberedList', 'BulletedList', 'Blockquote', 'Link', 'Image'],
-    '/',
     [ 'Styles', 'Format', 'Font', 'FontSize' ],
     [ 'TextColor']
     ];

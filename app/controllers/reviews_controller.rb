@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
     if @review.save
       
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
-      redirect_to userss_path(id: @review.user_id), notice: "レビューを作成しました！"
+      redirect_to user_path(@review.user_id), notice: "レビューを作成しました！"
     else
       # 入力フォームを再描画します。
       render 'new'

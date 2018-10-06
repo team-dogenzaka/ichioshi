@@ -44,20 +44,6 @@
     </div>
   </section>
 
-  <% if current_user && @user.id == current_user.id %>
-    <% if @feed_items.any? %>
-      <section class="" id="demos">
-        <div class="container">
-          <center><h2>フォローしている人の新着レビュー</h2></center>
-          <div class="row multi-columns-row slider slider_adjust">
-            <%= render @feed_items %>
-          </div>
-        </div>
-      </section>
-    <% end %>
-  <% end %>
-</div>
-
 
   <% if current_user && @user.id == current_user.id %>
     <% if @feed_items.any? %>

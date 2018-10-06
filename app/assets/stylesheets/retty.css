@@ -236,8 +236,12 @@ ul {
 }
 
 .post-function {
-    color: #999;
+    color: #787c7b;
     font-size: 1.2rem;
     margin-right: 16px;
     margin-left: 16px;
+}
+
+.ReviewEditLink {
+    color: #787c7b;
 }

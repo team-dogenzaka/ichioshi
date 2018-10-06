@@ -178,7 +178,7 @@
                         <%= review.created_at.strftime('%Y-%m-%d') %> |
                         <%= review.comments.count %> comments |
                         <%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %>
-                        <% if @user.id == review.user_id %>
+                        <% if @user.id == current_user.id %>
                           <%= link_to (content_tag(:i, '編集する', class: 'fas fa-pencil-alt post-function')), edit_review_path(review.id) %>
                           <%= link_to (content_tag(:i, '',class: 'far fa-trash-alt post-function')), review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
                         <% end %>

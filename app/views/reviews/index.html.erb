@@ -16,7 +16,7 @@
                   <%= image_tag(review.image.to_s, :class => "fit-img") if review.image.to_s %>
                 </div>
                 <div class="post-header font-alt">
-                  <h2 class="post-title"><%= review.title.truncate(40) %></h2>
+                  <h2 class="post-title"><%= review.title.truncate(30) %></h2>
                   <div class="post-meta">
                       <% post_user = review.user %>
                      By&nbsp;<%= link_to post_user.name, user_path(id: post_user.id) %>&nbsp;| <%= review.created_at.strftime('%Y-%m-%d') %> | <%= review.comments.count %> Comments
@@ -24,7 +24,7 @@
                 </div>
                 <div class="post-entry">
                   <% preview_content = ApplicationController.helpers.strip_tags(review.content) %>
-                  <p><%= preview_content.truncate(135) %></p>
+                  <p><%= preview_content.truncate(50) %></p>
                 </div>
                 <div class="post-more"><%= link_to '詳細を確認する', review_path(review.id) %></div>
               </div>

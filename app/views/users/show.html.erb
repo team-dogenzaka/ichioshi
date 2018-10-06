@@ -126,8 +126,6 @@
                 }
             }
         }
-
-
         /**
          * inputで選択されている値の一覧を取得する
          * @param  {String} name 対象にするinputのname属性の値
@@ -190,7 +188,7 @@
                     </div>
                   </div>
                   <div class="post-more">
-                    
+
                   </div>
                 </div>
               </div>
@@ -210,10 +208,10 @@
                   <% end %>
                 </div>
               </form>
-              
+
               <div class="top_margin"> </div>
             </div>
-            
+
             <div class="list">
             <% @user.favorite_reviews.order("created_at DESC").each do |review| %>
             <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
@@ -246,8 +244,6 @@
         </div>
   </div>
    </div>
-
-      
       <div class="hidden-xs col-sm-4 col-md-3 col-md-offset-1 sidebar">
         <div class="widget">
           <h5 class="widget-title font-alt">Recent Posts</h5>

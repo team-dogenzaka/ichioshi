@@ -245,3 +245,8 @@ ul {
 .ReviewEditLink {
     color: #787c7b;
 }
+
+.post-entry {
+    word-wrap: break-word;
+    height: 63px;
+}

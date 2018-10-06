@@ -194,7 +194,7 @@
             </div>
           </div>
           <div id="tab2" class="tab-pane">
-                        <div class="waku">
+            <div class="waku">
               <form>
                 <div class="search-box">
                   <span class="search-box_label">タグで絞り込む:</span><br>
@@ -209,39 +209,39 @@
             </div>
             
             <div class="list">
-              <% @user.favorite_reviews.order("created_at DESC").each do |review| %>
-              <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
-                <div class="post">
-                  <div class="post-header font-alt">
-                    <h2 class="post-title"><%= review.title %></h2>
-                    <div class="post-meta">
-                      By&nbsp;<%= link_to @user.name, @user %>&nbsp;| <%= review.created_at.strftime('%Y-%m-%d') %> |<%= review.comments.count %> comments |<%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %> <% if current_user && @user.id == current_user.id %>
+            <% @user.favorite_reviews.order("created_at DESC").each do |review| %>
+            <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
+              <div class="post">
+                <div class="post-thumbnail">
+                  <%= image_tag(review.image.url, :class => "fit-img") if review.image.url %>
+                </div>
+                <div class="post-header font-alt">
+                  <h2 class="post-title"><%= review.title %></h2>
+                  <div class="post-meta">
+                    By&nbsp;<%= link_to @user.name, @user %>&nbsp;| <%= review.created_at.strftime('%Y-%m-%d') %> |<%= review.comments.count %> comments |<%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %> <% if current_user && @user.id == current_user.id %>
                       <%= link_to (content_tag(:i, '編集する', class: 'fas fa-pencil-alt post-function')), edit_review_path(review.id) %>
                       <%= link_to (content_tag(:i, '',class: 'far fa-trash-alt post-function')), review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
                     <% end %>
-                    </div>
-                  </div>
-                  <div class="post-entry">
-                    <div class="main onhidden">
-                      <%== review.content %>
-                      <%= link_to '詳細を確認する', review_path(review.id) %>
-                      <div class="readmore">
-                        <span>続きを読む</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="post-more">
-                    
                   </div>
                 </div>
+                <div class="post-entry">
+                  <div class="main onhidden">
+                    <%== review.content %>
+                    <div class="readmore">
+                      <span>続きを読む</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="post-more">
+                  <%= link_to '詳細を確認する', review_path(review.id) %>
+                </div>
               </div>
-              <% end %>
-            </div>
+            <% end %>
           </div>
         </div>
-        
+  
 </div>
-      
+      </div>
       <div class="hidden-xs col-sm-4 col-md-3 col-md-offset-1 sidebar">
         <div class="widget">
           <h5 class="widget-title font-alt">Recent Posts</h5>

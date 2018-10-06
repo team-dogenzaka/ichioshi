@@ -139,15 +139,7 @@
             return searchData;
         }
         </script>
-        <form>
-          <div class="search-box">
-            <span class="search-box_label">タイトル:</span>
-            <input type="checkbox" name="color" value="">ALL
-            <% @tag.each do |tag| %>
-              <input type="checkbox" name="color" value="<%= tag.name %>"><%= tag.name %>
-            <% end %>
-          </div>
-        </form>
+        
         <ul class="nav nav-tabs">
           <li class="nav-item active">
             <a href="#tab1" class="nav-link" data-toggle="tab">投稿一覧</a>

@@ -181,7 +181,7 @@ function get_selected_input_items(name) {
 <div class="top_margin"> </div>
             </div>
             <div class="list">
-              <% @user.reviews.each do |review| %>
+              <% @user.reviews.order("created_at DESC").each do |review| %>
               <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
                 <div class="post">
                   <div class="post-header font-alt">
@@ -211,7 +211,7 @@ function get_selected_input_items(name) {
             </div>
           </div>
           <div id="tab2" class="tab-pane">
-            <% @user.favorite_reviews.each do |review| %>
+            <% @user.favorite_reviews.order("created_at DESC").each do |review| %>
             <div class="post">
               <div class="post-thumbnail">
                 <%= image_tag(review.image.url, :class => "fit-img") if review.image.url %>

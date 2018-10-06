@@ -218,9 +218,6 @@
             <% @user.favorite_reviews.order("created_at DESC").each do |review| %>
             <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
               <div class="post">
-                <div class="post-thumbnail">
-                  <%= image_tag(review.image.url, :class => "fit-img") if review.image.url %>
-                </div>
                 <div class="post-header font-alt">
                   <h2 class="post-title"><%= review.title %></h2>
                   <div class="post-meta">

@@ -24,7 +24,7 @@
             <%== @review.content %>
             <!--サムネイル用画像のためコメントアウト <%= image_tag(@review.image.to_s, :size =>'100x100') if @review.image.to_s %> -->
             <div class="row">
-              <div class="col-sm-4  col-xs-6">
+              <div class="col-sm-4 col-xs-6">
                 <% if user_signed_in? %>
                   <% unless @review.user_id == current_user.id %>
                     <% if @favorite.present? %>
@@ -118,14 +118,14 @@
             <% end %>
           </div>
         </div>
- <!-- シェアボタン
+<!--
         <ul class="shareList">
           <li class="shareList__item"><a class="shareList__link icon-twitter" href="https://twitter.com/share?url=<%= request.url %>" target="_blank" title="Twitter"></a></li>
           <li class="shareList__item"><a class="shareList__link icon-facebook" href="https://www.facebook.com/share.php?url=<%= request.url %>" target="_blank" title="Facebook"></a></li>
           <li class="shareList__item"><a class="shareList__link icon-hatebu" href="//b.hatena.ne.jp/add?mode=confirm&url=<%= request.url %>" target="_blank" title="はてなブックマーク"></a></li>
           <li class="shareList__item"><a class="shareList__link icon-line" href="http://line.me/R/msg/text/?<%= request.url %>" target="_blank" title="LINE"></a></li>
         </ul>
- -->
+--> 
       </div>
       <div class="col-sm-2"></div>
     </div>

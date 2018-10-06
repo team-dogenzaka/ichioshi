@@ -24,6 +24,10 @@
 
   <div class="col-sm-8">
 <%= user.profile  %>
+<% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
+<% @new_reviews.each do |new_review| %>
+<%= new_review.title  %>
+<% end %>
 </div>
   
 

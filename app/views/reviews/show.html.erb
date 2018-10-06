@@ -24,7 +24,7 @@
             <%== @review.content %>
             <!--サムネイル用画像のためコメントアウト <%= image_tag(@review.image.to_s, :size =>'100x100') if @review.image.to_s %> -->
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-4 col-xs-6">
                 <% if user_signed_in? %>
                   <% unless @review.user_id == current_user.id %>
                     <% if @favorite.present? %>
@@ -43,18 +43,18 @@
                   <% end %>
                 <% end %>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-4 col-xs-6">
                 <% if user_signed_in? %>
                   <% unless @review.user_id == current_user.id %>
                     <% if @like.present? %>
                       <p>
-                        <button class="btn btn-primary btn-circle" type="submit"><i class="glyphicon glyphicon-thumbs-up"></i>
+                        <button class="btn btn-primary btn-circle" type="submit"><i class="far fa-thumbs-up"></i>
                           <%= link_to 'いいね！', like_path(id: @like.id), method: :delete, :style=>"color:white;"%>
                         </button>
                       </p>
                     <% else %>
                       <p>
-                        <button class="btn btn-d btn-circle" type="submit"><i class="glyphicon glyphicon-thumbs-up"></i>
+                        <button class="btn btn-d btn-circle" type="submit"><i class="far fa-thumbs-up"></i>
                           <%= link_to 'いいね！', likes_path(review_id: @review.id), method: :post, :style=>"color:white;" %>
                         </button>
                       </p>

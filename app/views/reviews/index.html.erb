@@ -13,7 +13,8 @@
                 <div class="post-header font-alt">
                   <h2 class="post-title"><%= review.title %></h2>
                   <div class="post-meta">
-                     By&nbsp;<a href="#"><%= review.user.name %></a>&nbsp;| <%= review.created_at.strftime('%d %B') %> | <%= review.comments.count %> Comments
+                      <% post_user = review.user %>
+                     By&nbsp;<%= link_to post_user.name, user_path(id: post_user.id) %>&nbsp;| <%= review.created_at.strftime('%d %B') %> | <%= review.comments.count %> Comments
                   </div>
                 </div>
                 <div class="post-entry">

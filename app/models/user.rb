@@ -39,7 +39,7 @@ class User < ApplicationRecord
     following_ids = "SELECT following_id FROM relationships
                      WHERE follower_id = :user_id"
     Review.where("user_id IN (#{following_ids})
-                     ", user_id: id)
+                     ", user_id: id).limit(1)
   end
 
   def self.find_for_facebook_oauth(auth)

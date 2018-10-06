@@ -3,3 +3,13 @@
 <li><%= hashtag.hashtag_name %></li>
 <% end %>
 </ul>
+
+<ul>
+<% @tag.each do |tag| %>
+<li><%= tag.name %></li>
+<% end %>
+</ul>
+
+<% @review.each do |review| %>
+<%= render 'hashtags/tag_list', tag_list: review.skill_list.remove  unless review.skill_list.blank? %> 
+<% end %>

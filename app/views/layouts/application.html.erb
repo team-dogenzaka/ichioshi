@@ -111,7 +111,6 @@
               <li class="dropdown">
                 <% if user_signed_in? %>
                   <li><%= link_to "TOP", "/" %></li>
-                  <li><%= link_to 'レビュー一覧', reviews_path %></li>
                   <li><%= link_to 'レビュー作成', new_review_path, data: { turbolinks: false } %></li>
                   <li class="navicon">  <% if (current_user.provider == "facebook") %>
                           <% current_user.icon = current_user.icon.insert(4,"s") %>
@@ -123,10 +122,6 @@
                         <% end %></li>
                   <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
                 <% else %>
-                  <li><%= link_to "TOP", "/" %></li>
-                  <li><%= link_to 'レビュー一覧', reviews_path %></li>
-                  <li><%= link_to "ログイン", new_user_session_path %></li>
-                  <li><%= link_to "ユーザー作成", new_user_registration_path %></li>
                 <% end %>
               </li>
             </ul>

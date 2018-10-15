@@ -1,6 +1,7 @@
 .waku {
     border: solid 1px #e7e7e7;
     margin-top: 10px;
+    margin-bottom: 10px;
 
 }
 
@@ -135,8 +136,14 @@
 
 .fit-imgtop {
     width: 100%;
-    height: 150px;
+
     object-fit: cover;
+}
+
+.topicon {
+     height: 35px;
+     width: 35px;
+     margin: 5px;
 }
 
 ul {
@@ -244,4 +251,42 @@ ul {
 
 .ReviewEditLink {
     color: #787c7b;
+}
+
+.footer {
+  margin-bottom: 48px;
+}
+.global-nav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: white;
+}
+.nav-list {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+.nav-item {
+  display: table-cell;
+  border: solid 1px gray;
+  padding: 4px 0px;
+}
+.nav-item a {
+  text-decoration: none;
+}
+.nav-item i {
+  display: block;
+  font-size: 24px;
+}
+.nav-item a span {
+  display: block;
+  font-size: 10px;
+}
+.topbutton {
+  font-size: 25px;
 }

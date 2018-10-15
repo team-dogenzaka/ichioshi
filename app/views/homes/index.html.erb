@@ -50,7 +50,7 @@
       <section class="" id="demos">
         <div class="container">
           <center><h2>フォローしている人の新着レビュー</h2></center>
-          <div class="row multi-columns-row slider slider_adjust">
+          <div class="row multi-columns-row ">
  <% @user.followings.each do |user| %>
 <% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
 <% @new_reviews.each do |review| %>
@@ -58,16 +58,12 @@
 <div class="col-md-3 col-sm-12 col-xs-12">
   <div class="waku">
     <div class="row">
-      <div class="col-sm-12 topimage">
-        <%= link_to image_tag(review.image.url, :class => "fit-imgtop"), review_path(review.id) if review.image.url %>
-      </div>
-      <div class="col-sm-12 top_margin">
-      </div>
-      <div class="col-sm-4 col-xs-4">
-        <div class="features-icon">
+            
+      <div class="col-sm-4 col-xs-2">
+        <div class="topicon">
           <% if (review.user.provider == "facebook") %>
           <% review.user.icon = review.user.icon.insert(4,"s") %>
-          <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70" %>
+          <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "35x35" %>
         <% elsif review.user.avator %>
           <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
         <% else %>
@@ -75,15 +71,42 @@
         <% end %>
         </div>
       </div>
-      <div class="col-sm-8 col-xs-8">
-        <div class="post-header font-alt">
-          <h2 class="features-title font-alt">
-            <%= link_to review.title, review_path(review.id) %></h2>
-        </div>
+            <div class="col-sm-8 col-xs-8">
+          <%= link_to review.title, review_path(review.id) %>
+                <div class="post-meta">By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %></div>
       </div>
       <div class="col-sm-12">
-        <div class="post-meta">By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %>投稿日時: <%= review.created_at.strftime("%Y年%m月%d日") %></div>
+        <%= link_to image_tag(review.image.url, :class => "fit-imgtop"), review_path(review.id) if review.image.url %>
       </div>
+      <div class="col-sm-12 col-xs-12 top_margin">
+        </div>
+      <div class="col-sm-4 col-xs-12">
+        <div class="topbutton">
+          <i class="far fa-heart"></i>
+          <i class="far fa-comment"></i>
+          <i class="far fa-folder"></i>
+        </div>
+      <div class="col-sm-4 col-xs-12">
+20いいね！ 5コメント
+      </div>
+      </div>
+      
+      <div class="col-sm-12">
+        リビングにロードバイクを壁掛けする為に購入。
+ディアウォールだったので使ったのは2x4材。
+
+厚さ36mmに対し付属ネジは明らかに長いので、別途木ネジを購入しました。
+
+本来は付属ネジくらいもみたいのでしょうが、みなさん同様、ディアウォールで問題なく使えてます。
+
+付属の単独フックは説明書通りにつけてもいいですし、ロード1台なら別の箇所につけて日常使いのリュックor鞄をかけたりもできます。
+
+角度を左右15度かたむけられたり、使い勝手最高。
+そして安心のミノウラ製。
+壁掛けにはこれ買えば間違いないです。
+間取りや寸法は自己責任で。
+      </div>
+
     </div>
   </div>
 </div>
@@ -104,7 +127,7 @@
 <section class="" id="demos">
   <div class="container">
     <center><h2>#<%= tag.name %>のTOPレビュアー</h2></center>
-    <div class="row multi-columns-row slider slider_adjust ">
+    <div class="row multi-columns-row ">
       <% @users.each do |user| %>
       <% if user.tag == tag.name %>
         <div class="col-md-3 col-sm-12 col-xs-12">
@@ -185,23 +208,37 @@
   </div>
 </div>
 
-<footer class="footer bg-dark">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <p class="copyright font-alt">&copy; 2018&nbsp;<a href="index.html">Team Dogenzaka</a>, All Rights Reserved</p>
-      </div>
-      <div class="col-sm-6">
-        <div class="footer-social-links">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-dribbble"></i></a>
-          <a href="#"><i class="fa fa-skype"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+    <footer class="footer">
+      <nav class="global-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#">
+              <i class="fas fa-home"></i>
+              <span>フィード</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#">
+              <i class="fas fa-search-plus"></i>
+              <span>見つける</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#">
+              <i class="fas fa-camera"></i>
+              <span><%= link_to '投稿する', new_review_path , data: { turbolinks: false } %></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#">
+              <i class="far fa-user"></i>
+              <span>マイページ</span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </footer>
 
 <div class="scroll-up">
   <a href="#totop"><i class="fa fa-angle-double-up"></i></a>

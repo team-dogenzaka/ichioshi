@@ -11,24 +11,20 @@
     </div>
   <% end %>
 
-  <div class="blog_title">
-    <%= form.label "タイトル:" %>
-    <%= form.text_field :title, class: "form-control" %>
+  <div class="review_title">
+    <%= form.text_field :title, class: "form-control", placeholder: "タイトルを入力してください" %>
   </div>
-
   <div class="field">
-    <%= form.label "コンテンツ:" %>
-    <%= form.cktext_area :content, :class => "ckeditor" %>
+    <%= form.text_area :content, class: "form-control", placeholder: "レビュー本文を入力してください" %>
   </div>
-  <br>
+  <p>現在0文字</p>
+  
   <div class="field">
-    <%= form.label "サムネイル用画像:" %>
-    <!-- 確認画面から新規作成画面に戻った時に、 -->
-    <!-- アップロードした画像を表示させるための記述 -->
-    <%= image_tag(@review.image.url, :size => '200x200') if @review.image.url %>
-    <%= form.file_field :image, id: :review_image %>
+    <button type="button" class="btn btn-outline-dark"><i class="far fa-image fa-10x"></i>
+      <%= form.label :image, class: "btn btn-default" %>
+      <%= form.file_field :image, id: :review_image, style: "display: none;" %>
+    </button>
   </div>
-  <br>
   <div class="field">
     <%= form.label :下書き %>
     <%= form.check_box 'draft', {}, false, true %>

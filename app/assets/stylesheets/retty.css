@@ -293,9 +293,11 @@ ul {
 
 .spbodyfont {
   font-size: 16px;
-  line-height: 1.5
+  line-height: 1.5;
+  color: #333333;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
 }
 
 .content {
-padding: inherit
+padding: 10px
 }

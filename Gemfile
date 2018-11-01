@@ -45,7 +45,6 @@ gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'impressionist'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'master'
-gem 'serviceworker-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

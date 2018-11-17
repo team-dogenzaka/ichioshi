@@ -13,9 +13,11 @@
             <div class="col-md-6 col-lg-6">
               <div class="post">
                 <div class="post-thumbnail">
-                  <% review.images.each do |image| %>
-                    <%= image_tag(image.to_s, :class => "fit-img") if image.to_s %>
-                  <% end %>
+                  <ul class="slider">
+                    <% review.images.each do |image| %>
+                      <li><%= image_tag(image.to_s) if image.to_s %></li>
+                    <% end %>
+                  </ul>
                 </div>
                 <div class="post-header font-alt">
                   <h2 class="post-title"><%= review.title.truncate(30) %></h2>

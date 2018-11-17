@@ -25,8 +25,9 @@
     <%= form.label "サムネイル用画像:" %>
     <!-- 確認画面から新規作成画面に戻った時に、 -->
     <!-- アップロードした画像を表示させるための記述 -->
+    <div id="preview"></div>
     <%= image_tag(@review.image.url, :size => '200x200') if @review.image.url %>
-    <%= form.file_field :image, id: :review_image %>
+    <%= form.file_field :images, id: :review_images, multiple: true %>
   </div>
   <br>
   <div class="field">
@@ -52,3 +53,25 @@
   <%= form.submit "レビューを投稿する", class: "btn btn-round btn-d"  %>
 
 <% end %>
+
+<script>
+function Filepreview(evt){
+ var files = evt.target.files;
+
+document.getElementById('preview').innerHTML =""
+
+ for(var i = 0; i < 3;i++){
+ var reader = new FileReader();
+ var f = files[i]
+ reader.onload = (function(){
+ return function(e) {
+ var span = document.createElement('span');
+ span.innerHTML= "<img src='" +e.target.result + "'>";
+ document.getElementById('preview').insertBefore(span,null);
+ };
+ })(f);
+ reader.readAsDataURL(f);
+ }
+}
+document.getElementById('review_images').addEventListener('change',Filepreview,false);
+</script>

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'likes/create'
   get 'likes/destroy'
-  mount Ckeditor::Engine => '/ckeditor'
   delete 'users/delete/:id', to: 'users#destroy', as: 'users/destroy'
   get '/', to: 'homes#index', as: 'root'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', :registrations => "users/registrations" }
@@ -9,15 +8,13 @@ Rails.application.routes.draw do
   get '/reviews', to: 'reviews#index'
   resources :favorites, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
-
   resources :hashtags
-  resources :reviewtags
-
+  
   resources :reviews do
-    collection do
-      post :confirm
-    end
+    resources :comments
   end
+  
+  resources :reviewtags
   
   resources :items do
     patch 'update_tags', on: :member
@@ -29,9 +26,5 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
-
-  resources :reviews do
-    resources :comments
-  end
 
 end

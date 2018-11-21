@@ -301,3 +301,46 @@ ul {
 .content {
 padding: 10px
 }
+
+
+
+.main{
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px;
+  grid-gap: 6px;
+}
+
+p{
+  border: solid 1px #cccccc;
+  margin: 0;
+  text-align: center
+}
+
+.area1{
+  background-color: #bdccd4;
+  grid-column: 1/4;
+  grid-row: 1;
+}
+.area2{
+  background-color: #a8e0ff;
+  grid-column: 1/2;
+  grid-row: 2;
+}
+.area3{
+  background-color: #c4ff91;
+  grid-column: 2/3;
+  grid-row: 2;
+}
+.area4{
+  background-color: #f5ffbf;
+  grid-column: 3/4;
+  grid-row: 2;
+}
+span{
+  color: #1a1a1a;
+  font-size: 18px;
+  position: relative;
+  top: calc(50% - 0.5em);
+  line-height: 1;
+}

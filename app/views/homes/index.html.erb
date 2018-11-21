@@ -90,26 +90,16 @@
         </div>
 
       <div class="col-sm-4 col-xs-12">
-20いいね！ 5コメント
+        <span class="spbodyfont">
+<%= review.likes.count %> いいね！ <%= review.comments.count %> コメント
+</span>
       </div>
       </div>
       
       <div class="col-sm-12">
 
         <span class="spbodyfont">
-        リビングにロードバイクを壁掛けする為に購入。
-ディアウォールだったので使ったのは2x4材。
-
-厚さ36mmに対し付属ネジは明らかに長いので、別途木ネジを購入しました。
-
-本来は付属ネジくらいもみたいのでしょうが、みなさん同様、ディアウォールで問題なく使えてます。
-
-付属の単独フックは説明書通りにつけてもいいですし、ロード1台なら別の箇所につけて日常使いのリュックor鞄をかけたりもできます。
-
-角度を左右15度かたむけられたり、使い勝手最高。
-そして安心のミノウラ製。
-壁掛けにはこれ買えば間違いないです。
-間取りや寸法は自己責任で。
+<%= strip_tags(review.content) %>
 </span>
 </div>
       </div>
@@ -124,6 +114,13 @@
       </section>
     <% end %>
   <% end %>
+</div>
+
+<div class="main">
+  <p class="area1"><img class="fit-imgtop" src="https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/review/image/53/IMG_2194.JPG"></p>
+  <p class="area2"><span>Area 2</span></p>
+  <p class="area3"><span>Area 3</span></p>
+  <p class="area4"><span>Area 4</span></p>
 </div>
 
 

@@ -63,79 +63,107 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
       
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
-  <script>
- 	if(window.innerWidth < 750){
- $(document).ready(function(){
- $('.slider').bxSlider({	  
- 	  
-		 slideWidth: 640,
-     autoDirection:'prev',
-     maxSlides: 4,
-     minSlides: 1,
- })
- });
-	} else{
- $(document).ready(function(){
- $('.slider').bxSlider({	  
-
-
-		 slideWidth: 640,
-     autoDirection:'prev',
-     maxSlides: 4,
-     minSlides: 4,
- })
- 
- 
- 
- });
-}
-</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script>
+      if(window.innerWidth < 750){
+        $(document).ready(function(){
+          $('.slider').bxSlider({	  
+            slideWidth: 640,
+            autoDirection:'prev',
+            maxSlides: 4,
+            minSlides: 1,
+          })
+        });
+      } else {
+        $(document).ready(function(){
+        $('.slider').bxSlider({	  
+          slideWidth: 640,
+          autoDirection:'prev',
+          maxSlides: 1,
+          minSlides: 1,
+          infiniteLoop: true
+        })
+      });
+    }
+    </script>
   </head>
   <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
     <div data-turbolinks="false">
-    <main>
-      <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button><a class="navbar-brand" href="/">ICHIOSHI</a>
+      <main>
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">ICHIOSHI</a>
+            </div>
+            <div class="collapse navbar-collapse" id="custom-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <% if user_signed_in? %>
+                    <li class="navicon">
+                      <% if (current_user.provider == "facebook") %>
+                        <% current_user.icon = current_user.icon.insert(4,"s") %>
+                        <%= link_to image_tag(current_user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>
+                      <% elsif current_user.avator %>
+                        <%= link_to image_tag(current_user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>   
+                      <% else %>
+                        <%= link_to image_tag('images/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                    </li>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="collapse navbar-collapse" id="custom-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <% if user_signed_in? %>
-                  <li><%= link_to "TOP", "/" %></li>
-                  <li><%= link_to 'レビュー作成', new_review_path, data: { turbolinks: false } %></li>
-                  <li class="navicon">  <% if (current_user.provider == "facebook") %>
-                          <% current_user.icon = current_user.icon.insert(4,"s") %>
-                          <%= link_to image_tag(current_user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>
-                        <% elsif current_user.avator %>
-                          <%= link_to image_tag(current_user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>   
-                        <% else %>
-                          <%= link_to image_tag('images/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>
-                        <% end %></li>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-                <% else %>
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+        </nav>
+        <!-- パンくずリスト（コメントアウト）
+        <%= breadcrumbs pretext: "", separator: " &rsaquo; " %>-->
+        <%= notice %>
+        <%= alert %>
 
-     <!-- パンくずリスト（コメントアウト）
-     <%= breadcrumbs pretext: "", separator: " &rsaquo; " %>-->
-     <%= notice %>
-     <%= alert %>
-     <%= yield %>
+        <%= yield %>
 
-    </main>
+      </main>
+
+      <footer class="footer">
+        <nav class="global-nav">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="#">
+                <i class="fas fa-home"></i>
+                <span>フィード</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#">
+                <i class="fas fa-search-plus"></i>
+                <span>見つける</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#">
+                <i class="fas fa-camera"></i>
+                <span><%= link_to '投稿する', new_review_path , data: { turbolinks: false } %></span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#">
+                <i class="far fa-user"></i>
+                <span>マイページ</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </footer>
     </div>
   </body>
 </html>

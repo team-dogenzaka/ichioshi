@@ -4,6 +4,7 @@
 ===================================*/
 .bx-wrapper {
   position: relative;
+  width: 100%;
   margin-bottom: 60px;
   padding: 0;
   *zoom: 1;

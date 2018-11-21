@@ -10,46 +10,52 @@
       </div>
     </div>
   </section>
-
-  <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-
+  <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false">
+  </div>
   <section class="" id="services">
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
           <h2 class="module-title font-alt"></h2>
-          <div class="module-subtitle font-serif"></div>
+          <div class="module-subtitle font-serif">
+          </div>
         </div>
       </div>
       <div class="row multi-columns-row">
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="features-item">
-            <div class="features-icon"><i class="far fa-thumbs-up"></i></div>
+            <div class="features-icon">
+              <i class="far fa-thumbs-up"></i>
+            </div>
             <h3 class="features-title font-alt">いいモノは人が知っている</h3>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="features-item">
-            <div class="features-icon"><i class="far fa-comment"></i></div>
+            <div class="features-icon">
+              <i class="far fa-comment"></i>
+            </div>
             <h3 class="features-title font-alt">人からのおすすめで新しい出会いを</h3>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="features-item">
-            <div class="features-icon"><i class="far fa-address-card"></i></div>
+            <div class="features-icon">
+              <i class="far fa-address-card"></i>
+            </div>
             <h3 class="features-title font-alt">実名制だから価値がある</h3>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-
   <% if current_user && @user.id == current_user.id %>
     <% if @feed_items.any? %>
       <section class="" id="demos">
         <div class="container">
-          <center><h2>フォローしている人の新着レビュー</h2></center>
+          <center>
+            <h2>フォローしている人の新着レビュー</h2>
+          </center>
           <div class="row multi-columns-row ">
  <% @user.followings.each do |user| %>
 <% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
@@ -109,13 +115,13 @@
 </div>
     <% end %>
   <% end %>
+
           </div>
         </div>
       </section>
     <% end %>
   <% end %>
 </div>
-
 <div class="main">
   <p class="area1"><img class="fit-imgtop" src="https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/review/image/53/IMG_2194.JPG"></p>
   <p class="area2"><span>Area 2</span></p>
@@ -147,18 +153,12 @@
                 <% end %>
               </div>
             </div>
-          </div>
-        </div>
-                <% else %>
-      <% end %>
-      <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
-</section>
-
+  </section>
 <% end %>
-
-
 
 <div class="module-small bg-dark">
   <div class="container">
@@ -194,39 +194,8 @@
     </div>
   </div>
 </div>
-
-    <footer class="footer">
-      <nav class="global-nav">
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a href="#">
-              <i class="fas fa-home"></i>
-              <span>フィード</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#">
-              <i class="fas fa-search-plus"></i>
-              <span>見つける</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#">
-              <i class="fas fa-camera"></i>
-              <span><%= link_to '投稿する', new_review_path , data: { turbolinks: false } %></span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#">
-              <i class="far fa-user"></i>
-              <span>マイページ</span>
-            </a>
-          </li>
-
-        </ul>
-      </nav>
-    </footer>
-
 <div class="scroll-up">
-  <a href="#totop"><i class="fa fa-angle-double-up"></i></a>
+  <a href="#totop">
+    <i class="fa fa-angle-double-up"></i>
+  </a>
 </div>

@@ -57,93 +57,100 @@
             <h2>フォローしている人の新着レビュー</h2>
           </center>
           <div class="row multi-columns-row ">
-            <% @user.followings.each do |user| %>
-              <% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
-              <% @new_reviews.each do |review| %>
-                <div class="col-md-3 col-sm-12 col-xs-12">
-                  <div class="waku">
-                    <div class="row">
-                      <div class="col-sm-4 col-xs-2">
-                        <div class="topicon">
-                          <% if (review.user.provider == "facebook") %>
-                            <% review.user.icon = review.user.icon.insert(4,"s") %>
-                            <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "35x35" %>
-                          <% elsif review.user.avator %>
-                            <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
-                          <% else %>
-                            <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
-                          <% end %>
-                        </div>
-                      </div>
-                      <div class="col-sm-8 col-xs-8">
-                        <%= link_to review.title, review_path(review.id) %>
-                        <div class="post-meta">
-                          By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %>
-                          <%= review.created_at.strftime("%Y年%m月%d日") %>
-                        </div>
-                      </div>
-                      <div class="col-sm-12">
-                        <%= link_to image_tag(review.image.url, :class => "fit-imgtop"), review_path(review.id) if review.image.url %>
-                      </div>
-                      <div class="col-sm-12 col-xs-12 top_margin">
-                      </div>
-                      <div class="content">
-                        <div class="col-sm-4 col-xs-12">
-                          <div class="topbutton">
-                            <i class="far fa-heart"></i>
-                            <i class="far fa-comment"></i>
-                            <i class="far fa-folder"></i>
-                          </div>
-                          <div class="col-sm-4 col-xs-12">
-                            20いいね！ 5コメント
-                          </div>
-                        </div>   
-                        <div class="col-sm-12">
-                          <span class="spbodyfont">
-                            リビングにロードバイクを壁掛けする為に購入。
-                            ディアウォールだったので使ったのは2x4材。
-                            厚さ36mmに対し付属ネジは明らかに長いので、別途木ネジを購入しました。
-                            本来は付属ネジくらいもみたいのでしょうが、みなさん同様、ディアウォールで問題なく使えてます。
-                            付属の単独フックは説明書通りにつけてもいいですし、ロード1台なら別の箇所につけて日常使いのリュックor鞄をかけたりもできます。
-                            角度を左右15度かたむけられたり、使い勝手最高。
-                            そして安心のミノウラ製。
-                            壁掛けにはこれ買えば間違いないです。
-                            間取りや寸法は自己責任で。
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
+ <% @user.followings.each do |user| %>
+<% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
+<% @new_reviews.each do |review| %>
+
+<div class="col-md-3 col-sm-12 col-xs-12">
+  <div class="waku">
+    <div class="row">
+            
+      <div class="col-sm-4 col-xs-2">
+        <div class="topicon">
+          <% if (review.user.provider == "facebook") %>
+          <% review.user.icon = review.user.icon.insert(4,"s") %>
+          <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "35x35" %>
+        <% elsif review.user.avator %>
+          <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
+        <% else %>
+          <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
+        <% end %>
+        </div>
+      </div>
+            <div class="col-sm-8 col-xs-8">
+          <%= link_to review.title, review_path(review.id) %>
+                <div class="post-meta">By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %></div>
+      </div>
+      <div class="col-sm-12">
+        <%= link_to image_tag(review.image.url, :class => "fit-imgtop"), review_path(review.id) if review.image.url %>
+      </div>
+      <div class="col-sm-12 col-xs-12 top_margin">
+        </div>
+        <div class="content">
+
+      <div class="col-sm-4 col-xs-12">
+        <div class="topbutton">
+          <i class="far fa-heart"></i>
+          <i class="far fa-comment"></i>
+          <i class="far fa-folder"></i>
+        </div>
+
+      <div class="col-sm-4 col-xs-12">
+        <span class="spbodyfont">
+<%= review.likes.count %> いいね！ <%= review.comments.count %> コメント
+</span>
+      </div>
+      </div>
+      
+      <div class="col-sm-12">
+
+        <span class="spbodyfont">
+<%= strip_tags(review.content) %>
+</span>
+</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+    <% end %>
+  <% end %>
+
           </div>
         </div>
       </section>
     <% end %>
   <% end %>
 </div>
+<div class="main">
+  <p class="area1"><img class="fit-imgtop" src="https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/review/image/53/IMG_2194.JPG"></p>
+  <p class="area2"><span>Area 2</span></p>
+  <p class="area3"><span>Area 3</span></p>
+  <p class="area4"><span>Area 4</span></p>
+</div>
 
-<% @tag.each do |tag| %>
-  <section class="" id="demos">
-    <div class="container">
-      <center><h2>#<%= tag.name %>のTOPレビュアー</h2></center>
-      <div class="row multi-columns-row ">
-        <% @users.each do |user| %>
-          <% if user.tag == tag.name %>
-            <div class="col-md-3 col-sm-12 col-xs-12">
-              <div class="waku">
-                <div class="row">
-                  <div class="col-sm-12 col-xs-12 topimage">
-                    <% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
-                    <% @new_reviews.each do |new_review| %>
-                      <%= link_to image_tag(new_review.image.url, :class => "fit-imgtop"),new_review if new_review.image.url %>
-                  </div>
-                  <div class="col-sm-12 col-xs-4 topimage">
-                    <%= link_to image_tag(new_review.image.url, :class => "fit-imgtop"),new_review if new_review.image.url %>
-                    <% end %>
-                  </div>
-                </div>
+
+        <% @tag.each do |tag| %>
+        
+        
+
+<section class="" id="demos">
+  <div class="container">
+    <center><h2>#<%= tag.name %>のTOPレビュアー</h2></center>
+    <div class="row multi-columns-row ">
+      <% @users.each do |user| %>
+      <% if user.tag == tag.name %>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+          <div class="waku">
+            <div class="row">
+              <div class="col-sm-12 col-xs-12 topimage">
+                <% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
+                <% @new_reviews.each do |new_review| %>
+                  <%= link_to image_tag(new_review.image.url, :class => "fit-imgtop"),new_review if new_review.image.url %>
+              </div>
+              <div class="col-sm-12 col-xs-4 topimage">
+                <%= link_to image_tag(new_review.image.url, :class => "fit-imgtop"),new_review if new_review.image.url %>
+                <% end %>
               </div>
             </div>
           <% end %>

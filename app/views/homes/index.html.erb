@@ -90,13 +90,26 @@
 
       <div class="col-sm-4 col-xs-12">
         <div class="topbutton">
-          <i class="far fa-heart"></i>
           <i class="far fa-comment"></i>
           <i class="far fa-folder"></i>
         </div>
 
+        <div class="topbutton">
+                          <% if user_signed_in? %>
+                  <% @like = current_user.likes.find_by(review_id: review.id) %>
+                    <% if @like.present? %>
+                          <%= link_to '', like_path(id: @like.id), method: :delete, :class => "far fa-heart" %>
+                    <% else %>
+                          <%= link_to '', likes_path(review_id: review.id), method: :post, :style=>"color:red;",:class => "far fa-heart" %>
+                    <% end %>
+                  <% end %>
+</div>
+
       <div class="col-sm-4 col-xs-12">
         <span class="spbodyfont">
+
+                
+
 <%= review.likes.count %> いいね！ <%= review.comments.count %> コメント
 </span>
       </div>

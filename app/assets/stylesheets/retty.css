@@ -349,3 +349,8 @@ input[type=text] {
   font-size: 16px;
   transform: scale(0.8);
 }
+
+textarea {
+  font-size: 16px;
+  transform: scale(0.8);
+}

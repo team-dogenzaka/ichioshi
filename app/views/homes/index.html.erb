@@ -49,21 +49,61 @@
       </div>
     </div>
   </section>
+  
   <% if current_user && @user.id == current_user.id %>
     <% if @feed_items.any? %>
+
       <section class="" id="demos">
         <div class="container">
           <center>
             <h2>フォローしている人の新着レビュー</h2>
           </center>
-          <div class="row multi-columns-row ">
+
+
+
+    <div class="row">
+<div class="col-md-3 col-sm-12 col-xs-12">
+<div class="waku">
+<div class="title">
+タイトルだお
+  </div>
+<img class="fit-imgtop" src="https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/review/image/53/IMG_2194.JPG">
+  
+
+  <ul class="iine">
+    <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
+    <div class="topbutton"><li class="far fa-folder"></li></div>
+    <div class="topbutton"><li class="far fa-heart"></li></div>
+  </ul>
+  
+<div class="title">
+フォローしている人の新着レビューフォローしている人の新着レビューフォローしている人の新着レビューフォローしている人の新着レビューフォローしている人の新着レビューフォローしている人の新着レビューフォローしている人の新着レビュー
+  </div>  
+  
+  </div>
+</div>
+
+<div class="col-md-3 col-sm-12 col-xs-12">
+<div class="waku">
+  aaa
+  </div>  
+  
+  </div>
+</div>
+
+
+
+
+
+    <div class="row">
+
  <% @user.followings.each do |user| %>
 <% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
 <% @new_reviews.each do |review| %>
 
 <div class="col-md-3 col-sm-12 col-xs-12">
   <div class="waku">
-    <div class="row">
+
             
       <div class="col-sm-4 col-xs-2">
         <div class="topicon">
@@ -84,57 +124,40 @@
       <div class="col-sm-12">
         <%= link_to image_tag(review.image.url, :class => "fit-imgtop"), review_path(review.id) if review.image.url %>
       </div>
-      <div class="col-sm-12 col-xs-12 top_margin">
-        </div>
-        <div class="content">
 
-      <div class="col-sm-4 col-xs-12">
-        <div class="topbutton">
-          <i class="far fa-comment"></i>
-          <i class="far fa-folder"></i>
-        </div>
 
-        <div class="topbutton">
-                          <% if user_signed_in? %>
-                  <% @like = current_user.likes.find_by(review_id: review.id) %>
-                    <% if @like.present? %>
-                          <%= link_to '', like_path(id: @like.id), method: :delete, :class => "far fa-heart" %>
-                    <% else %>
-                          <%= link_to '', likes_path(review_id: review.id), method: :post, :style=>"color:red;",:class => "far fa-heart" %>
-                    <% end %>
-                  <% end %>
-</div>
+  <ul class="iine"><!--
+    <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
+    <div class="topbutton"><li class="far fa-folder"></li></div> -->
+    <div class="topbutton">
+<li id="review-<%= review.id %>" data-review-id="<%= review.id %>">
+  <%= render "likes/like", review: review %>
+</li>
 
-      <div class="col-sm-4 col-xs-12">
-        <span class="spbodyfont">
+  </ul>
 
-                
 
-<%= review.likes.count %> いいね！ <%= review.comments.count %> コメント
-</span>
-      </div>
-      </div>
-      
-      <div class="col-sm-12">
 
         <span class="spbodyfont">
 <%= strip_tags(review.content) %>
 </span>
-</div>
       </div>
 
     </div>
-  </div>
-</div>
+    </div>
+
     <% end %>
   <% end %>
-
+  </div>
+</div>
           </div>
         </div>
       </section>
     <% end %>
   <% end %>
 </div>
+
+
 <div class="main">
   <p class="area1"><img class="fit-imgtop" src="https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/review/image/53/IMG_2194.JPG"></p>
   <p class="area2"><span>Area 2</span></p>

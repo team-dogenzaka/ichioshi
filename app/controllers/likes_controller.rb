@@ -1,11 +1,28 @@
 class LikesController < ApplicationController
+  
+  
+
   def create
-    like = current_user.likes.create(review_id: params[:review_id])
-    redirect_to review_path(like.review_id), notice: "#{like.review.user.name}さんのレビューにいいね！しました。"
+    @review = Review.find(params[:review_id])
+    unless @review.iine?(current_user)
+      @review.iine(current_user)
+      @review.reload
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      end
+    end
   end
 
   def destroy
-    like = current_user.likes.find_by(id: params[:id]).destroy
-    redirect_to review_path(like.review_id), notice: "#{like.review.user.name}さんのレビューのいいね！を解除しました。"
+    @review = Like.find(params[:id]).review
+    if @review.iine?(current_user)
+      @review.uniine(current_user)
+      @review.reload
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      end
+    end
   end
 end

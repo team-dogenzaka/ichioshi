@@ -23,6 +23,20 @@ class Review < ApplicationRecord
     where("user_id IN (#{following_user_ids}) OR user_id = :user_id",
           user_id: user.id)
   end
+  
+  def iine(user)
+    likes.create(user_id: user.id)
+  end
+
+  # マイクロポストのいいねを解除する（ネーミングセンスに対するクレームは受け付けません）
+  def uniine(user)
+    likes.find_by(user_id: user.id).destroy
+  end
+
+  # 現在のユーザーがいいねしてたらtrueを返す
+  def iine?(user)
+    like_users.include?(user)
+  end
 
 is_impressionable
 

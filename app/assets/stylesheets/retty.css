@@ -289,6 +289,8 @@ ul {
 }
 .topbutton {
   font-size: 25px;
+  margin-right: 10px;
+
 }
 
 .spbodyfont {
@@ -353,4 +355,18 @@ input[type=text] {
 textarea {
   font-size: 16px!important;
   transform: scale(0.8);
+}
+
+.iine {
+  display: flex;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-left: 5px;  
+}
+
+.iineli {
+  display: flex;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-left: 5px;  
 }

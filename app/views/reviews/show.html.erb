@@ -62,7 +62,9 @@
                   <% end %>
                 <% end %>
 
-
+<li id="review-<%= @review.id %>" data-review-id="<%= @review.id %>">
+  <%= render "likes/like", review: @review %>
+</li>
 
               </div>
             </div>

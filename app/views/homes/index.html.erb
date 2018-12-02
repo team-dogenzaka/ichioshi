@@ -101,6 +101,19 @@
         <span class="spbodyfont">
 <%= strip_tags(review.content) %>
 </span>
+
+            <div id="comments_area"><!-- #① -->
+              <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+              <% @comments = review.comments %>
+              <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
+            </div>
+            <% if user_signed_in? %>
+              <% unless review.user_id == current_user.id %>
+                <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+                <%= render partial: 'comments/form_top', locals: { comment: @comment, review: review } %>
+              <% end %>
+            <% end %>            
+
   </div><!--waku-->  
 </div><!--col-->
   <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->

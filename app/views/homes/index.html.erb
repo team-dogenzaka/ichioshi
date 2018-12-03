@@ -71,32 +71,34 @@
 <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->
 <div class="col-md-6 col-sm-12 col-xs-12">
   <div class="waku">
-
-        <div class="topicon">
-          <% if (review.user.provider == "facebook") %>
-          <% review.user.icon = review.user.icon.insert(4,"s") %>
-          <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "35x35" %>
-        <% elsif review.user.avator %>
-          <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
-        <% else %>
-          <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
-        <% end %>
-        </div><!--topicon-->
-
-          <%= link_to review.title, review_path(review.id) %>
-                <div class="post-meta">By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %></div>
-        <%= link_to image_tag(review.image.url, :class => "fit-imgtop"), review_path(review.id) if review.image.url %>
-        
-          <ul class="iine"><!--
-    <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
-    <div class="topbutton"><li class="far fa-folder"></li></div> -->
-    <div class="topbutton">
-<li id="review-<%= review.id %>" data-review-id="<%= review.id %>">
-  <%= render "likes/like", review: review %>
-</li>
-</div>      
-  </ul>
-
+    <div class="topicon">
+      <% if (review.user.provider == "facebook") %>
+        <% review.user.icon = review.user.icon.insert(4,"s") %>
+        <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "35x35" %>
+      <% elsif review.user.avator %>
+        <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
+      <% else %>
+        <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
+      <% end %>
+    </div><!--topicon-->
+    <%= link_to review.title, review_path(review.id) %>
+    <div class="post-meta">By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %></div>
+      <div class="post-thumbnail">
+        <ul class="slider">
+          <% review.images.each do |image| %>
+            <li><%= link_to image_tag(image.to_s, :class => "fit-imgtop"), review_path(review.id) if image.to_s %></li>
+          <% end %>
+        </ul>
+      </div>
+      <ul class="iine"><!--
+        <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
+        <div class="topbutton"><li class="far fa-folder"></li></div> -->
+        <div class="topbutton">
+          <li id="review-<%= review.id %>" data-review-id="<%= review.id %>">
+            <%= render "likes/like", review: review %>
+          </li>
+        </div>      
+      </ul>
     <article class="spbodyfont">
 <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
 <%= render partial: 'reviews/review2', locals: { review: review } %>

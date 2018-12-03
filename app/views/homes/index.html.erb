@@ -89,7 +89,7 @@
       <div class="post-thumbnail">
         <ul class="slider">
           <% review.images.each do |image| %>
-            <li><%= image_tag(image.to_s, :class => 'fit-imgtop'), review_path(review.id) if image.to_s %></li>
+            <li><%= link_to image_tag(image.to_s, :class => 'fit-imgtop'), review_path(review.id) if image.to_s %></li>
           <% end %>
         </ul>
       </div>

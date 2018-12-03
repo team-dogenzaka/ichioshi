@@ -96,17 +96,21 @@
 </li>
 </div>      
   </ul>
-  
-  
-        <span class="spbodyfont">
-<%= strip_tags(review.content) %>
-</span>
 
-            <div id="comments_area"><!-- #① -->
+    <article class="spbodyfont">
+<div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
+<%= render partial: 'reviews/review2', locals: { review: review } %>
+</div>
+    </article>
+
+
+
+            <div id="comments_area-<%= review.id %>" data-comments_area-id="<%= review.id %>"><!-- #① -->
               <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
               <% @comments = review.comments %>
               <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
             </div>
+            
             <% if user_signed_in? %>
               <% unless review.user_id == current_user.id %>
                 <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->

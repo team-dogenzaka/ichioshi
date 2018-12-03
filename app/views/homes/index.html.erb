@@ -1,3 +1,5 @@
+<% if user_signed_in? %>
+<% else %>
 <div data-turbolinks="false">
   <section class="bg-dark-30 showcase-page-header module parallax-bg" data-background="assets/images/ichioshi.png">
     <div class="titan-caption">
@@ -49,6 +51,7 @@
       </div>
     </div>
   </section>
+<% end %>
   
   <% if current_user && @user.id == current_user.id %>
     <% if @feed_items.any? %>
@@ -97,20 +100,20 @@
 </div>      
   </ul>
 
-    <article class="spbodyfont">
+    <div class="spbodyfont">
 <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
 <%= render partial: 'reviews/review2', locals: { review: review } %>
 </div>
-    </article>
+    </div>
 
 
-
+<div class="spbodyfont">
             <div id="comments_area-<%= review.id %>" data-comments_area-id="<%= review.id %>"><!-- #① -->
               <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
               <% @comments = review.comments %>
               <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
             </div>
-            
+    </div>            
             <% if user_signed_in? %>
               <% unless review.user_id == current_user.id %>
                 <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->

@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
   end
   
   def destroy
+    @review = Review.find(params[:review_id]) #①
     @comment = Comment.find(params[:id]) #⑤
     if @comment.destroy
       render :index #⑥

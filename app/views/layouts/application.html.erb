@@ -106,6 +106,9 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <% if user_signed_in? %>
+                    <li>
+                      <%= render 'notifications/notification_dropdown' %>
+                    </li>
                     <li class="navicon">
                       <% if (current_user.provider == "facebook") %>
                         <% current_user.icon = current_user.icon.insert(4,"s") %>

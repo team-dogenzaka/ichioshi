@@ -355,3 +355,30 @@ textarea {
 .comment_border {
   margin: 5px;
 }
+
+.notification-bell {
+  color: #fff;
+  position: relative;
+  top: 7px;
+}
+
+.notification-dropdown .btn {
+  background-color:  transparent;
+  width: 25px;
+  height: 25px;
+}
+
+.notification-badge {
+  background-color: #f44336;
+  color: #fff;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: absolute;
+  margin-left: 11px;
+  margin-bottom: 11px;
+  margin-top: 0px;
+  top: 7px;
+  border-width: 1.2px;
+  border-color: #fff;
+}

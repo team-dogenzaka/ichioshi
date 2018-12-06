@@ -68,8 +68,7 @@
     <div class="row">
 
  <% @user.followings.each do |user| %>
-<% @new_reviews = user.reviews.order(created_at: :desc) %>
-<% @new_reviews.each do |review| %>
+<% @new_reviews = user.reviews.order("created_at DESC").each do |review| %>
 <div class="col-md-12 col-sm-12 col-xs-12">
 <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->
 <div class="col-md-6 col-sm-12 col-xs-12">
@@ -94,6 +93,10 @@
     By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %>
 </div></li>
 </ul>
+
+<!--タグだぜ-->
+<%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %>
+
       <div class="post-thumbnail">
         <ul class="slider">
           <% review.images.each do |image| %>

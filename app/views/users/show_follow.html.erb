@@ -10,7 +10,7 @@
 
   
   <% if (user.provider == "facebook") %>
-    <% user.icon = user.icon.insert(4,"s") %>
+    <% user.icon = user.icon %>
     <%= image_tag user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100" %>
   <% elsif user.avator %>
     <%= image_tag(user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100") %>   

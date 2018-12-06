@@ -58,7 +58,7 @@ class User < ApplicationRecord
         user.provider = data["provider"] if user.provider.blank?
         user.uid = data["uid"] if user.uid.blank?
         user.name = data["info"]["name"] if user.name.blank?
-        user.icon = data["info"]["image"] if user.icon.blank?
+        user.icon = data["info"]["image"].insert(4,"s") if user.icon.blank?
         user.coverimg = data["info"]["coverimg"] if user.coverimg.blank?
         user.password = Devise.friendly_token[0,20] if user.password.blank?
       end

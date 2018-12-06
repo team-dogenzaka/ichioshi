@@ -9,7 +9,7 @@
       <div class="col-sm-4 col-xs-4">
         <div class="features-icon">
           <% if (review.user.provider == "facebook") %>
-          <% review.user.icon = review.user.icon.insert(4,"s") %>
+          <% review.user.icon = review.user.icon %>
           <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70" %>
         <% elsif review.user.avator %>
           <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>

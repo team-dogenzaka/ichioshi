@@ -20,7 +20,6 @@
         <%= render 'follow_form' %>
       </div>
     </section>
-
     <div class="row">
       <div class="col-sm-8">
         <div class="row">
@@ -42,7 +41,6 @@
           </div>
         </div>
       </div>
-      
       <div class="col-sm-4">
         <table class="table">
           <tbody>
@@ -74,56 +72,54 @@
         </table>
       </div>
     </div>
-
-
-        <!-- パンくずリスト（うまく表示されないのでコメントアウト）
-        <% breadcrumb :user, @user %>
-        <% provide(:title, @user.name) %>
-        -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script>
-          $(function(){
-  	        $('.readmore').click(function(){
-  		        $(this).hide();
-  		        $(this).parent('.main').removeClass('onhidden');
-  	        });
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script>
+    <!-- パンくずリスト（うまく表示されないのでコメントアウト）
+    <% breadcrumb :user, @user %>
+    <% provide(:title, @user.name) %>
+    -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+      <script>
+        $(function(){
+  	      $('.readmore').click(function(){
+  		      $(this).hide();
+  		      $(this).parent('.main').removeClass('onhidden');
+  	      });
+        });
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script>
         var searchBox = '.search-box'; // 絞り込む項目を選択するエリア
         var listItem = '.list_item';   // 絞り込み対象のアイテム
         var hideClass = 'is-hide';     // 絞り込み対象外の場合に付与されるclass名
         $(function() {
           // 絞り込み項目を変更した時
           $(document).on('change', searchBox + ' input', function() {
-              search_filter();
+            search_filter();
           });
         });
         /**
          * リストの絞り込みを行う
          */
         function search_filter() {
-            // 非表示状態を解除
-            $(listItem).removeClass(hideClass);
-            for (var i = 0; i < $(searchBox).length; i++) {
-                var name = $(searchBox).eq(i).find('input').attr('name');
-                // 選択されている項目を取得
-                var searchData = get_selected_input_items(name);
-                // 選択されている項目がない、またはALLを選択している場合は飛ばす
-                if(searchData.length === 0 || searchData[0] === '') {
-                    continue;
-                }
-                // リスト内の各アイテムをチェック
-                for (var j = 0; j < $(listItem).length; j++) {
-                    // アイテムに設定している項目を取得
-                    var itemData = $(listItem).eq(j).data(name);
-                    // 絞り込み対象かどうかを調べる
-                    if(searchData.indexOf(itemData) === -1) {
-                        $(listItem).eq(j).addClass(hideClass);
-                    }
-                }
+          // 非表示状態を解除
+          $(listItem).removeClass(hideClass);
+          for (var i = 0; i < $(searchBox).length; i++) {
+            var name = $(searchBox).eq(i).find('input').attr('name');
+            // 選択されている項目を取得
+            var searchData = get_selected_input_items(name);
+            // 選択されている項目がない、またはALLを選択している場合は飛ばす
+            if(searchData.length === 0 || searchData[0] === '') {
+                continue;
             }
+            // リスト内の各アイテムをチェック
+            for (var j = 0; j < $(listItem).length; j++) {
+              // アイテムに設定している項目を取得
+              var itemData = $(listItem).eq(j).data(name);
+              // 絞り込み対象かどうかを調べる
+              if(searchData.indexOf(itemData) === -1) {
+                  $(listItem).eq(j).addClass(hideClass);
+              }
+            }
+          }
         }
         /**
          * inputで選択されている値の一覧を取得する
@@ -131,16 +127,14 @@
          * @return {Array}       選択されているinputのvalue属性の値
          */
         function get_selected_input_items(name) {
-            var searchData = [];
-            $('[name=' + name + ']:checked').each(function() {
-                searchData.push($(this).val());
-            });
-            return searchData;
+          var searchData = [];
+          $('[name=' + name + ']:checked').each(function() {
+              searchData.push($(this).val());
+          });
+          return searchData;
         }
-        </script>
-
-<div class="row">
-
+      </script>
+      <div class="row">
         <ul class="nav nav-tabs">
           <li class="nav-item active">
             <a href="#tab1" class="nav-link" data-toggle="tab">投稿一覧</a>
@@ -149,7 +143,6 @@
             <a href="#tab2" class="nav-link" data-toggle="tab">お気に入り一覧</a>
           </li>
         </ul>
-        
         <div class="tab-content">
           <div id="tab1" class="tab-pane active">
             <div class="waku">
@@ -163,82 +156,84 @@
                 </div>
               </form>
             </div><!--waku-->
-            
             <% @user.reviews.order("created_at DESC").each do |review| %>
-  <div class="waku">
+              <div class="waku">
                 <div class="list">
-              <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
-                      <%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %>
-                    </div><!--list_item-->
-                  </div><!--list-->
-
-                      <% if current_user && @user.id == current_user.id %>
-                      <%= link_to (content_tag(:i, '編集する', class: 'fas fa-pencil-alt post-function')), edit_review_path(review.id) %>
-                      <%= link_to (content_tag(:i, '',class: 'far fa-trash-alt post-function')), review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
-              <% end %><!--if current_user && @user.id == current_user.id-->
-
-    <ul class="margin_padding_0">
-  <li class="yoko"><div class="topicon">
-      <% if (review.user.provider == "facebook") %>
-        <% review.user.icon = review.user.icon %>
-        <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "35x35" %>
-      <% elsif review.user.avator %>
-        <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
-      <% else %>
-        <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
-      <% end %>
-    </div><!--topicon--></li>
-  <li class="yoko"><div class="spbodyfont">
-    <%= link_to review.title, review_path(review.id) %>
-    </div></li>
-  <li class="yoko"><div class="post-meta">
-    </div></li>
-  <li class="yoko"><div class="post-meta">
-    By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %>
-</div></li>
-</ul>
-      <div class="post-thumbnail">
-        <ul class="slider">
-          <% review.images.each do |image| %>
-            <li><%= link_to image_tag(image.to_s, :class => 'fit-imgtop'), review_path(review.id) if image.to_s %></li>
-          <% end %>
-        </ul>
-      </div>
-        <ul class="iine"><!--
-          <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
-          <div class="topbutton"><li class="far fa-folder"></li></div> -->
-          <div class="topbutton">
-            <li id="review-<%= review.id %>" data-review-id="<%= review.id %>">
-              <%= render "likes/like", review: review %>
-            </li>
-          </div>      
-        </ul>
-        <div class="spbodyfont">
-          <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
-            <%= render partial: 'reviews/review2', locals: { review: review } %>
-          </div>
-        </div>
-        
-        <div class="spbodyfont comment_border">
-          コメント
-        </div>
-        <div class="spbodyfont">
-          <div id="comments_area-<%= review.id %>" data-comments_area-id="<%= review.id %>"><!-- #① -->
-            <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-            <% @comments = review.comments %>
-            <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
-          </div>
-        </div>            
-        <% if user_signed_in? %>
-          <% unless review.user_id == current_user.id %>
-            <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-            <%= render partial: 'comments/form_top', locals: { comment: @comment, review: review } %>
-          <% end %>
-        <% end %>            
-    </div><!--waku-->
-    <% end %><!--review-->
-</div><!--tab1-->
-
+                  <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
+                    <%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %>
+                  </div><!--list_item-->
+                </div><!--list-->
+                <% if current_user && @user.id == current_user.id %>
+                  <%= link_to (content_tag(:i, '編集する', class: 'fas fa-pencil-alt post-function')), edit_review_path(review.id) %>
+                  <%= link_to (content_tag(:i, '',class: 'far fa-trash-alt post-function')), review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+                <% end %><!--if current_user && @user.id == current_user.id-->
+                <ul class="margin_padding_0">
+                  <li class="yoko">
+                    <div class="topicon">
+                      <% if (review.user.provider == "facebook") %>
+                        <% review.user.icon = review.user.icon %>
+                        <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "35x35" %>
+                      <% elsif review.user.avator %>
+                        <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
+                      <% else %>
+                        <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
+                      <% end %>
+                    </div><!--topicon--></li>
+                  <li class="yoko">
+                    <div class="spbodyfont">
+                      <%= link_to review.title, review_path(review.id) %>
+                    </div>
+                  </li>
+                  <li class="yoko">
+                    <div class="post-meta">
+                    </div>
+                  </li>
+                  <li class="yoko">
+                    <div class="post-meta">
+                      By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %>
+                    </div>
+                  </li>
+                </ul>
+                <div class="post-thumbnail">
+                  <ul class="slider">
+                    <% review.images.each do |image| %>
+                      <li><%= link_to image_tag(image.to_s, :class => 'fit-imgtop'), review_path(review.id) if image.to_s %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <ul class="iine"><!--
+                  <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
+                  <div class="topbutton"><li class="far fa-folder"></li></div> -->
+                  <div class="topbutton">
+                    <li id="review-<%= review.id %>" data-review-id="<%= review.id %>">
+                      <%= render "likes/like", review: review %>
+                    </li>
+                  </div>      
+                </ul>
+                <div class="spbodyfont">
+                  <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
+                    <%= render partial: 'reviews/review2', locals: { review: review } %>
+                  </div>
+                </div>
+                <div class="spbodyfont comment_border">
+                  コメント
+                </div>
+                <div class="spbodyfont">
+                  <div id="comments_area-<%= review.id %>" data-comments_area-id="<%= review.id %>"><!-- #① -->
+                    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+                    <% @comments = review.comments %>
+                    <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
+                  </div>
+                </div>            
+                <% if user_signed_in? %>
+                  <% unless review.user_id == current_user.id %>
+                    <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+                    <%= render partial: 'comments/form_top', locals: { comment: @comment, review: review } %>
+                  <% end %>
+                <% end %>            
+              </div><!--waku-->
+            <% end %><!--review-->
+          </div><!--tab1-->
           <div id="tab2" class="tab-pane">
             <div class="waku">
               <form>
@@ -251,35 +246,29 @@
                 </div>
               </form>
             </div>
-
-<% @user.favorite_reviews.order("created_at DESC").each do |review| %>
-            <div class="list">
-            <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
-                          
-          </div></div>
-            <div class="waku">  
-              <%= review.title %>
-              
-              By&nbsp;<%= link_to review.user.name, review.user %>&nbsp;| <%= review.created_at.strftime('%Y-%m-%d') %> |
-              <%= review.comments.count %>
-              <%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %>
-              <% if current_user && @user.id == current_user.id %>
-                <%= link_to (content_tag(:i, '編集する', class: 'fas fa-pencil-alt post-function')), edit_review_path(review.id) %>
-                <%= link_to (content_tag(:i, '',class: 'far fa-trash-alt post-function')), review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
-              <% end %><!--if current_user && @user.id == current_user.id-->
-
-                    <%= strip_tags(review.content) %>
-                  <%= link_to '詳細を確認する', review_path(review.id) %>
-                  </div>
+            
+            <% @user.favorite_reviews.order("created_at DESC").each do |review| %>
+              <div class="list">
+                <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">            
+                </div>
+              </div>
+              <div class="waku">  
+                <%= review.title %>
+                  By&nbsp;<%= link_to review.user.name, review.user %>&nbsp;| <%= review.created_at.strftime('%Y-%m-%d') %> |
+                <%= review.comments.count %>
+                  <%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %>
+                <% if current_user && @user.id == current_user.id %>
+                  <%= link_to (content_tag(:i, '編集する', class: 'fas fa-pencil-alt post-function')), edit_review_path(review.id) %>
+                  <%= link_to (content_tag(:i, '',class: 'far fa-trash-alt post-function')), review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
+                <% end %><!--if current_user && @user.id == current_user.id-->
+                <%= strip_tags(review.content) %>
+                <%= link_to '詳細を確認する', review_path(review.id) %>
+              </div>
             <% end %>
-        </div><!--tab2-->
+          </div><!--tab2-->
         </div><!--tab-content-->
-   </div><!--row-->
-   
-
-   
-   
-<!-- パンくずリスト（うまく表示されないのでコメントアウト）
+      </div><!--row-->
+      <!-- パンくずリスト（うまく表示されないのでコメントアウト）
       <div class="hidden-xs col-sm-4 col-md-3 col-md-offset-1 sidebar">
         <div class="widget">
           <h5 class="widget-title font-alt">Recent Posts</h5>
@@ -290,8 +279,7 @@
           <h5 class="widget-title font-alt">Popular Posts</h5>
           <ul class="icon-list">
           </ul>
-        </div>
-        
+        </div> 
         <div class="widget">
           <h5 class="widget-title font-alt">Tag</h5>
           <div class="tags font-serif">
@@ -311,7 +299,7 @@
         </div>
       </div>
         -->
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
 </section>

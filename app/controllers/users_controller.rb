@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     @page_views = @user.impressionist_count
     if current_user != nil
       @feed_items = current_user.feed
+      @comment = Comment.new
     end
   end
 

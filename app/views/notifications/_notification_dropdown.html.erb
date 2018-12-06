@@ -1,10 +1,10 @@
- <div class="dropdown notification-dropdown">
-   <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" id='dropdownMenu1' aria-haspopup="true" aria-expanded="true">
-     <%= current_user.notifications.where(read: false).count %> 
-     <span class="glyphicon glyphicon-flag"><i class="fa fa-bell" aria-hidden="true"></i>通知</span>
+<div class="notification-dropdown">
+   <button class="btn" type="button" data-toggle="dropdown" id='dropdownMenu1' aria-haspopup="true" aria-expanded="true">
+    <i class="fa fa-bell fa-2x notification-bell" aria-hidden="true"></i>
+    <p class="notification-badge"><%= current_user.notifications.where(read: false).count %></p>
    </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li class="dropdown-header text-center">Notifications</li>
+    <li class="dropdown-header text-center">通知</li>
      <%= render current_user.notifications.where(read: false).order('created_at DESC').last(5) %> 
   </ul>
-</div>
+</div> 

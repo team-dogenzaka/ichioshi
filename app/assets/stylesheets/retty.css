@@ -220,9 +220,6 @@ ul {
     color: #787c7b;
 }
 
-.footer {
-  margin-bottom: 48px;
-}
 .global-nav {
   position: fixed;
   left: 0;
@@ -237,6 +234,7 @@ ul {
   padding: 0;
   list-style: none;
   text-align: center;
+  margin-bottom: 0px;
 }
 .nav-item {
   display: table-cell;

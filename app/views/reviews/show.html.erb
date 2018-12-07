@@ -72,7 +72,7 @@
               <h4 class="comment-title font-alt">レビュアー</h4>
             </p>
             <% if (@post_user.provider == "facebook") %>
-              <% @post_user.icon = @post_user.icon.insert%>
+              <% @post_user.icon = @post_user.icon. %>
               <%= image_tag @post_user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50" %>
             <% elsif @post_user.avator %>
               <%= image_tag(@post_user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>

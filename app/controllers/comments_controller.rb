@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  after_action :create_notifications, only: [:create]
+  after_action :create_notifications_reviewer, only: [:create]
 
   def create
     @review = Review.find(params[:review_id]) #①
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   private
   def create_notifications_reviewer
-    return if @comment.user.id == current_user.id
+    return if @review.user.id == current_user.id
       Notification.create(user_id: @review.user.id,
         notified_by_id: current_user.id,
         review_id: @review.id,

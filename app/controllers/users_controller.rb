@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:destroy]
-  before_action :ensure_correct_user, only: [:destroy]
+  before_action :ensure_correct_user, only: [:edit, :destroy]
 
   def index
     @users = User.all

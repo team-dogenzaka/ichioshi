@@ -1,3 +1,8 @@
 <li>
- <%= link_to "#{notification.notified_by.name}さんがあなたの記事に#{notification.notified_type}をしました", link_through_path(notification) %>
- </li>
+  <% if  notification.notified_type == 'フォロー' %>
+    <% message = 'あなたを' %>
+  <% else %>
+    <% message = 'あなたの記事に' %>
+  <% end %>
+  <%= link_to "#{notification.notified_by.name}さんが#{message}#{notification.notified_type}しました", link_through_path(notification) %>
+</li>

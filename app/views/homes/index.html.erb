@@ -7,7 +7,7 @@
         <div class="font-alt mb-30 titan-title-size-1">本当にいいモノを、人からのおすすめで見つける</div>
         <div class="font-alt mb-40 titan-title-size-4">ICHIOSHI</div>
         <% unless user_signed_in? %>
-          <%= link_to image_tag('/images/facebook_login.png',:alt => "Karan Singh Sisodia", :size => '200'), user_facebook_omniauth_authorize_path, class: "login-button facebook" ,method: :post %>
+          <%= link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/facebook_login.png',:alt => "Karan Singh Sisodia", :size => '200'), user_facebook_omniauth_authorize_path, class: "login-button facebook" ,method: :post %>
         <% end %>
       </div>
     </div>

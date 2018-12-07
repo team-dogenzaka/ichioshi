@@ -8,7 +8,6 @@
       <% end %>
       <div class="mypageicon">
         <% if (@user.provider == "facebook") %>
-          <% @user.icon = @user.icon %>
           <%= image_tag @user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100" %>
         <% elsif @user.avator %>
           <%= image_tag(@user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "100x100") %>
@@ -171,7 +170,6 @@
                   <li class="yoko">
                     <div class="topicon">
                       <% if (review.user.provider == "facebook") %>
-                        <% review.user.icon = review.user.icon %>
                         <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "35x35" %>
                       <% elsif review.user.avator %>
                         <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>

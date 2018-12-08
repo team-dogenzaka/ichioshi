@@ -60,9 +60,7 @@
           <h2>フォローしている人の新着レビュー</h2>
         </center>
         <div class="row">
-          <% @user.followings.each do |user| %>
-            <% @new_reviews = user.reviews.order(created_at: :desc) %>
-            <% @new_reviews.each do |review| %>
+            <% @feed_items.each do |review| %>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->
                   <div class="col-md-6 col-sm-12 col-xs-12">
@@ -136,7 +134,6 @@
                   <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->
                 </div><!--col-->
               <% end %><!--review-->
-            <% end %><!--user-->
           </div><!--row-->
         </div><!--container-->
       </section>

@@ -3,8 +3,15 @@ class ReviewsController < ApplicationController
   before_action :user_check, only: [:edit, :update, :destroy]
   PER = 6
   def index
-    @review = params[:tag].present? ? Review.tagged_with(params[:tag]).page(params[:page]).per(PER) : Review.all.page(params[:page]).per(PER)
-    @review = @review.includes(:tags)
+    if params[:tag].present?
+      @review = Review.tagged_with(params[:tag]).page(params[:page]).per(PER)
+    elsif params[:category_name].present?
+      @review = Review.where(category_name: params[:category_name]).page(params[:page]).per(PER)
+    else
+      @review = Review.all.page(params[:page]).per(PER)
+      @review = @review.includes(:tags)
+    end
+    
   end
 
   def new
@@ -46,7 +53,7 @@ class ReviewsController < ApplicationController
     @comment = Comment.new
     @comments = @review.comments
     @comments_number = @comments.count
-
+    @category_name = @review.category_name
     impressionist(@review, nil, :unique => [:session_hash])
 
     @page_views = @review.impressionist_count

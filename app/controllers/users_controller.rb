@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def show
     @tag =  ActsAsTaggableOn::Tag.all
     @user = User.find(params[:id])
+    @review = @user.reviews
     impressionist(@user, nil, :unique => [:session_hash])
     @page_views = @user.impressionist_count
     if current_user != nil

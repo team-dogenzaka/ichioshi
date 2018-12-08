@@ -41,6 +41,9 @@
     <%= text_field_tag 'review[skill_list]', @review.skill_list.join(',') %>
   </div>
 
+<%= form.collection_select(:category_name, Category.all, :category_name, :category_name, :include_blank => 'カテゴリ') %>
+  
+
 <!--
 <div class="field">
      <%= form.label :tags %><br>

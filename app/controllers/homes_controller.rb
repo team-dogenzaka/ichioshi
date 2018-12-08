@@ -7,6 +7,7 @@ class HomesController < ApplicationController
     if user_signed_in?
     @feed_items = current_user.feed.order(created_at: :desc)
     @comment = Comment.new
+    @category = Category.all
     else
     end
   end

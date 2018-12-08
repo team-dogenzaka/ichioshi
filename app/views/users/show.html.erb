@@ -155,11 +155,13 @@
                 </div>
               </form>
             </div><!--waku-->
-            <% @user.reviews.order("created_at DESC").each do |review| %>
+            <% @review.order("created_at DESC").each do |review| %>
               <div class="waku">
                 <div class="list">
                   <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
                     <%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %>
+                    <% @category_name = review.category_name %>
+                    <%= link_to "#{@category_name}", reviews_path(category_name: @category_name) %>
                   </div><!--list_item-->
                 </div><!--list-->
                 <% if current_user && @user.id == current_user.id %>

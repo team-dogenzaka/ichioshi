@@ -10,6 +10,7 @@
               By&nbsp;<%= link_to @post_user.name, user_path(id: @post_user.id) %>
               投稿日時: <%= @review.created_at.strftime("%Y年%m月%d日") %>
               <%= render 'reviews/tag_list', tag_list: @review.skill_list %>
+              <%= link_to "#{@category_name}", reviews_path(category_name: @category_name) %>
               訪問者数 : <%= number_with_delimiter(@page_views) %>
               <% if current_user && @review.user_id == current_user.id %>
                 <% if user_signed_in? %>

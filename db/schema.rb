@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_131804) do
+ActiveRecord::Schema.define(version: 2018_12_06_131517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ckeditor_assets", id: :serial, force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -124,6 +130,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_131804) do
     t.boolean "draft"
     t.json "images"
     t.integer "likes_count", default: 0, null: false
+    t.string "category_name"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 

@@ -1,29 +1,9 @@
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-
     <ul class="margin_padding_0">
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/081/thumb/b715d1d43a53fdb2e209143b3f5ad06eaae96731.jpg?1501206534', :class => "categorycover") %></li>
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/002/thumb/e1ca248b10e74e75a3238d181e1d450932093b3b.jpg?1473055031', :class => "categorycover") %></li>
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/177/thumb/5d2a4ace1d8687dcfc4c1af069e89d4bcea2dc44.jpg?1473702059', :class => "categorycover") %></li>
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/153/thumb/2a290bbe5a8ee762b0c2d48b331de44c4ba3abd0.jpg?1473701936', :class => "categorycover") %></li>
-</ul>
-
-    <ul class="margin_padding_0">
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/151/thumb/f92eaf56dd93e922a52c85a180ab205af2664adb.jpg?1473701927', :class => "categorycover") %></li>
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/947/thumb/554567a9295692211935f61f57c02b02cbdade21.jpg?1473705082', :class => "categorycover") %></li>
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/006/768/thumb/02e0f7b20c9fb98c23c524d9f901d60a6eba121a.jpg?1492595141', :class => "categorycover") %></li>
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/326/thumb/84e7db4b14402953f9a4c7db25f81779e9aeb028.jpg?1473702615', :class => "categorycover") %></li>
-</ul>
-
-    <ul class="margin_padding_0">
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/081/thumb/b715d1d43a53fdb2e209143b3f5ad06eaae96731.jpg?1501206534', :class => "categorycover") %></li>
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/002/thumb/e1ca248b10e74e75a3238d181e1d450932093b3b.jpg?1473055031', :class => "categorycover") %></li>
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/177/thumb/5d2a4ace1d8687dcfc4c1af069e89d4bcea2dc44.jpg?1473702059', :class => "categorycover") %></li>
-  <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/153/thumb/2a290bbe5a8ee762b0c2d48b331de44c4ba3abd0.jpg?1473701936', :class => "categorycover") %></li>
-</ul>
-    
     <% @categories.each do |category| %>
-          <%= link_to "#{category.category_name}", reviews_path(category_name: category.category_name) %>
+      <li><%= link_to "#{category.category_name}", reviews_path(category_name: category.category_name) %></li>
     <% end %>
+   </ul>
 </div><!--row-->
 </div><!--col-->

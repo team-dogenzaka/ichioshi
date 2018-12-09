@@ -1,18 +1,17 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :user_check, only: [:edit, :update, :destroy]
-  PER = 6
   def index
     if params[:tag].present?
-      @review = Review.tagged_with(params[:tag]).page(params[:page]).per(PER)
+      @review = Review.tagged_with(params[:tag])
     elsif params[:category_name].present?
-      @review = Review.where(category_name: params[:category_name]).page(params[:page]).per(PER)
+      @review = Review.where(category_name: params[:category_name])
     else
-      @review = Review.all.page(params[:page]).per(PER)
+      @review = Review.all
       @review = @review.includes(:tags)
     end
     @categories = Category.all
-    
+    @comment = Comment.new
   end
 
   def new

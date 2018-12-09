@@ -18,6 +18,5 @@ class RelationshipsController < ApplicationController
     Notification.create(user_id: @user.id,
       notified_by_id: current_user.id,
       notified_type: 'フォロー')
-    binding.pry
   end
 end

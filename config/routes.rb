@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
   get 'likes/create'
   get 'likes/destroy'
+  get '/discovers', to: 'discovers#index'
   delete 'users/delete/:id', to: 'users#destroy', as: 'users/destroy'
   get '/', to: 'homes#index', as: 'root'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', :registrations => "users/registrations" }

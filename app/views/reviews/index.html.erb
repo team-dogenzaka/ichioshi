@@ -24,6 +24,9 @@
   <li class="yoko"><%= image_tag('https://cdn.sarah30.com/tag_groups/cover_images/000/000/153/thumb/2a290bbe5a8ee762b0c2d48b331de44c4ba3abd0.jpg?1473701936', :class => "categorycover") %></li>
 </ul>
     
+    <% @categories.each do |category| %>
+          <%= link_to "#{category.category_name}", reviews_path(category_name: category.category_name) %>
+    <% end %>
 </div><!--row-->
 </div><!--col-->
     <% if params[:tag] %>
@@ -50,6 +53,8 @@
                   <div class="post-meta">
                       <% post_user = review.user %>
                      By&nbsp;<%= link_to post_user.name, user_path(id: post_user.id) %>&nbsp;| <%= review.created_at.strftime('%Y-%m-%d') %> | <%= review.comments.count %> Comments
+                      <% @category_name = review.category_name %>
+                      <%= link_to "#{@category_name}", reviews_path(category_name: @category_name) %>
                   </div>
                 </div>
                 <div class="post-entry">

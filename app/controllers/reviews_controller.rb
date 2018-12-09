@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
       @review = Review.all.page(params[:page]).per(PER)
       @review = @review.includes(:tags)
     end
+    @categories = Category.all
     
   end
 

@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  background: #fff;
+  background-color: #FAFAFA;
   font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
 
   color: #666;
@@ -308,7 +308,7 @@ a,
 .parallax-bg {
   background-attachment: inherit;
   background-size: cover;
-  background-image: url("/images/top.png");
+  background-image: url("https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/top_cover.png");
 }
 
 /* Vertical margin, padding */

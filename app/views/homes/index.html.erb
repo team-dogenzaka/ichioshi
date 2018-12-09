@@ -1,7 +1,7 @@
 <div data-turbolinks="false">
 <% if user_signed_in? %>
 <% else %>
-  <section class="bg-dark-30 showcase-page-header module parallax-bg" data-background="assets/images/ichioshi.png">
+  <section class="bg-dark-30 showcase-page-header module parallax-bg" data-background="https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/top_cover.png">
     <div class="titan-caption">
       <div class="caption-content">
         <div class="font-alt mb-30 titan-title-size-1">本当にいいモノを、人からのおすすめで見つける</div>
@@ -168,41 +168,42 @@
   </section>
 <% end %>
 -->
-
-<div class="module-small bg-dark">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="widget">
-          <h5 class="widget-title font-alt">about ICHIOSHI</h5>
-          <ul class="icon-list">
-            <li><a href="#">ICHIOSHIについて</a></li>
-            <li><a href="#">利用規約</a></li>
-            <li><a href="#">プライバシーポリシー</a></li>
-          </ul>
+<% unless user_signed_in? %>
+  <div class="module-small bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="widget">
+            <h5 class="widget-title font-alt">about ICHIOSHI</h5>
+            <ul class="icon-list">
+              <li><a href="#">ICHIOSHIについて</a></li>
+              <li><a href="#">利用規約</a></li>
+              <li><a href="#">プライバシーポリシー</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="widget">
-          <h5 class="widget-title font-alt">about team</h5>
-          <ul class="icon-list">
-            <li><a href="#">チーム道玄坂について</a></li>
-            <li><a href="#">JOIN US</a></li>
-          </ul>
+        <div class="col-sm-3">
+          <div class="widget">
+            <h5 class="widget-title font-alt">about team</h5>
+            <ul class="icon-list">
+              <li><a href="#">チーム道玄坂について</a></li>
+              <li><a href="#">JOIN US</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="widget">
-          <h5 class="widget-title font-alt">お問い合わせ</h5>
-          <ul class="icon-list">
-            <li><a href="#">お問い合わせ</a></li>
-            <li><a href="#">広告掲載について</a></li>
-          </ul>
+        <div class="col-sm-3">
+          <div class="widget">
+            <h5 class="widget-title font-alt">お問い合わせ</h5>
+            <ul class="icon-list">
+              <li><a href="#">お問い合わせ</a></li>
+              <li><a href="#">広告掲載について</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 <div class="scroll-up">
   <a href="#totop">
     <i class="fa fa-angle-double-up"></i>

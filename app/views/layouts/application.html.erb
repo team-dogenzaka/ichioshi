@@ -124,7 +124,10 @@
             </li>
             <li class="nav-item">
                 <i class="far fa-user"></i>
+                <% if user_signed_in? %>
                 <span><%= link_to 'マイページ', user_path(current_user.id) , data: { turbolinks: false } %></span>
+                <% else %>
+                <% end %>
             </li>
           </ul>
         </nav>

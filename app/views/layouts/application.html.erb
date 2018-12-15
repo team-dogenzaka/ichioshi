@@ -108,28 +108,31 @@
       </main>
 
       <footer class="footer">
-        <nav class="global-nav">
-          <ul class="nav-list">
-            <li class="nav-item">
-                <i class="fas fa-home"></i>
-                <span><a href="/">フィード</a></span>
-            </li>
-            <li class="nav-item">
-                <i class="fas fa-search-plus"></i>
-                <span><%= link_to '見つける', discovers_path , data: { turbolinks: false } %></span>
-            </li>
-            <li class="nav-item">
-                <i class="fas fa-camera"></i>
-                <span><%= link_to '投稿する', new_review_path , data: { turbolinks: false } %></span>
-            </li>
-            <li class="nav-item">
+        <nav class="navbar-footer nav-bar">
+          <div class="nav-item footer-menu">
+            <%= link_to root_path, data: { turbolinks: false } do %>
+              <i class="fas fa-home"></i>
+            <% end %>
+          </div>
+          <div class="nav-item footer-menu">
+            <%= link_to discovers_path, data: { turbolinks: false } do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          </div>
+          <div class="nav-item footer-menu">
+            <%= link_to new_review_path, data: { turbolinks: false } do %>
+              <i class="far fa-plus-square"></i>
+            <% end %>
+          </div>
+          <div class="nav-item footer-menu">
+            <% if user_signed_in? %>
+              <%= link_to user_path(current_user.id), data: { turbolinks: false } do %>
                 <i class="far fa-user"></i>
-                <% if user_signed_in? %>
-                <span><%= link_to 'マイページ', user_path(current_user.id) , data: { turbolinks: false } %></span>
-                <% else %>
-                <% end %>
-            </li>
-          </ul>
+              <% end %>
+            <% else %>
+              <!-- TODO ログインしてないときのボタンを作る -->
+            <% end %>
+          </div>
         </nav>
       </footer>
     </div>

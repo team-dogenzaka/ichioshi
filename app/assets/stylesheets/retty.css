@@ -223,6 +223,7 @@ ul {
   left: 0;
   bottom: 0;
   background: white;
+  width: 100%;
 }
 .nav-list {
   display: table;
@@ -234,21 +235,12 @@ ul {
   text-align: center;
   margin-bottom: 0px;
 }
-.nav-item {
-  display: table-cell;
-  border: solid 1px gray;
-  padding: 4px 0px;
-}
 .nav-item a {
   text-decoration: none;
 }
 .nav-item i {
   display: block;
   font-size: 24px;
-}
-.nav-item a span {
-  display: block;
-  font-size: 10px;
 }
 .topbutton {
   font-size: 25px;
@@ -383,4 +375,22 @@ textarea {
   top: 7px;
   border-width: 1.2px;
   border-color: #fff;
-} 
+}
+
+.footer {
+  border-top: 1px solid #e7e7e7;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar-footer {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #fff;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  height: 70px;
+}

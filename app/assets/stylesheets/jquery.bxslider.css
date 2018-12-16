@@ -5,7 +5,7 @@
 .bx-wrapper {
   position: relative;
   width: 100%;
-  margin-bottom: 60px;
+  margin-bottom: 0px;
   padding: 0;
   *zoom: 1;
   -ms-touch-action: pan-y;

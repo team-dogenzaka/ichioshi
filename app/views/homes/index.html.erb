@@ -63,10 +63,9 @@
             <% @feed_items.each do |review| %>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->
-                  <div class="col-md-6 col-sm-12 col-xs-12">
+                  <div class="col-md-6 col-sm-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;">
                     <div class="waku">
-                      <ul class="margin_padding_0">
-                        <li class="yoko">
+                      <div class="grid">
                           <div class="topicon">
                             <% if (review.user.provider == "facebook") %>
                               <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "35x35" %>
@@ -76,21 +75,9 @@
                               <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
                             <% end %>
                           </div><!--topicon-->
-                        </li>
-                        <li class="yoko">
-                          <div class="spbodyfont">
-                            <%= link_to review.title, review_path(review.id) %>
-                          </div>
-                        </li>
-                        <li class="yoko">
-                          <div class="post-meta"></div>
-                        </li>
-                        <li class="yoko">
-                          <div class="post-meta">
-                            By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %>
-                          </div>
-                        </li>
-                      </ul>
+                            <div class="grid1"><%= link_to review.title, review_path(review.id) %></div>
+                          <div class="grid2"><%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %></div>
+                     </div>
                       <div class="post-thumbnail">
                         <ul class="slider">
                           <% review.images.each do |image| %>

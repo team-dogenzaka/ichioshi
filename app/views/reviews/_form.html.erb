@@ -10,53 +10,54 @@
       </ul>
     </div>
   <% end %>
+  <div class="waku col-xs-10 col-xs-offset-1">
+    <div class="field">
+      <div id="preview"></div>
+      <button type="button" class="col-xs-offset-1 select_images_button" id="select_images">
+	      <i class="fas fa-images fa-3x"></i>
+        <%= form.file_field :images, id: :review_images, multiple: true, style: 'display: none' %>
+      </button>
+      <%= image_tag(@review.image.url, :size => '200x200') if @review.image.url %>
+    </div>
 
-  <div class="blog_title">
-    <%= form.label "タイトル:" %>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
+    <div class="field">
+      <%= form.text_field :title,id: 'review-title', class: "form-control", placeholder: "レビュータイトル" %>
+    </div>
 
-  <div class="field">
-    <%= form.label "コンテンツ:" %>
-    <%= form.text_area :content, :class => "form-control" %>
-  </div>
-  <br>
-  <div class="field">
-    <%= form.label "サムネイル用画像:" %>
-    <!-- 確認画面から新規作成画面に戻った時に、 -->
-    <!-- アップロードした画像を表示させるための記述 -->
-    <div id="preview"></div>
-    <%= image_tag(@review.image.url, :size => '200x200') if @review.image.url %>
-    <%= form.file_field :images, id: :review_images, multiple: true %>
-  </div>
-  <br>
-  <div class="field">
-    <%= form.label :下書き %>
-    <%= form.check_box 'draft', {}, false, true %>
-  </div>
+    <div class="field">
+      <%= form.text_area :content, :class => "form-control review-content", placeholder: "レビュー本文" %>
+    </div>
 
+    <br>
+    <br>
+    <div class="field">
+      <%= form.label :下書き %>
+      <%= form.check_box 'draft', {}, false, true %>
+    </div>
 
-  <div class="field">
-    <%= form.label :skill_list, "タグ:" %><br>
-    <%= text_field_tag 'review[skill_list]', @review.skill_list.join(',') %>
-  </div>
+    <div class="field">
+      <%= form.label :skill_list, "タグ:" %><br>
+      <%= text_field_tag 'review[skill_list]', @review.skill_list.join(',') %>
+    </div>
 
-<%= form.collection_select(:category_name, Category.all, :category_name, :category_name, :include_blank => 'カテゴリ') %>
-  
-
-<!--
-<div class="field">
-     <%= form.label :tags %><br>
-    <%= collection_check_boxes(:hashtag, :hashtag_ids, Hashtag.all, :id, :hashtag_name ) do |t|  %>
-      <% t.label { t.check_box + t.text } %>
-      <% end %>
+    <%= form.collection_select(:category_name, Category.all, :category_name, :category_name, :include_blank => 'カテゴリ') %>
+    <!--
+    <div class="field">
+        <%= form.label :tags %><br>
+        <%= collection_check_boxes(:hashtag, :hashtag_ids, Hashtag.all, :id, :hashtag_name ) do |t|  %>
+          <% t.label { t.check_box + t.text } %>
+          <% end %>
+    </div>
+    -->
+    <br>
+    <%= form.submit "レビューを投稿する", class: "btn btn-round btn-d"  %>
+  <% end %>
 </div>
--->
-  <br>
-  <%= form.submit "レビューを投稿する", class: "btn btn-round btn-d"  %>
-
-<% end %>
-
+<script>
+  document.getElementById('select_images').onclick = function() {
+    document.getElementById("review_images").click();
+  };
+ </script>
 <script>
 function Filepreview(evt){
  var files = evt.target.files;

@@ -65,10 +65,10 @@
                 <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->
                   <div class="col-md-6 col-sm-12 col-xs-12" style="padding-left: 0px;padding-right: 0px;">
                     <div class="waku">
-                      <div class="grid">
+                      <div class="grid spbodyfont">
                           <div class="topicon">
                             <% if (review.user.provider == "facebook") %>
-                              <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "35x35" %>
+                              <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70" %>
                             <% elsif review.user.avator %>
                               <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
                             <% else %>
@@ -76,7 +76,7 @@
                             <% end %>
                           </div><!--topicon-->
                             <div class="grid1"><%= link_to review.title, review_path(review.id) %></div>
-                          <div class="grid2"><%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %></div>
+                          <div class="grid2"><%= link_to review.user.name, user_path(id: review.user.id) %></div>
                      </div>
                       <div class="post-thumbnail">
                         <ul class="slider">
@@ -85,6 +85,7 @@
                           <% end %>
                         </ul>
                       </div>
+                      <div class="main-content">
                       <ul class="iine"><!--
                         <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
                         <div class="topbutton"><li class="far fa-folder"></li></div> -->
@@ -109,12 +110,15 @@
                           <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
                         </div>
                       </div>            
+                      <%= review.created_at.strftime("%m月%d日") %>
                       <% if user_signed_in? %>
                         <% unless review.user_id == current_user.id %>
                           <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
                           <%= render partial: 'comments/form_top', locals: { comment: @comment, review: review } %>
                         <% end %>
                       <% end %>            
+                      
+                      </div><!--main-content-->  
                     </div><!--waku-->  
                   </div><!--col-->
                   <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->

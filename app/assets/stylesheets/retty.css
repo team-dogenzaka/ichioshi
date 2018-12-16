@@ -247,6 +247,7 @@ ul {
 .topbutton {
   font-size: 25px;
   margin-right: 10px;
+  margin-left: 0px;
 
 }
 
@@ -318,7 +319,7 @@ textarea {
   display: flex;
   margin-bottom: 5px;
   margin-top: 5px;
-  padding-left: 5px;  
+  padding-left: 0px;  
 }
 
 .iineli {

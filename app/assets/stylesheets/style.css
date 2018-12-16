@@ -764,7 +764,7 @@ a,
 }
 
 .btn.btn-xs {
-  padding: 4px 19px;
+  padding: 4px 0px;
   font-size: 10px;
   letter-spacing: 0;
 }
@@ -2201,7 +2201,7 @@ Google map
 .post-thumbnail,
 .post-images-slider,
 .post-video {
-  margin: 0 0 20px;
+  margin: 0 0 0px;
   width: 100%;
   height: 100%;
   object-fit: cover; /* この一行を追加するだけ！ */

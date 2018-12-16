@@ -111,7 +111,7 @@
         <nav class="navbar-footer nav-bar">
           <div class="nav-item footer-menu">
             <%= link_to root_path, data: { turbolinks: false } do %>
-            <% if current_page?(:controller => 'homes', :action => 'index') %>
+            <% if request.path == "/" %>
             <i class="fas fa-home my-skyblue"></i>
             <% else %>
               <i class="fas fa-home"></i>
@@ -120,7 +120,7 @@
           </div>
           <div class="nav-item footer-menu">
             <%= link_to discovers_path, data: { turbolinks: false } do %>
-            <% if current_page?(:controller => 'discovers', :action => 'index') %>
+            <% if request.path == discovers_path %>
               <i class="fas fa-search my-skyblue"></i>
               <% else %>
               <i class="fas fa-search"></i>
@@ -129,7 +129,7 @@
           </div>
           <div class="nav-item footer-menu">
             <%= link_to new_review_path, data: { turbolinks: false } do %>
-            <% if current_page?(:controller => 'reviews', :action => 'new') %>
+            <% if request.path == new_review_path %>
               <i class="far fa-plus-square my-skyblue"></i>
               <% else %>
               <i class="far fa-plus-square"></i>

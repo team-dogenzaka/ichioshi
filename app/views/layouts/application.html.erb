@@ -111,23 +111,39 @@
         <nav class="navbar-footer nav-bar">
           <div class="nav-item footer-menu">
             <%= link_to root_path, data: { turbolinks: false } do %>
+            <% if current_page?(:controller => 'homes', :action => 'index') %>
+            <i class="fas fa-home my-skyblue"></i>
+            <% else %>
               <i class="fas fa-home"></i>
+            <% end %>
             <% end %>
           </div>
           <div class="nav-item footer-menu">
             <%= link_to discovers_path, data: { turbolinks: false } do %>
+            <% if current_page?(:controller => 'discovers', :action => 'index') %>
+              <i class="fas fa-search my-skyblue"></i>
+              <% else %>
               <i class="fas fa-search"></i>
+              <% end %>
             <% end %>
           </div>
           <div class="nav-item footer-menu">
             <%= link_to new_review_path, data: { turbolinks: false } do %>
+            <% if current_page?(:controller => 'reviews', :action => 'new') %>
+              <i class="far fa-plus-square my-skyblue"></i>
+              <% else %>
               <i class="far fa-plus-square"></i>
+            <% end %>
             <% end %>
           </div>
           <div class="nav-item footer-menu">
             <% if user_signed_in? %>
               <%= link_to user_path(current_user.id), data: { turbolinks: false } do %>
+              <% if request.path == user_path(current_user.id) %>
+              <i class="far fa-user my-skyblue"></i>
+              <% else %>
                 <i class="far fa-user"></i>
+              <% end %>
               <% end %>
             <% else %>
               <!-- TODO ログインしてないときのボタンを作る -->

@@ -442,3 +442,8 @@ textarea.review-content {
   cursor: pointer;
   outline: none;
 }
+
+.main-content {
+  padding-left: 10px;
+  padding-right: 10px;
+}

@@ -34,7 +34,7 @@
                 <% end %>
               </ul>
             </div>
-            <%== @review.content %>
+            <%= @review.content %>
             <div class="spbodyfont">
               <div id="reviewarea-<%= @review.id %>" data-reviewarea-id="<%= @review.id %>">
                 <%= render partial: 'reviews/review2', locals: { review: @review } %>

@@ -3,10 +3,11 @@
       <% comments.each do |comment| %>
         <% unless comment.id.nil? %>
             <li>
-              <%= link_to "#{comment.user.name}", user_path(comment.user.id) %>
+              <span class="comment"><%= link_to "#{comment.user.name}", user_path(comment.user.id) %></span>
             <%= comment.content %>
             <% if comment.user_id == current_user.id %>
-              <%= link_to 'コメントを削除する', review_comment_path(comment.review_id, comment.id), method: :delete, remote: true %>
+              <%= link_to '', review_comment_path(comment.review_id, comment.id),method: :delete, remote: true %>
+              <i class="fa fa-close"></i>
             </li>  
             <% end %>
         <% end %>

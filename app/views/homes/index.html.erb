@@ -75,7 +75,7 @@
                               <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
                             <% end %>
                           </div><!--topicon-->
-                            <div class="grid1"><%= link_to review.title, review_path(review.id) %></div>
+                            <div class="grid1"><%= link_to review.title.truncate(19), review_path(review.id) %></div>
                           <div class="grid2"><%= link_to review.user.name, user_path(id: review.user.id) %></div>
                      </div>
                       <div class="post-thumbnail">
@@ -99,9 +99,6 @@
                         <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
                           <%= render partial: 'reviews/review2', locals: { review: review } %>
                         </div>
-                      </div>
-                      <div class="spbodyfont comment_border">
-                        コメント
                       </div>
                       <div class="spbodyfont">
                         <div id="comments_area-<%= review.id %>" data-comments_area-id="<%= review.id %>"><!-- #① -->

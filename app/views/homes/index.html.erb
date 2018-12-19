@@ -52,13 +52,11 @@
   </section>
 <% end %>
 
+
 <% if current_user && @user.id == current_user.id %>
   <% if @feed_items.any? %>
     <section class="" id="demos">
       <div class="container">
-        <center>
-          <h2>フォローしている人の新着レビュー</h2>
-        </center>
         <div class="row">
             <% @feed_items.each do |review| %>
               <div class="col-md-12 col-sm-12 col-xs-12">
@@ -86,15 +84,17 @@
                         </ul>
                       </div>
                       <div class="main-content">
-                      <ul class="iine"><!--
-                        <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
-                        <div class="topbutton"><li class="far fa-folder"></li></div> -->
-                        <div class="topbutton">
-                          <li id="review-<%= review.id %>" data-review-id="<%= review.id %>">
-                            <%= render "likes/like", review: review %>
-                          </li>
+                        <!--<div class="topbutton"><li class="far fa-folder"></li></div> -->
+                        
+                        <div class=grid_iine>
+                          <div class="grid_iine_1"><i id="review-<%= review.id %>" data-review-id="<%= review.id %>">
+                            <%= render "likes/like", review: review %></i>
+                          </div>
+                          <div class="grid_iine_2"><i id="comment-<%= review.id %>" data-comment-id="<%= review.id %>">
+                            <%= render "comments/comment", review: review %></i>
+                          </div>
                         </div>
-                      </ul>
+                        
                       <div class="spbodyfont">
                         <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
                           <%= render partial: 'reviews/review2', locals: { review: review } %>
@@ -110,8 +110,10 @@
                       <%= review.created_at.strftime("%m月%d日") %>
                       <% if user_signed_in? %>
                         <% unless review.user_id == current_user.id %>
+                        <div id="commentarea-<%= review.id %>" data-comment-id="<%= review.id %>"class="comment_border">
                           <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
                           <%= render partial: 'comments/form_top', locals: { comment: @comment, review: review } %>
+                        </div>
                         <% end %>
                       <% end %>            
                       

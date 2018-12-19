@@ -1,0 +1,21 @@
+<% if !current_user?(review.user) %>
+    <span class="like">
+    <% if review.iine?(current_user) %>
+      <%= form_for(review.likes.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
+        <%= button_tag(class: "btn btn-link btn-xs") do %>
+          <%= content_tag :span, "#{@comments_number}", :style=>"color:red",:class => "far fa-comment" %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= form_for(review.likes.build, remote: true) do |f| %>
+        <div><%= hidden_field_tag :review_id, review.id %></div>
+        <%= button_tag(class: "btn btn-link btn-xs") do %>
+          <%= content_tag :span, "#{@comments_number}",  :class => "far fa-comment" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </span>
+<% end %>
+<!--
+<%= link_to '続きを読む', new_review_comment_path(review.id) ,remote: true %>
+-->

@@ -1,5 +1,5 @@
 <div class="notification-dropdown">
-   <button class="notification-button" type="button" data-toggle="dropdown" id='dropdownMenu1' aria-haspopup="true" aria-expanded="true">
+   <button class="btn" type="button" data-toggle="dropdown" id='dropdownMenu1' aria-haspopup="true" aria-expanded="true">
     <i class="fa fa-bell fa-2x notification-bell" aria-hidden="true"></i>
     <p class="notification-badge"><%= current_user.notifications.where(read: false).count %></p>
    </button>

@@ -8,9 +8,8 @@ html {
 }
 
 body {
-  background-color: #FAFAFA;
-  font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
-
+  background: #fff;
+  font: 400 12px/1.8 "Open Sans", sans-serif;
   color: #666;
   -webkit-font-smoothing: antialiased;
 }
@@ -29,7 +28,7 @@ iframe {
 }
 
 .align-left {
-  text-align: left !important;
+  text-align: right !important;
 }
 
 .position-relative {
@@ -37,8 +36,8 @@ iframe {
 }
 
 .leftauto {
-  right: 0 !important;
-  left: auto !important;
+  left: 0 !important;
+  right: auto !important;
 }
 
 /* Transition elsements */
@@ -109,36 +108,36 @@ a,
   border: 1px solid #e5e5e5;
   display: block;
   width: 25%;
-  float: left;
+  float: right;
   padding: 0;
   font-size: 13px;
-  margin: -1px 0 0 -1px;
+  margin: -1px -1px 0 0;
 }
 
 .et-icons .box1 > span {
   display: inline-block;
-  border-right: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
   min-width: 60px;
   min-height: 60px;
   text-align: center;
   line-height: 60px;
   font-size: 28px;
-  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .fa-icons > div {
   padding: 0;
   border: 1px solid #e5e5e5;
-  margin: -1px 0 0 -1px;
+  margin: -1px -1px 0 0;
   font-size: 13px;
 }
 
 .fa-icons > div > i {
   display: inline-block;
-  margin-right: 5px;
+  margin-left: 5px;
   min-width: 40px;
   min-height: 40px;
-  border-right: 1px solid #f1f1f1;
+  border-left: 1px solid #f1f1f1;
   line-height: 40px;
   text-align: center;
   font-size: 14px;
@@ -258,7 +257,7 @@ a,
   content: " ";
   height: 100%;
   width: 100%;
-  left: 0;
+  right: 0;
   top: 0;
 }
 
@@ -268,7 +267,7 @@ a,
   content: " ";
   height: 100%;
   width: 100%;
-  left: 0;
+  right: 0;
   top: 0;
 }
 
@@ -278,7 +277,7 @@ a,
   content: " ";
   height: 100%;
   width: 100%;
-  left: 0;
+  right: 0;
   top: 0;
 }
 
@@ -297,7 +296,7 @@ a,
   content: " ";
   height: 100%;
   width: 100%;
-  left: 0;
+  right: 0;
   top: 0;
 }
 
@@ -306,9 +305,8 @@ a,
 }
 
 .parallax-bg {
-  background-attachment: inherit;
+  background-attachment: fixed;
   background-size: cover;
-  background-image: url("https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/top_cover.png");
 }
 
 /* Vertical margin, padding */
@@ -567,7 +565,7 @@ a,
   position: fixed;
   display: none;
   bottom: 7px;
-  right: 7px;
+  left: 7px;
   z-index: 999;
 }
 
@@ -594,7 +592,7 @@ a,
 .video-controls-box {
   position: absolute !important;
   bottom: 40px;
-  left: 0;
+  right: 0;
   width: 100%;
   z-index: 1;
 }
@@ -602,7 +600,7 @@ a,
 .video-controls-box a {
   display: inline-block;
   color: #fff;
-  margin: 0 5px 0 0;
+  margin: 0 0 0 5px;
 }
 
 /* Landing Page */
@@ -611,7 +609,7 @@ a,
   content: " ";
   width: 100%;
   height: 100%;
-  left: 0;
+  right: 0;
   top: 0;
   background-color: rgba(66, 26, 107, 0.9);
 }
@@ -636,13 +634,13 @@ a,
   content: " ";
   width: 100%;
   height: 100%;
-  left: 0;
+  right: 0;
   top: 0;
   background-color: rgba(66, 60, 130, 0.5);
 }
 
 .alert i {
-  margin-right: 5px;
+  margin-left: 5px;
 }
 
 /*--------------------------------------------------------------
@@ -671,7 +669,6 @@ a,
 
 .btn.btn-circle {
   border-radius: 30px;
-    position: absolute;
 }
 
 .btn.btn-w {
@@ -764,7 +761,7 @@ a,
 }
 
 .btn.btn-xs {
-  padding: 4px 0px;
+  padding: 4px 19px;
   font-size: 10px;
   letter-spacing: 0;
 }
@@ -779,7 +776,7 @@ a,
   border: none;
   overflow: hidden;
   top: 50%;
-  right: 1px;
+  left: 1px;
   width: 42px;
   height: 40px;
   line-height: 38px;
@@ -1011,26 +1008,26 @@ General Styles - FlexSlider
 
 .flex-direction-nav .flex-prev {
   opacity: 0;
-  left: 0;
+  right: 0;
   cursor: url(../images/prev-light.png), e-resize;
 }
 
 .flex-direction-nav .flex-next {
   opacity: 0;
-  right: 0;
+  left: 0;
   cursor: url(../images/next-light.png), e-resize;
 }
 
 .flex-control-nav {
   position: absolute;
   width: auto;
-  left: 50%;
+  right: 50%;
   bottom: 20px;
   z-index: 11;
   text-align: center;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+  -webkit-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  transform: translateX(50%);
 }
 
 .flex-control-nav > li {
@@ -1133,7 +1130,7 @@ Photography Page Slider
 }
 
 .photography-page .flex-control-nav {
-  left: 80%;
+  right: 80%;
   bottom: 20px;
   z-index: 11;
 }
@@ -1179,23 +1176,23 @@ General Styles - Owlcarousel
   position: fixed;
   background: #000;
   bottom: 0;
-  right: 0;
   left: 0;
+  right: 0;
   top: 0;
   z-index: 9998;
 }
 
 .loader {
   position: absolute;
-  border-left: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
   border-top: 2px solid rgba(255, 255, 255, 0.2);
-  border-right: 2px solid rgba(255, 255, 255, 0.2);
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   height: 46px;
   width: 46px;
-  left: 50%;
+  right: 50%;
   top: 50%;
-  margin: -23px 0 0 -23px;
+  margin: -23px -23px 0 0;
   text-indent: -9999em;
   font-size: 10px;
   z-index: 9999;
@@ -1219,8 +1216,8 @@ General Styles - Owlcarousel
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
   }
 }
 
@@ -1230,8 +1227,8 @@ General Styles - Owlcarousel
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
   }
 }
 
@@ -1281,18 +1278,18 @@ General Styles - Owlcarousel
 }
 
 .navbar-custom .dropdown-menu .dropdown-menu {
-  border-left: 1px solid rgba(73, 71, 71, 0.15);
-  left: 100%;
-  right: auto;
+  border-right: 1px solid rgba(73, 71, 71, 0.15);
+  right: 100%;
+  left: auto;
   top: 0;
   margin-top: 0;
 }
 
 .navbar-custom .dropdown-menu.left-side .dropdown-menu {
   border: 0;
-  border-right: 1px solid rgba(73, 71, 71, 0.15);
-  right: 100%;
-  left: auto;
+  border-left: 1px solid rgba(73, 71, 71, 0.15);
+  left: 100%;
+  right: auto;
 }
 
 .navbar-custom .nav > li > a:focus,
@@ -1313,7 +1310,7 @@ General Styles - Owlcarousel
 .navbar-custom .dropdown-toggle:after {
   position: absolute;
   display: block;
-  right: 0;
+  left: 0;
   top: 50%;
   margin-top: -6px;
   font: normal normal normal 14px/1 FontAwesome;
@@ -1416,7 +1413,7 @@ General Styles - Owlcarousel
 
 /* Pricing Page Header */
 .pricing-page-header {
-  background-position: 40% 14%;
+  background-position: 60% 14%;
   background-repeat: no-repeat;
 }
 
@@ -1436,7 +1433,7 @@ General Styles - Owlcarousel
 
 /* Contact Page Header */
 .contact-page-header {
-  background-position: 13% 45%;
+  background-position: 87% 45%;
   background-repeat: no-repeat;
 }
 
@@ -1488,18 +1485,12 @@ General Styles - Owlcarousel
   content: " ";
   height: 100%;
   width: 100%;
-  left: 0;
+  right: 0;
   top: 0;
 }
 
 .banner-img {
   margin-top: -145px;
-}
-
-.fit-img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
 }
 
 .shop-page-header:before {
@@ -1518,7 +1509,7 @@ General Styles - Owlcarousel
 }
 
 .footer .footer-social-links {
-  text-align: right;
+  text-align: left;
 }
 
 .footer .footer-social-links a {
@@ -1557,17 +1548,6 @@ Google map
   line-height: 1.2;
   font-size: 42px;
   color: #111;
-
-    display: inline-block;
-    background-color: #ffffff;
-    background-position: center center;
-    background-repeat: no-repeat;
-    margin: 5px;
-    width: 35px;
-    height: 35px;
-    border: 0px solid #ccc;
-    background-size: cover;
-
 }
 
 .features-title,
@@ -1577,12 +1557,11 @@ Google map
   font-size: 14px;
   color: #111;
   margin: 16px 0 15px;
-  word-wrap: break-word;
 }
 
 .alt-features-item {
   position: relative;
-  padding-left: 55px;
+  padding-right: 55px;
   margin: 65px 0 0 0;
 }
 
@@ -1590,7 +1569,7 @@ Google map
   position: absolute;
   height: 40px;
   width: 40px;
-  left: 0;
+  right: 0;
   top: 0;
   text-align: center;
   line-height: 40px;
@@ -1640,7 +1619,7 @@ Google map
   height: 100%;
   width: 100%;
   top: 0;
-  left: 0;
+  right: 0;
   z-index: 1;
 }
 
@@ -1649,7 +1628,7 @@ Google map
   width: 100%;
   opacity: 0;
   bottom: 100%;
-  left: 0;
+  right: 0;
   z-index: 2;
   text-align: center;
   font-size: 12px;
@@ -1719,7 +1698,7 @@ Google map
 
 .menu-price-detail {
   position: relative;
-  text-align: right;
+  text-align: left;
 }
 
 /*--------------------------------------------------------------
@@ -1760,14 +1739,14 @@ Google map
   background: #eaeaea;
   content: "";
   bottom: -7px;
-  left: 50%;
+  right: 50%;
   height: 14px;
   width: 14px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  margin-left: -7px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  margin-right: -7px;
 }
 
 .borderline:after {
@@ -1775,14 +1754,14 @@ Google map
   background: #fff;
   content: "";
   bottom: -5px;
-  left: 50%;
+  right: 50%;
   height: 16px;
   width: 16px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  margin-left: -8px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  margin-right: -8px;
 }
 
 .price-table h4 {
@@ -1794,7 +1773,7 @@ Google map
   font-size: 60px;
   color: #111;
   padding: 0;
-  margin: 0 0 0 -10px;
+  margin: 0 -10px 0 0;
 }
 
 .price-table p.price span {
@@ -1881,16 +1860,16 @@ Google map
 }
 
 .works-grid.works-grid-gut {
-  margin: 0 0 0 -10px;
+  margin: 0 -10px 0 0;
 }
 
 .works-grid.works-grid-gut .work-item {
-  padding: 0 0 10px 10px;
+  padding: 0 10px 10px 0;
 }
 
 .work-item {
   width: 50%;
-  float: left;
+  float: right;
   margin: 0;
 }
 
@@ -1934,7 +1913,7 @@ Google map
   height: 100%;
   width: 100%;
   top: 0;
-  left: 0;
+  right: 0;
 }
 
 .work-caption {
@@ -1943,7 +1922,7 @@ Google map
   opacity: 0;
   position: absolute;
   bottom: 100%;
-  left: 0;
+  right: 0;
   text-align: center;
   overflow: hidden;
 }
@@ -1963,9 +1942,9 @@ Google map
 }
 
 .work-item:hover .work-image > img {
-  -webkit-transform: scale(1.1) rotate(2deg);
-  -ms-transform: scale(1.1) rotate(2deg);
-  transform: scale(1.1) rotate(2deg);
+  -webkit-transform: scale(1.1) rotate(-2deg);
+  -ms-transform: scale(1.1) rotate(-2deg);
+  transform: scale(1.1) rotate(-2deg);
 }
 
 .work-item:hover .work-caption {
@@ -1997,7 +1976,7 @@ Google map
 
 .works-grid.works-hover-g .work-item:hover .work-image:after {
   background: #6fe29e;
-  background: linear-gradient(135deg, rgba(111, 226, 158, 0.8) 0%, rgba(91, 218, 209, 0.8) 100%);
+  background: linear-gradient(-135deg, rgba(111, 226, 158, 0.8) 0%, rgba(91, 218, 209, 0.8) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6fe29e', endColorstr='#5bdad1',GradientType=1 );
   opacity: 1;
 }
@@ -2045,7 +2024,7 @@ Google map
 }
 
 .callout-btn-box {
-  text-align: right;
+  text-align: left;
   padding-top: 4px;
 }
 
@@ -2117,7 +2096,7 @@ Google map
   height: 100%;
   width: 100%;
   top: 0;
-  left: 0;
+  right: 0;
   z-index: 1;
 }
 
@@ -2126,7 +2105,7 @@ Google map
   width: 100%;
   opacity: 0;
   bottom: 100%;
-  left: 0;
+  right: 0;
   z-index: 2;
   text-align: center;
   font-size: 28px;
@@ -2201,10 +2180,7 @@ Google map
 .post-thumbnail,
 .post-images-slider,
 .post-video {
-  margin: 0 0 0px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* この一行を追加するだけ！ */
+  margin: 0 0 20px;
 }
 
 .post-quote {
@@ -2244,7 +2220,7 @@ Google map
 .more-link:after {
   content: "\00BB";
   color: #666666;
-  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .pagination a {
@@ -2279,7 +2255,7 @@ Google map
 .progress-bar span {
   position: absolute;
   display: block;
-  right: -0px;
+  left: -0px;
   top: -24px;
   opacity: 0;
   line-height: 12px;
@@ -2312,7 +2288,7 @@ Google map
   position: absolute;
   content: "\f106";
   top: 50%;
-  right: 0px;
+  left: 0px;
   font-family: "FontAwesome";
   line-height: 1;
   font-size: 14px;
@@ -2359,8 +2335,8 @@ Google map
 .checkout-table tr th {
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
-  border-right: 1px solid #e5e5e5;
   border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
 }
 
 .checkout-table tbody tr td:first-child,
@@ -2398,7 +2374,7 @@ Google map
 .widget .icon-list li a:before {
   content: "\00BB";
   color: #666666;
-  padding-right: 5px;
+  padding-left: 5px;
 }
 
 /* Posts */
@@ -2411,12 +2387,12 @@ Google map
 }
 
 .widget-posts-image {
-  float: left;
+  float: right;
   width: 64px;
 }
 
 .widget-posts-body {
-  margin-left: 74px;
+  margin-right: 74px;
 }
 
 /* Search */
@@ -2430,7 +2406,7 @@ Google map
   display: inline-block;
   font-size: 10px;
   color: #fff;
-  padding: 4px 10px 4px 12px;
+  padding: 4px 12px 4px 10px;
   margin: 0 1px 4px;
   border-radius: 2px;
 }
@@ -2463,7 +2439,7 @@ Google map
 
 .comment-avatar {
   width: 55px;
-  float: left;
+  float: right;
   margin-top: 10px;
 }
 
@@ -2473,13 +2449,13 @@ Google map
 
 .comment-content {
   padding-top: 5px;
-  margin-left: 75px;
+  margin-right: 75px;
   margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
   .comment .comment {
-    margin-left: 75px;
+    margin-right: 75px;
   }
 }
 
@@ -2522,14 +2498,14 @@ Google map
   content: "";
   height: 100%;
   width: 100%;
-  left: 0;
+  right: 0;
   top: 0;
 }
 
 .shop-item-detail {
   position: absolute;
   width: 100%;
-  left: 0;
+  right: 0;
   bottom: 100%;
   padding: 20px;
   opacity: 0;
@@ -2588,7 +2564,7 @@ Google map
 }
 
 .product-gallery li:first-child {
-  margin-left: 0;
+  margin-right: 0;
 }
 
 .product-title {
@@ -2632,7 +2608,7 @@ Google map
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   overflow: hidden;
-  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: -1px 2px 10px rgba(0, 0, 0, 0.15);
   margin-bottom: 15px;
   transition: 0.35s ease-out;
   -webkit-transition: 0.35s ease-out;
@@ -2732,7 +2708,7 @@ Google map
   .navbar-custom .dropdown-menu .dropdown-toggle:after {
     position: absolute;
     display: block;
-    right: 9px;
+    left: 9px;
     top: 50%;
     margin-top: -6px;
     font: normal normal normal 14px/1 FontAwesome;
@@ -2743,12 +2719,12 @@ Google map
     -moz-osx-font-smoothing: grayscale;
   }
   .navbar-right .dropdown-menu {
-    right: auto;
-    left: 0;
+    left: auto;
+    right: 0;
   }
   /* Comments */
   .comment .comment {
-    margin-left: 75px;
+    margin-right: 75px;
   }
 }
 
@@ -2818,17 +2794,17 @@ Google map
   }
   .navbar-custom .dropdown-toggle:after,
   .navbar-custom .dropdown-menu .dropdown-toggle:after {
-    right: 7px;
+    left: 7px;
     content: "\f107";
   }
   .navbar-custom .nav > .open > .dropdown-toggle:after,
   .navbar-custom .dropdown-menu .dropdown.open .dropdown-toggle:after {
-    right: 7px;
+    left: 7px;
     content: "\f106";
   }
   /* Shop navbar */
   .navbar-custom .navbar-nav > li:last-child.navbar-cart > a {
-    padding-left: 15px;
+    padding-right: 15px;
   }
   .navbar-custom .cart-item-number {
     display: none;
@@ -2840,7 +2816,7 @@ Google map
     border: 0 !important;
   }
   .dropdown-menu.cart-list {
-    text-align: left;
+    text-align: right;
     border-bottom: 1px solid rgba(73, 71, 71, 0.15) !important;
   }
   .navbar-cart-item {
@@ -2854,7 +2830,7 @@ Google map
   .navbar-cart-title {
     white-space: normal;
     padding: 0;
-    margin-left: 0;
+    margin-right: 0;
   }
   /* Headers */
   .titan-title-size-1 {
@@ -2880,7 +2856,7 @@ Google map
     margin: 0 0 30px;
   }
   .alt-features-item {
-    padding-left: 0;
+    padding-right: 0;
     margin: 0 0 30px;
     text-align: center;
   }
@@ -2917,8 +2893,8 @@ Google map
   }
   /* Half-image */
   .side-image-text {
-    padding-left: 15px;
     padding-right: 15px;
+    padding-left: 15px;
   }
   /* Restaurant menu */
   .menu-title,
@@ -2930,7 +2906,7 @@ Google map
     text-align: center;
   }
   .align-left-sm {
-    text-align: left;
+    text-align: right;
   }
 }
 

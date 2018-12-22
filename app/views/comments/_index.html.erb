@@ -12,11 +12,11 @@
           <div class="comment-avatar">
             <% if (comment.user.provider == "facebook") %>
               <% comment.user.icon = comment.user.icon %>
-              <%= image_tag comment.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50" %>
+              <%= image_tag comment.user.icon, :class => "img-circle", :alt => "icon", :size => "50x50" %>
             <% elsif comment.user.avator %>
-              <%= image_tag(comment.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>
+              <%= image_tag(comment.user.avator.to_s, :class => "img-circle", :alt => "icon", :size => "50x50") %>
             <% else %>
-              <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "50x50") %>
+              <%= image_tag('/no_img.png', :class => "img-circle", :alt => "icon", :size => "50x50") %>
             <% end %>
           </div>
           <div class="comment-content clearfix">

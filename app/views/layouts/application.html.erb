@@ -79,12 +79,11 @@
                   </li>
                   <li class="navicon">
                     <% if (current_user.provider == "facebook") %>
-                      <% current_user.icon = current_user.icon %>
-                      <%= link_to image_tag(current_user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>
-                    <% elsif current_user.avator %>
-                      <%= link_to image_tag(current_user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>   
+                      <%= link_to image_tag(current_user.icon, :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id) %>
+                    <% elsif current_user.avator.nil? %>
+                      <%= link_to image_tag(current_user.avator, :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id) %>   
                     <% else %>
-                      <%= link_to image_tag('images/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "25x25"),user_path(current_user.id) %>
+                      <%= link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id) %>
                     <% end %>
                   </li>
                   <li>

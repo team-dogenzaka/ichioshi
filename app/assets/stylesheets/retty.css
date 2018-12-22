@@ -468,4 +468,23 @@ textarea.review-content {
   border: 0px;
   text-align: left;
 }
-]
+
+.feedback {
+  color: white !important;
+  z-index: 10000;
+  top: 0;
+  background-color: crimson;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+}
+
+.feedback_font {
+  color: white;
+  text-align: center;
+}
+
+.navbar-fixed-top {
+  top: 21px;
+  border-width: 0 0 1px;
+}

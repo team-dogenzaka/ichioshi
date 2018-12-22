@@ -52,7 +52,6 @@
   </section>
 <% end %>
 
-
 <% if current_user && @user.id == current_user.id %>
   <% if @feed_items.any? %>
     <section class="" id="demos">
@@ -67,8 +66,6 @@
                           <div class="topicon">
                             <% if (review.user.provider == "facebook") %>
                               <%= image_tag review.user.icon, :class => "img-circle", :alt => "icon", :size => "70x70" %>
-                            <% elsif !review.user.avator.nil? %>
-                              <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "icon", :size => "70x70") %>
                             <% else %>
                               <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "70x70") %>
                             <% end %>

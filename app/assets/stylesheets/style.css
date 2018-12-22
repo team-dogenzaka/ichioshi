@@ -2742,9 +2742,11 @@ Google map
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
   .navbar-right .dropdown-menu {
     right: auto;
-    left: 0;
+    left: -95px;
+    top: 38px;
   }
   /* Comments */
   .comment .comment {

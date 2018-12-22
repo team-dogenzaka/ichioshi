@@ -355,17 +355,29 @@ textarea {
     border-radius: 10px;
 }
 
+.header-right-menu {
+  margin-right: 0px;
+}
+
+.header-right-menu li:first-child {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.notification-button {
+  background-color: transparent;
+  border: none;
+  padding-left: 17px;
+  padding-right: 10px;
+}
+
 .notification-bell {
   color: #fff;
   position: relative;
-  top: 7px;
+  top: 6px;
 }
- .notification-dropdown .btn {
-  background-color:  transparent;
-  width: 25px;
-  height: 25px;
-}
- .notification-badge {
+
+.notification-badge {
   background-color: #f44336;
   color: #fff;
   width: 18px;
@@ -373,11 +385,14 @@ textarea {
   border-radius: 50%;
   position: absolute;
   margin-left: 11px;
-  margin-bottom: 11px;
   margin-top: 0px;
-  top: 7px;
+  top: 0px;
   border-width: 1.2px;
   border-color: #fff;
+}
+
+.notification-menu {
+  top: 40px;
 }
 
 .footer {

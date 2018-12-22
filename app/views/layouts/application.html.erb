@@ -75,13 +75,17 @@
               <ul class="nav navbar-nav navbar-right header-right-menu">
                 <% if user_signed_in? %>
                   <li class="navicon">
-                    <%= render 'notifications/notification_dropdown' %>
+                    <% if  request.url.include?('/users/edit') %>
+                      <%= render :partial => 'notifications/notification_dropdown' %>
+                    <% else %>
+                      <%= render 'notifications/notification_dropdown' %>
+                    <% end %>
                   </li>
                   <li class="navicon">
                     <% if (current_user.provider == "facebook") %>
                       <%= link_to image_tag(current_user.icon, :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id) %>
                     <% elsif current_user.avator.nil? %>
-                      <%= link_to image_tag(current_user.avator, :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id) %>   
+                      <%= link_to image_tag(current_user.avator.to_s, :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id) %>   
                     <% else %>
                       <%= link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id) %>
                     <% end %>

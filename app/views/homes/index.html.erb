@@ -112,7 +112,7 @@
                         <% unless review.user_id == current_user.id %>
                         <div id="commentarea-<%= review.id %>" data-comment-id="<%= review.id %>"class="comment_border">
                           <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-                          <%= render partial: 'comments/form_top', locals: { comment: @comment, review: review } %>
+                          <%= render partial: 'comments/form_top_before', locals: { comment: @comment, review: review } %>
                         </div>
                         <% end %>
                       <% end %>            

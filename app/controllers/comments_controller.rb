@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   after_action :create_notifications_reviewer, only: [:create]
   def new
+    @review = Review.find(params[:review_id]) #①
+    @comment = Comment.new
   end
   def create
     @review = Review.find(params[:review_id]) #①

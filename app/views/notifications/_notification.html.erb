@@ -4,5 +4,8 @@
   <% else %>
     <% message = 'あなたの記事に' %>
   <% end %>
-    <%= link_to "#{notification.notified_by.name}さんが#{message}#{notification.notified_type}しました", link_through_path(notification) %>
+  <%= link_to link_through_path(notification) do %>
+    <%= image_tag(notification.notified_by.icon, :class => "img-circle", :size =>"25x25") %>
+    <%= notification.notified_by.name %>さんが<br><%= message %><%= notification.notified_type %>しました
+  <% end %>
 </li>

@@ -127,34 +127,6 @@
   <% end %>
 </div><!--turbolinks-->
 
-<!--タグ機能
-        <% @tag.each do |tag| %>
-<section class="" id="demos">
-  <div class="container">
-    <center><h2>#<%= tag.name %>のTOPレビュアー</h2></center>
-    <div class="row multi-columns-row ">
-      <% @users.each do |user| %>
-      <% if user.tag == tag.name %>
-        <div class="col-md-3 col-sm-12 col-xs-12">
-          <div class="waku">
-            <div class="row">
-              <div class="col-sm-12 col-xs-12 topimage">
-                <% @new_reviews = user.reviews.order(created_at: :desc).limit(1) %>
-                <% @new_reviews.each do |new_review| %>
-                  <%= link_to image_tag(new_review.image.url, :class => "fit-imgtop"),new_review if new_review.image.url %>
-              </div>
-              <div class="col-sm-12 col-xs-4 topimage">
-                <%= link_to image_tag(new_review.image.url, :class => "fit-imgtop"),new_review if new_review.image.url %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </section>
-<% end %>
--->
 <% unless user_signed_in? %>
   <div class="module-small bg-dark">
     <div class="container">

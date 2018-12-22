@@ -1,2 +1,6 @@
+<% if review.content.size > 100 %>
 <%= simple_format(review.content.truncate(100)) %>
-<%= link_to '続きを読む', review_path(review.id) ,remote: true %>
+<%= link_to '続きを読む',review_path(review.id) ,class: "more" ,remote: true %>
+<% else %>
+<%= simple_format(review.content) %>
+<% end %>

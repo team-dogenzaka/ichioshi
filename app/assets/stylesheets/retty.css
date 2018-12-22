@@ -252,7 +252,7 @@ ul {
 }
 
 .spbodyfont {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   color: #333333;
   font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'
@@ -485,6 +485,11 @@ textarea.review-content {
 }
 
 .navbar-fixed-top {
-  top: 21px;
+  top: 20px;
   border-width: 0 0 1px;
+}
+
+.more {
+  color: #999;
+  font-weight: 600;
 }

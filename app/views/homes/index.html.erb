@@ -7,7 +7,7 @@
         <div class="font-alt mb-30 titan-title-size-1">本当にいいモノを、人からのおすすめで見つける</div>
         <div class="font-alt mb-40 titan-title-size-4">ICHIOSHI</div>
         <% unless user_signed_in? %>
-          <%= link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/facebook_login.png',:alt => "Karan Singh Sisodia", :size => '200'), user_facebook_omniauth_authorize_path, class: "login-button facebook" ,method: :post %>
+          <%= link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/facebook_login.png',:alt => "icon", :size => '200'), user_facebook_omniauth_authorize_path, class: "login-button facebook" ,method: :post %>
         <% end %>
       </div>
     </div>
@@ -66,11 +66,11 @@
                       <div class="grid spbodyfont">
                           <div class="topicon">
                             <% if (review.user.provider == "facebook") %>
-                              <%= image_tag review.user.icon, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70" %>
+                              <%= image_tag review.user.icon, :class => "img-circle", :alt => "icon", :size => "70x70" %>
                             <% elsif review.user.avator %>
-                              <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
+                              <%= image_tag(review.user.avator.to_s, :class => "img-circle", :alt => "icon", :size => "70x70") %>
                             <% else %>
-                              <%= image_tag('/no_img.png', :class => "img-circle", :alt => "Karan Singh Sisodia", :size => "70x70") %>
+                              <%= image_tag('/no_img.png', :class => "img-circle", :alt => "icon", :size => "70x70") %>
                             <% end %>
                           </div><!--topicon-->
                             <div class="grid1"><%= link_to review.title.truncate(19), review_path(review.id) %></div>

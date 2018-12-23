@@ -1,3 +1,5 @@
 <%= link_to new_review_comment_path(review.id),class: "btn btn-link btn-xs ",remote: true do %>
-<span><i class="far fa-comment"><%= review.comments.count %></i><span>
+    <span>
+        <i class="far fa-comment"><%= review.comments.count %></i>
+    <span>
 <% end %>

@@ -28,7 +28,11 @@
           </div><!--list_item-->
           <div class="post-entry">
             <div class="post-thumbnail">
-              <ul class="slider">
+              <% if @review.images.count > 1 %>
+                <ul class="slider">
+              <% else %>
+                <ul class="imageViewer">
+              <% end %>
                 <% @review.images.each do |image| %>
                   <li><%= link_to image_tag(image.to_s, :class => 'fit-imgtop'), review_path(@review.id) if image.to_s %></li>
                 <% end %>

@@ -74,10 +74,14 @@
                           <div class="grid2"><%= link_to review.user.name, user_path(id: review.user.id),class:"postname" %></div>
                      </div>
                       <div class="post-thumbnail">
-                        <ul class="slider">
-                          <% review.images.each do |image| %>
+                        <% if review.images.count > 1 %>
+                          <ul class="slider">
+                        <% else %>
+                          <ul class="imageViewer">
+                        <% end %>
+                        <% review.images.each do |image| %>
                           <li><%= image_tag(image.to_s, :class => 'fit-imgtop') %></li>
-                          <% end %>
+                        <% end %>
                         </ul>
                       </div>
                       <div class="main-content">

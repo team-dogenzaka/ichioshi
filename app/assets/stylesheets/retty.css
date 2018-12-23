@@ -31,7 +31,7 @@
 
 .follow_button {
    position: absolute;
-   margin-top: -50px;
+   margin-top: 16px;
    margin-left: 150px;
 
 }
@@ -156,7 +156,7 @@ ul {
 }
 
 .FollowCountContainar {
-    line-height: 6;
+    line-height: 4;
 }
 
 .UserDeleteHeader {
@@ -198,10 +198,14 @@ ul {
 
 .stats {
     display: inline;
+    padding-left:10px;
 }
-.stats:last-child {
-    padding-left:20px;
+
+.stats_first {
+    display: inline;
+    padding-left:0px;
 }
+
 
 .stat {
     font-size: 14px;
@@ -214,6 +218,10 @@ ul {
     font-size: 1.2rem;
     margin-right: 16px;
     margin-left: 16px;
+}
+
+.ReviewEditLink {
+    color: #787c7b;
 }
 
 .global-nav {

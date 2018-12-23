@@ -1,109 +1,163 @@
-<div class="container">
-  <div class="row waku col-xs-12 col-sm-8 col-sm-offset-2">
+<section class="module-small">
+  <div class="container">
     <div class="row">
-      <div class="col-xs-10">
-        <div class="grid spbodyfont">
-          <div class="topicon">
-            <% if (@review.user.provider == "facebook") %>
-              <%= image_tag @review.user.icon, :class => "img-circle", :alt => "icon", :size => "70x70" %>
-            <% else %>
-              <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "70x70") %>
-            <% end %>
-          </div><!--topicon-->
-          <div class="grid1">
-            <%= link_to @review.title.truncate(19), review_path(@review.id),class:"comment" %>
-          </div>
-          <div class="grid2">
-            <%= link_to @review.user.name, user_path(id: @review.user.id),class:"postname" %>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-2">
-        <div class="pull-right">
-          <% if current_user && @review.user_id == current_user.id %>
-            <% if user_signed_in? %>
-              <% if @review.user_id == current_user.id %>
-                <%= link_to(content_tag(:i, '', class: 'fas fa-ellipsis-h reviewEditLink'), edit_review_path(@review))  %>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <div class="post">
+          <div class="post-header font-alt">
+            <h1><%= @review.title %></h1>
+            <div class="post-meta">
+              By&nbsp;<%= link_to @post_user.name, user_path(id: @post_user.id) %>
+              投稿日時: <%= @review.created_at.strftime("%Y年%m月%d日") %>
+              <%= render 'reviews/tag_list', tag_list: @review.skill_list %>
+              <%= link_to "#{@category_name}", reviews_path(category_name: @category_name) %>
+              訪問者数 : <%= number_with_delimiter(@page_views) %>
+              <% if current_user && @review.user_id == current_user.id %>
+                <% if user_signed_in? %>
+                  <% if @review.user_id == current_user.id %>
+                    <%= link_to(content_tag(:i, '編集する', class: 'fa fa-cog ReviewEditLink'), edit_review_path(@review))  %>
+                  <% end %>
+                <% end %>
               <% end %>
+            </div>
+          </div>
+          <div class="list_item" data-kind="果物" data-color="<%= @review.skill_list  unless @review.skill_list.blank? %>">
+            <%= render 'reviews/tag_list', tag_list: @review.skill_list  unless @review.skill_list.blank? %>
+            <% @category_name = @review.category_name %>
+            <%= link_to "#{@category_name}", reviews_path(category_name: @category_name) %>
+          </div><!--list_item-->
+          <div class="post-entry">
+            <div class="post-thumbnail">
+              <% if @review.images.count > 1 %>
+                <ul class="slider">
+              <% else %>
+                <ul class="imageViewer">
+              <% end %>
+                <% @review.images.each do |image| %>
+                  <li><%= link_to image_tag(image.to_s, :class => 'fit-imgtop'), review_path(@review.id) if image.to_s %></li>
+                <% end %>
+              </ul>
+            </div>
+            <%= @review.content %>
+            <div class="spbodyfont">
+              <div id="reviewarea-<%= @review.id %>" data-reviewarea-id="<%= @review.id %>">
+                <%= render partial: 'reviews/review2', locals: { review: @review } %>
+              </div>
+            </div>
+            <div class="spbodyfont comment_border">
+              コメント
+            </div>
+            <div class="spbodyfont">
+              <div id="comments_area-<%= @review.id %>" data-comments_area-id="<%= @review.id %>"><!-- #① -->
+                <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+                <% @comments = @review.comments %>
+                <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
+              </div>
+            </div>            
+            <% if user_signed_in? %>
+              <% unless @review.user_id == current_user.id %>
+                <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+                <%= render partial: 'comments/form_top', locals: { comment: @comment, review: @review } %>
+              <% end %>
+            <% end %>            
+          </div><!--waku-->
+          <div class="row">
+            <div class="col-sm-4 col-xs-6">
+              <% if user_signed_in? %>
+                <% unless @review.user_id == current_user.id %>
+                  <% if @favorite.present? %>
+                    <p>
+                      <button class="btn btn-primary btn-circle" type="submit"><i class="fa fa-heart"></i>
+                        <%= link_to 'お気に入り解除', favorite_path(id: @favorite.id), method: :delete, :style=>"color:white;"%>
+                      </button>
+                    </p>
+                  <% else %>
+                    <p>
+                      <button class="btn btn-d btn-circle" type="submit"><i class="fa fa-heart"></i>
+                        <%= link_to 'お気に入り登録', favorites_path(review_id: @review.id), method: :post, :style=>"color:white;" %>
+                      </button>
+                    </p>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <% if user_signed_in? %>
+                <% unless @review.user_id == current_user.id %>
+                  <% if @like.present? %>
+                    <p>
+                      <button class="btn btn-primary btn-circle" type="submit"><i class="far fa-thumbs-up"></i>
+                        <%= link_to 'いいね！', like_path(id: @like.id), method: :delete, :style=>"color:white;"%>
+                      </button>
+                    </p>
+                  <% else %>
+                    <p>
+                      <button class="btn btn-d btn-circle" type="submit"><i class="far fa-thumbs-up"></i>
+                        <%= link_to 'いいね！', likes_path(review_id: @review.id), method: :post, :style=>"color:white;" %>
+                      </button>
+                    </p>
+                  <% end %>
+                <% end %>
+              <% end %>
+              <li id="review-<%= @review.id %>" data-review-id="<%= @review.id %>">
+                <%= render "likes/like", review: @review %>
+              </li>
+            </div>
+          </div>
+          <p>
+            <h4 class="comment-title font-alt">レビュアー</h4>
+          </p>
+          <% if (@post_user.provider == "facebook") %>
+            <%= image_tag @post_user.icon, :class => "img-circle", :alt => "icon", :size => "50x50" %>
+          <% else %>
+            <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "50x50") %>
+          <% end %>
+          <%= link_to @post_user.name, user_path(id: @post_user.id) %>
+          <div class="comment clearfix">
+            <%= @post_user.profile  %>
+          </div>
+          <div class="waku">
+            <ul class="iine">
+              <li>いいねした人</li>
+              <% @review.like_users.each do |like_user| %>
+                <% if like_user.provider == "facebook" %>
+                  <li class="features-icon"><%= link_to image_tag(like_user.icon, :class => "img-circle", :alt => "icon", :size => '70x70'), like_user %></div>
+                <% else %>
+                  <li class="features-icon"><%= link_to image_tag('imagsehttps://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => '70x70'), like_user %></div>
+                <% end %>
+              <% end %>
+              <li>お気に入り登録した人</li>
+              <% @review.favorite_users.each do |favorite_user| %>
+                <% if favorite_user.provider == "facebook" %>
+                  <div class="features-icon"><%= link_to image_tag(favorite_user.icon, :class => "img-circle", :alt => "icon", :size => '70x70'), favorite_user %></div>
+                <% else %>
+                  <div class="features-icon"><%= link_to image_tag('imagsehttps://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => '70x70'), favorite_user %></div>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+          <div id="comments_area"><!-- #① -->
+            <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+            <%= render partial: 'comments/index', locals: { comments: @comments } %>
+          </div>
+          <% if user_signed_in? %>
+            <% unless @review.user_id == current_user.id %>
+              <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+              <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
             <% end %>
           <% end %>
         </div>
       </div>
-    </div>
-    <div class="post-thumbnail">
-      <% if @review.images.count > 1 %>
-        <ul class="slider">
-      <% else %>
-        <ul class="imageViewer">
-      <% end %>
-      <% @review.images.each do |image| %>
-        <li><%= image_tag(image.to_s, :class => 'fit-imgtop') %></li>
-      <% end %>
-      </ul>
-    </div>
-    <div class="main-content">
-      <div class=grid_iine>
-        <div class="grid_iine_1">
-          <% review = @review %>
-          <i id="review-<%= @review.id %>" data-review-id="<%= @review.id %>">
-          <%= render "likes/like", review: @review %></i>
-        </div>
-        <div class="grid_iine_2">
-          <i id="comment-<%= @review.id %>" data-comment-id="<%= @review.id %>">
-          <%= render "comments/comment", review: @review %></i>
-        </div>
-      </div>
-      <div class="spbodyfont">
-        <div id="reviewarea-<%= @review.id %>" data-reviewarea-id="<%= @review.id %>">
-          <%= render partial: 'reviews/review2', locals: { review: @review } %>
-        </div>
-      </div>
-      <div class="spbodyfont">
-        <div id="comments_area-<%= @review.id %>" data-comments_area-id="<%= @review.id %>"><!-- #① -->
-          <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-          <% @comments = @review.comments %>
-          <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
-        </div>
-      </div>       
-      <div class="row">
-        <div class="postday col-xs-4">
-          <%= @review.created_at.strftime("%m月%d日") %>
-        </div>
-        <!--<%= render 'reviews/tag_list', tag_list: @review.skill_list %> -->
-        <%= link_to "#{@category_name}", reviews_path(category_name: @category_name) %>
-      </div>
-      <% if user_signed_in? %>
-        <div id="commentarea-<%= @review.id %>" data-comment-id="<%= @review.id %>">
-          <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-          <%= render partial: 'comments/form_top_before', locals: { comment: @comment, review: @review } %>
-        </div>
-      <% end %>
-      <div class="waku">           
-        <ul class="iine">
-          <li>いいねした人</li>
-          <% @review.like_users.each do |like_user| %>
-            <% if like_user.provider == "facebook" %>
-              <li class="features-icon"><%= link_to image_tag(like_user.icon, :class => "img-circle", :alt => "icon", :size => '70x70'), like_user %></div>
-            <% else %>
-              <li class="features-icon"><%= link_to image_tag('imagsehttps://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => '70x70'), like_user %></div>
-            <% end %>
-          <% end %>
+<!--
+        <ul class="shareList">
+          <li class="shareList__item"><a class="shareList__link icon-twitter" href="https://twitter.com/share?url=<%= request.url %>" target="_blank" title="Twitter"></a></li>
+          <li class="shareList__item"><a class="shareList__link icon-facebook" href="https://www.facebook.com/share.php?url=<%= request.url %>" target="_blank" title="Facebook"></a></li>
+          <li class="shareList__item"><a class="shareList__link icon-hatebu" href="//b.hatena.ne.jp/add?mode=confirm&url=<%= request.url %>" target="_blank" title="はてなブックマーク"></a></li>
+          <li class="shareList__item"><a class="shareList__link icon-line" href="http://line.me/R/msg/text/?<%= request.url %>" target="_blank" title="LINE"></a></li>
         </ul>
+--> 
       </div>
+      <div class="col-sm-2"></div>
     </div>
   </div>
-</div>
-<!--
-      <ul class="shareList">
-        <li class="shareList__item"><a class="shareList__link icon-twitter" href="https://twitter.com/share?url=<%= request.url %>" target="_blank" title="Twitter"></a></li>
-        <li class="shareList__item"><a class="shareList__link icon-facebook" href="https://www.facebook.com/share.php?url=<%= request.url %>" target="_blank" title="Facebook"></a></li>
-        <li class="shareList__item"><a class="shareList__link icon-hatebu" href="//b.hatena.ne.jp/add?mode=confirm&url=<%= request.url %>" target="_blank" title="はてなブックマーク"></a></li>
-        <li class="shareList__item"><a class="shareList__link icon-line" href="http://line.me/R/msg/text/?<%= request.url %>" target="_blank" title="LINE"></a></li>
-      </ul>
---> 
-      <!--
-      <div class="list_item" data-kind="果物" data-color="<%= @review.skill_list  unless @review.skill_list.blank? %>">
-        <%= render 'reviews/tag_list', tag_list: @review.skill_list  unless @review.skill_list.blank? %>
-        <% @category_name = @review.category_name %>
-        <%= link_to "#{@category_name}", reviews_path(category_name: @category_name) %>
-      </div>--><!--list_item-->
+</section>

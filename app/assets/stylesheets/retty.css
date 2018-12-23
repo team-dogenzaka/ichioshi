@@ -499,3 +499,8 @@ textarea.review-content {
   padding-bottom: 10px;
   border-top: 5px;
 }
+
+.postname {
+  font-size: 12px;
+  font-weight: 400;
+}

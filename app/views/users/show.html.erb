@@ -5,6 +5,8 @@
     <%= image_tag(@user.coverimg.url, :class => "mypagecover-img") %>
   <% end %>
   <div class="container">
+        <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
     <div class="mypageicon">
       <% if (@user.provider == "facebook") %>
         <%= image_tag @user.icon, :class => "img-circle", :alt => "icon", :size => "100x100" %>
@@ -15,18 +17,10 @@
     <div class="follow_button">
       <%= render 'follow_form' %>
     </div>
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="row">
-          <div class="col-sm-6">
             <h3><%= @user.name %></h3>
-          </div>
-          <div class="FollowCountContainar col-sm-5">
+          <div class="FollowCountContainar">
             <%= render 'stats' %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-11">
+          </div><!--FollowCountContainar-->
             <%= @user.profile  %>
             <% if current_user && @user.id == current_user.id %>
               <div class="UserEditLink">
@@ -34,100 +28,9 @@
               </div>
             <% end %>
           </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>レビュー数</td>
-              <td><%= @user.reviews.count %>件</td>
-            </tr>
-            <tr>
-              <td>レビューへの訪問者数</td>
-              <td><%= number_with_delimiter(@page_views) %>人</td>
-            </tr>
-            <tr>
-              <td>レビューへのお気に入り数</td>
-              <% @count = 0 %>
-              <% @user.reviews.each do |review| %>
-                <% @count += review.favorites.count %>
-              <% end %>
-              <td><%= @count %>件</td>
-            </tr>
-            <tr>
-              <td>レビューへのいいね！数</td>
-              <% @count = 0 %>
-              <% @user.reviews.each do |review| %>
-                <% @count += review.likes.count %>
-              <% end %>
-              <td><%= @count %>件</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <!-- パンくずリスト（うまく表示されないのでコメントアウト）
-    <% breadcrumb :user, @user %>
-    <% provide(:title, @user.name) %>
-    -->
-    <script>
-      $(function(){
-        $('.readmore').click(function(){
-          $(this).hide();
-          $(this).parent('.main').removeClass('onhidden');
-        });
-      });
-    </script>
-    <script>
-      var searchBox = '.search-box'; // 絞り込む項目を選択するエリア
-      var listItem = '.list_item';   // 絞り込み対象のアイテム
-      var hideClass = 'is-hide';     // 絞り込み対象外の場合に付与されるclass名
-      $(function() {
-        // 絞り込み項目を変更した時
-        $(document).on('change', searchBox + ' input', function() {
-          search_filter();
-        });
-      });
-      /**
-       * リストの絞り込みを行う
-       */
-      function search_filter() {
-        // 非表示状態を解除
-        $(listItem).removeClass(hideClass);
-        for (var i = 0; i < $(searchBox).length; i++) {
-          var name = $(searchBox).eq(i).find('input').attr('name');
-          // 選択されている項目を取得
-          var searchData = get_selected_input_items(name);
-          // 選択されている項目がない、またはALLを選択している場合は飛ばす
-          if(searchData.length === 0 || searchData[0] === '') {
-              continue;
-          }
-          // リスト内の各アイテムをチェック
-          for (var j = 0; j < $(listItem).length; j++) {
-            // アイテムに設定している項目を取得
-            var itemData = $(listItem).eq(j).data(name);
-            // 絞り込み対象かどうかを調べる
-            if(searchData.indexOf(itemData) === -1) {
-                $(listItem).eq(j).addClass(hideClass);
-            }
-          }
-        }
-      }
-      /**
-       * inputで選択されている値の一覧を取得する
-       * @param  {String} name 対象にするinputのname属性の値
-       * @return {Array}       選択されているinputのvalue属性の値
-       */
-      function get_selected_input_items(name) {
-        var searchData = [];
-        $('[name=' + name + ']:checked').each(function() {
-            searchData.push($(this).val());
-        });
-        return searchData;
-      }
-    </script>
-    <div class="user_container   col-sm-10 col-sm-offset-1">
+          </div>
+
+    <div class="user_container   col-sm-6 col-sm-offset-3">
       <div class="row">
         <ul class="nav nav-tabs">
           <li class="user-menu active">
@@ -144,194 +47,133 @@
       <div class="row">
         <div class="tab-content">
           <div id="tab1" class="tab-pane active">
-            <div class="waku">
-              <form>
-                <div class="search-box">
-                  <span class="search-box_label">タグで絞り込む:</span><br>
-                  <input type="checkbox" name="color" value="">ALL
-                  <% @tag.each do |tag| %>
-                    <input type="checkbox" name="color" value="<%= tag.name %>"><%= tag.name %>
-                  <% end %>
-                </div>
-              </form>
-            </div><!--waku-->
             <% @review.order("created_at DESC").each do |review| %>
               <div class="waku">
-                <ul class="margin_padding_0">
-                  <li class="yoko">
-                    <div class="topicon">
-                      <% if (review.user.provider == "facebook") %>
-                        <%= image_tag review.user.icon, :class => "img-circle", :alt => "icon", :size => "35x35" %>
-                      <% else %>
-                        <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "70x70") %>
-                      <% end %>
-                    </div><!--topicon--></li>
-                  <li class="yoko">
-                    <div class="spbodyfont">
-                      <%= link_to review.title, review_path(review.id) %>
-                    </div>
-                  </li>
-                  <li class="yoko">
-                    <div class="post-meta">
-                    </div>
-                  </li>
-                  <li class="yoko">
-                    <div class="post-meta">
-                      By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %>
-                    </div>
-                  </li>
-                </ul>
-                <div class="row">
-                  <div class="col-xs-3 col-xs-offset-1">
-                    <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
-                      <%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %>
-                      <% @category_name = review.category_name %>
-                      <%= link_to "#{@category_name}", reviews_path(category_name: @category_name) %>
-                    </div><!--list_item-->
-                  </div>
-                  <div class="col-xs-6 col-xs-offset-2">
-                    <% if user_signed_in? && review.user_id == current_user.id %>
-                      <%= link_to (content_tag(:i, '編集する', class: 'fas fa-pencil-alt post-function')), edit_review_path(review.id) %>
-                      <%= link_to (content_tag(:i, '',class: 'far fa-trash-alt post-function')), review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
-                    <% end %><!--if current_user && @user.id == current_user.id-->
-                  </div>
-                </div><!--list-->
-                <div class="post-thumbnail">
-                  <% if review.images.count > 1 %>
-                    <ul class="slider">
-                  <% else %>
-                    <ul class="imageViewer">
-                  <% end %>
-                    <% review.images.each do |image| %>
-                      <li><%= link_to image_tag(image.to_s, :class => 'fit-imgtop'), review_path(review.id) if image.to_s %></li>
-                    <% end %>
-                  </ul>
-                </div>
-                <ul class="iine"><!--
-                  <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
-                  <div class="topbutton"><li class="far fa-folder"></li></div> -->
-                  <div class="topbutton">
-                    <li id="review-<%= review.id %>" data-review-id="<%= review.id %>">
-                      <%= render "likes/like", review: review %>
-                    </li>
-                  </div>      
-                </ul>
-                <div class="spbodyfont">
-                  <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
-                    <%= render partial: 'reviews/review2', locals: { review: review } %>
-                  </div>
-                </div>
-                <div class="spbodyfont comment_border">
-                  コメント
-                </div>
-                <div class="spbodyfont">
-                  <div id="comments_area-<%= review.id %>" data-comments_area-id="<%= review.id %>"><!-- #① -->
-                    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-                    <% @comments = review.comments %>
-                    <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
-                  </div>
-                </div>            
-                <% if user_signed_in? %>
-                  <% unless review.user_id == current_user.id %>
-                    <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-                    <%= render partial: 'comments/form_top', locals: { comment: @comment, review: review } %>
-                  <% end %>
-                <% end %>            
+                <div class="grid spbodyfont">
+                
+                                            <div class="topicon">
+                            <% if (review.user.provider == "facebook") %>
+                              <%= image_tag review.user.icon, :class => "img-circle", :alt => "icon", :size => "70x70" %>
+                            <% else %>
+                              <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "70x70") %>
+                            <% end %>
+                          </div><!--topicon-->
+                                                <div class="grid1"><%= link_to review.title.truncate(19), review_path(review.id),class:"comment" %></div>
+                          <div class="grid2"><%= link_to review.user.name, user_path(id: review.user.id),class:"postname" %></div>
+
+                                    </div><!--spbodyfont-->
+                      <div class="post-thumbnail">
+                        <% if review.images.count > 1 %>
+                          <ul class="slider">
+                        <% else %>
+                          <ul class="imageViewer">
+                        <% end %>
+                        <% review.images.each do |image| %>
+                          <li><%= image_tag(image.to_s, :class => 'fit-imgtop') %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                      <div class="main-content">
+                        
+                        <div class=grid_iine>
+                          <div class="grid_iine_1"><i id="review-<%= review.id %>" data-review-id="<%= review.id %>">
+                            <%= render "likes/like", review: review %></i>
+                          </div>
+                          <div class="grid_iine_2"><i id="comment-<%= review.id %>" data-comment-id="<%= review.id %>">
+                            <%= render "comments/comment", review: review %></i>
+                          </div>
+                        </div>
+                        
+                      <div class="spbodyfont">
+                        <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
+                          <%= render partial: 'reviews/review2', locals: { review: review } %>
+                        </div>
+                      </div>
+                      <div class="spbodyfont">
+                        <div id="comments_area-<%= review.id %>" data-comments_area-id="<%= review.id %>"><!-- #① -->
+                          <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+                          <% @comments = review.comments %>
+                          <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
+                        </div>
+                      </div>            
+                      <div class="postday"><%= review.created_at.strftime("%m月%d日") %></div>
+                      <% if user_signed_in? %>
+                        <% unless review.user_id == current_user.id %>
+                        <div id="commentarea-<%= review.id %>" data-comment-id="<%= review.id %>">
+                          <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+                          <%= render partial: 'comments/form_top_before', locals: { comment: @comment, review: review } %>
+                        </div>
+                        <% end %>
+                      <% end %>            
+                      
+                      </div><!--main-content-->     
               </div><!--waku-->
             <% end %><!--review-->
           </div><!--tab1-->
+          
           <div id="tab2" class="tab-pane">
-            <div class="waku">
-              <form>
-                <div class="search-box">
-                  <span class="search-box_label">タグで絞り込む:</span><br>
-                  <input type="checkbox" name="color" value="">ALL
-                  <% @tag.each do |tag| %>
-                    <input type="checkbox" name="color" value="<%= tag.name %>"><%= tag.name %>
-                  <% end %>
-                </div>
-              </form>
-            </div>
             
             <% @user.favorite_reviews.order("created_at DESC").each do |review| %>
-              <div class="waku">
-                <ul class="margin_padding_0">
-                  <li class="yoko">
-                    <div class="topicon">
-                      <% if (review.user.provider == "facebook") %>
-                        <%= image_tag review.user.icon, :class => "img-circle", :alt => "icon", :size => "35x35" %>
-                      <% else %>
-                        <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "70x70") %>
-                      <% end %>
-                    </div><!--topicon--></li>
-                  <li class="yoko">
-                    <div class="spbodyfont">
-                      <%= link_to review.title, review_path(review.id) %>
-                    </div>
-                  </li>
-                  <li class="yoko">
-                    <div class="post-meta">
-                    </div>
-                  </li>
-                  <li class="yoko">
-                    <div class="post-meta">
-                      By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %>
-                    </div>
-                  </li>
-                </ul>
-                <div class="row">
-                  <div class="col-xs-3">
-                    <div class="list_item" data-kind="果物" data-color="<%= review.skill_list  unless review.skill_list.blank? %>">
-                      <%= render 'reviews/tag_list', tag_list: review.skill_list  unless review.skill_list.blank? %>
-                      <% @category_name = review.category_name %>
-                      <%= link_to "#{@category_name}", reviews_path(category_name: @category_name) %>
-                    </div><!--list_item-->
-                  </div>
-                  <div class="col-xs-6 col-xs-offset-3">
-                    <% if user_signed_in? && review.user_id == current_user.id %>
-                      <%= link_to (content_tag(:i, '編集する', class: 'fas fa-pencil-alt post-function')), edit_review_path(review.id) %>
-                      <%= link_to (content_tag(:i, '',class: 'far fa-trash-alt post-function')), review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %>
-                    <% end %><!--if current_user && @user.id == current_user.id-->
-                  </div>
-                </div><!--list-->
-                <div class="post-thumbnail">
-                  <ul class="slider">
-                    <% review.images.each do |image| %>
-                      <li><%= link_to image_tag(image.to_s, :class => 'fit-imgtop'), review_path(review.id) if image.to_s %></li>
-                    <% end %>
-                  </ul>
-                </div>
-                <ul class="iine"><!--
-                  <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
-                  <div class="topbutton"><li class="far fa-folder"></li></div> -->
-                  <div class="topbutton">
-                    <li id="review-<%= review.id %>" data-review-id="<%= review.id %>">
-                      <%= render "likes/like", review: review %>
-                    </li>
-                  </div>      
-                </ul>
-                <div class="spbodyfont">
-                  <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
-                    <%= render partial: 'reviews/review2', locals: { review: review } %>
-                  </div>
-                </div>
-                <div class="spbodyfont comment_border">
-                  コメント
-                </div>
-                <div class="spbodyfont">
-                  <div id="comments_area-<%= review.id %>" data-comments_area-id="<%= review.id %>"><!-- #① -->
-                    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
-                    <% @comments = review.comments %>
-                    <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
-                  </div>
-                </div>            
-                <% if user_signed_in? %>
-                  <% unless review.user_id == current_user.id %>
-                    <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-                    <%= render partial: 'comments/form_top', locals: { comment: @comment, review: review } %>
-                  <% end %>
-                <% end %>            
-              </div><!--waku-->
+
+                    <div class="waku">
+                      <div class="grid spbodyfont">
+                          <div class="topicon">
+                            <% if (review.user.provider == "facebook") %>
+                              <%= image_tag review.user.icon, :class => "img-circle", :alt => "icon", :size => "70x70" %>
+                            <% else %>
+                              <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "70x70") %>
+                            <% end %>
+                          </div><!--topicon-->
+                            <div class="grid1"><%= link_to review.title.truncate(19), review_path(review.id),class:"comment" %></div>
+                          <div class="grid2"><%= link_to review.user.name, user_path(id: review.user.id),class:"postname" %></div>
+                     </div>
+                      <div class="post-thumbnail">
+                        <% if review.images.count > 1 %>
+                          <ul class="slider">
+                        <% else %>
+                          <ul class="imageViewer">
+                        <% end %>
+                        <% review.images.each do |image| %>
+                          <li><%= image_tag(image.to_s, :class => 'fit-imgtop') %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                      <div class="main-content">
+                        
+                        <div class=grid_iine>
+                          <div class="grid_iine_1"><i id="review-<%= review.id %>" data-review-id="<%= review.id %>">
+                            <%= render "likes/like", review: review %></i>
+                          </div>
+                          <div class="grid_iine_2"><i id="comment-<%= review.id %>" data-comment-id="<%= review.id %>">
+                            <%= render "comments/comment", review: review %></i>
+                          </div>
+                        </div>
+                        
+                      <div class="spbodyfont">
+                        <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
+                          <%= render partial: 'reviews/review2', locals: { review: review } %>
+                        </div>
+                      </div>
+                      <div class="spbodyfont">
+                        <div id="comments_area-<%= review.id %>" data-comments_area-id="<%= review.id %>"><!-- #① -->
+                          <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+                          <% @comments = review.comments %>
+                          <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
+                        </div>
+                      </div>            
+                      <div class="postday"><%= review.created_at.strftime("%m月%d日") %></div>
+                      <% if user_signed_in? %>
+                        <% unless review.user_id == current_user.id %>
+                        <div id="commentarea-<%= review.id %>" data-comment-id="<%= review.id %>">
+                          <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+                          <%= render partial: 'comments/form_top_before', locals: { comment: @comment, review: review } %>
+                        </div>
+                        <% end %>
+                      <% end %>            
+                      
+                      </div><!--main-content-->  
+                    </div><!--waku-->
+
             <% end %>
           </div><!--tab2-->
           <div id="tab3" class="tab-pane">

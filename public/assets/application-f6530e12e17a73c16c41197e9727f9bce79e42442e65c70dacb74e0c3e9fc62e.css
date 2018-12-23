@@ -2935,21 +2935,21 @@ ul.bxslider {
   font-size: .85em;
   padding: 10px;
 }
-/* line 1, /Users/kawaidashinsuke/workspace/tamtim/app/assets/stylesheets/layout.scss */
+/* line 1, /home/ubuntu/workspace/tamtim/app/assets/stylesheets/layout.scss */
 .main-container {
   margin-top: 71px;
   margin-bottom: 74px;
 }
 
-/* line 6, /Users/kawaidashinsuke/workspace/tamtim/app/assets/stylesheets/layout.scss */
+/* line 6, /home/ubuntu/workspace/tamtim/app/assets/stylesheets/layout.scss */
 .footer {
   padding: 0px !important;
 }
 
-/* line 10, /Users/kawaidashinsuke/workspace/tamtim/app/assets/stylesheets/layout.scss */
+/* line 10, /home/ubuntu/workspace/tamtim/app/assets/stylesheets/layout.scss */
 .imageViewer {
-  padding-inline-start: 0px;
-  padding: 5px;
+  padding-inline-start: 6px;
+  width: 98%;
 }
 .waku {
     border: solid 1px #e7e7e7;
@@ -2984,7 +2984,7 @@ ul.bxslider {
 
 .follow_button {
    position: absolute;
-   margin-top: -50px;
+   margin-top: 16px;
    margin-left: 150px;
 
 }
@@ -3109,7 +3109,7 @@ ul {
 }
 
 .FollowCountContainar {
-    line-height: 6;
+    line-height: 4;
 }
 
 .UserDeleteHeader {
@@ -3151,10 +3151,14 @@ ul {
 
 .stats {
     display: inline;
+    padding-left:10px;
 }
-.stats:last-child {
-    padding-left:20px;
+
+.stats_first {
+    display: inline;
+    padding-left:0px;
 }
+
 
 .stat {
     font-size: 14px;
@@ -3167,6 +3171,10 @@ ul {
     font-size: 1.2rem;
     margin-right: 16px;
     margin-left: 16px;
+}
+
+.ReviewEditLink {
+    color: #787c7b;
 }
 
 .global-nav {
@@ -3425,30 +3433,29 @@ textarea {
   font-size: 12px;
   font-weight: 400;
 }
-/* line 1, /Users/kawaidashinsuke/workspace/tamtim/app/assets/stylesheets/reviews.scss */
+/* line 1, /home/ubuntu/workspace/tamtim/app/assets/stylesheets/reviews.scss */
 .editorFunctionButton {
   margin-top: 10px;
 }
 
-/* line 5, /Users/kawaidashinsuke/workspace/tamtim/app/assets/stylesheets/reviews.scss */
+/* line 5, /home/ubuntu/workspace/tamtim/app/assets/stylesheets/reviews.scss */
 .categoryForm {
   margin-left: 16px;
 }
 
-/* line 9, /Users/kawaidashinsuke/workspace/tamtim/app/assets/stylesheets/reviews.scss */
+/* line 9, /home/ubuntu/workspace/tamtim/app/assets/stylesheets/reviews.scss */
 .categorySlector {
   cursor: pointer;
 }
 
-/* line 13, /Users/kawaidashinsuke/workspace/tamtim/app/assets/stylesheets/reviews.scss */
+/* line 13, /home/ubuntu/workspace/tamtim/app/assets/stylesheets/reviews.scss */
 input[type=text].review-title {
   font-size: 2.5rem;
   font-weight: bold;
   border: 0px !important;
-  height: 48px;
 }
 
-/* line 20, /Users/kawaidashinsuke/workspace/tamtim/app/assets/stylesheets/reviews.scss */
+/* line 19, /home/ubuntu/workspace/tamtim/app/assets/stylesheets/reviews.scss */
 textarea.review-content {
   font-size: 2rem;
   resize: none;
@@ -3456,7 +3463,7 @@ textarea.review-content {
   height: 400px;
 }
 
-/* line 27, /Users/kawaidashinsuke/workspace/tamtim/app/assets/stylesheets/reviews.scss */
+/* line 26, /home/ubuntu/workspace/tamtim/app/assets/stylesheets/reviews.scss */
 #select_images {
   border-radius: 50%;
   padding: auto auto;
@@ -3464,6 +3471,7 @@ textarea.review-content {
   background-color: #c9c9c9;
   color: white;
   padding: 10px 10px;
+  margin-bottom: 25px;
   cursor: pointer;
   outline: none;
 }
@@ -6416,10 +6424,6 @@ Google map
 }
 .module-medium {
     padding-top: 0px;
-}
-
-.reviewEditLink {
-    color: #787c7b;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

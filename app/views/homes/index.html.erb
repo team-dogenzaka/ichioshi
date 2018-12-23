@@ -104,10 +104,10 @@
                           <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
                         </div>
                       </div>            
-                      <%= review.created_at.strftime("%m月%d日") %>
+                      <div class="postday"><%= review.created_at.strftime("%m月%d日") %></div>
                       <% if user_signed_in? %>
                         <% unless review.user_id == current_user.id %>
-                        <div id="commentarea-<%= review.id %>" data-comment-id="<%= review.id %>"class="comment_border">
+                        <div id="commentarea-<%= review.id %>" data-comment-id="<%= review.id %>">
                           <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
                           <%= render partial: 'comments/form_top_before', locals: { comment: @comment, review: review } %>
                         </div>

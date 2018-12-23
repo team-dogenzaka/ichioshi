@@ -494,3 +494,8 @@ textarea.review-content {
   color: #999;
   font-weight: 600;
 }
+
+.postday {
+  padding-bottom: 10px;
+  border-top: 5px;
+}

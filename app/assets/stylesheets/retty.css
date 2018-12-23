@@ -33,7 +33,6 @@
    position: absolute;
    margin-top: 16px;
    margin-left: 150px;
-
 }
 
 .ribbon{
@@ -206,7 +205,6 @@ ul {
     padding-left:0px;
 }
 
-
 .stat {
     font-size: 14px;
     color: #787c7b;
@@ -220,10 +218,6 @@ ul {
     margin-left: 16px;
 }
 
-.ReviewEditLink {
-    color: #787c7b;
-}
-
 .global-nav {
   position: fixed;
   left: 0;
@@ -231,6 +225,7 @@ ul {
   background: white;
   width: 100%;
 }
+
 .nav-list {
   display: table;
   table-layout: fixed;
@@ -241,18 +236,20 @@ ul {
   text-align: center;
   margin-bottom: 0px;
 }
+
 .nav-item a {
   text-decoration: none;
 }
+
 .nav-item i {
   display: block;
   font-size: 24px;
 }
+
 .topbutton {
   font-size: 25px;
   margin-right: 10px;
   margin-left: 0px;
-
 }
 
 .spbodyfont {
@@ -266,13 +263,10 @@ ul {
 padding: 10px
 }
 
-
-
 .grid{
   display: grid;
   grid-template-columns: 50px 300px;
   grid-template-rows: 25px 25px;
-
 }
 
 p{
@@ -301,6 +295,7 @@ p{
   grid-column: 3/4;
   grid-row: 2;
 }
+
 span{
   color: #1a1a1a;
   font-size: 18px;
@@ -309,7 +304,9 @@ span{
   line-height: 1;
 }
 
-input[type=text] {
+input[type=text],
+input[type=email],
+input[type=password] {
   font-size: 16px;
   transform: scale(0.8);
 }

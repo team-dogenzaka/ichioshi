@@ -14,6 +14,7 @@ input[type=text].review-title {
     font-size: 2.5rem;
     font-weight: bold;
     border: 0px !important;
+    height: 48px;
 }
 
 textarea.review-content {
@@ -33,4 +34,8 @@ textarea.review-content {
     margin-bottom: 25px;
     cursor: pointer;
     outline: none;
-  }
+}
+
+.reviewEditLink {
+    color: #787c7b;
+} 

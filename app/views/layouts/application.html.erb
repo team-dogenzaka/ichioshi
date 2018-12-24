@@ -35,28 +35,7 @@
       
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-    <script>
-      if(window.innerWidth < 750){
-        $(document).ready(function(){
-          $('.slider').bxSlider({	  
-            slideWidth: 640,
-            autoDirection:'prev',
-            maxSlides: 4,
-            minSlides: 1,
-          })
-        });
-      } else {
-        $(document).ready(function(){
-        $('.slider').bxSlider({	  
-          slideWidth: 640,
-          autoDirection:'prev',
-          maxSlides: 1,
-          minSlides: 1,
-          infiniteLoop: true
-        })
-      });
-    }
-    </script>
+    
   </head>
   <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
     <div data-turbolinks="false">
@@ -151,5 +130,27 @@
         </nav>
       </footer>
     </div>
+    <script>
+      if(window.innerWidth < 750){
+        $(document).ready(function(){
+          $('.slider').bxSlider({	  
+            slideWidth: 640,
+            autoDirection:'prev',
+            maxSlides: 4,
+            minSlides: 1,
+          })
+        });
+      } else {
+        $(document).ready(function(){
+        $('.slider').bxSlider({	  
+          slideWidth: 640,
+          autoDirection:'prev',
+          maxSlides: 1,
+          minSlides: 1,
+          infiniteLoop: true
+        })
+      });
+    }
+    </script>
   </body>
 </html>

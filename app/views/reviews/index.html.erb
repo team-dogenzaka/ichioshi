@@ -1,9 +1,13 @@
+<div data-turbolinks="false">
   <div class="container">
     <% if params[:tag] %>
       <% header_tag = (params[:tag]) %>
       <h1><%= header_tag %></h1>
+    <% elsif params[:category_name] %>
+      <% category_name = (params[:category_name]) %>
+      <h1><%= category_name %>のレビュー一覧</h1>
     <% else %>
-      <h1>レビュー一覧</h1>
+    <h1>レビュー一覧</h1>
     <% end %>
     <div class="row">
         <div class="row">
@@ -11,58 +15,46 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->
                   <div class="col-md-6 col-sm-12 col-xs-12">
-                    <div class="waku">
-                      <ul class="margin_padding_0">
-                        <li class="yoko">
-                          <div class="topicon">
+              <div class="waku">
+                <div class="grid spbodyfont">
+                
+                                            <div class="topicon">
                             <% if (review.user.provider == "facebook") %>
-                              <%= image_tag review.user.icon, :class => "img-circle", :alt => "icon", :size => "35x35" %>
+                              <%= image_tag review.user.icon, :class => "img-circle", :alt => "icon", :size => "70x70" %>
                             <% else %>
                               <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "70x70") %>
                             <% end %>
                           </div><!--topicon-->
-                        </li>
-                        <li class="yoko">
-                          <div class="spbodyfont">
-                            <%= link_to review.title, review_path(review.id) %>
-                          </div>
-                        </li>
-                        <li class="yoko">
-                          <div class="post-meta"></div>
-                        </li>
-                        <li class="yoko">
-                          <div class="post-meta">
-                            By&nbsp;<%= link_to review.user.name, user_path(id: review.user.id) %><%= review.created_at.strftime("%Y年%m月%d日") %>
-                          </div>
-                        </li>
-                      </ul>
+                                                <div class="grid1"><%= link_to review.title.truncate(19), review_path(review.id),class:"comment" %></div>
+                          <div class="grid2"><%= link_to review.user.name, user_path(id: review.user.id),class:"postname" %></div>
+
+                                    </div><!--spbodyfont-->
                       <div class="post-thumbnail">
-                        <% if review images.count > 1 %>
+                        <% if review.images.count > 1 %>
                           <ul class="slider">
                         <% else %>
                           <ul class="imageViewer">
                         <% end %>
                         <% review.images.each do |image| %>
-                          <li><%= link_to image_tag(image.to_s, :class => 'fit-imgtop'), review_path(review.id) if image.to_s %></li>
+                          <li><%= image_tag(image.to_s, :class => 'fit-imgtop') %></li>
                         <% end %>
                         </ul>
                       </div>
-                      <ul class="iine"><!--
-                        <div class="topbutton"><li class="far fa-comment" "iineli"></li></div>
-                        <div class="topbutton"><li class="far fa-folder"></li></div> -->
-                        <div class="topbutton">
-                          <li id="review-<%= review.id %>" data-review-id="<%= review.id %>">
-                            <%= render "likes/like", review: review %>
-                          </li>
-                        </div>      
-                      </ul>
+                      <div class="main-content">
+                        
+                        <div class=grid_iine>
+                          <div class="grid_iine_1"><i id="review-<%= review.id %>" data-review-id="<%= review.id %>">
+                            <%= render "likes/like", review: review %></i>
+                          </div>
+                          <div class="grid_iine_2"><i id="comment-<%= review.id %>" data-comment-id="<%= review.id %>">
+                            <%= render "comments/comment", review: review %></i>
+                          </div>
+                        </div>
+                        
                       <div class="spbodyfont">
                         <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
                           <%= render partial: 'reviews/review2', locals: { review: review } %>
                         </div>
-                      </div>
-                      <div class="spbodyfont comment_border">
-                        コメント
                       </div>
                       <div class="spbodyfont">
                         <div id="comments_area-<%= review.id %>" data-comments_area-id="<%= review.id %>"><!-- #① -->
@@ -71,16 +63,23 @@
                           <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
                         </div>
                       </div>            
+                      <div class="postday"><%= review.created_at.strftime("%m月%d日") %></div>
                       <% if user_signed_in? %>
                         <% unless review.user_id == current_user.id %>
+                        <div id="commentarea-<%= review.id %>" data-comment-id="<%= review.id %>">
                           <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
-                          <%= render partial: 'comments/form_top', locals: { comment: @comment, review: review } %>
+                          <%= render partial: 'comments/form_top_before', locals: { comment: @comment, review: review } %>
+                        </div>
                         <% end %>
                       <% end %>            
-                    </div><!--waku-->  
+                      
+                      </div><!--main-content-->     
+              </div><!--waku-->
                   </div><!--col-->
                   <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->
                 </div><!--col-->
               <% end %><!--review-->
           </div><!--row-->
+          </div>
+          </div>
           </div>

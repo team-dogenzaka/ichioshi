@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'likes/create'
   get 'likes/destroy'
   get '/discovers', to: 'discovers#index'
+  get '/books/serch', to: 'books#search'
   delete 'users/delete/:id', to: 'users#destroy', as: 'users/destroy'
   get '/', to: 'homes#index', as: 'root'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', :registrations => "users/registrations" }

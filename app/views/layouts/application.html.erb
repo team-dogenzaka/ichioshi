@@ -106,12 +106,16 @@
             <% end %>
           </div>
           <div class="nav-item footer-menu">
-            <%= link_to new_review_path, data: { turbolinks: false } do %>
-            <% if request.path == new_review_path %>
-              <i class="far fa-plus-square my-skyblue"></i>
-              <% else %>
-              <i class="far fa-plus-square"></i>
-            <% end %>
+            <% if user_signed_in? %>
+              <%= link_to new_review_path, data: { turbolinks: false } do %>
+              <% if request.path == new_review_path %>
+                <i class="far fa-plus-square my-skyblue"></i>
+                <% else %>
+                <i class="far fa-plus-square"></i>
+              <% end %>
+              <% end %>
+            <% else %>
+              <!-- TODO ログインしてないときのボタンを作る -->
             <% end %>
           </div>
           <div class="nav-item footer-menu">

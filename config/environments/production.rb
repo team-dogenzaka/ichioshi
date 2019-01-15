@@ -86,6 +86,12 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  Amazon::Ecs.options = {
+        associate_tag:     'kamisama34-22',
+        AWS_access_key_id: 'AKIAJHQA3TBJHBG4XWBQ',
+        AWS_secret_key:   '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'
+  }
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 

@@ -20,11 +20,10 @@ class BooksController < ApplicationController
       # Amazon::Ecs::Responceオブジェクトの取得
       books = Amazon::Ecs.item_search(
         params[:keyword],
-        search_index:  'Books',
+        search_index:  'All',
         dataType: 'script',
         response_group: 'ItemAttributes, Images',
-        country:  'jp',
-        power: "Not kindle"
+        country:  'jp'
       )
 
       # 本のタイトル,画像URL, 詳細ページURLの取得

@@ -2,7 +2,9 @@
   <% @books.each do |book| %>
     <div class="list">
 <%= form_with(model: @review,  local: true,url:confirm_reviews_path) do |form| %>      
-      <%= image_submit_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;") %>
+<% if book.image_url.present? %>
+      <%= image_submit_tag(book.image_url, :class => 'fit-imgtop') %>
+  <% end %>
       <%= book.title %>
       <%= form.hidden_field :title,value: book.title %>
       <%= form.hidden_field :image_url,value: book.image_url %>

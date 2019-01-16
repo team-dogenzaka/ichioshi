@@ -1,8 +1,16 @@
 <% if @books.present? %>
   <% @books.each do |book| %>
     <div class="list">
-      <%= link_to (image_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;")), book.url %>
+<%= form_with(model: @review,  local: true,url:confirm_reviews_path) do |form| %>      
+      <%= image_submit_tag(book.image_url, style: "width: 70px;height: 100px;display: inline-block;") %>
       <%= book.title %>
+      <%= form.hidden_field :title,value: book.title %>
+      <%= form.hidden_field :image_url,value: book.image_url %>
     </div>
   <% end %>
+
+  
+<% end %>
+
+
 <% end %>

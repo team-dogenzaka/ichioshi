@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :hashtags
   
   resources :reviews do
+    collection do
+      post :confirm
+    end
     resources :comments
   end
   

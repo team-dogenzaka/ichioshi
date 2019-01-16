@@ -14,6 +14,8 @@
     <div class="row editorFunctionButton">
       <div class="row col-xs-8">
         <div class="form-group categoryForm">
+            タイトル:<%= @review.title %>
+            本文:<%= @review.content %>
           <%= form.collection_select(:category_name, Category.all, :category_name, :category_name, :include_blank => 'カテゴリ') %>
         </div>
       </div>

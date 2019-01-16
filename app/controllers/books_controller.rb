@@ -1,5 +1,18 @@
 class BooksController < ApplicationController
   def search
+    @category_name = Category.all
+    if user_signed_in?
+      if params[:back]
+        @review = Review.new(review_params)
+        @review.reviewtags.build
+      else
+        @review = Review.new
+        @review.reviewtags.build
+      end
+    else
+      redirect_to users_path, notice: "ログインしてね！"
+    end
+    
     if params[:keyword].present?
       #　デバックログ出力するために記述
       Amazon::Ecs.debug = true

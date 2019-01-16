@@ -1,1 +1,4 @@
+<% if review.image_url.present? %>
+<%= image_tag(review.image_url, style: "width: 70px;height: 100px;display: inline-block;") %>
+<% end %>
 <%= simple_format(review.content) %>

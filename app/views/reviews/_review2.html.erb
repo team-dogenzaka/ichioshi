@@ -1,5 +1,5 @@
 <% if review.image_url.present? %>
-<%= image_tag(review.image_url, style: "width: 70px;height: 100px;display: inline-block;") %>
+<%= image_tag(review.image_url, :class => 'fit-imgtop') %>
 <% end %>
 <% if review.content.size > 100 %>
 <%= simple_format(review.content.truncate(100)) %>

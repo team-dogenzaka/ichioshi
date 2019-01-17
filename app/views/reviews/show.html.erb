@@ -36,6 +36,9 @@
       <% else %>
         <ul class="imageViewer">
       <% end %>
+      <% if review.image_url.present? %>
+        <%= image_tag(review.image_url, :class => 'fit-imgtop') %>
+      <% end %>
       <% @review.images.each do |image| %>
         <li><%= image_tag(image.to_s, :class => 'fit-imgtop') %></li>
       <% end %>

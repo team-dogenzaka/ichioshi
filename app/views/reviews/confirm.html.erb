@@ -32,7 +32,7 @@
       <div id="preview"></div>
     </div>
     <div class="row form-group">
-        <%= image_tag(@review.image_url, style: "width: 70px;height: 100px;display: inline-block;") %>
+        <%= image_tag(@review.image_url, :class => 'fit-imgtop') %>
       <%= form.submit "レビューを投稿する", class: "btn btn-round btn-d  pull-right"  %>
     </div>
     <div class="row form-group">

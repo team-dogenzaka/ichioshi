@@ -91,7 +91,9 @@ Rails.application.configure do
         AWS_access_key_id: 'AKIAJHQA3TBJHBG4XWBQ',
         AWS_secret_key:   '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'
   }
-
+  
+  GA.tracker = "UA-132686065-1"
+  
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 

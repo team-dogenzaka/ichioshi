@@ -1,6 +1,3 @@
-<% if review.image_url.present? %>
-<%= image_tag(review.image_url, :class => 'fit-imgtop') %>
-<% end %>
 <% if review.content.size > 100 %>
 <%= simple_format(review.content.truncate(100)) %>
 <%= link_to '続きを読む',review_path(review.id) ,class: "more" ,remote: true %>

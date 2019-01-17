@@ -46,6 +46,7 @@ gem 'impressionist'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'master'
 gem 'counter_culture', '~> 1.8'
 gem 'amazon-ecs'
+gem 'google-analytics-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

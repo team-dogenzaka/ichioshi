@@ -16,6 +16,10 @@ class Review < ApplicationRecord
     acts_as_taggable            # acts_as_taggable_on :tags のエイリアス
     acts_as_ordered_taggable_on :skills, :interests
 
+    validates :title, presence: true, on: :save
+    validates :content, presence: true, on: :save
+    validates :category_name, presence: true, on: :save
+
   # 与えられたユーザーがフォローしているユーザー達のマイクロポストを返す。
   def self.from_users_following_by(user)
     following_user_ids = "SELECT following_id FROM relationships

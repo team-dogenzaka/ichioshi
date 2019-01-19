@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete 'users/delete/:id', to: 'users#destroy', as: 'users/destroy'
   get '/', to: 'homes#index', as: 'root'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', :registrations => "users/registrations" }
-  resources :users, only: [:index, :show], as: 'users'
+  resources :users, only: [:show], as: 'users'
   get '/reviews', to: 'reviews#index'
   resources :favorites, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     patch 'update_tags', on: :member
   end
 
-  resources :users do
+  resources :users, only: [:show] do
     member do
      get :following, :followers
     end

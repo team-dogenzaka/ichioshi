@@ -1,0 +1,80 @@
+<%= form_with(model: @review, local: true) do |form| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @review.errors.count %>件のエラーがあります。</h2>
+      <ul>
+
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="waku col-xs-12 col-sm-8 col-sm-offset-2">
+    <div class="row editorFunctionButton">
+      <div class="row col-xs-8">
+        <div class="form-group categoryForm">
+          
+          <%= form.collection_select(:category_name, Category.all, :category_name, :category_name, :include_blank => 'カテゴリ') %>
+        </div>
+      </div>
+      <div class="row col-xs-8">
+        <div class="form-group">
+          <%= text_field_tag 'review[skill_list]', @review.skill_list.join(','), placeholder: "タグ：" %>
+        </div>
+      </div>
+      <div class="form-group col-xs-4">
+        <%= form.label :下書き %>
+        <%= form.check_box 'draft', {}, false, true %>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div id="preview"></div>
+    </div>
+    <div class="row form-group">
+        <%= image_tag(@review.image_url, :class => 'fit-imgtop') %>
+      <%= form.submit "レビューを投稿する", class: "btn btn-round btn-d  pull-right"  %>
+    </div>
+    <div class="row form-group">
+      <%= form.text_field :title, class: 'review-title form-control', placeholder: "レビュータイトル", autocomplete: "off" %>
+    </div>
+    <div class="row form-group">
+      <%= form.text_area :content, :class => "review-content form-control", :id => "review-content", placeholder: "レビュー本文" %>
+      <%= form.hidden_field :image_url %>
+    </div>
+      <!--
+      <div class="field">
+          <%= form.label :tags %><br>
+          <%= collection_check_boxes(:hashtag, :hashtag_ids, Hashtag.all, :id, :hashtag_name ) do |t|  %>
+            <% t.label { t.check_box + t.text } %>
+            <% end %>
+      </div>
+      -->
+  </div>
+<% end %>
+<script>
+  document.getElementById('select_images').onclick = function() {
+    document.getElementById("review_images").click();
+  };
+</script>
+<script>
+function Filepreview(evt){
+ var files = evt.target.files;
+
+document.getElementById('preview').innerHTML =""
+
+ for(var i = 0; i < 3;i++){
+ var reader = new FileReader();
+ var f = files[i]
+ reader.onload = (function(){
+ return function(e) {
+ var span = document.createElement('span');
+ span.innerHTML= "<img src='" +e.target.result + "'>";
+ document.getElementById('preview').insertBefore(span,null);
+ };
+ })(f);
+ reader.readAsDataURL(f);
+ }
+}
+document.getElementById('review_images').addEventListener('change',Filepreview,false);
+</script>

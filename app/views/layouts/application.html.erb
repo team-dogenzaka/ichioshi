@@ -55,10 +55,12 @@
               <ul class="nav navbar-nav navbar-right header-right-menu">
                 <% if user_signed_in? %>
                   <li class="navicon">
-                    <% if  request.url.include?('/users/edit') %>
-                      <%= render :partial => 'notifications/notification_dropdown' %>
-                    <% else %>
-                      <%= render 'notifications/notification_dropdown' %>
+                    <% unless current_page?(controller: 'users/registrations', action: 'edit') %>
+                      <% if  request.url.include?('/users/edit') %>
+                        <%= render :partial => 'notifications/notification_dropdown' %>
+                      <% else %>
+                        <%= render 'notifications/notification_dropdown' %>
+                      <% end %>
                     <% end %>
                   </li>
                   <li class="navicon">

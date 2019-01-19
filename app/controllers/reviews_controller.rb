@@ -73,7 +73,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to reviews_path, notice:"ブログを削除しました！"
+    redirect_to users_path(current_user.id), notice:"レビューを削除しました！"
   end
 
   def confirm

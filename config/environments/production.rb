@@ -87,9 +87,9 @@ Rails.application.configure do
   end
 
   Amazon::Ecs.options = {
-        associate_tag:     'kamisama34-22',
-        AWS_access_key_id: 'AKIAJHQA3TBJHBG4XWBQ',
-        AWS_secret_key:   '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'
+    associate_tag: ENV['AWS_ASSOCIATE_TAG'],
+    AWS_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    AWS_secret_key: ENV['AWS_SECRET_KEY']
   }
   
   GA.tracker = "UA-132686065-1"

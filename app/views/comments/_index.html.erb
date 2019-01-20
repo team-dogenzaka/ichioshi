@@ -20,7 +20,7 @@
             <div class="comment-author font-alt"><%= link_to "#{comment.user.name}", user_path(comment.user.id) %></div>
             <div class="comment-body"><%= comment.content %></div>
             <div class="comment-meta font-alt"><%= comment.created_at.strftime("%Y年%m月%d日") %></div>
-            <% if comment.user_id == current_user.id %>
+            <% if comment.review.user_id == current_user.id || comment.user_id == current_user.id %>
               <p><%= link_to 'コメントを削除する', review_comment_path(comment.review_id, comment.id), method: :delete, remote: true %></p>
             <% end %>
           </div>

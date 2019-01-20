@@ -48,10 +48,11 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   Amazon::Ecs.options = {
-        associate_tag:     'kamisama34-22',
-        AWS_access_key_id: 'AKIAJHQA3TBJHBG4XWBQ',
-        AWS_secret_key:   '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'
+    associate_tag: ENV['AWS_ASSOCIATE_TAG'],
+    AWS_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    AWS_secret_key: ENV['AWS_SECRET_KEY']
   }
+
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker

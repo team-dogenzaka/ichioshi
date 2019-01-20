@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @review = Review.find(params[:review_id]) #①
     @comment = Comment.new
   end
+  
   def create
     @review = Review.find(params[:review_id]) #①
     @comment = @review.comments.build(comment_params) #②

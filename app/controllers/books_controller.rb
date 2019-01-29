@@ -10,7 +10,7 @@ class BooksController < ApplicationController
         @review.reviewtags.build
       end
     else
-      redirect_to users_path, notice: "ログインしてね！"
+      redirect_to root_path, notice: "ログインしてね！"
     end
     
     if params[:keyword].present?

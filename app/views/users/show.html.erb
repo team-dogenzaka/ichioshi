@@ -81,6 +81,9 @@
                     </div>
                   </div>                        
                   <div class="spbodyfont">
+                  <% if review.amazon_url.present? %>
+                    <%= link_to image_tag('/assets/assocbutt_or_detail._V371070159_.png'),review.amazon_url %>
+                  <% end %>
                     <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
                       <%= render partial: 'reviews/review2', locals: { review: review } %>
                     </div>

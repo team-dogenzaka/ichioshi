@@ -34,7 +34,6 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
     
     if @review.save
-
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
       redirect_to user_path(@review.user_id), notice: "レビューを作成しました！"
     else
@@ -73,7 +72,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to users_path(current_user.id), notice:"レビューを削除しました！"
+    redirect_to user_path(current_user.id), notice:"レビューを削除しました！"
   end
 
   def confirm
@@ -85,7 +84,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:title, :content, :user_id, :name, :image, {images: []}, :image_cache, :draft, :comment_content, :review_id, :interest_list, :skill_list, :category_name, :image_url)
+    params.require(:review).permit(:title, :content, :user_id, :name, :image, {images: []}, :image_cache, :draft, :comment_content, :review_id, :interest_list, :skill_list, :category_name, :image_url, :amazon_url)
   end
 
 

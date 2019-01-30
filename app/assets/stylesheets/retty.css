@@ -269,12 +269,6 @@ padding: 10px
   grid-template-rows: 25px 25px;
 }
 
-p{
-  border: solid 1px #cccccc;
-  margin: 0;
-  text-align: center
-}
-
 .area1{
   background-color: #bdccd4;
   grid-column: 1/4;

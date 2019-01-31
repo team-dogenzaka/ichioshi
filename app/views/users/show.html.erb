@@ -45,7 +45,7 @@
         <div class="tab-content">
           <div id="tab1" class="tab-pane active">
             <% @review.order("created_at DESC").each do |review| %>
-              <div class="waku">
+              <div class="waku"><!--投稿一覧ここから-->
                 <div class="grid spbodyfont">
                   <div class="topicon">
                     <% if (review.user.provider == "facebook") %>
@@ -115,7 +115,7 @@
           </div><!--tab1-->
           <div id="tab2" class="tab-pane">
             <% @user.like_reviews.order("created_at DESC").each do |review| %>
-              <div class="waku">
+              <div class="waku"><!--いいねしたレビューここから-->
                 <div class="grid spbodyfont">
                   <div class="topicon">
                     <% if (review.user.provider == "facebook") %>
@@ -133,6 +133,9 @@
                   <% else %>
                     <ul class="imageViewer">
                   <% end %>
+                  <% if review.image_url.present? %>
+                    <%= image_tag(review.image_url, :class => 'fit-imgtop') %>
+                  <% end %>                  
                   <% review.images.each do |image| %>
                     <li><%= image_tag(image.to_s, :class => 'fit-imgtop') %></li>
                   <% end %>
@@ -148,6 +151,9 @@
                     </div>
                   </div>
                   <div class="spbodyfont">
+                    <% if review.amazon_url.present? %>
+                      <%= link_to image_tag('/assets/assocbutt_or_detail._V371070159_.png'),review.amazon_url %>
+                    <% end %>                    
                     <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
                       <%= render partial: 'reviews/review2', locals: { review: review } %>
                     </div>

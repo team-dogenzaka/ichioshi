@@ -1239,8 +1239,9 @@ General Styles - Owlcarousel
 	Navbar
 --------------------------------------------------------------*/
 .navbar-custom {
-  background-color: rgba(10, 10, 10, 0.9);
+  background-color: #FFF;
   border: 0;
+  border-bottom: solid 1px #e7e7e7;
   border-radius: 0;
   z-index: 1000;
   font-family: "Roboto Condensed", sans-serif;
@@ -1262,10 +1263,10 @@ General Styles - Owlcarousel
 }
 
 .navbar-custom .navbar-brand {
-  letter-spacing: 4px;
   font-weight: 400;
   font-size: 22px;
-  color: #fff;
+  color: black;
+  font-family: Futura;
 }
 
 .navbar-custom .nav li > a {
@@ -1325,7 +1326,7 @@ General Styles - Owlcarousel
 }
 
 .navbar-custom .navbar-toggle .icon-bar {
-  background: #fff;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .dropdown-menu {

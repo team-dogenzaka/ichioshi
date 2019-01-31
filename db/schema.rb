@@ -53,6 +53,9 @@ ActiveRecord::Schema.define(version: 2019_01_19_081710) do
     t.integer "hashtag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["hashtag_id"], name: "index_hashtag_relations_on_hashtag_id"
+    t.index ["review_id", "hashtag_id"], name: "index_hashtag_relations_on_review_id_and_hashtag_id", unique: true
+    t.index ["review_id"], name: "index_hashtag_relations_on_review_id"
   end
 
   create_table "hashtags", force: :cascade do |t|

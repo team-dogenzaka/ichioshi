@@ -369,12 +369,6 @@ textarea {
   padding-right: 10px;
 }
 
-.notification-bell {
-  color: #fff;
-  position: relative;
-  top: 6px;
-}
-
 .notification-badge {
   background-color: #f44336;
   color: #fff;

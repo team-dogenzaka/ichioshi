@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/books/serch', to: 'books#search'
   delete 'users/delete/:id', to: 'users#destroy', as: 'users/destroy'
   get '/', to: 'homes#index', as: 'root'
+  get '/rule', to: 'homes#rule'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', :registrations => "users/registrations" }
   resources :users, only: [:show], as: 'users'
   get '/reviews', to: 'reviews#index'

@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-@category_name = Category.all
+    @category_name = Category.all
     if user_signed_in?
       if params[:back]
         @review = Review.new(review_params)
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
         @review.reviewtags.build
       end
     else
-      redirect_to users_path, notice: "ログインしてね！"
+      redirect_to root_path, notice: "ログインしてね！"
     end
   end
 

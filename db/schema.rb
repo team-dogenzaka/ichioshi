@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_081710) do
+ActiveRecord::Schema.define(version: 2019_02_03_134029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,9 +53,6 @@ ActiveRecord::Schema.define(version: 2019_01_19_081710) do
     t.integer "hashtag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hashtag_id"], name: "index_hashtag_relations_on_hashtag_id"
-    t.index ["review_id", "hashtag_id"], name: "index_hashtag_relations_on_review_id_and_hashtag_id", unique: true
-    t.index ["review_id"], name: "index_hashtag_relations_on_review_id"
   end
 
   create_table "hashtags", force: :cascade do |t|
@@ -194,6 +191,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_081710) do
     t.string "profile", limit: 200
     t.text "coverimg"
     t.text "tag"
+    t.boolean "accepted", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

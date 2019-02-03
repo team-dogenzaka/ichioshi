@@ -21,9 +21,10 @@ class User < ApplicationRecord
   has_many :notifications_ids, dependent: :destroy, class_name: 'Notification', foreign_key: "notified_by_id"
 
   validates :name, presence: true, length: { maximum: 50 }
+  validates :accepted, presence: { message: '利用規約に同意して下さい'}
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  
+
   is_impressionable
 
   def following?(other_user)
@@ -43,7 +44,7 @@ class User < ApplicationRecord
                      WHERE follower_id = :user_id"
     Review.where("user_id IN (#{following_ids})
                      ", user_id: id)
-    
+
   end
 
   def self.find_for_facebook_oauth(auth)

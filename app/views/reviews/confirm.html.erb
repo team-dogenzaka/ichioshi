@@ -25,12 +25,13 @@
       <%= form.text_area :content, :class => "review-content form-control", :id => "review-content", placeholder: "レビュー本文" %>
       <%= form.hidden_field :image_url %>
       <%= form.hidden_field :amazon_url %>
+      <%= form.hidden_field :asin %>
     </div>
 
     <div class="editorFunctionButton">
   <div class="col-xs-12 col-sm-12">
         <div class="form-group categoryForm">
-          <%= form.collection_select(:category_name, Category.all, :category_name, :category_name, :include_blank => 'カテゴリ') %>
+          <%= form.collection_select(:category_name, Category.all, :category_name, :category_name, :include_blank => 'カテゴリを選択してください') %>
         </div>
       </div>
     <div class="col-xs-12 col-sm-12">

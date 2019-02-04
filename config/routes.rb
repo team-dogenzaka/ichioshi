@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'likes/create'
   get 'likes/destroy'
   get '/discovers', to: 'discovers#index'
-  get '/books/serch', to: 'books#search'
+  get '/books/search', to: 'books#search'
   delete 'users/delete/:id', to: 'users#destroy', as: 'users/destroy'
   get '/', to: 'homes#index', as: 'root'
   get '/rule', to: 'homes#rule'

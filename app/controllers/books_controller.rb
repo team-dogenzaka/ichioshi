@@ -33,6 +33,7 @@ class BooksController < ApplicationController
           item.get('ItemAttributes/Title'),
           item.get('LargeImage/URL'),
           item.get('DetailPageURL'),
+          item.get('ASIN'),
         )
         @books << book
       end

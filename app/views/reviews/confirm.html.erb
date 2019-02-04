@@ -1,3 +1,5 @@
+      <div class="container">
+        <div class="row">
 <%= form_with(model: @review, local: true) do |form| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -10,39 +12,41 @@
       </ul>
     </div>
   <% end %>
-  <div class="waku col-xs-12 col-sm-8 col-sm-offset-2">
-    <div class="row editorFunctionButton">
-      <div class="row col-xs-8">
-        <div class="form-group categoryForm">
-          
-          <%= form.collection_select(:category_name, Category.all, :category_name, :category_name, :include_blank => 'カテゴリ') %>
-        </div>
-      </div>
-      <div class="row col-xs-8">
-        <div class="form-group">
-          <%= text_field_tag 'review[skill_list]', @review.skill_list.join(','), placeholder: "タグ：" %>
-        </div>
-      </div>
-      <div class="form-group col-xs-4">
-        <%= form.label :下書き %>
-        <%= form.check_box 'draft', {}, false, true %>
-      </div>
+  <div class="waku col-xs-12 col-sm-6 col-sm-offset-3">
+    
+
+    <div class="col-xs-12 col-sm-12 form-group amazon_image">
+    <%= image_tag(@review.image_url, :class => '') %>
     </div>
-    <div class="row form-group">
-      <div id="preview"></div>
-    </div>
-    <div class="row form-group">
-        <%= image_tag(@review.image_url, :class => 'fit-imgtop') %>
-      <%= form.submit "レビューを投稿する", class: "btn btn-round btn-d  pull-right"  %>
-    </div>
-    <div class="row form-group">
+    <div class="form-group">
       <%= form.text_field :title, class: 'review-title form-control', placeholder: "レビュータイトル", autocomplete: "off" %>
     </div>
-    <div class="row form-group">
+    <div class="form-group">
       <%= form.text_area :content, :class => "review-content form-control", :id => "review-content", placeholder: "レビュー本文" %>
       <%= form.hidden_field :image_url %>
       <%= form.hidden_field :amazon_url %>
     </div>
+
+    <div class="editorFunctionButton">
+  <div class="col-xs-12 col-sm-12">
+        <div class="form-group categoryForm">
+          <%= form.collection_select(:category_name, Category.all, :category_name, :category_name, :include_blank => 'カテゴリ') %>
+        </div>
+      </div>
+    <div class="col-xs-12 col-sm-12">
+        <div class="form-group">
+          <%= text_field_tag 'review[skill_list]', @review.skill_list.join(','), placeholder: "タグ：" %>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12">
+        <%= form.label :下書き %>
+        <%= form.check_box 'draft', {}, false, true %>
+      </div>
+      <div class="col-xs-12 col-sm-12 form-group">
+      <%= form.submit "レビューを投稿する", class: "btn btn-round btn-d"  %>
+      </div>
+    </div>
+
       <!--
       <div class="field">
           <%= form.label :tags %><br>

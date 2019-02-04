@@ -21,7 +21,7 @@ textarea.review-content {
     font-size: 2rem;
     resize: none;
     border: 0px !important;
-    height: 400px;
+    height: 100px;
 }
 
 #select_images {
@@ -38,4 +38,9 @@ textarea.review-content {
 
 .reviewEditLink {
     color: #787c7b;
+} 
+
+.amazon_image {
+    width: 50%;
+    text-align: center;
 } 

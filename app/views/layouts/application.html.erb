@@ -111,7 +111,7 @@
           </div>
           <div class="nav-item footer-menu">
             <% if user_signed_in? %>
-              <%= link_to '/books/serch', data: { turbolinks: false } do %>
+              <%= link_to '/books/search', data: { turbolinks: false } do %>
               <% if request.path == new_review_path %>
                 <i class="far fa-plus-square my-skyblue"></i>
                 <% else %>

@@ -1,0 +1,15 @@
+<ul class="margin_padding_0">
+  <% comments.each do |comment| %>
+    <% unless comment.id.nil? %>
+        <li>
+          <span class="comment"><%= link_to "#{comment.user.name}", user_path(comment.user.id) %></span>
+        <%= comment.content %>
+        <% if user_signed_in? %>
+          <% if comment.review.user_id == current_user.id || comment.user_id == current_user.id %>
+            <%= link_to '×', review_comment_path(comment.review_id, comment.id),method: :delete, remote: true %>
+          <% end %>
+        <% end %>
+        </li>  
+    <% end %>
+  <% end %>
+</ul>

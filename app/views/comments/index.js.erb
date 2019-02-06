@@ -1,2 +1,11 @@
-$("#comments_area").html("<%= j(render 'index', { comments: @comment.review.comments }) %>")
+if(document.URL.match("/")) {
+		$('div.add-here').addClass('added-class');
+
+$("#comments_area-<%= @review.id %>").html("<%= j(render 'index_top', { comments: @comment.review.comments }) %>")
 $("textarea").val('')
+
+} else {
+
+$("#comments_area-<%= @review.id %>").html("<%= j(render 'index', { comments: @comment.review.comments }) %>")
+$("textarea").val('')
+}

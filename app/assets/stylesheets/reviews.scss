@@ -1,3 +1,46 @@
-// Place all the styles related to the reviews controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.editorFunctionButton {
+    margin-top: 10px;
+}
+
+.categoryForm {
+    margin-left: 16px;
+}
+
+.categorySlector {
+    cursor: pointer;
+}
+
+input[type=text].review-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    border: 0px !important;
+    height: 48px;
+}
+
+textarea.review-content {
+    font-size: 2.5rem;
+    resize: none;
+    border: 0px !important;
+    height: 100px;
+}
+
+#select_images {
+    border-radius: 50%;
+    padding: auto auto;
+    border: 0px;
+    background-color: #c9c9c9;
+    color: white;
+    padding: 10px 10px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    outline: none;
+}
+
+.reviewEditLink {
+    color: #787c7b;
+} 
+
+.amazon_image {
+    width: 50%;
+    text-align: center;
+} 

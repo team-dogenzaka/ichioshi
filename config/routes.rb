@@ -1,37 +1,38 @@
 Rails.application.routes.draw do
+  get 'notifications/link_through'
+  get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
   get 'likes/create'
   get 'likes/destroy'
-  mount Ckeditor::Engine => '/ckeditor'
+  get '/discovers', to: 'discovers#index'
+  get '/books/search', to: 'books#search'
   delete 'users/delete/:id', to: 'users#destroy', as: 'users/destroy'
   get '/', to: 'homes#index', as: 'root'
+  get '/rule', to: 'homes#rule'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', :registrations => "users/registrations" }
-  resources :users, only: [:index, :show], as: 'users'
+  resources :users, only: [:show], as: 'users'
   get '/reviews', to: 'reviews#index'
   resources :favorites, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
-
   resources :hashtags
-  resources :reviewtags
-
+  
   resources :reviews do
     collection do
       post :confirm
     end
+    resources :comments
   end
+  
+  resources :reviewtags
   
   resources :items do
     patch 'update_tags', on: :member
   end
 
-  resources :users do
+  resources :users, only: [:show] do
     member do
      get :following, :followers
     end
   end
   resources :relationships, only: [:create, :destroy]
-
-  resources :reviews do
-    resources :comments
-  end
 
 end

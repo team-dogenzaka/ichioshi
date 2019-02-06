@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :favorite_reviews, through: :favorites, source: :review
 
   has_many :likes, dependent: :destroy
-  has_many :like_reviews, through: :like, source: :review
+  has_many :like_reviews, through: :likes, source: :review
 
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followings, through: :following_relationships
@@ -17,10 +17,15 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_many :notifications, dependent: :destroy
+  has_many :notifications_ids, dependent: :destroy, class_name: 'Notification', foreign_key: "notified_by_id"
+
   validates :name, presence: true, length: { maximum: 50 }
+  validates :accepted, presence: { message: '利用規約に同意して下さい'}
+  validates_format_of :password, :with => /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, :message => "は8文字以上の英数混在で入力してください。"
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  
+
   is_impressionable
 
   def following?(other_user)
@@ -40,6 +45,7 @@ class User < ApplicationRecord
                      WHERE follower_id = :user_id"
     Review.where("user_id IN (#{following_ids})
                      ", user_id: id)
+
   end
 
   def self.find_for_facebook_oauth(auth)
@@ -55,7 +61,7 @@ class User < ApplicationRecord
         user.provider = data["provider"] if user.provider.blank?
         user.uid = data["uid"] if user.uid.blank?
         user.name = data["info"]["name"] if user.name.blank?
-        user.icon = data["info"]["image"] if user.icon.blank?
+        user.icon = data["info"]["image"].insert(4,"s") if user.icon.blank?
         user.coverimg = data["info"]["coverimg"] if user.coverimg.blank?
         user.password = Devise.friendly_token[0,20] if user.password.blank?
       end

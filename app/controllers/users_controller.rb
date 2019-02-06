@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:destroy]
-  before_action :ensure_correct_user, only: [:destroy]
+  before_action :ensure_correct_user, only: [:edit, :destroy]
 
   def index
     @users = User.all
@@ -18,10 +17,13 @@ class UsersController < ApplicationController
   def show
     @tag =  ActsAsTaggableOn::Tag.all
     @user = User.find(params[:id])
+    @review = @user.reviews
+    @like_reviews = @user.like_reviews
     impressionist(@user, nil, :unique => [:session_hash])
     @page_views = @user.impressionist_count
     if current_user != nil
       @feed_items = current_user.feed
+      @comment = Comment.new
     end
   end
 
@@ -32,7 +34,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path, notice: "ユーザー削除したよ！"
+    redirect_to root_path, notice: "ユーザー削除したよ！"
   end
 
   def following

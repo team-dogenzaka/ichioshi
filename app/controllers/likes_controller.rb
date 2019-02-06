@@ -1,11 +1,36 @@
 class LikesController < ApplicationController
+  after_action :create_notifications, only: [:create]
+
   def create
-    like = current_user.likes.create(review_id: params[:review_id])
-    redirect_to review_path(like.review_id), notice: "#{like.review.user.name}さんのレビューにいいね！しました。"
+    @review = Review.find(params[:review_id])
+    unless @review.iine?(current_user)
+      @review.iine(current_user)
+      @review.reload
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      end
+    end
   end
 
   def destroy
-    like = current_user.likes.find_by(id: params[:id]).destroy
-    redirect_to review_path(like.review_id), notice: "#{like.review.user.name}さんのレビューのいいね！を解除しました。"
+    @review = Like.find(params[:id]).review
+    if @review.iine?(current_user)
+      @review.uniine(current_user)
+      @review.reload
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      end
+    end
   end
-end
+
+  private
+  def create_notifications
+    return if @review.user.id == current_user.id
+      Notification.create(user_id: @review.user.id,
+        notified_by_id: current_user.id,
+        review_id: @review.id,
+        notified_type: 'いいね')
+    end
+  end

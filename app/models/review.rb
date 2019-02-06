@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-    mount_uploader :image, ImageUploader
+    mount_uploaders :images, ImageUploader
     validates :title, presence: true
     belongs_to :user, optional: true
     has_many :reviewtags, dependent: :destroy
@@ -10,10 +10,15 @@ class Review < ApplicationRecord
     has_many :likes, dependent: :destroy
     has_many :like_users, through: :likes, source: :user
     has_many :comments, dependent: :destroy
+    has_many :notifications, dependent: :destroy
     
     acts_as_taggable_on :labels # post.label_list が追加される
     acts_as_taggable            # acts_as_taggable_on :tags のエイリアス
     acts_as_ordered_taggable_on :skills, :interests
+
+    validates :title, presence: true, on: :save
+    validates :content, presence: true, on: :save
+    validates :category_name, presence: true, on: :save
 
   # 与えられたユーザーがフォローしているユーザー達のマイクロポストを返す。
   def self.from_users_following_by(user)
@@ -21,6 +26,20 @@ class Review < ApplicationRecord
                          WHERE following_id = :user_id"
     where("user_id IN (#{following_user_ids}) OR user_id = :user_id",
           user_id: user.id)
+  end
+  
+  def iine(user)
+    likes.create(user_id: user.id)
+  end
+
+  # マイクロポストのいいねを解除する（ネーミングセンスに対するクレームは受け付けません）
+  def uniine(user)
+    likes.find_by(user_id: user.id).destroy
+  end
+
+  # 現在のユーザーがいいねしてたらtrueを返す
+  def iine?(user)
+    like_users.include?(user)
   end
 
 is_impressionable

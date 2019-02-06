@@ -7,21 +7,12 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_up_path_for(resource)
-    user_path(current_user.id)
+    root_path
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:icon])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:avator])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:profile])
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:coverimg])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:icon])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:avator])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:profile])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:coverimg])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:tag])
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :accepted, :password, :uid, :provider, :icon) }
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :profile, :icon,  :password, :coverimg, :tag) }
   end
-  
+
 end

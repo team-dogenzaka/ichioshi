@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_131239) do
+ActiveRecord::Schema.define(version: 2019_02_04_152621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ckeditor_assets", id: :serial, force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -47,9 +53,6 @@ ActiveRecord::Schema.define(version: 2018_10_04_131239) do
     t.integer "hashtag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hashtag_id"], name: "index_hashtag_relations_on_hashtag_id"
-    t.index ["review_id", "hashtag_id"], name: "index_hashtag_relations_on_review_id_and_hashtag_id", unique: true
-    t.index ["review_id"], name: "index_hashtag_relations_on_review_id"
   end
 
   create_table "hashtags", force: :cascade do |t|
@@ -92,6 +95,21 @@ ActiveRecord::Schema.define(version: 2018_10_04_131239) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "notified_by_id"
+    t.bigint "review_id"
+    t.string "notified_type"
+    t.bigint "like_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["like_id"], name: "index_notifications_on_like_id"
+    t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
+    t.index ["review_id"], name: "index_notifications_on_review_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "following_id"
@@ -110,6 +128,12 @@ ActiveRecord::Schema.define(version: 2018_10_04_131239) do
     t.datetime "created_at"
     t.datetime "update_at"
     t.boolean "draft"
+    t.json "images"
+    t.integer "likes_count", default: 0, null: false
+    t.string "category_name"
+    t.string "image_url"
+    t.string "amazon_url"
+    t.string "asin"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -168,10 +192,15 @@ ActiveRecord::Schema.define(version: 2018_10_04_131239) do
     t.string "profile", limit: 200
     t.text "coverimg"
     t.text "tag"
+    t.boolean "accepted", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "notifications", "likes"
+  add_foreign_key "notifications", "reviews"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "notifications", "users", column: "notified_by_id"
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "tags"
 end

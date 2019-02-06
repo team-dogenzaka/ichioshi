@@ -1,12 +1,21 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :user_check, only: [:edit, :update, :destroy]
-  PER = 6
   def index
-    @review = Review.where(draft: true).page(params[:page]).per(PER)
+    if params[:tag].present?
+      @review = Review.tagged_with(params[:tag])
+    elsif params[:category_name].present?
+      @review = Review.where(category_name: params[:category_name])
+    else
+      @review = Review.all
+      @review = @review.includes(:tags)
+    end
+    @categories = Category.all
+    @comment = Comment.new
   end
 
   def new
+    @category_name = Category.all
     if user_signed_in?
       if params[:back]
         @review = Review.new(review_params)
@@ -16,7 +25,7 @@ class ReviewsController < ApplicationController
         @review.reviewtags.build
       end
     else
-      redirect_to users_path, notice: "ログインしてね！"
+      redirect_to root_path, notice: "ログインしてね！"
     end
   end
 
@@ -25,9 +34,8 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
     
     if @review.save
-      
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
-      redirect_to reviews_path, notice: "レビューを作成しました！"
+      redirect_to user_path(@review.user_id), notice: "レビューを作成しました！"
     else
       # 入力フォームを再描画します。
       render 'new'
@@ -44,7 +52,7 @@ class ReviewsController < ApplicationController
     @comment = Comment.new
     @comments = @review.comments
     @comments_number = @comments.count
-
+    @category_name = @review.category_name
     impressionist(@review, nil, :unique => [:session_hash])
 
     @page_views = @review.impressionist_count
@@ -64,7 +72,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to reviews_path, notice:"ブログを削除しました！"
+    redirect_to user_path(current_user.id), notice:"レビューを削除しました！"
   end
 
   def confirm
@@ -76,12 +84,13 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:title, :content, :user_id, :name, :image, :image_cache, :draft, :comment_content, :review_id, :interest_list, :skill_list)
+    params.require(:review).permit(:title, :content, :user_id, :name, :image, {images: []}, :image_cache, :draft, :comment_content, :review_id, :interest_list, :skill_list, :category_name, :image_url, :amazon_url, :asin)
   end
 
 
   def set_review
     @review = Review.find(params[:id])
+    @category_name = Category.all
   end
 
   def user_check

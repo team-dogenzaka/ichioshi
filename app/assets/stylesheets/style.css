@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  background: #fff;
+  background-color: #FAFAFA;
   font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
 
   color: #666;
@@ -172,7 +172,7 @@ a,
 
 /* Module header */
 .module-small {
-  padding: 70px 0;
+  padding: 60px 0;
 }
 
 .module-extra-small {
@@ -308,7 +308,7 @@ a,
 .parallax-bg {
   background-attachment: inherit;
   background-size: cover;
-  background-image: url("/images/top.png");
+  background-image: url("https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/top_cover.png");
 }
 
 /* Vertical margin, padding */
@@ -671,7 +671,6 @@ a,
 
 .btn.btn-circle {
   border-radius: 30px;
-  margin-top: -200px;
     position: absolute;
 }
 
@@ -765,7 +764,7 @@ a,
 }
 
 .btn.btn-xs {
-  padding: 4px 19px;
+  padding: 4px 0px;
   font-size: 10px;
   letter-spacing: 0;
 }
@@ -1240,8 +1239,9 @@ General Styles - Owlcarousel
 	Navbar
 --------------------------------------------------------------*/
 .navbar-custom {
-  background-color: rgba(10, 10, 10, 0.9);
+  background-color: #FFF;
   border: 0;
+  border-bottom: solid 1px #e7e7e7;
   border-radius: 0;
   z-index: 1000;
   font-family: "Roboto Condensed", sans-serif;
@@ -1263,10 +1263,10 @@ General Styles - Owlcarousel
 }
 
 .navbar-custom .navbar-brand {
-  letter-spacing: 4px;
   font-weight: 400;
   font-size: 22px;
-  color: #fff;
+  color: black;
+  font-family: Futura;
 }
 
 .navbar-custom .nav li > a {
@@ -1326,7 +1326,7 @@ General Styles - Owlcarousel
 }
 
 .navbar-custom .navbar-toggle .icon-bar {
-  background: #fff;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 .dropdown-menu {
@@ -1564,8 +1564,8 @@ Google map
     background-position: center center;
     background-repeat: no-repeat;
     margin: 5px;
-    width: 64px;
-    height: 64px;
+    width: 35px;
+    height: 35px;
     border: 0px solid #ccc;
     background-size: cover;
 
@@ -2202,9 +2202,9 @@ Google map
 .post-thumbnail,
 .post-images-slider,
 .post-video {
-  margin: 0 0 20px;
-  width: 100px;
-  height: 100px;
+  margin: 0 0 0px;
+  width: 100%;
+  height: 100%;
   object-fit: cover; /* この一行を追加するだけ！ */
 }
 
@@ -2743,9 +2743,11 @@ Google map
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
   .navbar-right .dropdown-menu {
     right: auto;
-    left: 0;
+    left: -31px;
+    top: 38px;
   }
   /* Comments */
   .comment .comment {

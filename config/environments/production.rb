@@ -30,10 +30,6 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
 
-  config.assets.precompile += Ckeditor.assets
-  config.assets.precompile += %w( ckeditor/* )
-  config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-  
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
@@ -90,6 +86,14 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  Amazon::Ecs.options = {
+    associate_tag: ENV['AWS_ASSOCIATE_TAG'],
+    AWS_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    AWS_secret_key: ENV['AWS_SECRET_KEY']
+  }
+  
+  GA.tracker = "UA-132686065-1"
+  
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 

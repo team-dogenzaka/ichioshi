@@ -7,7 +7,7 @@ ja:
 #      already_confirmed: "was already confirmed"
       not_locked: "は凍結されていません"
 #      not_locked: "was not locked"
-
+      blank: "入力して下さい"
   devise:
     failure:
       unauthenticated: 'ログインしてください。'
@@ -61,3 +61,12 @@ ja:
       unlock_instructions:
         subject: 'アカウントの凍結解除'
 #        subject: 'Unlock Instructions'
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        password: パスワード
+        password_confirmation: パスワード確認
+        email: メールアドレス
+        uid: ""
+        provider: ""

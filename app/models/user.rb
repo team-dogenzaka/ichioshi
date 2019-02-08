@@ -46,7 +46,6 @@ class User < ApplicationRecord
                      WHERE follower_id = :user_id"
     Review.where("user_id IN (#{following_ids})
                      ", user_id: id)
-
   end
 
   def self.find_for_facebook_oauth(auth)
@@ -81,5 +80,9 @@ class User < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
+  end
+
+  def remember_me
+    true
   end
 end

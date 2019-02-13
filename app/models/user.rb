@@ -22,8 +22,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :provider, presence: {message: "facebookからログインして下さい"}
-  validates :accepted, presence: { message: '利用規約に同意して下さい'}
-  validates_format_of :password, :with => /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, :message => "は8文字以上の英数混在で入力してください。"
+  validates :accepted, presence: { message: '利用規約に同意して下さい'}, on: :create
+  validates_format_of :password, :with => /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, :message => "は8文字以上の英数混在で入力してください。", on: :create
+  validates_format_of :password, :with => /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, :message => "は8文字以上の英数混在で入力してください。", allow_nil: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 

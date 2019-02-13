@@ -21,7 +21,7 @@
             <%= f.label "タグ" %><br />
             <%= f.text_area :tag, :size => "2x4", :class => "form-control" %>
           </div>
-          
+
           <div class="field">
             <%= f.label "カバー画像" %>
             <%= f.file_field :coverimg, id: :coverimg %>
@@ -31,14 +31,7 @@
           <% end %>
           <div class="field">
             <%= f.label :password %> (変更したくない場合は空欄のままにしてください)<br />
-            <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
-            <% if @minimum_password_length %>
-              <%= @minimum_password_length %>文字以上
-            <% end %>
-          </div>
-          <div class="field">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
+            <%= f.password_field :password, autocomplete: "off", :class => "form-control", placeholder: '8文字以上英数字'%>
           </div>
           <br />
           <div class="actions">

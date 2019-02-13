@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :notifications_ids, dependent: :destroy, class_name: 'Notification', foreign_key: "notified_by_id"
 
   validates :name, presence: true, length: { maximum: 50 }
+  validates :provider, presence: {message: "facebookからログインして下さい"}
   validates :accepted, presence: { message: '利用規約に同意して下さい'}
   validates_format_of :password, :with => /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, :message => "は8文字以上の英数混在で入力してください。"
   devise :database_authenticatable, :registerable,
@@ -45,7 +46,6 @@ class User < ApplicationRecord
                      WHERE follower_id = :user_id"
     Review.where("user_id IN (#{following_ids})
                      ", user_id: id)
-
   end
 
   def self.find_for_facebook_oauth(auth)
@@ -80,5 +80,9 @@ class User < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
+  end
+
+  def remember_me
+    true
   end
 end

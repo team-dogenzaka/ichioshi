@@ -17,5 +17,14 @@ module Tamtim
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.action_mailer.smtp_settings = {
+      :user_name => ENV['SENDGRID_USER_NAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :domain => 'y',
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
   end
 end

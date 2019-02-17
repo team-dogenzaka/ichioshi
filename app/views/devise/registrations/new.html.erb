@@ -20,10 +20,6 @@
               <%= f.password_field :password, autocomplete: "off", placeholder: "８文字以上の英数字", :class => "form-control" %>
             </div>
             <div class="field col-md-12">
-              <%= f.label :password_confirmation %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: '同じものを入力', :class => "form-control" %>
-            </div>
-            <div class="field col-md-12">
               <%= f.check_box :accepted , {}, checked_value = "true", unchecked_value = "false" %>
               <%= link_to "利用規約",'/rule' %> に同意する
             </div>

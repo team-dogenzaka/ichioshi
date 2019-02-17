@@ -88,7 +88,7 @@
                   <% end %>
                     </ul>
                 </div>
-                <div class="main-content">    
+                <div class="main-content">
                   <div class=grid_iine>
                     <div class="grid_iine_1"><i id="review-<%= review.id %>" data-review-id="<%= review.id %>">
                       <%= render "likes/like", review: review %></i>
@@ -96,7 +96,7 @@
                     <div class="grid_iine_2"><i id="comment-<%= review.id %>" data-comment-id="<%= review.id %>">
                       <%= render "comments/comment", review: review %></i>
                     </div>
-                  </div>  
+                  </div>
                   <div class="spbodyfont">
                     <div id="reviewarea-<%= review.id %>" data-reviewarea-id="<%= review.id %>">
                       <%= render partial: 'reviews/review2', locals: { review: review } %>
@@ -108,7 +108,7 @@
                       <% @comments = review.comments %>
                       <%= render partial: 'comments/index_top', locals: { comments: @comments } %>
                     </div>
-                  </div>            
+                  </div>
                   <div class="postday"><%= review.created_at.strftime("%m月%d日") %></div>
                   <% if user_signed_in? %>
                     <% if review.user_id != current_user.id %>
@@ -117,9 +117,9 @@
                         <%= render partial: 'comments/form_top_before', locals: { comment: @comment, review: review } %>
                       </div>
                     <% end %>
-                  <% end %>                    
-                </div><!--main-content-->  
-              </div><!--waku-->  
+                  <% end %>
+                </div><!--main-content-->
+              </div><!--waku-->
             </div><!--col-->
             <div class="col-md-3 col-sm-12 col-xs-12"></div><!--col-->
           </div><!--col-->
@@ -133,7 +133,7 @@
       <p class="twitter_logo">twitter<i class="fa fa-twitter fa-fw"></i>:
         <a href="https://twitter.com/i_am_34" class="twitter_link">@i_am_34</a>
         <a href="https://twitter.com/tamamushi_2" class="twitter_link">@tamamushi_2</a>
-        <a href="https://twitter.com/6pnfrmhF1xm7XWo" class="twitter_link">@6pnfrmhF1xm7XWo</a>
+        <a href="https://twitter.com/yutacaparison" class="twitter_link">＠yutacaparison</a>
       </p>
       <p><%= link_to "利用規約",'/rule' %></p>
     </div>

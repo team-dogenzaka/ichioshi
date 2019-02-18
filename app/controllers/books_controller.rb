@@ -23,7 +23,7 @@ class BooksController < ApplicationController
         search_index:  'All',
         dataType: 'script',
         response_group: 'ItemAttributes, Images',
-        country:  'jp'
+        country:  'jp',
       )
 
       # 本のタイトル,画像URL, 詳細ページURLの取得

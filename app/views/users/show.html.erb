@@ -6,7 +6,8 @@
   <% end %>
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
+      <div class="icon_follow">
+      <div class="col-sm-3 col-sm-offset-3">
         <div class="mypageicon">
           <% if (@user.provider == "facebook") %>
             <%= image_tag @user.icon, :class => "img-circle", :alt => "icon", :size => "100x100" %>
@@ -14,9 +15,14 @@
             <%= image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "100x100") %>
           <% end %>
         </div>
+      </div>
+      <div class="col-sm-3">
         <div class="follow_button">
           <%= render 'follow_form' %>
         </div>
+      </div>
+      </div>
+      <div class="col-sm-6 col-sm-offset-3">
         <h3><%= @user.name %></h3>
         <div class="FollowCountContainar">
           <%= render 'stats' %>
@@ -27,7 +33,7 @@
             <%= link_to(content_tag(:i, 'プロフィールを編集する', class: 'fa fa-cog'), edit_user_registration_path)  %>
           </div>
         <% end %>
-      </div>
+      </div><!--col-sm-6 col-sm-offset-3-->
     </div>
 
     <div class="user_container col-sm-6 col-sm-offset-3">

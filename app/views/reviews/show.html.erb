@@ -72,11 +72,16 @@
         </div>
       </div>       
       <div class="row">
-        <div class="postday col-xs-4">
+        <div class="postday col-xs-12">
           <%= @review.created_at.strftime("%m月%d日") %>
         </div>
-        <!--<%= render 'reviews/tag_list', tag_list: @review.skill_list %> -->
-        <%= link_to "#{@category_name}", reviews_path(category_name: @category_name) %>
+        <div class="postday col-xs-12">
+          <%= link_to "カテゴリ：#{@category_name}", reviews_path(category_name: @category_name) %>
+        </div>
+        <div class="postday col-xs-12">
+          <%= render 'reviews/tag_list', tag_list: @review.skill_list %>
+        </div>
+        
       </div>
       <% if user_signed_in? %>
         <div id="commentarea-<%= @review.id %>" data-comment-id="<%= @review.id %>">
@@ -84,17 +89,18 @@
           <%= render partial: 'comments/form_top_before', locals: { comment: @comment, review: @review } %>
         </div>
       <% end %>
-      <div class="waku">           
-        <ul class="iine">
-          <li>いいねした人</li>
+<div class="col-sm-12" style="padding-left: 0px;">
+いいねした人
+</div>
+<div class="postday col-sm-12" style="padding-left: 0px;">
           <% @review.like_users.each do |like_user| %>
             <% if like_user.provider == "facebook" %>
-              <li class="features-icon"><%= link_to image_tag(like_user.icon, :class => "img-circle", :alt => "icon", :size => '70x70'), like_user %></div>
+              <li class="features-icon"><%= link_to image_tag(like_user.icon, :class => "img-circle", :alt => "icon", :size => '70x70'), like_user %>
             <% else %>
-              <li class="features-icon"><%= link_to image_tag('imagsehttps://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => '70x70'), like_user %></div>
+              <li class="features-icon"><%= link_to image_tag('imagsehttps://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => '70x70'), like_user %>
             <% end %>
           <% end %>
-        </ul>
+          </div>
       </div>
     </div>
   </div>

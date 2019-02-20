@@ -48,6 +48,7 @@ gem 'counter_culture', '~> 1.8'
 gem 'amazon-ecs'
 gem 'google-analytics-rails'
 gem 'meta-tags'
+gem 'slack-notifier'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

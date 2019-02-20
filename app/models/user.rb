@@ -67,11 +67,12 @@ class User < ApplicationRecord
         user.password = Devise.friendly_token[0,20] if user.password.blank?
         notifier = Slack::Notifier.new(Rails.application.config.slack_webhook_url)
         attachments = {
+          title: '新規登録がありました！',
           text: <<~TEXT
-            新規で#{user.name}さんが登録されました🎉
-            フォローしましょう!
-            TEXT
-          footer: ''
+          新規で#{user.name}さんが登録されました🎉
+          フォローしましょう!
+          https://www.ichioshi.tokyo/
+          TEXT
         }
         notifier.post attachments: [attachments]
       end

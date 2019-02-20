@@ -44,3 +44,21 @@ label {
     color: #000;
     text-align: left;
 }
+
+.icon_follow {
+  position: relative;
+}
+.icon_follow .mypageicon,
+.icon_follow .follow_button {
+  position: absolute;
+}
+.icon_follow .mypageicon {
+  margin-top: -100px;
+}
+.icon_follow .follow_button {
+  margin-top: -30px;
+  margin-left: 120px;
+}
+.icon_follow img{
+  max-width: 100%;
+}

@@ -24,16 +24,7 @@
     background-size: cover;
 }
 
-.mypageicon {
-   position: absolute;
-   margin-top: -90px;
-}
 
-.follow_button {
-   position: absolute;
-   margin-top: 16px;
-   margin-left: 150px;
-}
 
 .ribbon{
   position:relative;

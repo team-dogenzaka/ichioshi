@@ -26,6 +26,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.slack_webhook_url = ENV['SLACK_NEW_USER_WEBHOOK_URL']
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 

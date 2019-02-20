@@ -23,6 +23,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
+  config.slack_webhook_url = ENV['SLACK_NEW_USER_WEBHOOK_URL']
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
@@ -91,13 +92,13 @@ Rails.application.configure do
     AWS_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
     AWS_secret_key: ENV['AWS_SECRET_KEY']
   }
-  
+
   GA.tracker = "UA-132686065-1"
-  
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
   config.assets.paths << Rails.root.join("app", "assets", "fonts")
   config.assets.precompile += %w( .svg .eot .woff .ttf )
-  
+
 end

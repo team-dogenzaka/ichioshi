@@ -74,8 +74,6 @@ section#demos.module-medium
                     | <div id="reviewarea-#{review.id}" data-reviewarea-id="#{review.id}">
                     = render partial: 'reviews/review2', locals: { review: review }
                     | </div>
-                  .postday.col-xs-12
-                    = link_to "カテゴリ：#{@category_name}", reviews_path(category_name: @category_name)
                   .postday
                     = review.created_at.strftime("%m月%d日")
                   .spbodyfont
@@ -129,8 +127,6 @@ section#demos.module-medium
               | <div id="reviewarea-#{review.id}" data-reviewarea-id="#{review.id}">
               = render partial: 'reviews/review2', locals: { review: review }
               | </div>
-            .postday.col-xs-12
-              = link_to "カテゴリ：#{@category_name}", reviews_path(category_name: @category_name)
             .postday
               = review.created_at.strftime("%m月%d日")
             .spbodyfont

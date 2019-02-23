@@ -45,12 +45,6 @@
         | <div id="reviewarea-#{@review.id}" data-reviewarea-id="#{@review.id}">
         = render partial: 'reviews/review2', locals: { review: @review }
         | </div>
-      .postday.col-xs-12
-        = @review.created_at.strftime("%m月%d日")
-      .postday.col-xs-12
-        = link_to "カテゴリ：#{@category_name}", reviews_path(category_name: @category_name)
-      .postday.col-xs-12
-        = render 'reviews/tag_list', tag_list: @review.skill_list
       .spbodyfont
         | <div id="comments_area-#{@review.id}" data-comments_area-id="#{@review.id}">
         - @comments = @review.comments
@@ -60,6 +54,12 @@
         | <div id="commentarea-#{@review.id}" data-comment-id="#{@review.id}">
         = render partial: 'comments/form_top_before', locals: { comment: @comment, review: @review }
         | </div>
+      .postday.col-xs-12
+        = link_to "カテゴリ：#{@category_name}", reviews_path(category_name: @category_name)
+      .postday.col-xs-12
+        = render 'reviews/tag_list', tag_list: @review.skill_list
+      .postday.col-xs-12
+        = @review.created_at.strftime("%m月%d日")
       .col-sm-12[style="padding-left: 0px;"]
         |  いいねした人
       .postday.col-sm-12[style="padding-left: 0px;"]

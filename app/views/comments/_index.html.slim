@@ -1,0 +1,28 @@
+.comments
+  - if @comments_number == 0 || current_user == nil
+    h4.comment-title.font-alt
+      | There are no comments
+  - else
+    h4.comment-title.font-alt
+      | There are 
+      = @comments_number
+      |  comments
+  .comment.clearfix
+    - if current_user != nil
+      - comments.each do |comment|
+        - unless comment.id.nil?
+          .comment-avatar
+            - if (comment.user.provider == "facebook")
+              = image_tag comment.user.icon, :class => "img-circle", :alt => "icon", :size => "50x50"
+            - else
+              = image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "50x50")
+          .comment-content.clearfix
+            .comment-author.font-alt
+              = link_to "#{comment.user.name}", user_path(comment.user.id)
+            .comment-body
+              = comment.content
+            .comment-meta.font-alt
+              = comment.created_at.strftime("%Y年%m月%d日")
+            - if comment.review.user_id == current_user.id || comment.user_id == current_user.id
+              p
+                = link_to 'コメントを削除する', review_comment_path(comment.review_id, comment.id), method: :delete, remote: true

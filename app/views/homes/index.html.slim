@@ -90,7 +90,6 @@ div[data-turbolinks="false"]
                   | <div id="commentarea-#{review.id}" data-comment-id="#{review.id}">
                   = render partial: 'comments/form_top_before', locals: { comment: @comment, review: review }
                   | </div>
-.col-md-3.col-sm-12.col-xs-12
 - unless user_signed_in?
   .footer_menu
     p.twitter_logo

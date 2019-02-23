@@ -51,10 +51,8 @@ section#demos.module-medium
                 .post-thumbnail
                   - if review.images.count > 1
                     ul.slider
-
                   - else
                     ul.imageViewer
-
                   - if review.image_url.present?
                     = image_tag(review.image_url, :class => 'fit-imgtop')
                   - review.images.each do |image|
@@ -63,48 +61,35 @@ section#demos.module-medium
                 .main-content
                   .grid_iine
                     .grid_iine_1
-                      | <i id="review-
-                      = review.id
-                      | " data-review-id="
-                      = review.id
-                      | "> 
+                      | <i id="review-#{review.id}" data-review-id="#{review.id}">
                       = render "likes/like", review: review
+                      | </i>
                     .grid_iine_2
-                      | <i id="comment-
-                      = review.id
-                      | " data-comment-id="
-                      = review.id
-                      | "> 
+                      | <i id="comment-#{review.id}" data-comment-id="#{review.id}">
                       = render "comments/comment", review: review
+                      | </i>
                   .spbodyfont
                     - if review.amazon_url.present?
                       = link_to image_tag('/assets/assocbutt_or_detail._V371070159_.png'),review.amazon_url
-                    |  <div id="reviewarea-
-                    = review.id
-                    | " data-reviewarea-id="
-                    = review.id
-                    | "> 
+                    | <div id="reviewarea-#{review.id}" data-reviewarea-id="#{review.id}">
                     = render partial: 'reviews/review2', locals: { review: review }
-                .spbodyfont
-                  |  <div id="comments_area-
-                  = review.id
-                  | " data-comments_area-id="
-                  = review.id
-                  | ">
-                  - @comments = review.comments
-                  = render partial: 'comments/index_top', locals: { comments: @comments }
-              .postday
-                = review.created_at.strftime("%m月%d日")
-                - if current_user == review.user
-                  = link_to review_path(review.id), method: :delete, data: { confirm: '削除します' } do
-                    i.far.fa-trash-alt
-              - if user_signed_in?
-                |  <div id="commentarea-
-                = review.id
-                | " data-comment-id="
-                = review.id
-                | "> 
-                = render partial: 'comments/form_top_before', locals: { comment: @comment, review: review }
+                    | </div>
+                  .postday.col-xs-12
+                    = link_to "カテゴリ：#{@category_name}", reviews_path(category_name: @category_name)
+                  .postday
+                    = review.created_at.strftime("%m月%d日")
+                  .spbodyfont
+                    | <div id="comments_area-#{review.id}" data-comments_area-id="#{review.id}">
+                    - @comments = review.comments
+                    = render partial: 'comments/index_top', locals: { comments: @comments }
+                    | </div>
+                  - if current_user == review.user
+                    = link_to review_path(review.id), method: :delete, data: { confirm: '削除します' } do
+                      i.far.fa-trash-alt
+                  - if user_signed_in?
+                    | <div id="commentarea-#{review.id}" data-comment-id="#{review.id}">
+                    = render partial: 'comments/form_top_before', locals: { comment: @comment, review: review }
+                    | </div>
     #tab2.tab-pane
       - @user.like_reviews.order("created_at DESC").each do |review|
         .waku
@@ -121,10 +106,8 @@ section#demos.module-medium
           .post-thumbnail
             - if review.images.count > 1
               ul.slider
-
             - else
               ul.imageViewer
-
             - if review.image_url.present?
               = image_tag(review.image_url, :class => 'fit-imgtop')
             - review.images.each do |image|
@@ -133,43 +116,30 @@ section#demos.module-medium
           .main-content
             .grid_iine
               .grid_iine_1
-                | <i id="review-
-                = review.id
-                | " data-review-id="
-                = review.id
-                | "> 
+                | <i id="review-#{review.id}" data-review-id="#{review.id}">
                 = render "likes/like", review: review
+                | </i>
               .grid_iine_2
-                | <i id="comment-
-                = review.id
-                | " data-comment-id="
-                = review.id
-                | "> 
+                | <i id="comment-#{review.id}" data-comment-id="#{review.id}">
                 = render "comments/comment", review: review
+                | </i>
             .spbodyfont
               - if review.amazon_url.present?
                 = link_to image_tag('/assets/assocbutt_or_detail._V371070159_.png'),review.amazon_url
-              |  <div id="reviewarea-
-              = review.id
-              | " data-reviewarea-id="
-              = review.id
-              | "> 
+              | <div id="reviewarea-#{review.id}" data-reviewarea-id="#{review.id}">
               = render partial: 'reviews/review2', locals: { review: review }
-          .spbodyfont
-            |  <div id="comments_area-
-            = review.id
-            | " data-comments_area-id="
-            = review.id
-            | ">
-            - @comments = review.comments
-            = render partial: 'comments/index_top', locals: { comments: @comments }
-        .postday
-          = review.created_at.strftime("%m月%d日")
-        - if user_signed_in?
-          - unless review.user_id == current_user.id
-            |  <div id="commentarea-
-            = review.id
-            | " data-comment-id="
-            = review.id
-            | "> 
-            = render partial: 'comments/form_top_before', locals: { comment: @comment, review: review }
+              | </div>
+            .postday.col-xs-12
+              = link_to "カテゴリ：#{@category_name}", reviews_path(category_name: @category_name)
+            .postday
+              = review.created_at.strftime("%m月%d日")
+            .spbodyfont
+              | <div id="comments_area-#{review.id}" data-comments_area-id="#{review.id}">
+              - @comments = review.comments
+              = render partial: 'comments/index_top', locals: { comments: @comments }
+              | </div>
+            - if user_signed_in?
+              - unless review.user_id == current_user.id
+                | <div id="commentarea-#{review.id}" data-comment-id="#{review.id}">
+                = render partial: 'comments/form_top_before', locals: { comment: @comment, review: review }
+                | </div>

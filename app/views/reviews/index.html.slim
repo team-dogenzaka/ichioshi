@@ -44,42 +44,26 @@ div[data-turbolinks="false"]
                 .main-content
                   .grid_iine
                     .grid_iine_1
-                      | <i id="review-
-                      = review.id
-                      | " data-review-id="
-                      = review.id
-                      | "> 
+                      | <i id="review-#{review.id}" data-review-id="review.id">
                       = render "likes/like", review: review
+                      | </i>
                     .grid_iine_2
-                      | <i id="comment-
-                      = review.id
-                      | " data-comment-id="
-                      = review.id
-                      | "> 
+                      | <i id="comment-#{review.id}" data-comment-id="#{review.id}">
                       = render "comments/comment", review: review
+                      | </i>
                   .spbodyfont
-                    |  <div id="reviewarea-
-                    = review.id
-                    | " data-reviewarea-id="
-                    = review.id
-                    | "> 
+                    | <div id="reviewarea-{review.id}" data-reviewarea-id="review.id">
                     = render partial: 'reviews/review2', locals: { review: review }
-                .spbodyfont
-                  |  <div id="comments_area-
-                  = review.id
-                  | " data-comments_area-id="
-                  = review.id
-                  | ">
-                  - @comments = review.comments
-                  = render partial: 'comments/index_top', locals: { comments: @comments }
-              .postday
-                = review.created_at.strftime("%m月%d日")
-              - if user_signed_in?
-                - unless review.user_id == current_user.id
-                  |  <div id="commentarea-
-                  = review.id
-                  | " data-comment-id="
-                  = review.id
-                  | "> 
-                  = render partial: 'comments/form_top_before', locals: { comment: @comment, review: review }
-  .col-md-3.col-sm-12.col-xs-12
+                    | </div>
+                  .spbodyfont
+                    | <div id="comments_area-#{review.id}" data-comments_area-id="#{review.id}">
+                    - @comments = review.comments
+                    = render partial: 'comments/index_top', locals: { comments: @comments }
+                    | </div>
+                  .postday
+                    = review.created_at.strftime("%m月%d日")
+                  - if user_signed_in?
+                    - unless review.user_id == current_user.id
+                      |  <div id="commentarea-#{review.id}" data-comment-id="#{review.id}">
+                      = render partial: 'comments/form_top_before', locals: { comment: @comment, review: review }
+                      | </div>

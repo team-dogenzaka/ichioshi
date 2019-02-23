@@ -4,7 +4,7 @@ div[data-turbolinks="false"]
       - @feed_items = @review_items
   - else
     - @feed_items = @review_items
-    section.bg-dark-30.showcase-page-header.module.parallax-bg[data-background="https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/top_cover.png"]
+    section.bg-dark-30.showcase-page-header.module.parallax-bg[data-background='https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/top_cover.png']
       .titan-caption
         .caption-content
           .font-alt.mb-30.titan-title-size-1
@@ -12,15 +12,14 @@ div[data-turbolinks="false"]
           .font-alt.mb-40.titan-title-size-4
             | ICHIOSHI
           - unless user_signed_in?
-            = link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/facebook_login.png',:alt => "icon", :size => '200'), user_facebook_omniauth_authorize_path, class: "login-button facebook" ,method: :post
-    .fb-login-button[data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"]
+            = link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/facebook_login.png', alt: 'icon', size: '200'), user_facebook_omniauth_authorize_path, class: 'login-button facebook' , method: :post
+    .fb-login-button[data-max-rows='1' data-size='large' data-button-type='continue_with' data-show-faces='false' data-auto-logout-link='false' data-use-continue-as='false']
     section#services
       .container
         .row
           .col-sm-6.col-sm-offset-3
             h2.module-title.font-alt
             .module-subtitle.font-serif
-
         .row.multi-columns-row
           .col-md-4.col-sm-6.col-xs-12
             .features-item
@@ -40,92 +39,72 @@ div[data-turbolinks="false"]
                 i.far.fa-address-card
               h3.features-title.font-alt
                 | 実名制だから価値がある
-  section#demos
+  section#timeline
     .container
-      .row
+      .row.col-md-6.col-md-offset-3
         - @feed_items.each do |review|
-          .col-md-12.col-sm-12.col-xs-12
-            .col-md-3.col-sm-12.col-xs-12
-            .col-md-6.col-sm-12.col-xs-12[style="padding-left: 0px;padding-right: 0px;"]
-              .waku.review-cord
-                .grid.spbodyfont
-                  .topicon
-                    - if (review.user.provider == "facebook")
-                      = image_tag review.user.icon, :class => "img-circle", :alt => "icon", :size => "70x70"
-                    - else
-                      = image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "70x70")
-                  .grid1
-                    = link_to review.title.truncate(19), review_path(review.id),class:"comment"
-                  .grid2
-                    = link_to review.user.name, user_path(id: review.user.id),class:"postname"
-                .post-thumbnail
-                  - if review.images.count > 1
-                    ul.slider
-
-                  - else
-                    ul.imageViewer
-
-                  - if review.image_url.present?
-                    = image_tag(review.image_url, :class => 'fit-imgtop')
-                  - review.images.each do |image|
-                    li
-                      = image_tag(image.to_s, :class => 'fit-imgtop')
-                .main-content
-                  .grid_iine
-                    .grid_iine_1
-                      | <i id="review-
-                      = review.id
-                      | " data-review-id="
-                      = review.id
-                      | "> 
-                      = render "likes/like", review: review
-                    .grid_iine_2
-                      | <i id="comment-
-                      = review.id
-                      | " data-comment-id="
-                      = review.id
-                      | "> 
-                      = render "comments/comment", review: review
-                  .spbodyfont
-                    |  <div id="reviewarea-
-                    = review.id
-                    | " data-reviewarea-id="
-                    = review.id
-                    | "> 
-                    = render partial: 'reviews/review2', locals: { review: review }
-                .spbodyfont
-                  |  <div id="comments_area-
-                  = review.id
-                  | " data-comments_area-id="
-                  = review.id
-                  | ">
-                  - @comments = review.comments
-                  = render partial: 'comments/index_top', locals: { comments: @comments }
+          .waku.review-cord
+            .grid.spbodyfont
+              .topicon
+                - if (review.user.provider == "facebook")
+                  = image_tag review.user.icon, class: 'img-circle', alt: 'icon', size: '70x70'
+                - else
+                  = image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', class: 'img-circle', alt: 'icon', size: '70x70')
+              .grid1
+                = link_to review.title.truncate(19), review_path(review.id),class: 'comment'
+              .grid2
+                = link_to review.user.name, user_path(id: review.user.id), class:'postname'
+            .post-thumbnail
+              - if review.images.count > 1
+                ul.slider
+              - else
+                ul.imageViewer
+              - if review.image_url.present?
+                = image_tag(review.image_url, class: 'fit-imgtop')
+              - review.images.each do |image|
+                li
+                  = image_tag(image.to_s, class: 'fit-imgtop')
+            .main-content
+              .grid_iine
+                .grid_iine_1
+                  | <i id="review-#{review.id}" data-review-id="#{review.id}">
+                  = render 'likes/like', review: review
+                  | </i>
+                .grid_iine_2
+                  | <i id="comment-#{review.id}" data-comment-id="review.id">
+                  = render 'comments/comment', review: review
+                  | </i>
+              .spbodyfont
+                | <div id="reviewarea-#{review.id}" data-reviewarea-id="#{review.id}">
+                = render partial: 'reviews/review2', locals: { review: review }
+                | </div>
+              .spbodyfont
+                | <div id="comments_area-#{review.id}" data-comments_area-id="#{review.id}">
+                - @comments = review.comments
+                = render partial: 'comments/index_top', locals: { comments: @comments }
+                | </div>
               .postday
-                = review.created_at.strftime("%m月%d日")
+                = review.created_at.strftime('%m月%d日')
               - if user_signed_in?
                 - if review.user_id != current_user.id
-                  |  <div id="commentarea-
-                  = review.id
-                  | " data-comment-id="
-                  = review.id
-                  | "> 
+                  | <div id="commentarea-#{review.id}" data-comment-id="#{review.id}">
                   = render partial: 'comments/form_top_before', locals: { comment: @comment, review: review }
+                  | </div>
 .col-md-3.col-sm-12.col-xs-12
 - unless user_signed_in?
   .footer_menu
     p.twitter_logo
       | twitter
       i.fa.fa-twitter.fa-fw
-      | : 
-      a.twitter_link[href="https://twitter.com/i_am_34"]
+      | :
+      a.twitter_link[href='https://twitter.com/i_am_34']
         | @i_am_34
-      a.twitter_link[href="https://twitter.com/tamamushi_2"]
+      a.twitter_link[href='https://twitter.com/tamamushi_2']
         | @tamamushi_2
-      a.twitter_link[href="https://twitter.com/yutacaparison"]
+      a.twitter_link[href='https://twitter.com/yutacaparison']
         | ＠yutacaparison
     p
       = link_to "利用規約",'/rule'
 .scroll-up
-  a[href="#totop"]
+  a[href='#totop']
     i.fa.fa-angle-double-up

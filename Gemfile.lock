@@ -139,6 +139,9 @@ GEM
     gretel (3.0.9)
       rails (>= 3.1.0)
     hashie (3.5.7)
+    hpricot (0.8.6)
+    html2slim (0.2.0)
+      hpricot
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     impressionist (1.6.1)
@@ -265,6 +268,13 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     slack-notifier (2.3.2)
+    slim (4.0.1)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
+    slim-rails (3.2.0)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -277,6 +287,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    temple (0.8.0)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -323,6 +334,7 @@ DEPENDENCIES
   font-awesome-rails
   google-analytics-rails
   gretel
+  html2slim
   impressionist
   jbuilder (~> 2.5)
   jquery-rails
@@ -341,6 +353,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   slack-notifier
+  slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
   thin

@@ -1,0 +1,10 @@
+- breadcrumb :users
+- provide(:title, 'All users')
+h1
+  | All users
+ul.users
+  - @users.each do |user|
+    li
+      = link_to user.name, user
+      = user.email
+      = link_to 'ユーザーを編集する', edit_user_registration_path

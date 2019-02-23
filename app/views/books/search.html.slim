@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-6.col-xs-12
+      .content
+        #search-box
+          = form_tag('/books/search', method: :get) do
+            .input-group
+              = text_field_tag :book, "",  id: "book_search", name: "keyword", placeholder: "商品名を入力してください", class: "search-box"
+              span.input-group-btn
+                = button_tag '検索', class: 'btn btn btn-primary'
+          h2
+            | 検索結果
+#book_list
+  = render partial: 'book_list'

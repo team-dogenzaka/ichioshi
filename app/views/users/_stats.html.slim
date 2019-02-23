@@ -1,0 +1,27 @@
+- @user ||= current_user
+.stats_first
+  span.stat
+    | 投稿
+  span.FollowCount
+    = @user.reviews.count
+  span.stat
+    | 件
+.stats
+  span.stat
+    |  <a href="
+    = followers_user_path(@user)
+    | "> 
+    span.stat
+      | フォロワー
+    span.FollowCount
+      = @user.followers.count
+    span.stat
+      | 人
+.stats
+  |  <a href="
+  = following_user_path(@user)
+  | "> 
+  span.FollowCount
+    = @user.followings.count
+  span.stat
+    | 人をフォロー中

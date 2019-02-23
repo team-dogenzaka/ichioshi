@@ -21,7 +21,7 @@
         .form-group
           = text_field_tag 'review[skill_list]', @review.skill_list.join(','), placeholder: "タグ："
       .form-group.col-xs-4
-        = form.label 下書き
+        = form.label '下書き'
         = form.check_box 'draft', {}, false, true
     .row.form-group
       #preview
@@ -35,6 +35,6 @@
     .row.form-group
       = form.text_area :content, :class => "review-content form-control", :id => "review-content", placeholder: "レビュー本文"
 script
-  |  document.getElementById('select_images').onclick = function() { document.getElementById("review_images").click(); }; 
+  |  document.getElementById('select_images').onclick = function() { document.getElementById("review_images").click(); };
 script
-  |  function Filepreview(evt){ var files = evt.target.files; document.getElementById('preview').innerHTML ="" for(var i = 0; i < 3;i++){ var reader = new FileReader(); var f = files[i] reader.onload = (function(){ return function(e) { var span = document.createElement('span'); span.innerHTML= "<img src='" +e.target.result + "'>"; document.getElementById('preview').insertBefore(span,null); }; })(f); reader.readAsDataURL(f); } } document.getElementById('review_images').addEventListener('change',Filepreview,false); 
+  |  function Filepreview(evt){ var files = evt.target.files; document.getElementById('preview').innerHTML ="" for(var i = 0; i < 3;i++){ var reader = new FileReader(); var f = files[i] reader.onload = (function(){ return function(e) { var span = document.createElement('span'); span.innerHTML= "<img src='" +e.target.result + "'>"; document.getElementById('preview').insertBefore(span,null); }; })(f); reader.readAsDataURL(f); } } document.getElementById('review_images').addEventListener('change',Filepreview,false);

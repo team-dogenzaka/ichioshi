@@ -49,6 +49,7 @@ gem 'amazon-ecs'
 gem 'google-analytics-rails'
 gem 'meta-tags'
 gem 'slack-notifier'
+gem 'slim-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -72,6 +73,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'thin'
+  gem 'html2slim'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

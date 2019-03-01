@@ -1,0 +1,5 @@
+= form_with(model: [review, comment] ) do |form|
+  .form-group.comment_border
+    = form.text_area :content, class: "commentform form-control", placeholder: "コメントを追加…"
+  .comment_btn
+    = form.submit "コメントをする", class: "btn btn-round btn-d comment_btn"

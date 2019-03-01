@@ -1,0 +1,9 @@
+.notification-dropdown
+  button#dropdownMenu1.notification-button[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"]
+    i.fa.fa-bell.fa-2x.notification-bell[aria-hidden="true"]
+    p.notification-badge
+      = current_user.notifications.where(read: false).count
+  ul.dropdown-menu[aria-labelledby="dropdownMenu1"]
+    li.dropdown-header.text-center
+      | 通知
+    = render current_user.notifications.where(read: false).order('created_at DESC').last(5)

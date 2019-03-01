@@ -1,0 +1,10 @@
+ul
+  - @hashtags.each do |hashtag|
+    li
+      = hashtag.hashtag_name
+ul
+  - @tag.each do |tag|
+    li
+      = tag.name
+- @review.each do |review|
+  = render 'hashtags/tag_list', tag_list: review.skill_list.remove  unless review.skill_list.blank?

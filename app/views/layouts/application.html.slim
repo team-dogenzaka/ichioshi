@@ -1,0 +1,93 @@
+doctype html
+html[lang="en-US" dir="ltr"]
+  head
+    meta[charset="utf-8"]
+    meta[http-equiv="X-UA-Compatible" content="IE=edge"]
+    meta[name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0"]
+    link[rel="manifest" href="/manifest.json"]
+    link[rel="icon" type="image/x-icon" href="https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/favicon.ico"]
+    link[href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"]
+    meta[name="msapplication-TileColor" content="#ffffff"]
+    meta[name="theme-color" content="#ffffff"]
+    link[href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet"]
+    link[href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet"]
+    link[href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"]
+    = display_meta_tags(default_meta_tags)
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    link[href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet"]
+    script[src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"]
+    script[src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"]
+    = analytics_init if Rails.env.production?
+  body[data-spy="scroll" data-target=".onpage-navigation" data-offset="60"]
+    div[data-turbolinks="false"]
+      main
+        .feedback
+          a.feedback_font[href="https://goo.gl/forms/QzygIRY5UlgtNqYm1" target="_blank"]
+            | フィードバックする
+        nav.navbar.navbar-custom.navbar-fixed-top[role="navigation"]
+          .navbar-header
+            - if user_signed_in?
+              button.navbar-toggle[type="button" data-toggle="collapse" data-target="#custom-collapse"]
+                span.sr-only
+                  | メニュー
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.navbar-brand[href="/"]
+              | ICHIOSHI
+          #custom-collapse.collapse.navbar-collapse
+            ul.nav.navbar-nav.navbar-right.header-right-menu
+              - if user_signed_in?
+                li.navicon
+                  - unless current_page?(controller: 'users/registrations', action: 'edit')
+                    - if  request.url.include?('/users/edit')
+                      = render :partial => 'notifications/notification_dropdown'
+                    - else
+                      = render 'notifications/notification_dropdown'
+                li.navicon
+                  - if (current_user.provider == "facebook")
+                    = link_to image_tag(current_user.icon, :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id)
+                  - else
+                    = link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id)
+                li
+                  = link_to "ログアウト", destroy_user_session_path, method: :delete, class: :logout
+    .main-container
+      = notice
+      = alert
+      = yield
+    footer.footer
+      nav.navbar-footer.nav-bar
+        .nav-item.footer-menu
+          = link_to root_path, data: { turbolinks: false } do
+            - if request.path == "/"
+              i.fas.fa-home.my-skyblue
+            - else
+              i.fas.fa-home
+        .nav-item.footer-menu
+          = link_to discovers_path, data: { turbolinks: false } do
+            - if request.path == discovers_path
+              i.fas.fa-search.my-skyblue
+            - else
+              i.fas.fa-search
+        .nav-item.footer-menu
+          - if user_signed_in?
+            = link_to '/books/search', data: { turbolinks: false } do
+              - if request.fullpath == '/books/search'
+                i.far.fa-plus-square.my-skyblue
+              - else
+                i.far.fa-plus-square
+          - else
+
+        .nav-item.footer-menu
+          - if user_signed_in?
+            = link_to user_path(current_user.id), data: { turbolinks: false } do
+              - if request.path == user_path(current_user.id)
+                i.far.fa-user.my-skyblue
+              - else
+                i.far.fa-user
+          - else
+
+    script
+      |  if(window.innerWidth < 750){ $(document).ready(function(){ $('.slider').bxSlider({ slideWidth: 640, autoDirection:'prev', maxSlides: 4, minSlides: 1, }) }); } else { $(document).ready(function(){ $('.slider').bxSlider({ slideWidth: 640, autoDirection:'prev', maxSlides: 1, minSlides: 1, infiniteLoop: true }) }); } 

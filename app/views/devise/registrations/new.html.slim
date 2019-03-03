@@ -11,7 +11,7 @@ section.module-small
             .field.col-md-12
               = f.label :name
               br
-              = f.text_field :name
+              = f.text_field :name, disabled: true
             .field.col-md-12
               = f.label :email
               br
@@ -22,7 +22,7 @@ section.module-small
             .field.col-md-12
               = f.check_box :accepted , {}, checked_value = "true", unchecked_value = "false"
               = link_to "利用規約",'/rule'
-              |  に同意する 
+              |  に同意する
             .actions
               = f.submit "登録する（無料）", :class => "btn btn-default"
         br

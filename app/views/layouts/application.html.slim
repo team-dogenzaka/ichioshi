@@ -72,8 +72,8 @@ html[lang="en-US" dir="ltr"]
             - else
               i.fas.fa-search
         .nav-item.footer-menu
-          = link_to discovers_path, data: { turbolinks: false } do
-            - if request.path == discovers_path
+          = link_to '/new_arrival', data: { turbolinks: false } do
+            - if request.path == '/new_arrival'
               i.fas.fa-newspaper.my-skyblue
             - else
               i.fas.fa-newspaper

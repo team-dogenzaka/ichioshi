@@ -8,7 +8,15 @@ class HomesController < ApplicationController
     @feed_items = current_user.feed.order(created_at: :desc)
     @comment = Comment.new
     @category = Category.all
-    else
+    end
+  end
+  
+  def new_arrival
+    @tag =  ActsAsTaggableOn::Tag.all
+    @feed_items = Review.limit(10).order(created_at: :desc)
+    if user_signed_in?
+      @comment = Comment.new
+      @category = Category.all
     end
   end
 end

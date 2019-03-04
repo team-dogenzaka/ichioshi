@@ -72,6 +72,12 @@ html[lang="en-US" dir="ltr"]
             - else
               i.fas.fa-search
         .nav-item.footer-menu
+          = link_to '/new_arrival', data: { turbolinks: false } do
+            - if request.path == '/new_arrival'
+              i.fas.fa-newspaper.my-skyblue
+            - else
+              i.fas.fa-newspaper
+        .nav-item.footer-menu
           - if user_signed_in?
             = link_to '/books/search', data: { turbolinks: false } do
               - if request.fullpath == '/books/search'

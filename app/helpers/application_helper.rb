@@ -10,8 +10,8 @@ module ApplicationHelper
       canonical: request.original_url,
       separator: '|',
       icon: [
-        { href: image_url('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/favicon.ico') },
-        { href: image_url('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/favicon.ico'), rel: 'apple-touch-icon', sizes: '180x180', type: 'https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/favicon.ico' },
+        { href: image_url('/assets/ogp.jpg') },
+        { href: image_url('/assets/ogp.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: '/assets/ogp.jpg' },
       ],
       og: {
         site_name: :site, # もしくは site_name: :site
@@ -19,7 +19,7 @@ module ApplicationHelper
         description: :description, # もしくは description: :description
         type: 'website',
         url: request.original_url,
-        image: image_url('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/favicon.ico'),
+        image: image_url('/assets/ogp.jpg'),
         locale: 'ja_JP',
       },
       twitter: {

@@ -22,6 +22,9 @@ module ApplicationHelper
         image: image_url('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/ogp.png'),
         locale: 'ja_JP',
       },
+      fb: {
+        app_id: '211383876213861'
+      },
       twitter: {
         card: 'summary_large_image',
         site: '@ichioshi_tokyo',

@@ -50,9 +50,9 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   Amazon::Ecs.options = {
-    associate_tag: ENV['AWS_ASSOCIATE_TAG'],
-    AWS_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-    AWS_secret_key: ENV['AWS_SECRET_KEY']
+    associate_tag: ENV['AWS_ASSOCIATE_TAG'] || 'dummy',
+    AWS_access_key_id: ENV['AWS_ACCESS_KEY_ID'] || 'dummy',
+    AWS_secret_key: ENV['AWS_SECRET_KEY'] || 'dummy',
   }
 
   # Use an evented file watcher to asynchronously detect changes in source code,

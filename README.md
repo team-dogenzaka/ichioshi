@@ -1,24 +1,34 @@
-# README
+# setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+まずはクローンします
+`git clone git@github.com:takuyamishima/ichioshi.git`
 
-Things you may want to cover:
+dbはpostgresqlなので必要であれば
 
-* Ruby version
+`brew install postgresql`
 
-* System dependencies
+install完了後 postgresqlを起動します。
 
-* Configuration
+`brew services start postgresql`
 
-* Database creation
+フロントエンドの資産はyarnで管理しているのでyarnも入れます
 
-* Database initialization
+`brew install yarn`
 
-* How to run the test suite
+yarnのインストール完了後、必要なパッケージをインストールします。
 
-* Services (job queues, cache servers, search engines, etc.)
+`yarn install`
 
-* Deployment instructions
+必要なgemをインストール
 
-* ...
+`bundle install`
+
+ichioshi用のdbをセットアップします
+
+`rails db:setup`
+
+# start
+
+`rails s`
+
+

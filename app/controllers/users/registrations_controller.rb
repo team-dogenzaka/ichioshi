@@ -11,6 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    super
     # super do |resource|
     #   if resource.valid?
     #     notifier = Slack::Notifier.new(Rails.application.config.slack_webhook_url)

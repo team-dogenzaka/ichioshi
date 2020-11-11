@@ -46,3 +46,7 @@ doc/
 /config/credentials/development.key
 
 /.cert/server.key
+
+/config/credentials/staging.key
+
+/config/credentials/production.key

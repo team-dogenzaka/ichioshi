@@ -18,6 +18,7 @@
 
 .byebug_history
 .env
+.DS_Store
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -41,3 +42,7 @@ doc/
 .DS_Store
 .idea
 .secret
+
+/config/credentials/development.key
+
+/.cert/server.key

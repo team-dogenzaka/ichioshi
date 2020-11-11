@@ -39,7 +39,7 @@ ichioshi用のdbをセットアップします
 
 pumaで一度設定を読み込むためにpumaコマンドで一度起動する（必要ない気もする)
 
-`bundle exec puma -C config/puma`
+`bundle exec puma -C config/puma.rb`
 
 httpsで接続できることを確認
 

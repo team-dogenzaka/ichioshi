@@ -1,7 +1,7 @@
 # setup
 
 まずはクローンします
-`git clone git@github.com:takuyamishima/ichioshi.git`
+`git clone git@github.com:team-dogenzaka/ichioshi.git`
 
 dbはpostgresqlなので必要であれば
 

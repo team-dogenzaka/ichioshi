@@ -41,15 +41,15 @@ html[lang="en-US" dir="ltr"]
               - if user_signed_in?
                 li.navicon
                   - unless current_page?(controller: 'users/registrations', action: 'edit')
-                    - if  request.url.include?('/users/edit')
-                      = render :partial => 'notifications/notification_dropdown'
+                    - if request.url.include?('/users/edit')
+                      = render partial: 'notifications/notification_dropdown'
                     - else
                       = render 'notifications/notification_dropdown'
                 li.navicon
-                  - if (current_user.provider == "facebook")
-                    = link_to image_tag(current_user.icon, :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id)
+                  - if current_user.provider == 'facebook'
+                    = link_to image_tag(current_user.icon, class: "img-circle", alt: "icon", size: "25x25"), user_path(current_user.id)
                   - else
-                    = link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', :class => "img-circle", :alt => "icon", :size => "25x25"),user_path(current_user.id)
+                    = link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/default.png', class: "img-circle", alt: "icon", size: "25x25"), user_path(current_user.id)
                 li
                   = link_to "ログアウト", destroy_user_session_path, method: :delete, class: :logout
     .main-container
@@ -83,7 +83,6 @@ html[lang="en-US" dir="ltr"]
                 i.far.fa-plus-square.my-skyblue
               - else
                 i.far.fa-plus-square
-          - else
 
         .nav-item.footer-menu
           - if user_signed_in?
@@ -92,7 +91,33 @@ html[lang="en-US" dir="ltr"]
                 i.far.fa-user.my-skyblue
               - else
                 i.far.fa-user
-          - else
 
     script
-      |  if(window.innerWidth < 750){ $(document).ready(function(){ $('.slider').bxSlider({ slideWidth: 640, autoDirection:'prev', maxSlides: 4, minSlides: 1, }) }); } else { $(document).ready(function(){ $('.slider').bxSlider({ slideWidth: 640, autoDirection:'prev', maxSlides: 1, minSlides: 1, infiniteLoop: true }) }); } 
+      | if(window.innerWidth < 750){
+          $(document).ready(
+            function(){
+              $('.slider').bxSlider(
+                {
+                  slideWidth: 640,
+                  autoDirection:'prev',
+                  maxSlides: 4,
+                  minSlides: 1,
+                }
+              )
+            }
+          );
+        } else {
+          $(document).ready(
+            function(){
+              $('.slider').bxSlider(
+                {
+                  slideWidth: 640,
+                  autoDirection:'prev',
+                  maxSlides: 1,
+                  minSlides: 1,
+                  infiniteLoop: true
+                }
+              )
+            }
+          );
+        };

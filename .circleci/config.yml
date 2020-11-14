@@ -6,7 +6,7 @@ orbs:
 executors:
   ruby:
     docker:
-      - image: circleci/ruby:2.7.2-node-browsers
+      - image: &docker_ruby circleci/ruby:2.7.2-node-browsers
       - image: circleci/postgres
   ruby_with_db:
     docker:

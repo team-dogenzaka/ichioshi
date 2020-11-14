@@ -1,19 +1,26 @@
 version: 2.1
 
 orbs:
-  node: medpeer/rails@1.2.0
+  rails: medpeer/rails@1.2.0
 
 executors:
   ruby:
     docker:
-      - image: circleci/ruby:2.7.2-node-browsers
-      - image: circleci/postgres
+      - image: &docker_ruby circleci/ruby:2.7.2-node-browsers
+    environment:
+      RAILS_ENV: test
   ruby_with_db:
     docker:
       - image: *docker_ruby
       - image: circleci/postgres:12.4-ram
+        environment:
+          POSTGRES_USER: ${POSTGRES_USER}
+          POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     environment:
       DATABSE_URL: 'postgres://postgres:postgres@127.0.0.1:5432'
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      RAILS_ENV: test
 
 jobs:
   rubocop:

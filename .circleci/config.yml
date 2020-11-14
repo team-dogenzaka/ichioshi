@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: medpeer/rails@1.2.0
+  rails: medpeer/rails@1.2.0
 
 executors:
   ruby:

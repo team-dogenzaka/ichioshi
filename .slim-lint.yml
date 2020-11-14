@@ -28,9 +28,10 @@ linters:
     enabled: false
     max: 300
 
+  # 80に下げれるように頑張る
   LineLength:
     enabled: true
-    max: 80
+    max: 210
 
   RedundantDiv:
     enabled: true

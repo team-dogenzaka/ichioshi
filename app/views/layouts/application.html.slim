@@ -78,7 +78,7 @@ html[lang="en-US" dir="ltr"]
               i.fas.fa-newspaper
         .nav-item.footer-menu
           - if user_signed_in?
-            = link_to '/books/search', data: { turbolinks: false } do
+            = link_to new_review_path, data: { turbolinks: false } do
               - if request.fullpath == '/books/search'
                 i.far.fa-plus-square.my-skyblue
               - else

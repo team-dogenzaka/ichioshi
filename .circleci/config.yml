@@ -32,6 +32,15 @@ jobs:
           restore_only: true
 
       - run: bundle exec rubocop --parallel
+  slim-lint:
+    executor: ruby
+    steps:
+      - checkout
+
+      - rails/bundle-install:
+          restore_only: true
+
+      - run: bundle exec slim-lint app/views/
 
 workflows:
   rspec:
@@ -46,6 +55,9 @@ workflows:
             - rails/rb-deps
             - rails/js-deps
       - rubocop:
+          requires:
+            - rails/rb-deps
+      - slim-lint:
           requires:
             - rails/rb-deps
       - rails/rspec:

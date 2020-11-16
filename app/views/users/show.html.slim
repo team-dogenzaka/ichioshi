@@ -49,15 +49,15 @@ section#demos.module-medium
                   .grid2
                     = link_to review.user.name, user_path(id: review.user.id), class: 'postname'
                 .post-thumbnail
-                  - if review.images.count > 1
+                  - if review.images.present? && review.images.count > 1
                     ul.slider
+                    - review.images.each do |image|
+                      li
+                        = image_tag(image.to_s, class: 'fit-imgtop')
                   - else
                     ul.imageViewer
-                  - if review.image_url.present?
-                    = image_tag(review.image_url, class: 'fit-imgtop')
-                  - review.images.each do |image|
-                    li
-                      = image_tag(image.to_s, class: 'fit-imgtop')
+                    - if review.image_url.present?
+                      = image_tag(review.image_url, class: 'fit-imgtop')
                 .main-content
                   .grid_iine
                     .grid_iine_1

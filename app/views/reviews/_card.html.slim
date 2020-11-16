@@ -1,0 +1,37 @@
+ .post-thumbnail
+  - if review.images.present?
+    - if review.images.count > 1
+      ul.slider
+    - else
+      ul.imageViewer
+    - review.images.each do |image|
+      li
+      - if image.url.present?
+        = image_tag(image.url, class: 'fit-imgtop')
+      - else
+        = image_tag(image.to_s, class: 'fit-imgtop')
+  .main-content
+    .grid_iine
+      .grid_iine_1
+        | <i id="review-#{review.id}" data-review-id="#{review.id}">
+        = render 'likes/like', locals: { review: review }
+        | </i>
+      / .grid_iine_2
+      /   | <i id="comment-#{review.id}" data-comment-id="review.id">
+      /   = render 'comments/comment', locals: { review: review }
+      /   | </i>
+    .spbodyfont
+      | <div id="reviewarea-#{review.id}" data-reviewarea-id="#{review.id}">
+      = render partial: 'reviews/review2', locals: { review: review }
+      | </div>
+    .spbodyfont
+      | <div id="comments_area-#{review.id}" data-comments_area-id="#{review.id}">
+      - @comments = review.comments
+      = render partial: 'comments/index_top', locals: { comments: @comments }
+      | </div>
+    - if user_signed_in? && review.user_id != current_user.id
+        | <div id="commentarea-#{review.id}" data-comment-id="#{review.id}">
+        = render partial: 'comments/form_top_before', locals: { comment: @comment, review: review }
+        | </div>
+    .postday
+      = review.created_at.strftime('%m月%d日')

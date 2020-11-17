@@ -12,14 +12,10 @@
     .row.editorFunctionButton
       .row.col-xs-8
         .form-group.categoryForm
-          |  タイトル:
-          = @review.title
-          |  本文:
-          = @review.content
           = form.collection_select(:category_name, Category.all, :category_name, :category_name, include_blank: 'カテゴリ')
       .row.col-xs-8
         .form-group
-          = text_field_tag 'review[skill_list]', @review.skill_list.join(','), placeholder: "タグ："
+          = form.text_field :skill_list, value: @review.skill_list.join(','), placeholder: "タグ："
       .form-group.col-xs-4
         = form.label '下書き'
         = form.check_box 'draft', {}, false, true

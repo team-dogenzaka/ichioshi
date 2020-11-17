@@ -19,48 +19,7 @@
         .pull-right
           - if current_user && @review.user_id == current_user.id
             = link_to(content_tag(:i, '', class: 'fas fa-ellipsis-h reviewEditLink'), edit_review_path(@review))
-    .post-thumbnail
-      - if @review.images.count > 1
-        ul.slider
-      - else
-        ul.imageViewer
-      - if @review.image_url.present?
-        = image_tag(@review.image_url, class: 'fit-imgtop')
-      - @review.images.each do |image|
-        li
-          = image_tag(image.to_s, class: 'fit-imgtop')
-    .main-content
-      .grid_iine
-        .grid_iine_1
-          - review = @review
-          | <i id="review-#{@review.id}" data-review-id="#{@review.id}">
-          = render "likes/like", review: @review
-          | </i>
-        .grid_iine_2
-          |  <i id="comment-#{@review.id}" data-comment-id="#{@review.id}">
-          = render "comments/comment", review: @review
-          | </i>
-      .spbodyfont
-        - if review.amazon_url.present?
-          = link_to image_tag('/assets/assocbutt_or_detail._V371070159_.png'), review.amazon_url
-        | <div id="reviewarea-#{@review.id}" data-reviewarea-id="#{@review.id}">
-        = render partial: 'reviews/review2', locals: { review: @review }
-        | </div>
-      .spbodyfont
-        | <div id="comments_area-#{@review.id}" data-comments_area-id="#{@review.id}">
-        - @comments = @review.comments
-        = render partial: 'comments/index_top', locals: { comments: @comments }
-        | </div>
-      - if user_signed_in?
-        | <div id="commentarea-#{@review.id}" data-comment-id="#{@review.id}">
-        = render partial: 'comments/form_top_before', locals: { comment: @comment, review: @review }
-        | </div>
-      .postday.col-xs-12
-        = link_to "カテゴリ：#{@category_name}", reviews_path(category_name: @category_name)
-      .postday.col-xs-12
-        = render 'reviews/tag_list', tag_list: @review.skill_list
-      .postday.col-xs-12
-        = @review.created_at.strftime("%m月%d日")
+      = render partial: 'reviews/card', locals: { review: @review }
       .col-sm-12[style="padding-left: 0px;"]
         |  いいねした人
       .postday.col-sm-12[style="padding-left: 0px;"]

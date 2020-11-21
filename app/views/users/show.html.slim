@@ -1,6 +1,6 @@
 section#demos.module-medium
   - if @user.coverimg.blank?
-    = image_tag('IMG_1063.jpg', class: 'mypagecover-img')
+    = image_tag('IMG_1063.webp', class: 'mypagecover-img')
   - else
     = image_tag(@user.coverimg.url, class: 'mypagecover-img')
   .container

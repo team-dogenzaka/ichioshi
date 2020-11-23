@@ -73,6 +73,9 @@ GEM
       debug_inspector (>= 0.0.1)
     brakeman (4.10.0)
     builder (3.2.4)
+    bullet (6.1.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.3)
     capybara (2.18.0)
       addressable
@@ -374,6 +377,7 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.7.0)
+    uniform_notifier (1.13.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -397,6 +401,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   brakeman
+  bullet
   byebug
   capybara (~> 2.13)
   carrierwave

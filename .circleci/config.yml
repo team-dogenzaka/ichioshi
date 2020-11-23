@@ -9,6 +9,7 @@ executors:
       - image: &docker_ruby circleci/ruby:2.7.2-node-browsers
     environment:
       RAILS_ENV: test
+      ARTIFACTS_DIR: /tmp/artifacts
   ruby_with_db:
     docker:
       - image: *docker_ruby
@@ -41,6 +42,15 @@ jobs:
           restore_only: true
 
       - run: bundle exec slim-lint app/views/
+  brakeman:
+    executor: ruby
+    steps:
+      - checkout
+
+      - rails/bundle-install:
+          restore_only: true
+
+      - run: bundle exec brakeman -o ${ARTIFACTS_DIR}/brakeman_output.html
 
 workflows:
   rspec:
@@ -58,6 +68,9 @@ workflows:
           requires:
             - rails/rb-deps
       - slim-lint:
+          requires:
+            - rails/rb-deps
+      - brakeman:
           requires:
             - rails/rb-deps
       - rails/rspec:

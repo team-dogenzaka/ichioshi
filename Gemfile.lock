@@ -71,6 +71,7 @@ GEM
     bindex (0.8.1)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    brakeman (4.10.0)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (2.18.0)
@@ -395,6 +396,7 @@ DEPENDENCIES
   amazon-ecs
   better_errors
   binding_of_caller
+  brakeman
   byebug
   capybara (~> 2.13)
   carrierwave

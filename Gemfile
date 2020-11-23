@@ -45,6 +45,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'brakeman'
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
   gem 'factory_bot_rails'
@@ -64,4 +65,3 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-

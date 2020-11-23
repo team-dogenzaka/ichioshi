@@ -4,7 +4,7 @@ div[data-turbolinks="false"]
       - @feed_items = @review_items
   - else
     - @feed_items = @review_items
-    section.bg-dark-30.showcase-page-header.module.parallax-bg[data-background='https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/top_cover.png']
+    section.bg-dark-30.showcase-page-header.module.parallax-bg[data-background='/default_background.webp']
       .titan-caption
         .caption-content
           .font-alt.mb-30.titan-title-size-1
@@ -12,9 +12,10 @@ div[data-turbolinks="false"]
           .font-alt.mb-40.titan-title-size-4
             | ICHIOSHI
           - unless user_signed_in?
-            = link_to image_tag('https://s3-ap-northeast-1.amazonaws.com/tamtim/uploads/facebook_login.png', alt: 'icon', size: '200'),
+            = link_to image_tag('sign_in_with_facebook.png', alt: 'icon', size: '200'),
                       user_facebook_omniauth_authorize_path, class: 'login-button facebook', method: :post
-    .fb-login-button[data-max-rows='1' data-size='large' data-button-type='continue_with' data-show-faces='false' data-auto-logout-link='false' data-use-continue-as='false']
+    /下記はフェイスブックSDKを利用したログインボタンの設置用コードなのでコメントアウト
+    /.fb-login-button[data-max-rows='1' data-size='large' data-button-type='continue_with' data-show-faces='false' data-auto-logout-link='false' data-use-continue-as='false']
     section#services
       .container
         .row

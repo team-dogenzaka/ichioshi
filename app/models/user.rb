@@ -31,7 +31,7 @@ class User < ApplicationRecord
   is_impressionable
 
   def following?(other_user)
-    following_relationships.find_by(following_id: other_user.id)
+    following_relationships.exists?(following_id: other_user.id)
   end
 
   def follow!(other_user)

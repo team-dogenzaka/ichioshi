@@ -42,7 +42,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'brakeman'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '~> 2.13'
+  gem 'capybara', '~> 3.34'
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'rspec_junit_formatter'
